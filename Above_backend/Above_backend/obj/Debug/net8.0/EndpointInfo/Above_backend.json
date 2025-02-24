@@ -1121,10 +1121,6 @@
       "Classes": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
           "name": {
             "type": "string",
             "nullable": true
@@ -1165,6 +1161,20 @@
               "type": "string"
             },
             "nullable": true
+          },
+          "saving_throws": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "skillList": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1172,10 +1182,6 @@
       "Equipment": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
           "name": {
             "type": "string",
             "nullable": true
@@ -1220,10 +1226,6 @@
       "Features": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
           "levelReq": {
             "type": "integer",
             "format": "int32",
@@ -1292,6 +1294,13 @@
               "type": "string"
             },
             "nullable": true
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1299,10 +1308,6 @@
       "Races": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
           "name": {
             "type": "string",
             "nullable": true
@@ -1322,6 +1327,10 @@
           "speed": {
             "type": "integer",
             "format": "int32"
+          },
+          "skill": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1329,10 +1338,6 @@
       "Spells": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
           "school": {
             "type": "string",
             "nullable": true
@@ -1416,10 +1421,6 @@
       "SubClasses": {
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
           "name": {
             "type": "string",
             "nullable": true

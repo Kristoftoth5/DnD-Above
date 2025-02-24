@@ -26,5 +26,6 @@ namespace Above_backend.Models
         public List<string>? Weapon_prof { get; set; }
         public List<string>? Tool_prof { get; set; }
         public List<string>? Saving_throws { get; set; }
+        public List<string>? Skills { get; set; }
     }
 }

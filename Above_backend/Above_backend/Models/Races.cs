@@ -17,5 +17,6 @@ namespace Above_backend.Models
         public string Size { get; set; }
 
         public int Speed { get; set; }
+        public string? Skill { get; set; }
     }
 }
