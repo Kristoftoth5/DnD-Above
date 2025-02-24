@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Above_backend.Models
 {
     public class Spells
     {
+        [JsonIgnore]
         public int Id { get; set; }
         public string School { get; set; }
         public int Concentration { get; set; }

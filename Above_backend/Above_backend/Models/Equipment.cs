@@ -1,7 +1,10 @@
-﻿namespace Above_backend.Models
+﻿using System.Text.Json.Serialization;
+
+namespace Above_backend.Models
 {
     public class Equipment
     {
+        [JsonIgnore]
         public int Id { get; set; }
         public string Name { get; set; }
         public string Rarity { get; set; }

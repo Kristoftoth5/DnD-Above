@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Drew\\Above_backend\\Above_backend\\Above_backend.csproj": {}
+    "D:\\GITHUB\\Drew\\.git\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj": {}
   },
   "projects": {
-    "F:\\Drew\\Above_backend\\Above_backend\\Above_backend.csproj": {
+    "D:\\GITHUB\\Drew\\.git\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Drew\\Above_backend\\Above_backend\\Above_backend.csproj",
+        "projectUniqueName": "D:\\GITHUB\\Drew\\.git\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
         "projectName": "Above_backend",
-        "projectPath": "F:\\Drew\\Above_backend\\Above_backend\\Above_backend.csproj",
+        "projectPath": "D:\\GITHUB\\Drew\\.git\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
         "packagesPath": "C:\\Users\\gulyasaz\\.nuget\\packages\\",
-        "outputPath": "F:\\Drew\\Above_backend\\Above_backend\\obj\\",
+        "outputPath": "D:\\GITHUB\\Drew\\.git\\DnD-Above\\Above_backend\\Above_backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,6 +50,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.OpenApi": {
+              "target": "Package",
+              "version": "[8.0.11, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[9.0.2, )"
@@ -70,9 +74,13 @@
               "target": "Package",
               "version": "[9.0.2, )"
             },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[8.0.7, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.6.2, )"
+              "version": "[6.9.0, )"
             }
           },
           "imports": [

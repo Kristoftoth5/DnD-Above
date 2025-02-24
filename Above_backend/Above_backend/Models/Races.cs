@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Text.Json.Serialization;
+using Microsoft.EntityFrameworkCore;
 
 namespace Above_backend.Models
 {
     public class Races
     {
+        [JsonIgnore]
         public int Id { get; set; }
         
         public string Name { get; set; }

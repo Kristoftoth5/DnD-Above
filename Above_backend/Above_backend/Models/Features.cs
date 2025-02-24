@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Above_backend.Models
 {
     public class Features
     {
+        [JsonIgnore]
         public int Id { get; set; }
         public int? LevelReq { get; set; }
         public string? Description { get; set; }
