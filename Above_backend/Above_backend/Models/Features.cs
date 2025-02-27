@@ -5,7 +5,7 @@ namespace Above_backend.Models
 {
     public class Features
     {
-        [JsonIgnore]
+
         public int Id { get; set; }
         public int? LevelReq { get; set; }
         public string? Description { get; set; }

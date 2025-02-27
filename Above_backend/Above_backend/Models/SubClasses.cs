@@ -4,7 +4,6 @@ namespace Above_backend.Models
 {
     public class SubClasses
     {
-        [JsonIgnore]
         public int Id { get; set; }
         public string Name { get; set; }
         public int OriginClassId { get; set; }
