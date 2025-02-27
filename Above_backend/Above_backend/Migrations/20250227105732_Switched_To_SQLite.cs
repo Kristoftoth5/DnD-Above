@@ -5,7 +5,7 @@
 namespace Above_backend.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class Switched_To_SQLite : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -14,16 +14,16 @@ namespace Above_backend.Migrations
                 name: "Classes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Hit_Dice = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Starting_gold = table.Column<int>(type: "int", nullable: false),
-                    SpellCaster = table.Column<int>(type: "int", nullable: false),
-                    Armor_prof = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Weapon_prof = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Tool_prof = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: true),
+                    Hit_Dice = table.Column<string>(type: "TEXT", nullable: false),
+                    Starting_gold = table.Column<int>(type: "INTEGER", nullable: false),
+                    SpellCaster = table.Column<int>(type: "INTEGER", nullable: false),
+                    Armor_prof = table.Column<string>(type: "TEXT", nullable: true),
+                    Weapon_prof = table.Column<string>(type: "TEXT", nullable: false),
+                    Tool_prof = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -34,17 +34,17 @@ namespace Above_backend.Migrations
                 name: "Equipment",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Rarity = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProfReq = table.Column<int>(type: "int", nullable: true),
-                    DamageDie = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AC = table.Column<int>(type: "int", nullable: true),
-                    Consumable = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Attunement = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Rarity = table.Column<string>(type: "TEXT", nullable: false),
+                    ProfReq = table.Column<int>(type: "INTEGER", nullable: true),
+                    DamageDie = table.Column<string>(type: "TEXT", nullable: true),
+                    AC = table.Column<int>(type: "INTEGER", nullable: true),
+                    Consumable = table.Column<int>(type: "INTEGER", nullable: false),
+                    Price = table.Column<int>(type: "INTEGER", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: true),
+                    Attunement = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -55,13 +55,13 @@ namespace Above_backend.Migrations
                 name: "Races",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatureType = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Age = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Size = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Speed = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    CreatureType = table.Column<string>(type: "TEXT", nullable: false),
+                    Age = table.Column<string>(type: "TEXT", nullable: false),
+                    Size = table.Column<string>(type: "TEXT", nullable: false),
+                    Speed = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -72,11 +72,11 @@ namespace Above_backend.Migrations
                 name: "SubClasses",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    OriginClassId = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    OriginClassId = table.Column<int>(type: "INTEGER", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -87,18 +87,18 @@ namespace Above_backend.Migrations
                 name: "Features",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    LevelReq = table.Column<int>(type: "int", nullable: true),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    OriginClassId = table.Column<int>(type: "int", nullable: true),
-                    OriginSubClassId = table.Column<int>(type: "int", nullable: true),
-                    OriginRaceId = table.Column<int>(type: "int", nullable: true),
-                    OriginEquipmentId = table.Column<int>(type: "int", nullable: true),
-                    Armor_prof = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Weapon_prof = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Tool_prof = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Saving_throws = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    LevelReq = table.Column<int>(type: "INTEGER", nullable: true),
+                    Description = table.Column<string>(type: "TEXT", nullable: true),
+                    OriginClassId = table.Column<int>(type: "INTEGER", nullable: true),
+                    OriginSubClassId = table.Column<int>(type: "INTEGER", nullable: true),
+                    OriginRaceId = table.Column<int>(type: "INTEGER", nullable: true),
+                    OriginEquipmentId = table.Column<int>(type: "INTEGER", nullable: true),
+                    Armor_prof = table.Column<string>(type: "TEXT", nullable: true),
+                    Weapon_prof = table.Column<string>(type: "TEXT", nullable: true),
+                    Tool_prof = table.Column<string>(type: "TEXT", nullable: true),
+                    Saving_throws = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -129,23 +129,23 @@ namespace Above_backend.Migrations
                 name: "Spells",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    School = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Concentration = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Level = table.Column<int>(type: "int", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Range = table.Column<int>(type: "int", nullable: false),
-                    Duration = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Ritual = table.Column<int>(type: "int", nullable: false),
-                    CastingTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Component = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ComponentPrice = table.Column<int>(type: "int", nullable: true),
-                    OriginClassId = table.Column<int>(type: "int", nullable: true),
-                    OriginSubClassId = table.Column<int>(type: "int", nullable: true),
-                    OriginRaceId = table.Column<int>(type: "int", nullable: true),
-                    OriginEquipmentId = table.Column<int>(type: "int", nullable: true)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    School = table.Column<string>(type: "TEXT", nullable: false),
+                    Concentration = table.Column<int>(type: "INTEGER", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", nullable: false),
+                    Level = table.Column<int>(type: "INTEGER", nullable: false),
+                    Description = table.Column<string>(type: "TEXT", nullable: true),
+                    Range = table.Column<int>(type: "INTEGER", nullable: false),
+                    Duration = table.Column<string>(type: "TEXT", nullable: false),
+                    Ritual = table.Column<int>(type: "INTEGER", nullable: false),
+                    CastingTime = table.Column<string>(type: "TEXT", nullable: false),
+                    Component = table.Column<string>(type: "TEXT", nullable: false),
+                    ComponentPrice = table.Column<int>(type: "INTEGER", nullable: true),
+                    OriginClassId = table.Column<int>(type: "INTEGER", nullable: true),
+                    OriginSubClassId = table.Column<int>(type: "INTEGER", nullable: true),
+                    OriginRaceId = table.Column<int>(type: "INTEGER", nullable: true),
+                    OriginEquipmentId = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
