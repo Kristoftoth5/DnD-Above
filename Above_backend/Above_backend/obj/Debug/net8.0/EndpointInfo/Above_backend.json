@@ -1224,6 +1224,10 @@
             "type": "integer",
             "format": "int32"
           },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
           "levelReq": {
             "type": "integer",
             "format": "int32",
@@ -1427,6 +1431,9 @@
           "originClassId": {
             "type": "integer",
             "format": "int32"
+          },
+          "classes": {
+            "$ref": "#/components/schemas/Classes"
           },
           "description": {
             "type": "string",

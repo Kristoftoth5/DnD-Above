@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Above_backend.Models
 {
@@ -7,6 +8,8 @@ namespace Above_backend.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public int OriginClassId { get; set; }
+        [ForeignKey("OriginClassId")]
+        public Classes Classes { get; set; }
         public string? Description { get; set; }
     }
 }
