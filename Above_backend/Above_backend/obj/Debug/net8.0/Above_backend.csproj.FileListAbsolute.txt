@@ -1098,3 +1098,16 @@ F:\gulyasa\Project\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\refint
 F:\gulyasa\Project\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.pdb
 F:\gulyasa\Project\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.genruntimeconfig.cache
 F:\gulyasa\Project\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\ref\Above_backend.dll
+D:\gulyasa\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.csproj.AssemblyReference.cache
+D:\gulyasa\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.GeneratedMSBuildEditorConfig.editorconfig
+D:\gulyasa\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.AssemblyInfoInputs.cache
+D:\gulyasa\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.AssemblyInfo.cs
+D:\gulyasa\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.csproj.CoreCompileInputs.cache
+D:\gulyasa\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.MvcApplicationPartsAssemblyInfo.cs
+D:\gulyasa\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.MvcApplicationPartsAssemblyInfo.cache
+D:\gulyasa\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.RazorAssemblyInfo.cache
+D:\gulyasa\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.RazorAssemblyInfo.cs
+D:\gulyasa\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.sourcelink.json
+D:\gulyasa\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.dll
+D:\gulyasa\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\refint\Above_backend.dll
+D:\gulyasa\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.pdb

@@ -5,9 +5,9 @@ namespace Above_backend.Helpers
 {
     public class MappingEquipment
     {
-        public static EquipmentDTO EquipmentToEquipmentDTO(Equipment equipment)
+        public static EquipmentsDTO EquipmentToEquipmentDTO(Equipment equipment)
         {
-            return new EquipmentDTO
+            return new EquipmentsDTO
             {
                 Name = equipment.Name,
                 Rarity = equipment.Rarity,
@@ -21,7 +21,7 @@ namespace Above_backend.Helpers
             };
         }
 
-        public static Equipment EquipmentDtoToEquipment(EquipmentDTO equipmentDto)
+        public static Equipment EquipmentDtoToEquipment(EquipmentsDTO equipmentDto)
         {
             return new Equipment
             {

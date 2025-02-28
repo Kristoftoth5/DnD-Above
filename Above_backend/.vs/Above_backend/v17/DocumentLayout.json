@@ -1,12 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\",
-  "Documents": [],
+  "WorkspaceRootPath": "D:\\gulyasa\\DnD-Above\\Above_backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|d:\\gulyasa\\dnd-above\\above_backend\\above_backend\\helpers\\mappingsubclasses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\helpers\\mappingsubclasses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MappingSubClasses.cs",
+              "DocumentMoniker": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Helpers\\MappingSubClasses.cs",
+              "RelativeDocumentMoniker": "Above_backend\\Helpers\\MappingSubClasses.cs",
+              "ToolTip": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Helpers\\MappingSubClasses.cs",
+              "RelativeToolTip": "Above_backend\\Helpers\\MappingSubClasses.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T07:37:45.252Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

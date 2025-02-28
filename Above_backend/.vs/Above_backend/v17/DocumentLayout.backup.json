@@ -1,10 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\",
+  "WorkspaceRootPath": "D:\\gulyasa\\DnD-Above\\Above_backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250227125536_FixedFeatures.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Above_backend\\Migrations\\20250227125536_FixedFeatures.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|d:\\gulyasa\\dnd-above\\above_backend\\above_backend\\helpers\\mappingsubclasses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\helpers\\mappingsubclasses.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "20250227125536_FixedFeatures.cs",
-              "DocumentMoniker": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250227125536_FixedFeatures.cs",
-              "RelativeDocumentMoniker": "Above_backend\\Migrations\\20250227125536_FixedFeatures.cs",
-              "ToolTip": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250227125536_FixedFeatures.cs",
-              "RelativeToolTip": "Above_backend\\Migrations\\20250227125536_FixedFeatures.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "MappingSubClasses.cs",
+              "DocumentMoniker": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Helpers\\MappingSubClasses.cs",
+              "RelativeDocumentMoniker": "Above_backend\\Helpers\\MappingSubClasses.cs",
+              "ToolTip": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Helpers\\MappingSubClasses.cs*",
+              "RelativeToolTip": "Above_backend\\Helpers\\MappingSubClasses.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T12:55:36.679Z",
+              "WhenOpened": "2025-02-28T07:29:57.314Z",
               "EditorCaption": ""
             }
           ]

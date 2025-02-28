@@ -1,6 +1,6 @@
 ﻿namespace Above_backend.Models.DTOs
 {
-    public class EquipmentDTO
+    public class EquipmentsDTO
     {
         public string Name { get; set; }
         public string Rarity { get; set; }
