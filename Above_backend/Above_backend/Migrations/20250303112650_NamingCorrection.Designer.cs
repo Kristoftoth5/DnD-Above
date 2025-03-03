@@ -2,6 +2,7 @@
 using Above_backend.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Above_backend.Migrations
 {
     [DbContext(typeof(AboveDBContext))]
-    partial class AboveDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250303112650_NamingCorrection")]
+    partial class NamingCorrection
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.2");
@@ -70,9 +73,6 @@ namespace Above_backend.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("DamageDie")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("DamageType")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")

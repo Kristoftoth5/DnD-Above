@@ -22,23 +22,25 @@ namespace Above_backend.Controllers
 
         // GET: api/SubClasses
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<SubClasses>>> GetSubClasses()
+        public async Task<ActionResult<IEnumerable<SubClassesDisplayDTO>>> GetSubClasses()
         {
-            return await _context.SubClasses.ToListAsync();
+            var subclasses = await _context.SubClasses.ToListAsync();
+
+            return subclasses.Select(x => MappingSubClasses.SubClassesToSubClassesDisplayDTO(x)).ToList();
         }
 
         // GET: api/SubClasses/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<SubClasses>> GetSubClasses(int id)
+        public async Task<ActionResult<SubClassesDisplayDTO>> GetSubClasses(int id)
         {
-            var subClasses = await _context.SubClasses.FindAsync(id);
+            var subClass = await _context.SubClasses.FindAsync(id);
 
-            if (subClasses == null)
+            if (subClass == null)
             {
                 return NotFound();
             }
 
-            return subClasses;
+            return MappingSubClasses.SubClassesToSubClassesDisplayDTO(subClass);
         }
 
         // PUT: api/SubClasses/5

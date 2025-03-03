@@ -12,7 +12,7 @@ namespace Above_backend.Models
         public DbSet<Classes> Classes { get; set; } = null!;
         public DbSet<SubClasses> SubClasses { get; set; } = null!;
         public DbSet<Features> Features { get; set; } = null!;
-        public DbSet<Equipment> Equipment { get; set; } = null!;
+        public DbSet<Equipment> Equipments { get; set; } = null!;
         public DbSet<Races> Races { get; set; } = null!;
         public DbSet<Spells> Spells { get; set; } = null!;
     }

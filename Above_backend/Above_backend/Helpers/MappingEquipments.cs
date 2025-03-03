@@ -9,10 +9,12 @@ namespace Above_backend.Helpers
         {
             return new EquipmentsDTO
             {
+                Id = equipment.Id,
                 Name = equipment.Name,
                 Rarity = equipment.Rarity,
                 ProfReq = equipment.ProfReq,
                 DamageDie = equipment.DamageDie,
+                Properties = equipment.Properties,
                 AC = equipment.AC,
                 Consumable = equipment.Consumable,
                 Price = equipment.Price,
@@ -30,6 +32,7 @@ namespace Above_backend.Helpers
                 ProfReq = equipmentDto.ProfReq,
                 DamageDie = equipmentDto.DamageDie,
                 AC = equipmentDto.AC,
+                Properties = equipmentDto.Properties,
                 Consumable = equipmentDto.Consumable,
                 Price = equipmentDto.Price,
                 Description = equipmentDto.Description,

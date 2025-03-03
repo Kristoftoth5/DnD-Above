@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Above_backend.Models;
+using Above_backend.Helpers;
+using Above_backend.Models.DTOs;
 
 namespace Above_backend.Controllers
 {
@@ -22,23 +24,25 @@ namespace Above_backend.Controllers
 
         // GET: api/Equipments
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Equipment>>> GetEquipment()
+        public async Task<ActionResult<IEnumerable<EquipmentsDTO>>> GetEquipment()
         {
-            return await _context.Equipment.ToListAsync();
+            var equipments = await _context.Equipments.ToListAsync();
+
+            return equipments.Select(x => MappingEquipment.EquipmentToEquipmentDTO(x)).ToList();
         }
 
         // GET: api/Equipments/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Equipment>> GetEquipment(int id)
+        public async Task<ActionResult<EquipmentsDTO>> GetEquipment(int id)
         {
-            var equipment = await _context.Equipment.FindAsync(id);
+            var equipment = await _context.Equipments.FindAsync(id);
 
             if (equipment == null)
             {
                 return NotFound();
             }
 
-            return equipment;
+            return MappingEquipment.EquipmentToEquipmentDTO(equipment);
         }
 
         // PUT: api/Equipments/5
@@ -75,25 +79,25 @@ namespace Above_backend.Controllers
         // POST: api/Equipments
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Equipment>> PostEquipment(Equipment equipment)
+        public async Task<ActionResult<Equipment>> PostEquipment(EquipmentsDTO equipmentdto)
         {
-            _context.Equipment.Add(equipment);
+            _context.Equipments.Add(MappingEquipment.EquipmentDtoToEquipment(equipmentdto));
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetEquipment", new { id = equipment.Id }, equipment);
+            return Created();
         }
 
         // DELETE: api/Equipments/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEquipment(int id)
         {
-            var equipment = await _context.Equipment.FindAsync(id);
+            var equipment = await _context.Equipments.FindAsync(id);
             if (equipment == null)
             {
                 return NotFound();
             }
 
-            _context.Equipment.Remove(equipment);
+            _context.Equipments.Remove(equipment);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -101,7 +105,7 @@ namespace Above_backend.Controllers
 
         private bool EquipmentExists(int id)
         {
-            return _context.Equipment.Any(e => e.Id == id);
+            return _context.Equipments.Any(e => e.Id == id);
         }
     }
 }

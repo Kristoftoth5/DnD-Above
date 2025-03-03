@@ -15,9 +15,16 @@ namespace Above_backend.Models.DTOs
         public string CastingTime { get; set; }
         public string Component { get; set; }
         public int? ComponentPrice { get; set; }
+<<<<<<< Updated upstream
         public int? OriginClassId { get; set; }
         public int? OriginSubClassId { get; set; }
         public int? OriginRaceId { get; set; }
         public int? OriginEquipmentId { get; set; }
+=======
+        public int? OriginClassId { get; set; } = 0;
+        public int? OriginSubClassId { get; set; } = 0;
+        public int? OriginRaceId { get; set; } = 0;
+        public int? OriginEquipmentId { get; set; } = 0;
+>>>>>>> Stashed changes
     }
 }

@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Above_backend.Models;
+using Above_backend.Helpers;
+using Above_backend.Models.DTOs;
 
 namespace Above_backend.Controllers
 {
@@ -22,23 +24,25 @@ namespace Above_backend.Controllers
 
         // GET: api/Races
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Races>>> GetRaces()
+        public async Task<ActionResult<IEnumerable<RacesDTO>>> GetRaces()
         {
-            return await _context.Races.ToListAsync();
+            var races = await _context.Races.ToListAsync();
+
+            return races.Select(x => MappingRaces.RacesToRacesDTO(x)).ToList();
         }
 
         // GET: api/Races/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Races>> GetRaces(int id)
+        public async Task<ActionResult<RacesDTO>> GetRaces(int id)
         {
-            var races = await _context.Races.FindAsync(id);
+            var race = await _context.Races.FindAsync(id);
 
-            if (races == null)
+            if (race == null)
             {
                 return NotFound();
             }
 
-            return races;
+            return MappingRaces.RacesToRacesDTO(race);
         }
 
         // PUT: api/Races/5

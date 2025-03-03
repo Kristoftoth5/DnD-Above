@@ -7,7 +7,7 @@ namespace Above_backend.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public int OriginClassId { get; set; }
+        public int? OriginClassId { get; set; }
         [ForeignKey("OriginClassId")]
         public Classes Classes { get; set; }
         public string? Description { get; set; }

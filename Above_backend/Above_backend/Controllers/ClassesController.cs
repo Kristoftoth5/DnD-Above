@@ -24,21 +24,27 @@ namespace Above_backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Classes>>> GetClasses()
         {
+<<<<<<< Updated upstream
             return await _context.Classes.ToListAsync();
+=======
+            var classes = await _context.Classes.ToListAsync();
+
+            return classes.Select(x => MappingClasses.ClassesToClassesDTO(x)).ToList();
+>>>>>>> Stashed changes
         }
 
         // GET: api/Classes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Classes>> GetClasses(int id)
+        public async Task<ActionResult<ClassesDTO>> GetClasses(int id)
         {
-            var classes = await _context.Classes.FindAsync(id);
+            var oneclass = await _context.Classes.FindAsync(id);
 
-            if (classes == null)
+            if (oneclass == null)
             {
                 return NotFound();
             }
 
-            return classes;
+            return MappingClasses.ClassesToClassesDTO(oneclass);
         }
 
         // PUT: api/Classes/5
@@ -75,12 +81,13 @@ namespace Above_backend.Controllers
         // POST: api/Classes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Classes>> PostClasses(Classes classes)
+        public async Task<ActionResult<Classes>> PostClasses(ClassesDTO classesdto)
         {
-            _context.Classes.Add(classes);
+
+            _context.Classes.Add(MappingClasses.ClassesDtoToClasses(classesdto));
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetClasses", new { id = classes.Id }, classes);
+            return Created();
         }
 
         // DELETE: api/Classes/5

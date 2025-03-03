@@ -9,7 +9,9 @@ namespace Above_backend.Models
         public string Rarity { get; set; }
         public int? ProfReq { get; set; }
         public string? DamageDie { get; set; }
+        public string? DamageType { get; set; }
         public int? AC { get; set; }
+        public List<string>? Properties { get; set; }
         public int Consumable { get; set; }
         public int Price { get; set; }
         public string? Description { get; set; }

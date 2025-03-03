@@ -10,6 +10,7 @@ namespace Above_backend.Helpers
         {
             return new ClassesDTO
             {
+                Id = classes.Id,
                 Name = classes.Name,
                 Description = classes.Description,
                 Hit_Dice = classes.Hit_Dice,

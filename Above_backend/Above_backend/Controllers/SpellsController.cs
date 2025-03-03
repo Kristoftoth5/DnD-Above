@@ -77,7 +77,30 @@ namespace Above_backend.Controllers
         [HttpPost]
         public async Task<ActionResult<Spells>> PostSpells(Spells spells)
         {
+<<<<<<< Updated upstream
             _context.Spells.Add(spells);
+=======
+            var spell = new Spells
+            {
+                School = spellscreatedto.School,
+                Concentration = spellscreatedto.Concentration,
+                Name = spellscreatedto.Name,
+                Level = spellscreatedto.Level,
+                Description = spellscreatedto.Description,
+                Range = spellscreatedto.Range,
+                Duration = spellscreatedto.Duration,
+                Ritual = spellscreatedto.Ritual,
+                CastingTime = spellscreatedto.CastingTime,
+                Component = spellscreatedto.Component,
+                ComponentPrice = spellscreatedto.ComponentPrice,
+                OriginClass = (spellscreatedto.OriginClassId != 0) ? await _context.Classes.FindAsync(spellscreatedto.OriginClassId) : null,
+                OriginSubClass = (spellscreatedto.OriginSubClassId != 0) ? await _context.SubClasses.FindAsync(spellscreatedto.OriginSubClassId) : null,
+                OriginRace = (spellscreatedto.OriginRaceId != 0) ? await _context.Races.FindAsync(spellscreatedto.OriginRaceId) : null,
+                OriginEquipment = (spellscreatedto.OriginEquipmentId != 0) ? await _context.Equipments.FindAsync(spellscreatedto.OriginEquipmentId) : null,
+            };
+
+            _context.Spells.Add(spell);
+>>>>>>> Stashed changes
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetSpells", new { id = spells.Id }, spells);

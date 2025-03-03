@@ -2,6 +2,7 @@
 {
     public class ClassesDTO
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public string? Description { get; set; }
         public string Hit_Dice { get; set; }

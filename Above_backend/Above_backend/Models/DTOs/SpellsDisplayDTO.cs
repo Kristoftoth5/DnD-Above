@@ -4,6 +4,7 @@ namespace Above_backend.Models.DTOs
 {
     public class SpellsDisplayDTO
     {
+        public int Id { get; set; }
         public string School { get; set; }
         public int Concentration { get; set; }
         public string Name { get; set; }
@@ -15,9 +16,9 @@ namespace Above_backend.Models.DTOs
         public string CastingTime { get; set; }
         public string Component { get; set; }
         public int? ComponentPrice { get; set; }
-        public Classes? Classes { get; set; }
-        public SubClasses? SubClasses { get; set; }
-        public Races? Races { get; set; }
-        public Equipment? Equipment { get; set; }
+        public int? OriginClassId { get; set; }
+        public int? OriginSubClassId { get; set; }
+        public int? OriginRaceId { get; set; }
+        public int? OriginEquipmentId { get; set; }
     }
 }

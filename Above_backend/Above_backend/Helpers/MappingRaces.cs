@@ -9,6 +9,7 @@ namespace Above_backend.Helpers
         {
             return new RacesDTO
             {
+                Id = races.Id,
                 Name = races.Name,
                 CreatureType = races.CreatureType,
                 Age = races.Age,

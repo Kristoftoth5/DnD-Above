@@ -19,6 +19,7 @@ namespace Above_backend.Models
         public int? ComponentPrice { get; set; }
         public int? OriginClassId { get; set; }
         [ForeignKey("OriginClassId")]
+<<<<<<< Updated upstream
         public Classes Classes { get; set; }
         public int? OriginSubClassId { get; set; }
         [ForeignKey("OriginSubClassId")]
@@ -26,6 +27,15 @@ namespace Above_backend.Models
         public int? OriginRaceId { get; set; }
         [ForeignKey("OriginRaceId")]
         public Races Races { get; set; }
+=======
+        public Classes? OriginClass { get; set; }
+        public int? OriginSubClassId { get; set; }
+        [ForeignKey("OriginSubClassId")]
+        public SubClasses? OriginSubClass { get; set; }
+        public int? OriginRaceId { get; set; }
+        [ForeignKey("OriginRaceId")]
+        public Races? OriginRace { get; set; }
+>>>>>>> Stashed changes
         public int? OriginEquipmentId { get; set; }
         [ForeignKey("OriginEquipmentId")]
         public Equipment Equipment { get; set; }
