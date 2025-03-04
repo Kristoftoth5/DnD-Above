@@ -1,13 +1,4 @@
-<<<<<<< Updated upstream
-﻿namespace Above_backend.Helpers
-{
-    public class MappingFeatures
-    {
-
-    }
-}
-=======
-﻿using Above_backend.Models.DTOs;
+using Above_backend.Models.DTOs;
 using Above_backend.Models;
 
 namespace Above_backend.Helpers
@@ -26,12 +17,11 @@ namespace Above_backend.Helpers
                 OriginSubClassId = feature.OriginSubClassId,
                 OriginEquipmentId = feature.OriginEquipmentId,
                 OriginRaceId = feature.OriginRaceId,
-                Armor_prof = feature.Armor_prof,
-                Weapon_prof = feature.Weapon_prof,
-                Tool_prof = feature.Tool_prof,
-                Saving_throws = feature.Saving_throws,
+                ArmorProf = feature.ArmorProf,
+                WeaponProf = feature.WeaponProf,
+                ToolProf = feature.ToolProf,
+                SavingThrows = feature.SavingThrows,
             };
         }
     }
 }
->>>>>>> Stashed changes

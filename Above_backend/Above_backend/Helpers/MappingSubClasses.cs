@@ -5,21 +5,12 @@ namespace Above_backend.Helpers
 {
     public class MappingSubClasses
     {
-<<<<<<< Updated upstream
-        public static SubClasses SubClassesToSubClassesDisplayDTO(SubClassesCreateDTO subclassescreatedto)
-=======
-        public static SubClasses SubClassesCreateDtoToSubclasses(SubClassesCreateDTO subclassescreatedto, Classes originalclass)
->>>>>>> Stashed changes
+        public static SubClasses SubClassesToSubClassesDisplayDTO(SubClassesCreateAndBaseDTO subclassescreatedto)
         {
             return new SubClasses
             {
                 Name = subclassescreatedto.Name,
-<<<<<<< Updated upstream
                 OriginClassId = subclassescreatedto.OriginClassId,
-                //Classes = ??,
-=======
-                OriginClass = originalclass,
->>>>>>> Stashed changes
                 Description = subclassescreatedto.Description,
             };
         }

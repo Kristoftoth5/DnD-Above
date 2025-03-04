@@ -9,7 +9,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.DTOs.ClassesDTO, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.Classes, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -28,8 +28,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "classesdto",
-        "Type": "Above_backend.Models.DTOs.ClassesDTO",
+        "Name": "classes",
+        "Type": "Above_backend.Models.Classes",
         "IsRequired": true
       }
     ],
@@ -61,7 +61,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Above_backend.Models.DTOs.ClassesDTO",
+        "Type": "Above_backend.Models.Classes",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -118,7 +118,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.DTOs.EquipmentsDTO, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.Equipment, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -137,8 +137,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "equipmentdto",
-        "Type": "Above_backend.Models.DTOs.EquipmentsDTO",
+        "Name": "equipment",
+        "Type": "Above_backend.Models.Equipment",
         "IsRequired": true
       }
     ],
@@ -170,7 +170,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Above_backend.Models.DTOs.EquipmentsDTO",
+        "Type": "Above_backend.Models.Equipment",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -227,7 +227,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.DTOs.FeaturesDisplayDTO, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.Features, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -246,8 +246,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "featurescreatedto",
-        "Type": "Above_backend.Models.DTOs.FeaturesCreateDTO",
+        "Name": "features",
+        "Type": "Above_backend.Models.Features",
         "IsRequired": true
       }
     ],
@@ -279,7 +279,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Above_backend.Models.DTOs.FeaturesDisplayDTO",
+        "Type": "Above_backend.Models.Features",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -336,7 +336,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.DTOs.RacesDTO, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.Races, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -388,7 +388,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Above_backend.Models.DTOs.RacesDTO",
+        "Type": "Above_backend.Models.Races",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -464,8 +464,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "spellscreatedto",
-        "Type": "Above_backend.Models.DTOs.SpellsCreateDTO",
+        "Name": "spells",
+        "Type": "Above_backend.Models.Spells",
         "IsRequired": true
       }
     ],
@@ -554,7 +554,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.DTOs.SubClassesDisplayDTO, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.SubClasses, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -573,8 +573,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "subClassescreatedto",
-        "Type": "Above_backend.Models.DTOs.SubClassesCreateDTO",
+        "Name": "subClasses",
+        "Type": "Above_backend.Models.SubClasses",
         "IsRequired": true
       }
     ],
@@ -606,7 +606,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "Above_backend.Models.DTOs.SubClassesDisplayDTO",
+        "Type": "Above_backend.Models.SubClasses",
         "MediaTypes": [
           "text/plain",
           "application/json",

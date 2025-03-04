@@ -24,30 +24,30 @@ namespace Above_backend.Controllers
 
         // GET: api/Equipments
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<EquipmentsDTO>>> GetEquipment()
+        public async Task<ActionResult<IEnumerable<EquipmentsDisplayDTO>>> GetEquipment()
         {
             var equipments = await _context.Equipments.ToListAsync();
 
-            return equipments.Select(x => MappingEquipment.EquipmentToEquipmentDTO(x)).ToList();
+            return equipments.Select(x => MappingEquipment.EquipmentToEquipmentDisplayDTO(x)).ToList();
         }
 
         // GET: api/Equipments/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<EquipmentsDTO>> GetEquipment(int id)
+        public async Task<ActionResult<EquipmentsDisplayDTO>> GetEquipment(int id)
         {
-            var equipment = await _context.Equipments.FindAsync(id);
+            var oneequipment = await _context.Equipments.FindAsync(id);
 
-            if (equipment == null)
+            if (oneequipment == null)
             {
                 return NotFound();
             }
 
-            return MappingEquipment.EquipmentToEquipmentDTO(equipment);
+            return MappingEquipment.EquipmentToEquipmentDisplayDTO(oneequipment);
         }
 
         // PUT: api/Equipments/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        /*[HttpPut("{id}")]
         public async Task<IActionResult> PutEquipment(int id, Equipment equipment)
         {
             if (id != equipment.Id)
@@ -74,14 +74,14 @@ namespace Above_backend.Controllers
             }
 
             return NoContent();
-        }
+        }*/
 
         // POST: api/Equipments
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Equipment>> PostEquipment(EquipmentsDTO equipmentdto)
+        public async Task<ActionResult<Equipment>> PostEquipment(EquipmentsCreateAndBaseDTO equipmentscreatedto)
         {
-            _context.Equipments.Add(MappingEquipment.EquipmentDtoToEquipment(equipmentdto));
+            _context.Equipments.Add(MappingEquipment.EquipmentCreateDtoToEquipment(equipmentscreatedto));
             await _context.SaveChangesAsync();
 
             return Created();

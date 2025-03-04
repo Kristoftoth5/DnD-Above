@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Above_backend.Models;
+using Above_backend.Models.DTOs;
+using Above_backend.Helpers;
 
 namespace Above_backend.Controllers
 {
@@ -22,28 +24,30 @@ namespace Above_backend.Controllers
 
         // GET: api/Spells
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Spells>>> GetSpells()
+        public async Task<ActionResult<IEnumerable<SpellsDisplayDTO>>> GetSpells()
         {
-            return await _context.Spells.ToListAsync();
+            var spells = await _context.Spells.ToListAsync();
+
+            return spells.Select(x => MappingSpells.SpellsToSpellsDisplayDto(x)).ToList();
         }
 
         // GET: api/Spells/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Spells>> GetSpells(int id)
+        public async Task<ActionResult<SpellsDisplayDTO>> GetSpells(int id)
         {
-            var spells = await _context.Spells.FindAsync(id);
+            var onespell = await _context.Spells.FindAsync(id);
 
-            if (spells == null)
+            if (onespell == null)
             {
                 return NotFound();
             }
 
-            return spells;
+            return MappingSpells.SpellsToSpellsDisplayDto(onespell);
         }
 
         // PUT: api/Spells/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        /*[HttpPut("{id}")]
         public async Task<IActionResult> PutSpells(int id, Spells spells)
         {
             if (id != spells.Id)
@@ -70,17 +74,14 @@ namespace Above_backend.Controllers
             }
 
             return NoContent();
-        }
+        }*/
 
         // POST: api/Spells
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Spells>> PostSpells(Spells spells)
+        public async Task<ActionResult<Spells>> PostSpells(SpellsCreateAndBaseDTO spellscreatedto)
         {
-<<<<<<< Updated upstream
-            _context.Spells.Add(spells);
-=======
-            var spell = new Spells
+            var spells = new Spells
             {
                 School = spellscreatedto.School,
                 Concentration = spellscreatedto.Concentration,
@@ -93,17 +94,16 @@ namespace Above_backend.Controllers
                 CastingTime = spellscreatedto.CastingTime,
                 Component = spellscreatedto.Component,
                 ComponentPrice = spellscreatedto.ComponentPrice,
-                OriginClass = (spellscreatedto.OriginClassId != 0) ? await _context.Classes.FindAsync(spellscreatedto.OriginClassId) : null,
-                OriginSubClass = (spellscreatedto.OriginSubClassId != 0) ? await _context.SubClasses.FindAsync(spellscreatedto.OriginSubClassId) : null,
-                OriginRace = (spellscreatedto.OriginRaceId != 0) ? await _context.Races.FindAsync(spellscreatedto.OriginRaceId) : null,
-                OriginEquipment = (spellscreatedto.OriginEquipmentId != 0) ? await _context.Equipments.FindAsync(spellscreatedto.OriginEquipmentId) : null,
+                OriginClassId = (spellscreatedto.OriginClassId != 0) ? spellscreatedto.OriginClassId : null,
+                OriginSubClassId = (spellscreatedto.OriginSubClassId != 0) ? spellscreatedto.OriginSubClassId : null,
+                OriginRaceId = (spellscreatedto.OriginRaceId != 0) ? spellscreatedto.OriginRaceId : null,
+                OriginEquipmentId = (spellscreatedto.OriginEquipmentId != 0) ? spellscreatedto.OriginEquipmentId : null,
             };
 
-            _context.Spells.Add(spell);
->>>>>>> Stashed changes
+            _context.Spells.Add(spells);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetSpells", new { id = spells.Id }, spells);
+            return Created();
         }
 
         // DELETE: api/Spells/5

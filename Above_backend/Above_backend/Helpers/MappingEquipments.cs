@@ -5,9 +5,9 @@ namespace Above_backend.Helpers
 {
     public class MappingEquipment
     {
-        public static EquipmentsDTO EquipmentToEquipmentDTO(Equipment equipment)
+        public static EquipmentsDisplayDTO EquipmentToEquipmentDisplayDTO(Equipment equipment)
         {
-            return new EquipmentsDTO
+            return new EquipmentsDisplayDTO
             {
                 Id = equipment.Id,
                 Name = equipment.Name,
@@ -23,20 +23,20 @@ namespace Above_backend.Helpers
             };
         }
 
-        public static Equipment EquipmentDtoToEquipment(EquipmentsDTO equipmentDto)
+        public static Equipment EquipmentCreateDtoToEquipment(EquipmentsCreateAndBaseDTO equipmentcreatedto)
         {
             return new Equipment
             {
-                Name = equipmentDto.Name,
-                Rarity = equipmentDto.Rarity,
-                ProfReq = equipmentDto.ProfReq,
-                DamageDie = equipmentDto.DamageDie,
-                AC = equipmentDto.AC,
-                Properties = equipmentDto.Properties,
-                Consumable = equipmentDto.Consumable,
-                Price = equipmentDto.Price,
-                Description = equipmentDto.Description,
-                Attunement = equipmentDto.Attunement,
+                Name = equipmentcreatedto.Name,
+                Rarity = equipmentcreatedto.Rarity,
+                ProfReq = equipmentcreatedto.ProfReq,
+                DamageDie = equipmentcreatedto.DamageDie,
+                AC = equipmentcreatedto.AC,
+                Properties = equipmentcreatedto.Properties,
+                Consumable = equipmentcreatedto.Consumable,
+                Price = equipmentcreatedto.Price,
+                Description = equipmentcreatedto.Description,
+                Attunement = equipmentcreatedto.Attunement,
             };
         }
     }

@@ -1,8 +1,7 @@
 ﻿namespace Above_backend.Models.DTOs
 {
-    public class RacesDTO
+    public class RacesCreateAndBaseDTO
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string CreatureType { get; set; }
         public string Age { get; set; }

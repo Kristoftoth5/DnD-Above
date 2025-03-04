@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Above_backend.Models;
+using Above_backend.Models.DTOs;
+using Above_backend.Helpers;
 
 namespace Above_backend.Controllers
 {
@@ -22,20 +24,16 @@ namespace Above_backend.Controllers
 
         // GET: api/Classes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Classes>>> GetClasses()
+        public async Task<ActionResult<IEnumerable<ClassesDisplayDTO>>> GetClasses()
         {
-<<<<<<< Updated upstream
-            return await _context.Classes.ToListAsync();
-=======
             var classes = await _context.Classes.ToListAsync();
 
-            return classes.Select(x => MappingClasses.ClassesToClassesDTO(x)).ToList();
->>>>>>> Stashed changes
+            return classes.Select(x => MappingClasses.ClassesToClassesDisplayDTO(x)).ToList();
         }
 
         // GET: api/Classes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ClassesDTO>> GetClasses(int id)
+        public async Task<ActionResult<ClassesDisplayDTO>> GetClasses(int id)
         {
             var oneclass = await _context.Classes.FindAsync(id);
 
@@ -44,12 +42,12 @@ namespace Above_backend.Controllers
                 return NotFound();
             }
 
-            return MappingClasses.ClassesToClassesDTO(oneclass);
+            return MappingClasses.ClassesToClassesDisplayDTO(oneclass);
         }
 
         // PUT: api/Classes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        /*[HttpPut("{id}")]
         public async Task<IActionResult> PutClasses(int id, Classes classes)
         {
             if (id != classes.Id)
@@ -76,15 +74,15 @@ namespace Above_backend.Controllers
             }
 
             return NoContent();
-        }
+        }*/
 
         // POST: api/Classes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Classes>> PostClasses(ClassesDTO classesdto)
+        public async Task<ActionResult<Classes>> PostClasses(ClassesCreateAndBaseDTO classescreatedto)
         {
 
-            _context.Classes.Add(MappingClasses.ClassesDtoToClasses(classesdto));
+            _context.Classes.Add(MappingClasses.ClassesCreateDtoToClasses(classescreatedto));
             await _context.SaveChangesAsync();
 
             return Created();

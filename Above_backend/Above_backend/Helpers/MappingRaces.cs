@@ -5,9 +5,9 @@ namespace Above_backend.Helpers
 {
     public class MappingRaces
     {
-        public static RacesDTO RacesToRacesDTO(Races races)
+        public static RacesDisplayDTO RacesToRacesDisplayDTO(Races races)
         {
-            return new RacesDTO
+            return new RacesDisplayDTO
             {
                 Id = races.Id,
                 Name = races.Name,
@@ -18,15 +18,15 @@ namespace Above_backend.Helpers
             };
         }
 
-        public static Races EquipmentDtoToEquipment(RacesDTO racesDto)
+        public static Races RaceCreateDTOToRaces(RacesCreateAndBaseDTO racescreatedto)
         {
             return new Races
             {
-                Name = racesDto.Name,
-                CreatureType = racesDto.CreatureType,
-                Age = racesDto.Age,
-                Size = racesDto.Size,
-                Speed = racesDto.Speed,
+                Name = racescreatedto.Name,
+                CreatureType = racescreatedto.CreatureType,
+                Age = racescreatedto.Age,
+                Size = racescreatedto.Size,
+                Speed = racescreatedto.Speed,
             };
         }
     }

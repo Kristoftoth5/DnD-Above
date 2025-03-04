@@ -2,11 +2,8 @@
 
 namespace Above_backend.Models.DTOs
 {
-    public class SubClassesDisplayDTO
+    public class SubClassesDisplayDTO : SubClassesCreateAndBaseDTO
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public int? OriginClassId { get; set; }
-        public string? Description { get; set; }
     }
 }

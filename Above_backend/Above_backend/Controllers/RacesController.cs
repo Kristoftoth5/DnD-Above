@@ -24,30 +24,30 @@ namespace Above_backend.Controllers
 
         // GET: api/Races
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<RacesDTO>>> GetRaces()
+        public async Task<ActionResult<IEnumerable<RacesDisplayDTO>>> GetRaces()
         {
             var races = await _context.Races.ToListAsync();
 
-            return races.Select(x => MappingRaces.RacesToRacesDTO(x)).ToList();
+            return races.Select(x => MappingRaces.RacesToRacesDisplayDTO(x)).ToList();
         }
 
         // GET: api/Races/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<RacesDTO>> GetRaces(int id)
+        public async Task<ActionResult<RacesDisplayDTO>> GetRaces(int id)
         {
-            var race = await _context.Races.FindAsync(id);
+            var onerace = await _context.Races.FindAsync(id);
 
-            if (race == null)
+            if (onerace == null)
             {
                 return NotFound();
             }
 
-            return MappingRaces.RacesToRacesDTO(race);
+            return MappingRaces.RacesToRacesDisplayDTO(onerace);
         }
 
         // PUT: api/Races/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        /*[HttpPut("{id}")]
         public async Task<IActionResult> PutRaces(int id, Races races)
         {
             if (id != races.Id)
@@ -74,17 +74,17 @@ namespace Above_backend.Controllers
             }
 
             return NoContent();
-        }
+        }*/
 
         // POST: api/Races
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Races>> PostRaces(Races races)
+        public async Task<ActionResult<Races>> PostRaces(RacesCreateAndBaseDTO racescreatedto)
         {
-            _context.Races.Add(races);
+            _context.Races.Add(MappingRaces.RaceCreateDTOToRaces(racescreatedto));
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRaces", new { id = races.Id }, races);
+            return Created();
         }
 
         // DELETE: api/Races/5

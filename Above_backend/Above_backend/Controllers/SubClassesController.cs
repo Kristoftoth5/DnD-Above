@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Above_backend.Models;
+using Above_backend.Models.DTOs;
+using Above_backend.Helpers;
 
 namespace Above_backend.Controllers
 {
@@ -33,19 +35,19 @@ namespace Above_backend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<SubClassesDisplayDTO>> GetSubClasses(int id)
         {
-            var subClass = await _context.SubClasses.FindAsync(id);
+            var onesubClass = await _context.SubClasses.FindAsync(id);
 
-            if (subClass == null)
+            if (onesubClass == null)
             {
                 return NotFound();
             }
 
-            return MappingSubClasses.SubClassesToSubClassesDisplayDTO(subClass);
+            return MappingSubClasses.SubClassesToSubClassesDisplayDTO(onesubClass);
         }
 
         // PUT: api/SubClasses/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        /*[HttpPut("{id}")]
         public async Task<IActionResult> PutSubClasses(int id, SubClasses subClasses)
         {
             if (id != subClasses.Id)
@@ -72,17 +74,17 @@ namespace Above_backend.Controllers
             }
 
             return NoContent();
-        }
+        }*/
 
         // POST: api/SubClasses
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<SubClasses>> PostSubClasses(SubClasses subClasses)
+        public async Task<ActionResult<SubClasses>> PostSubClasses(SubClassesCreateAndBaseDTO subClassescreatedto)
         {
-            _context.SubClasses.Add(subClasses);
+            _context.SubClasses.Add(MappingSubClasses.SubClassesToSubClassesDisplayDTO(subClassescreatedto));
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetSubClasses", new { id = subClasses.Id }, subClasses);
+            return Created();
         }
 
         // DELETE: api/SubClasses/5

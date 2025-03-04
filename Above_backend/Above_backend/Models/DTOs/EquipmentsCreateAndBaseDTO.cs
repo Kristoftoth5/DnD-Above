@@ -1,8 +1,7 @@
 ﻿namespace Above_backend.Models.DTOs
 {
-    public class EquipmentsDTO
+    public class EquipmentsCreateAndBaseDTO
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public string Rarity { get; set; }
         public int? ProfReq { get; set; }

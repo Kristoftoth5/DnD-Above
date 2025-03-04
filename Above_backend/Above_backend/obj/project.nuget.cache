@@ -1,12 +1,8 @@
 {
   "version": 2,
-<<<<<<< Updated upstream
-  "dgSpecHash": "bdQMTe/dBT0=",
-=======
-  "dgSpecHash": "fiqnx3UANbw=",
->>>>>>> Stashed changes
+  "dgSpecHash": "aDWTngwkEFo=",
   "success": true,
-  "projectFilePath": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
+  "projectFilePath": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gulyasaz\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\gulyasaz\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
@@ -183,5 +179,12 @@
     "C:\\Users\\gulyasaz\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\gulyasaz\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
