@@ -1,7 +1,12 @@
 using Above_backend.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddAuthorization();
+builder.Services.AddIdentityApiEndpoints<IdentityUser>()
+.AddEntityFrameworkStores<AboveDBContext>();
 
 // Add services to the container.
 builder.Services.AddCors(options =>

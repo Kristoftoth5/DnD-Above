@@ -314,3 +314,8 @@ F:\gulyasa\Project\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\refint
 F:\gulyasa\Project\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.pdb
 F:\gulyasa\Project\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.genruntimeconfig.cache
 F:\gulyasa\Project\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\ref\Above_backend.dll
+F:\gulyasa\Project\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+F:\gulyasa\Project\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+F:\gulyasa\Project\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+F:\gulyasa\Project\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
+F:\gulyasa\Project\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
