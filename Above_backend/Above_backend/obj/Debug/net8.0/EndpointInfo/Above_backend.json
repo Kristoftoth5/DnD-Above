@@ -18,7 +18,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Classes"
+                    "$ref": "#/components/schemas/ClassesDisplayDTO"
                   }
                 }
               },
@@ -26,7 +26,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Classes"
+                    "$ref": "#/components/schemas/ClassesDisplayDTO"
                   }
                 }
               },
@@ -34,7 +34,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Classes"
+                    "$ref": "#/components/schemas/ClassesDisplayDTO"
                   }
                 }
               }
@@ -50,17 +50,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Classes"
+                "$ref": "#/components/schemas/ClassesCreateAndBaseDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Classes"
+                "$ref": "#/components/schemas/ClassesCreateAndBaseDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Classes"
+                "$ref": "#/components/schemas/ClassesCreateAndBaseDTO"
               }
             }
           }
@@ -111,60 +111,20 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Classes"
+                  "$ref": "#/components/schemas/ClassesDisplayDTO"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Classes"
+                  "$ref": "#/components/schemas/ClassesDisplayDTO"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Classes"
+                  "$ref": "#/components/schemas/ClassesDisplayDTO"
                 }
               }
             }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Classes"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Classes"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Classes"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Classes"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       },
@@ -203,7 +163,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Equipment"
+                    "$ref": "#/components/schemas/EquipmentsDisplayDTO"
                   }
                 }
               },
@@ -211,7 +171,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Equipment"
+                    "$ref": "#/components/schemas/EquipmentsDisplayDTO"
                   }
                 }
               },
@@ -219,7 +179,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Equipment"
+                    "$ref": "#/components/schemas/EquipmentsDisplayDTO"
                   }
                 }
               }
@@ -235,17 +195,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Equipment"
+                "$ref": "#/components/schemas/EquipmentsCreateAndBaseDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Equipment"
+                "$ref": "#/components/schemas/EquipmentsCreateAndBaseDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Equipment"
+                "$ref": "#/components/schemas/EquipmentsCreateAndBaseDTO"
               }
             }
           }
@@ -296,60 +256,20 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Equipment"
+                  "$ref": "#/components/schemas/EquipmentsDisplayDTO"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Equipment"
+                  "$ref": "#/components/schemas/EquipmentsDisplayDTO"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Equipment"
+                  "$ref": "#/components/schemas/EquipmentsDisplayDTO"
                 }
               }
             }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Equipments"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Equipment"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Equipment"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Equipment"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       },
@@ -388,7 +308,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Features"
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
                   }
                 }
               },
@@ -396,7 +316,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Features"
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
                   }
                 }
               },
@@ -404,7 +324,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Features"
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
                   }
                 }
               }
@@ -420,17 +340,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Features"
+                "$ref": "#/components/schemas/FeaturesCreateAndBaseDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Features"
+                "$ref": "#/components/schemas/FeaturesCreateAndBaseDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Features"
+                "$ref": "#/components/schemas/FeaturesCreateAndBaseDTO"
               }
             }
           }
@@ -481,60 +401,20 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Features"
+                  "$ref": "#/components/schemas/FeaturesDisplayDTO"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Features"
+                  "$ref": "#/components/schemas/FeaturesDisplayDTO"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Features"
+                  "$ref": "#/components/schemas/FeaturesDisplayDTO"
                 }
               }
             }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Features"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Features"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Features"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Features"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       },
@@ -573,7 +453,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Races"
+                    "$ref": "#/components/schemas/RacesDisplayDTO"
                   }
                 }
               },
@@ -581,7 +461,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Races"
+                    "$ref": "#/components/schemas/RacesDisplayDTO"
                   }
                 }
               },
@@ -589,7 +469,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Races"
+                    "$ref": "#/components/schemas/RacesDisplayDTO"
                   }
                 }
               }
@@ -605,17 +485,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Races"
+                "$ref": "#/components/schemas/RacesCreateAndBaseDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Races"
+                "$ref": "#/components/schemas/RacesCreateAndBaseDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Races"
+                "$ref": "#/components/schemas/RacesCreateAndBaseDTO"
               }
             }
           }
@@ -666,60 +546,20 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Races"
+                  "$ref": "#/components/schemas/RacesDisplayDTO"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Races"
+                  "$ref": "#/components/schemas/RacesDisplayDTO"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Races"
+                  "$ref": "#/components/schemas/RacesDisplayDTO"
                 }
               }
             }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Races"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Races"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Races"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Races"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       },
@@ -758,7 +598,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Spells"
+                    "$ref": "#/components/schemas/SpellsDisplayDTO"
                   }
                 }
               },
@@ -766,7 +606,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Spells"
+                    "$ref": "#/components/schemas/SpellsDisplayDTO"
                   }
                 }
               },
@@ -774,7 +614,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Spells"
+                    "$ref": "#/components/schemas/SpellsDisplayDTO"
                   }
                 }
               }
@@ -790,17 +630,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Spells"
+                "$ref": "#/components/schemas/SpellsCreateAndBaseDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Spells"
+                "$ref": "#/components/schemas/SpellsCreateAndBaseDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Spells"
+                "$ref": "#/components/schemas/SpellsCreateAndBaseDTO"
               }
             }
           }
@@ -851,60 +691,20 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Spells"
+                  "$ref": "#/components/schemas/SpellsDisplayDTO"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Spells"
+                  "$ref": "#/components/schemas/SpellsDisplayDTO"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Spells"
+                  "$ref": "#/components/schemas/SpellsDisplayDTO"
                 }
               }
             }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Spells"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Spells"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Spells"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Spells"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       },
@@ -943,7 +743,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SubClasses"
+                    "$ref": "#/components/schemas/SubClassesDisplayDTO"
                   }
                 }
               },
@@ -951,7 +751,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SubClasses"
+                    "$ref": "#/components/schemas/SubClassesDisplayDTO"
                   }
                 }
               },
@@ -959,7 +759,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SubClasses"
+                    "$ref": "#/components/schemas/SubClassesDisplayDTO"
                   }
                 }
               }
@@ -975,17 +775,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SubClasses"
+                "$ref": "#/components/schemas/SubClassesCreateAndBaseDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/SubClasses"
+                "$ref": "#/components/schemas/SubClassesCreateAndBaseDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/SubClasses"
+                "$ref": "#/components/schemas/SubClassesCreateAndBaseDTO"
               }
             }
           }
@@ -1036,60 +836,20 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/SubClasses"
+                  "$ref": "#/components/schemas/SubClassesDisplayDTO"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SubClasses"
+                  "$ref": "#/components/schemas/SubClassesDisplayDTO"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SubClasses"
+                  "$ref": "#/components/schemas/SubClassesDisplayDTO"
                 }
               }
             }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "SubClasses"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SubClasses"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SubClasses"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/SubClasses"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       },
@@ -1133,11 +893,11 @@
             "type": "string",
             "nullable": true
           },
-          "hit_Dice": {
+          "hitDice": {
             "type": "string",
             "nullable": true
           },
-          "starting_gold": {
+          "startingGold": {
             "type": "integer",
             "format": "int32"
           },
@@ -1145,26 +905,145 @@
             "type": "integer",
             "format": "int32"
           },
-          "armor_prof": {
+          "armorProf": {
             "type": "array",
             "items": {
               "type": "string"
             },
             "nullable": true
           },
-          "weapon_prof": {
+          "weaponProf": {
             "type": "array",
             "items": {
               "type": "string"
             },
             "nullable": true
           },
-          "tool_prof": {
+          "toolProf": {
             "type": "array",
             "items": {
               "type": "string"
             },
             "nullable": true
+          },
+          "savingThrows": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClassesCreateAndBaseDTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "hitDice": {
+            "type": "string",
+            "nullable": true
+          },
+          "startingGold": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "spellCaster": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "armorProf": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "weaponProf": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "toolProf": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "savingThrows": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClassesDisplayDTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "hitDice": {
+            "type": "string",
+            "nullable": true
+          },
+          "startingGold": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "spellCaster": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "armorProf": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "weaponProf": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "toolProf": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "savingThrows": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -1193,6 +1072,68 @@
             "type": "string",
             "nullable": true
           },
+          "damageType": {
+            "type": "string",
+            "nullable": true
+          },
+          "ac": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "properties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "consumable": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "price": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "attunement": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EquipmentsCreateAndBaseDTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "rarity": {
+            "type": "string",
+            "nullable": true
+          },
+          "profReq": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "damageDie": {
+            "type": "string",
+            "nullable": true
+          },
+          "properties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
           "ac": {
             "type": "integer",
             "format": "int32",
@@ -1217,6 +1158,61 @@
         },
         "additionalProperties": false
       },
+      "EquipmentsDisplayDTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "rarity": {
+            "type": "string",
+            "nullable": true
+          },
+          "profReq": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "damageDie": {
+            "type": "string",
+            "nullable": true
+          },
+          "properties": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "ac": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "consumable": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "price": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "attunement": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "Features": {
         "type": "object",
         "properties": {
@@ -1235,6 +1231,34 @@
           },
           "description": {
             "type": "string",
+            "nullable": true
+          },
+          "armorProf": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "weaponProf": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "toolProf": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "savingThrows": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
             "nullable": true
           },
           "originClassId": {
@@ -1268,34 +1292,144 @@
           },
           "equipment": {
             "$ref": "#/components/schemas/Equipment"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FeaturesCreateAndBaseDTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
           },
-          "armor_prof": {
+          "levelReq": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "originClassId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "originSubClassId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "originRaceId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "originEquipmentId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "armorProf": {
             "type": "array",
             "items": {
               "type": "string"
             },
             "nullable": true
           },
-          "weapon_prof": {
+          "weaponProf": {
             "type": "array",
             "items": {
               "type": "string"
             },
             "nullable": true
           },
-          "tool_prof": {
+          "toolProf": {
             "type": "array",
             "items": {
               "type": "string"
             },
             "nullable": true
           },
-          "saving_throws": {
+          "savingThrows": {
             "type": "array",
             "items": {
               "type": "string"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "FeaturesDisplayDTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "levelReq": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "originClassId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "originSubClassId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "originRaceId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "originEquipmentId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "armorProf": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "weaponProf": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "toolProf": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "savingThrows": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -1307,6 +1441,43 @@
             "type": "integer",
             "format": "int32"
           },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "creatureType": {
+            "type": "string",
+            "nullable": true
+          },
+          "age": {
+            "type": "string",
+            "nullable": true
+          },
+          "size": {
+            "type": "string",
+            "nullable": true
+          },
+          "speed": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "languages": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RacesCreateAndBaseDTO": {
+        "type": "object",
+        "properties": {
           "name": {
             "type": "string",
             "nullable": true
@@ -1324,6 +1495,36 @@
             "nullable": true
           },
           "speed": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RacesDisplayDTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "creatureType": {
+            "type": "string",
+            "nullable": true
+          },
+          "age": {
+            "type": "string",
+            "nullable": true
+          },
+          "size": {
+            "type": "string",
+            "nullable": true
+          },
+          "speed": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id": {
             "type": "integer",
             "format": "int32"
           }
@@ -1417,6 +1618,152 @@
         },
         "additionalProperties": false
       },
+      "SpellsCreateAndBaseDTO": {
+        "type": "object",
+        "properties": {
+          "school": {
+            "type": "string",
+            "nullable": true
+          },
+          "concentration": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "level": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "range": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "duration": {
+            "type": "string",
+            "nullable": true
+          },
+          "ritual": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "castingTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "component": {
+            "type": "string",
+            "nullable": true
+          },
+          "componentPrice": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "originClassId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "originSubClassId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "originRaceId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "originEquipmentId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SpellsDisplayDTO": {
+        "type": "object",
+        "properties": {
+          "school": {
+            "type": "string",
+            "nullable": true
+          },
+          "concentration": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "level": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "range": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "duration": {
+            "type": "string",
+            "nullable": true
+          },
+          "ritual": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "castingTime": {
+            "type": "string",
+            "nullable": true
+          },
+          "component": {
+            "type": "string",
+            "nullable": true
+          },
+          "componentPrice": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "originClassId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "originSubClassId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "originRaceId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "originEquipmentId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "SubClasses": {
         "type": "object",
         "properties": {
@@ -1430,7 +1777,8 @@
           },
           "originClassId": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "classes": {
             "$ref": "#/components/schemas/Classes"
@@ -1438,6 +1786,48 @@
           "description": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubClassesCreateAndBaseDTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "originClassId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubClassesDisplayDTO": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "originClassId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

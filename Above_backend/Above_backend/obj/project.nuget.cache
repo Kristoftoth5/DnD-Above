@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "aDWTngwkEFo=",
+  "dgSpecHash": "N2jdSRoQL90=",
   "success": true,
   "projectFilePath": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
   "expectedPackageFiles": [
@@ -56,6 +56,9 @@
     "C:\\Users\\gulyasaz\\.nuget\\packages\\humanizer.core.zh-cn\\2.14.1\\humanizer.core.zh-cn.2.14.1.nupkg.sha512",
     "C:\\Users\\gulyasaz\\.nuget\\packages\\humanizer.core.zh-hans\\2.14.1\\humanizer.core.zh-hans.2.14.1.nupkg.sha512",
     "C:\\Users\\gulyasaz\\.nuget\\packages\\humanizer.core.zh-hant\\2.14.1\\humanizer.core.zh-hant.2.14.1.nupkg.sha512",
+    "C:\\Users\\gulyasaz\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.13\\microsoft.aspnetcore.cryptography.internal.8.0.13.nupkg.sha512",
+    "C:\\Users\\gulyasaz\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\8.0.13\\microsoft.aspnetcore.cryptography.keyderivation.8.0.13.nupkg.sha512",
+    "C:\\Users\\gulyasaz\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\8.0.13\\microsoft.aspnetcore.identity.entityframeworkcore.8.0.13.nupkg.sha512",
     "C:\\Users\\gulyasaz\\.nuget\\packages\\microsoft.aspnetcore.openapi\\8.0.11\\microsoft.aspnetcore.openapi.8.0.11.nupkg.sha512",
     "C:\\Users\\gulyasaz\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.24\\microsoft.aspnetcore.razor.language.6.0.24.nupkg.sha512",
     "C:\\Users\\gulyasaz\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\7.0.0\\microsoft.bcl.asyncinterfaces.7.0.0.nupkg.sha512",
@@ -96,6 +99,8 @@
     "C:\\Users\\gulyasaz\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\9.0.2\\microsoft.extensions.dependencyinjection.9.0.2.nupkg.sha512",
     "C:\\Users\\gulyasaz\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.2\\microsoft.extensions.dependencyinjection.abstractions.9.0.2.nupkg.sha512",
     "C:\\Users\\gulyasaz\\.nuget\\packages\\microsoft.extensions.dependencymodel\\9.0.2\\microsoft.extensions.dependencymodel.9.0.2.nupkg.sha512",
+    "C:\\Users\\gulyasaz\\.nuget\\packages\\microsoft.extensions.identity.core\\8.0.13\\microsoft.extensions.identity.core.8.0.13.nupkg.sha512",
+    "C:\\Users\\gulyasaz\\.nuget\\packages\\microsoft.extensions.identity.stores\\8.0.13\\microsoft.extensions.identity.stores.8.0.13.nupkg.sha512",
     "C:\\Users\\gulyasaz\\.nuget\\packages\\microsoft.extensions.logging\\9.0.2\\microsoft.extensions.logging.9.0.2.nupkg.sha512",
     "C:\\Users\\gulyasaz\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\9.0.2\\microsoft.extensions.logging.abstractions.9.0.2.nupkg.sha512",
     "C:\\Users\\gulyasaz\\.nuget\\packages\\microsoft.extensions.options\\9.0.2\\microsoft.extensions.options.9.0.2.nupkg.sha512",
@@ -179,12 +184,5 @@
     "C:\\Users\\gulyasaz\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\gulyasaz\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }
