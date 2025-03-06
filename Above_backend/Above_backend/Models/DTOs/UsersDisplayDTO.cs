@@ -1,8 +1,7 @@
-﻿namespace Above_backend.Models
+﻿namespace Above_backend.Models.DTOs
 {
-    public class Users
+    public class UsersDisplayDTO
     {
-        public int Id { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
         public string Email { get; set; }
