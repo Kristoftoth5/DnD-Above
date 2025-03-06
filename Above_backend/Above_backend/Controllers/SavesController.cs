@@ -8,11 +8,13 @@ using Microsoft.EntityFrameworkCore;
 using Above_backend.Models;
 using Above_backend.Models.DTOs;
 using Above_backend.Helpers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Above_backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class SavesController : ControllerBase
     {
         private readonly AboveDBContext _context;

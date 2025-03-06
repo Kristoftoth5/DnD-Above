@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Above_backend.Models
 {
-    public class AboveDBContext : IdentityDbContext<IdentityUser>
+    public class AboveDBContext : IdentityDbContext<Users>
     {
         public AboveDBContext(DbContextOptions<AboveDBContext> options) :base(options)
         { 
@@ -18,7 +18,7 @@ namespace Above_backend.Models
         public DbSet<Equipment> Equipments { get; set; } = null!;
         public DbSet<Races> Races { get; set; } = null!;
         public DbSet<Spells> Spells { get; set; } = null!;
-        public DbSet<Users> Users { get; set; } = null!;
         public DbSet<Saves> Saves { get; set; } = null!;
+        public DbSet<Users> Users { get; set; }
     }
 }

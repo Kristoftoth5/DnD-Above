@@ -20,7 +20,7 @@ namespace Above_backend.Helpers
                 Name = savescreatedto.Name,
                 Sheet = savescreatedto.Sheet,
                 CharacterArtPath = savescreatedto.CharacterArtPath,
-                UserId = savescreatedto.UserId,
+                //UserId = savescreatedto.UserId,
             };
         }
         public static SavesSheetDisplayDTO SavesToSavesSheetDisplayDTO(Saves saves)

@@ -1,12 +1,9 @@
-﻿namespace Above_backend.Models
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace Above_backend.Models
 {
-    public class Users
+    public class Users : IdentityUser
     {
-        public int Id { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
         public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
     }
 }
