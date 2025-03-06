@@ -1,0 +1,206 @@
+import { useEffect, useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import RoutingTest from './RoutingTest'
+import fetchEverything from './assets/CommonFunctions/fetchEverything'
+import modCalc from './assets/CommonFunctions/modCalc'
+import profCalc from './assets/CommonFunctions/profCalc'
+
+function App({message}) {
+  const [count, setCount] = useState(0)
+
+  const [STR, setSTR] = useState(1)
+  const [DEX, setDEX] = useState(1)
+  const [CON, setCON] = useState(1)
+  const [INT, setINT] = useState(1)
+  const [WIS, setWIS] = useState(1)
+  const [CHA, setCHA] = useState(1)
+
+  useEffect(()=>{
+    console.log("Be van töltve az oldal, ye.")
+    console.log(STR, CHA)
+  }, [count])
+
+  function getData() 
+  {
+
+    var str = document.getElementById("STR").value;
+    if (str != STR) {
+      setSTR(str);
+    }
+    
+    var dex = document.getElementById("DEX").value;
+    if (dex != DEX) {
+      setDEX(dex);
+    }
+    
+    var con = document.getElementById("CON").value;
+    if (con != CON) {
+      setCON(con);
+    }
+    
+    var int = document.getElementById("INT").value;
+    if (int != INT) {
+      setINT(int);
+    }
+    
+    var wis = document.getElementById("WIS").value;
+    if (wis != WIS) {
+      setWIS(wis);
+    }
+    
+    var cha = document.getElementById("CHA").value;
+    if (cha != CHA) {
+      setCHA(cha);
+    }
+  }
+
+  async function fetchproperties() {
+    const data = await fetchEverything("Classes/1")
+    
+    console.log(data);
+
+        const place = document.getElementById('fighter');
+        place.innerHTML = `
+        Name: ${data.name} <br>
+        Description: ${data.description} <br>
+        Armor Proficiencies: ${data.armor_prof} <br>
+        Spellcasting: ${data.spellCaster == 1 ? "Spellcaster" : "Not spellcaster"}
+        `;
+  }
+  async function weaponBonus()
+  {
+    const data = await fetchEverything("Classes/2")
+
+    const daggerdata = await fetchEverything("Equipments/3")
+
+    const place = document.getElementById('Sorc_dagger');
+    var STR = modCalc(8);
+    var DEX = modCalc(14);
+    var PB = profCalc(4);
+
+    var daggerProperties = ["Finesse", "Light", "Thrown(20/60)"];
+
+    var daggerPropertiesVariable = "";
+    daggerProperties.forEach(This => {
+      daggerPropertiesVariable += This + "; "
+    })
+
+    var AB = 0;
+    var isFinesse = false;
+    daggerProperties.forEach(Finesse => {
+      if (Finesse == "Finesse")
+      {
+        isFinesse = true;
+      }
+    });
+
+    if (isFinesse)
+    {
+      STR > DEX ? AB += STR : AB += DEX;
+    }
+    else
+    {
+      AB += STR;
+    }
+    var DamageB = AB;
+
+    if (daggerdata.profReq == 1)
+    {
+      data.weapon_prof.forEach(weapon => {
+        weapon == "Daggers" ? AB += PB : AB += 0;
+      });
+    }
+
+    
+
+    
+
+    place.innerHTML = `
+      <p>${daggerdata.name} | +${AB} | ${daggerdata.damageDie} + ${DamageB} | ${daggerPropertiesVariable}</p>
+    `;
+    
+    
+  }
+
+
+  async function hpCalculator()
+  {
+    const data = await fetchEverything("Classes/2")
+
+    var classLevel = 3;
+
+    var hitDie = data.hitDice;
+
+    hitDie = hitDie.substring(1, hitDie.length);
+
+    hitDie = parseInt(hitDie);
+
+    var hitDieAverage = (hitDie / 2 ) + 1;
+
+  }
+  return (
+    <>
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <button onClick={() => console.log(message)}>
+          
+        </button>
+        <button onClick={() => {console.log("Haláááál"); fetchproperties();}}>
+          Show me the Fighter!
+        </button>
+        <button onClick={() => {console.log("Falmingo"); weaponBonus();}}>
+          Show me the Dagger bonus!
+        </button>
+      </div>
+      
+      <div id="fighter">
+        
+      </div>
+      <div id="Sorc_dagger">
+        
+      </div>
+
+      <div id="stats">
+        <form onChange={() => getData()}>
+        <input type="number" name="" id="STR" min="1" />
+
+        <input type="number" name="" id="DEX" min="1" />
+
+        <input type="number" name="" id="CON" min="1" />
+
+        <input type="number" name="" id="INT" min="1" />
+
+        <input type="number" name="" id="WIS" min="1" />
+
+        <input type="number" name="" id="CHA" min="1" />
+        </form>
+      </div>
+      <div id="hpCalc">
+
+      </div>
+      <div id="weaponses"> 
+      <button onClick={() => {console.log("FalmingoHp"); hpCalculator();}}>
+          Show me the hps!
+        </button>
+      </div>
+
+
+
+      <RoutingTest message={message}/>
+    </>
+  )
+}
+
+export default App
