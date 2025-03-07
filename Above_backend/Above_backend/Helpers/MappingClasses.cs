@@ -20,6 +20,7 @@ namespace Above_backend.Helpers
                 WeaponProf = classes.WeaponProf,
                 ToolProf = classes.ToolProf,
                 SavingThrows = classes.SavingThrows,
+                HalfCaster = classes.HalfCaster,
             };
         }
 
@@ -36,6 +37,7 @@ namespace Above_backend.Helpers
                 WeaponProf = classescreatedto.WeaponProf,
                 ToolProf = classescreatedto.ToolProf,
                 SavingThrows = classescreatedto.SavingThrows,
+                HalfCaster = classescreatedto.HalfCaster,
             };
         }
     }
