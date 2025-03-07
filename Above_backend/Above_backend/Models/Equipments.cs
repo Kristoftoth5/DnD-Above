@@ -8,6 +8,7 @@ namespace Above_backend.Models
         public string Name { get; set; }
         public string Rarity { get; set; }
         public int? ProfReq { get; set; }
+        public string WeaponType { get; set; }
         public string? DamageDie { get; set; }
         public string? DamageType { get; set; }
         public int? AC { get; set; }

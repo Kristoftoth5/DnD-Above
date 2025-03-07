@@ -3,6 +3,7 @@ using System;
 using Above_backend.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Above_backend.Migrations
 {
     [DbContext(typeof(AboveDBContext))]
-    partial class AboveDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250306111326_UsersFixed")]
+    partial class UsersFixed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.2");
@@ -28,9 +31,6 @@ namespace Above_backend.Migrations
 
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
-
-                    b.Property<int>("HalfCaster")
-                        .HasColumnType("INTEGER");
 
                     b.Property<string>("HitDice")
                         .IsRequired()
@@ -219,13 +219,7 @@ namespace Above_backend.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Saves");
                 });
@@ -542,17 +536,6 @@ namespace Above_backend.Migrations
                     b.Navigation("Races");
 
                     b.Navigation("SubClasses");
-                });
-
-            modelBuilder.Entity("Above_backend.Models.Saves", b =>
-                {
-                    b.HasOne("Above_backend.Models.Users", "Users")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("Above_backend.Models.Spells", b =>

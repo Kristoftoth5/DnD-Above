@@ -11,7 +11,7 @@ namespace Above_backend.Models
         public string Name { get; set; }
         public string Sheet {  get; set; }
         public string? CharacterArtPath { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         [ForeignKey("UserId")]
         public Users Users { get; set; }
     }

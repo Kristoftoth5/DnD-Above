@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Above_backend.Models;
 using Above_backend.Models.DTOs;
-using Above_backend.Helpers;
+using Above_backend.Models;
 
 namespace Above_backend.Controllers
 {
@@ -15,97 +11,33 @@ namespace Above_backend.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-        private readonly AboveDBContext _context;
+        private readonly UserManager<Users> _userManager;
+        private readonly SignInManager<Users> _signInManager;
 
-        public UsersController(AboveDBContext context)
+        public UsersController(UserManager<Users> userManager, SignInManager<Users> signInManager)
         {
-            _context = context;
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
-        // GET: api/Users
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<UsersDisplayDTO>>> GetUsers()
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] UsersCreateDTO userscreatedto)
         {
-            var users = await _context.Users.ToListAsync();
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
-            return users.Select(x => MappingUsers.UsersToUsersDisplayDTO(x)).ToList();
-        }
-
-        // GET: api/Users/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<UsersDisplayDTO>> GetUsers(int id)
-        {
-            var oneuser = await _context.Users.FindAsync(id);
-
-            if (oneuser == null)
+            var user = new Users
             {
-                return NotFound();
-            }
+                UserName = userscreatedto.UserName,
+                Email = userscreatedto.Email,
+                CreatedAt = DateTime.UtcNow,
+            };
 
-            return MappingUsers.UsersToUsersDisplayDTO(oneuser);
-        }
+            var result = await _userManager.CreateAsync(user, userscreatedto.Password);
+            if (!result.Succeeded)
+                return BadRequest(result.Errors);
 
-        // PUT: api/Users/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutUsers(int id, Users users)
-        {
-            if (id != users.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(users).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UsersExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Users
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Users>> PostUsers(UsersCreateDTO userscreatedto)
-        {
-            _context.Users.Add(MappingUsers.UsersCreateDTOToUsers(userscreatedto));
-            await _context.SaveChangesAsync();
-
-            return Created();
-        }
-
-        // DELETE: api/Users/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUsers(int id)
-        {
-            var users = await _context.Users.FindAsync(id);
-            if (users == null)
-            {
-                return NotFound();
-            }
-
-            _context.Users.Remove(users);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool UsersExists(int id)
-        {
-            return _context.Users.Any(e => e.Id == id);
+            return Ok(new { Message = "User registered successfully!" });
         }
     }
 }
