@@ -1,11 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 
 namespace Above_backend.Models
 {
-    public class AboveDBContext : IdentityDbContext<Users>
+    public class AboveDBContext : DbContext
     {
         public AboveDBContext(DbContextOptions<AboveDBContext> options) :base(options)
         { 
@@ -19,6 +17,13 @@ namespace Above_backend.Models
         public DbSet<Races> Races { get; set; } = null!;
         public DbSet<Spells> Spells { get; set; } = null!;
         public DbSet<Saves> Saves { get; set; } = null!;
-        public DbSet<Users> Users { get; set; }
+
+        public DbSet<User> Users { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().HasIndex(u => u.Email).IsUnique();
+        }
     }
 }
