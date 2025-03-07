@@ -18,7 +18,6 @@ function App({message}) {
 
   useEffect(()=>{
     console.log("Be van töltve az oldal, ye.")
-    console.log(STR, CHA)
   }, [count])
 
   function getData() 
@@ -124,11 +123,15 @@ function App({message}) {
   }
 
 
-  async function hpCalculator()
+  async function hpCalculator(type)
   {
+    const place = document.getElementById("hpCalc");
+
     const data = await fetchEverything("Classes/2")
 
     var classLevel = 3;
+
+    var maxHp = 0;
 
     var hitDie = data.hitDice;
 
@@ -137,6 +140,33 @@ function App({message}) {
     hitDie = parseInt(hitDie);
 
     var hitDieAverage = (hitDie / 2 ) + 1;
+
+    if(type == 0)
+    { 
+      maxHp = hitDie + ((classLevel -1) * hitDieAverage) + (classLevel * modCalc(CON));
+      place.innerHTML = `
+      <p>Maximum Hitpoints</p>
+      <p id="hpMax">${maxHp}</p>
+      `;
+
+    }
+
+    if(type == 1)
+      { 
+        var rolledHp = 0;
+        for (let i = 1; i <= classLevel-1; i++) 
+        {
+          rolledHp += Math.floor(Math.random()*hitDie)+1
+          console.log(rolledHp);
+        }
+        
+        maxHp = hitDie + (rolledHp) + (classLevel * modCalc(CON));
+        place.innerHTML = `
+        <p>Maximum Hitpoints</p>
+        <p id="hpMax">${maxHp}</p>
+        `;
+  
+      }
 
   }
   return (
@@ -188,12 +218,10 @@ function App({message}) {
         </form>
       </div>
       <div id="hpCalc">
-
+      <input type="button" onClick={() => hpCalculator(0)} value="Average per level" />
+      <input type="button" onClick={() => hpCalculator(1)} value="Roll per level" />
       </div>
       <div id="weaponses"> 
-      <button onClick={() => {console.log("FalmingoHp"); hpCalculator();}}>
-          Show me the hps!
-        </button>
       </div>
 
 
