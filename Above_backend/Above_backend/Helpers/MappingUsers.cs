@@ -10,10 +10,10 @@ namespace Above_backend.Helpers
             return new Users
             {
                 UserName = userscreatedto.UserName,
-                Password = userscreatedto.Password,
+                //Password = userscreatedto.Password,
                 Email = userscreatedto.Email,
                 CreatedAt = DateTime.UtcNow,
-                UpdatedAt = DateTime.UtcNow,
+                //UpdatedAt = DateTime.UtcNow,
             };
         }
         public static UsersDisplayDTO UsersToUsersDisplayDTO(Users users)
@@ -23,7 +23,7 @@ namespace Above_backend.Helpers
                 UserName = users.UserName,
                 Email = users.Email,
                 CreatedAt = users.CreatedAt,
-                UpdatedAt = users.UpdatedAt,
+                //UpdatedAt = users.UpdatedAt,
             };
         }
     }

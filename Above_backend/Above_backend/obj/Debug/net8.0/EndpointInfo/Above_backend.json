@@ -1483,6 +1483,10 @@
             "type": "integer",
             "format": "int32"
           },
+          "halfCaster": {
+            "type": "integer",
+            "format": "int32"
+          },
           "armorProf": {
             "type": "array",
             "items": {
@@ -1537,6 +1541,10 @@
             "type": "integer",
             "format": "int32"
           },
+          "halfCaster": {
+            "type": "integer",
+            "format": "int32"
+          },
           "armorProf": {
             "type": "array",
             "items": {
@@ -1588,6 +1596,10 @@
             "format": "int32"
           },
           "spellCaster": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "halfCaster": {
             "type": "integer",
             "format": "int32"
           },
@@ -2309,6 +2321,13 @@
           "characterArtPath": {
             "type": "string",
             "nullable": true
+          },
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
+          "users": {
+            "$ref": "#/components/schemas/Users"
           }
         },
         "additionalProperties": false
@@ -2720,6 +2739,73 @@
           },
           "isMachineRemembered": {
             "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Users": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "normalizedUserName": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "normalizedEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "emailConfirmed": {
+            "type": "boolean"
+          },
+          "passwordHash": {
+            "type": "string",
+            "nullable": true
+          },
+          "securityStamp": {
+            "type": "string",
+            "nullable": true
+          },
+          "concurrencyStamp": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "phoneNumberConfirmed": {
+            "type": "boolean"
+          },
+          "twoFactorEnabled": {
+            "type": "boolean"
+          },
+          "lockoutEnd": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "lockoutEnabled": {
+            "type": "boolean"
+          },
+          "accessFailedCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false

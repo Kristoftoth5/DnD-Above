@@ -5,6 +5,7 @@ import RoutingTest from './RoutingTest'
 import fetchEverything from './assets/CommonFunctions/fetchEverything'
 import modCalc from './assets/CommonFunctions/modCalc'
 import profCalc from './assets/CommonFunctions/profCalc'
+import diceToInteger from './assets/CommonFunctions/diceToInteger'
 
 function App({message}) {
   const [count, setCount] = useState(0)
@@ -16,8 +17,11 @@ function App({message}) {
   const [WIS, setWIS] = useState(1)
   const [CHA, setCHA] = useState(1)
 
+  const [classId, setClassId] = useState(0)
+
   useEffect(()=>{
     console.log("Be van töltve az oldal, ye.")
+    setClassId(2)
   }, [count])
 
   function getData() 
@@ -67,30 +71,35 @@ function App({message}) {
         Spellcasting: ${data.spellCaster == 1 ? "Spellcaster" : "Not spellcaster"}
         `;
   }
-  async function weaponBonus()
+  async function weaponBonus(weaponId)
   {
-    const data = await fetchEverything("Classes/2")
+    const data = await fetchEverything("Classes/" + classId.toString())
 
-    const daggerdata = await fetchEverything("Equipments/3")
+    const weaponData = await fetchEverything("Equipments/" + weaponId.toString())
 
-    const place = document.getElementById('Sorc_dagger');
-    var STR = modCalc(8);
-    var DEX = modCalc(14);
-    var PB = profCalc(4);
+    const place = document.getElementById('weaponses');
 
-    var daggerProperties = ["Finesse", "Light", "Thrown(20/60)"];
+    var weaponProperties = ["Finesse", "Light", "Thrown(20/60)"];
 
-    var daggerPropertiesVariable = "";
-    daggerProperties.forEach(This => {
-      daggerPropertiesVariable += This + "; "
+    var weaponPropertiesDisplayVariable = "";
+    weaponProperties.forEach(This => {
+      weaponPropertiesDisplayVariable += This + "; "
     })
 
     var AB = 0;
     var isFinesse = false;
-    daggerProperties.forEach(Finesse => {
+    weaponProperties.forEach(Finesse => {
       if (Finesse == "Finesse")
       {
         isFinesse = true;
+      }
+    });
+
+    var isVersatile = false;
+    weaponProperties.forEach(Versatile => {
+      if (Versatile == "Versatile")
+      {
+        isVersatile = true;
       }
     });
 
@@ -104,7 +113,7 @@ function App({message}) {
     }
     var DamageB = AB;
 
-    if (daggerdata.profReq == 1)
+    if (weaponData.profReq == 1)
     {
       data.weapon_prof.forEach(weapon => {
         weapon == "Daggers" ? AB += PB : AB += 0;
@@ -116,7 +125,7 @@ function App({message}) {
     
 
     place.innerHTML = `
-      <p>${daggerdata.name} | +${AB} | ${daggerdata.damageDie} + ${DamageB} | ${daggerPropertiesVariable}</p>
+      <p>${weaponData.name} | +${AB} | ${weaponData.damageDie} + ${DamageB} | ${weaponPropertiesDisplayVariable}</p>
     `;
     
     
@@ -125,7 +134,7 @@ function App({message}) {
 
   async function hpCalculator(type)
   {
-    const place = document.getElementById("hpCalc");
+    const place = document.getElementById("hpCalcDesc");
 
     const data = await fetchEverything("Classes/2")
 
@@ -135,9 +144,7 @@ function App({message}) {
 
     var hitDie = data.hitDice;
 
-    hitDie = hitDie.substring(1, hitDie.length);
-
-    hitDie = parseInt(hitDie);
+    hitDie = diceToInteger(hitDie)
 
     var hitDieAverage = (hitDie / 2 ) + 1;
 
@@ -221,7 +228,15 @@ function App({message}) {
       <input type="button" onClick={() => hpCalculator(0)} value="Average per level" />
       <input type="button" onClick={() => hpCalculator(1)} value="Roll per level" />
       </div>
+      <div id="hpCalcDesc">
+
+      </div>
       <div id="weaponses"> 
+        <button className='dropbtn'>Wepaon</button>
+        <div className='dropdown-content'>
+          <input type="button" onClick={() => hpCalculator(0)} value="Daggers" />
+          <input type="button" onClick={() => hpCalculator(0)} value="Longswords" />
+        </div>
       </div>
 
 
