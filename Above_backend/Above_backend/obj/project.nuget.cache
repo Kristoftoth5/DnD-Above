@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< Updated upstream
   "dgSpecHash": "4nMOAVk5Nfg=",
   "success": true,
   "projectFilePath": "C:\\Users\\torokmj\\Documents\\GitHub\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
+=======
+  "dgSpecHash": "e9Sf7PN6jYE=",
+  "success": true,
+  "projectFilePath": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
+>>>>>>> Stashed changes
   "expectedPackageFiles": [
     "C:\\Users\\torokmj\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\torokmj\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

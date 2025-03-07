@@ -29,6 +29,9 @@ namespace Above_backend.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("HalfCaster")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("HitDice")
                         .IsRequired()
                         .HasColumnType("TEXT");

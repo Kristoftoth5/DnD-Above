@@ -8753,11 +8753,19 @@
   "project": {
     "version": "1.0.0",
     "restore": {
+<<<<<<< Updated upstream
       "projectUniqueName": "C:\\Users\\torokmj\\Documents\\GitHub\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
       "projectName": "Above_backend",
       "projectPath": "C:\\Users\\torokmj\\Documents\\GitHub\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
       "packagesPath": "C:\\Users\\torokmj\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\torokmj\\Documents\\GitHub\\DnD-Above\\Above_backend\\Above_backend\\obj\\",
+=======
+      "projectUniqueName": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
+      "projectName": "Above_backend",
+      "projectPath": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
+      "packagesPath": "C:\\Users\\gulyasaz\\.nuget\\packages\\",
+      "outputPath": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\obj\\",
+>>>>>>> Stashed changes
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -8856,7 +8864,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.103/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
