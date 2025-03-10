@@ -1452,6 +1452,14 @@
             "type": "string",
             "nullable": true
           },
+          "weaponType": {
+            "type": "string",
+            "nullable": true
+          },
+          "damageType": {
+            "type": "string",
+            "nullable": true
+          },
           "properties": {
             "type": "array",
             "items": {
@@ -1500,6 +1508,14 @@
             "nullable": true
           },
           "damageDie": {
+            "type": "string",
+            "nullable": true
+          },
+          "weaponType": {
+            "type": "string",
+            "nullable": true
+          },
+          "damageType": {
             "type": "string",
             "nullable": true
           },
