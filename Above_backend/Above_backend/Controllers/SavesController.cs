@@ -9,6 +9,7 @@ using Above_backend.Models;
 using Above_backend.Models.DTOs;
 using Above_backend.Helpers;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace Above_backend.Controllers
 {
@@ -84,6 +85,12 @@ namespace Above_backend.Controllers
         [HttpPost]
         public async Task<ActionResult<Saves>> PostSaves(SavesCreateDTO savescreatedto)
         {
+            var UserClaim = User.Claims;
+            var user = _context.Users.FindAsync();
+            var Saves = new Saves
+            {
+
+            };
             _context.Saves.Add(MappingSaves.SavesCreateDTOToSaves(savescreatedto));
             await _context.SaveChangesAsync();
 
