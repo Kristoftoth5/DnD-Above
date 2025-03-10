@@ -56,7 +56,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "model",
+        "Name": "user",
         "Type": "Above_backend.Models.DTOs.RegisterDTO",
         "IsRequired": true
       }
