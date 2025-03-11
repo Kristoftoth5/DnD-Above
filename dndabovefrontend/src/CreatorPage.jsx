@@ -6,6 +6,8 @@ import fetchEverything from './assets/CommonFunctions/fetchEverything'
 import modCalc from './assets/CommonFunctions/modCalc'
 import profCalc from './assets/CommonFunctions/profCalc'
 import diceToInteger from './assets/CommonFunctions/diceToInteger'
+import RaceCard from './assets/CreatorPageCards/RaceCard'
+import * as bs from '../node_modules/bootstrap'
 
 function CreatorPage () 
 {
@@ -13,12 +15,11 @@ function CreatorPage ()
         console.log("Be van töltve az oldal, ye.")
     })
 
-    return
-    {
-        <>
-        
-        </>
-    }
+    return (
+        <div className='container'>
+
+        </div>
+    );
 }
 
 export default CreatorPage;

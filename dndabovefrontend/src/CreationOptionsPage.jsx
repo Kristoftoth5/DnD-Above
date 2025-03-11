@@ -7,6 +7,7 @@ import modCalc from './assets/CommonFunctions/modCalc'
 import profCalc from './assets/CommonFunctions/profCalc'
 import diceToInteger from './assets/CommonFunctions/diceToInteger'
 import './assets/CreationOptionsPageStyles.css'
+import * as bs from '../node_modules/bootstrap'
 
 function CreationOptionsPage () 
 {
@@ -15,26 +16,29 @@ function CreationOptionsPage ()
 
     const [chosenStatCalc, setChosenStatCalc] = useState(0);
 
+    const [dropdown, setDropdown] = useState(false);
+
     useEffect(()=>{
         console.log("Be van töltve az oldal, ye.")
     })
 
 
-    function dropIt()
+    function Dropdown()
     {
-        document.getElementById("dropdown").innerHTML = `
-         <input type="button" value="Point Buy" onClick=${() => statCalcChoice(1)}/><br/>
-         <input type="button" value="Heroic Point Buy" onClick=${() => statCalcChoice(2)}/><br/>
-         <input type="button" value="Rolled" onClick=${() => statCalcChoice(3)}/><br/>
-         <input type="button" value="Custom" onClick=${() => statCalcChoice(4)}/>
-        `;
+        return (
+            <div id="dropdown">
+                <input type="button" value="Point Buy" onClick={() => statCalcChoice(1)}/><br/>
+                <input type="button" value="Heroic Point Buy" onClick={() => statCalcChoice(2)}/><br/>
+                <input type="button" value="Rolled" onClick={() => statCalcChoice(3)}/><br/>
+                <input type="button" value="Custom" onClick={() => statCalcChoice(4)}/>
+            </div>
+        )
     }
 
     function statCalcChoice(choice)
     {
         setChosenStatCalc(choice)
 
-        document.getElementById("dropdown").innerHTML = ``;
     }
 
 
@@ -50,8 +54,9 @@ function CreationOptionsPage ()
                         Do you get a Feat at level 1 - akin to a background feature.
                     </div>
                     <div id='statCalculation'>
-                        <input type="button" value="drop" onClick={() => dropIt()}/>
-                        <div id='dropdown'></div>
+                        <input type="button" value="drop" onClick={()=>{setDropdown((prev)=>!prev);console.log("meg lett nyomva: ", dropdown)}}/>
+                        {(dropdown) ? <Dropdown/> : <p></p>}
+                        
                     </div>
                 </div>
             </div>

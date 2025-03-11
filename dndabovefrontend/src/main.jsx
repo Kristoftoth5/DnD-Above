@@ -12,7 +12,7 @@ createRoot(document.getElementById('root')).render(
     <Routes>
       <Route path="/routing-test" element={<RoutingTest message = "Szia te skibidi" />}/>
       {/*<Route index path="/" element={<App message = "Gyatt"/>}/>*/}
-      <Route index path="/" element={<CreationOptionsPage/>}/>
+      <Route index path="/" element={<CreatorPage/>}/>
     </Routes>
     </BrowserRouter>
 
