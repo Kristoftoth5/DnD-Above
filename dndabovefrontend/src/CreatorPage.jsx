@@ -8,6 +8,7 @@ import profCalc from './assets/CommonFunctions/profCalc'
 import diceToInteger from './assets/CommonFunctions/diceToInteger'
 import RaceCard from './assets/CreatorPageCards/RaceCard'
 import * as bs from '../node_modules/bootstrap'
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function CreatorPage () 
 {
@@ -16,9 +17,12 @@ function CreatorPage ()
     })
 
     return (
+        <>
+        
         <div className='container'>
-
+            <h1>yes</h1>
         </div>
+        </>
     );
 }
 
