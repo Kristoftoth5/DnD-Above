@@ -12,7 +12,6 @@ function CreatorPage ()
         <>
         
         <div className='container'>
-            <h1>yes</h1>
             <RaceCard/>
         </div>
         </>
