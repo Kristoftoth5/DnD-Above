@@ -8,13 +8,15 @@ function RaceCard() {
   // Dummy options for the dropdown (replace with actual race data)
   const raceOptions = ["Elf", "Dwarf", "Human", "Orc", "Tiefling"];
 
+  const [chosenRace, setChosenRace] = useState("")
+
   // Handles selection and updates state
-  const handleSelectRace = (race) => {
+  /*const handleSelectRace = (race) => {
     if (!selectedRaces.includes(race)) {
       setSelectedRaces([...selectedRaces, race]);
     }
     setDropdownOpen(false); // Close dropdown after selection
-  };
+  };*/
 
   return (
     <div className="race-container">
@@ -38,7 +40,7 @@ function RaceCard() {
               <button
                 key={index}
                 className="dropdown-item"
-                onClick={() => handleSelectRace(race)}
+                onClick={() => {setChosenRace(race);setDropdownOpen(false)}}
               >
                 {race}
               </button>
@@ -49,9 +51,7 @@ function RaceCard() {
 
       {/* Display Selected Races BELOW the dropdown */}
       <div className="selected-races">
-        {selectedRaces.map((race, index) => (
-          <p key={index} className="selected-race">{race}</p>
-        ))}
+        <p className="selected-race">{chosenRace}</p>
       </div>
     </div>
   );
