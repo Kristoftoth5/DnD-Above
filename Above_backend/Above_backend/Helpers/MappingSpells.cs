@@ -21,10 +21,8 @@ namespace Above_backend.Helpers
                 Ritual = spells.Ritual,
                 CastingTime = spells.CastingTime,
                 Component = spells.Component,
-                OriginClassId = spells.OriginClassId,
-                OriginSubClassId = spells.OriginSubClassId,
+                LearnedBy = spells.LearnedBy,
                 OriginEquipmentId = spells.OriginEquipmentId,
-                OriginRaceId = spells.OriginRaceId,
             };
         }
     }
