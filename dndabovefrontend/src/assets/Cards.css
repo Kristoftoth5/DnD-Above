@@ -1,0 +1,64 @@
+.race-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 100px;
+    position: relative;
+  }
+  
+  .race-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  /* Wrapper to keep button and dropdown aligned */
+  .dropdown-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown styles */
+  .dropdown-menu {
+    position: absolute;
+    top: 100%; /* Moves dropdown below the button */
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    min-width: 150px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .selected-races {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .selected-race {
+    background-color: #e9ecef;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 2px 0;
+  }
+
+  #plsbepink
+  {
+    background-color: pink;
+    border: none;
+  }
+
+  #plsbepink:hover
+  {
+    background-color: lightpink;
+    border: none;
+  }
