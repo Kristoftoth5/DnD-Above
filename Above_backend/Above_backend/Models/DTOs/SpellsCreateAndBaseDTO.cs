@@ -15,7 +15,7 @@ namespace Above_backend.Models.DTOs
         public string CastingTime { get; set; }
         public string Component { get; set; }
         public int? ComponentPrice { get; set; }
-        public List<string> LearnedBy { get; set; }
+        public List<int> LearnedBy { get; set; }
         public int? OriginEquipmentId { get; set; }
     }
 }
