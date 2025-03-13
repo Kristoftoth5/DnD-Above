@@ -21,6 +21,7 @@ namespace Above_backend.Helpers
                 WeaponProf = feature.WeaponProf,
                 ToolProf = feature.ToolProf,
                 SavingThrows = feature.SavingThrows,
+                SkillProf = feature.SkillProf,
             };
         }
     }

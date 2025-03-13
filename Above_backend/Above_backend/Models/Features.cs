@@ -12,7 +12,8 @@ namespace Above_backend.Models
         public List<string>? ArmorProf { get; set; }
         public List<string>? WeaponProf { get; set; }
         public List<string>? ToolProf { get; set; }
-        public List<string> SavingThrows { get; set; }
+        public List<string>? SavingThrows { get; set; }
+        public List<string>? SkillProf { get; set; }
 
         public int? OriginClassId { get; set; }
         [ForeignKey("OriginClassId")]

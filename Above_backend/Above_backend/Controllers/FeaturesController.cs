@@ -90,6 +90,7 @@ namespace Above_backend.Controllers
                 OriginSubClassId = (featurescreatedto.OriginSubClassId != 0) ? featurescreatedto.OriginSubClassId : null,
                 OriginRaceId = (featurescreatedto.OriginRaceId != 0) ? featurescreatedto.OriginRaceId : null,
                 OriginEquipmentId = (featurescreatedto.OriginEquipmentId != 0) ? featurescreatedto.OriginEquipmentId : null,
+                SkillProf = featurescreatedto.SkillProf,
                 ArmorProf = featurescreatedto.ArmorProf,
                 WeaponProf = featurescreatedto.WeaponProf,
                 ToolProf = featurescreatedto.ToolProf,
