@@ -1,0 +1,28 @@
+.dice-roller {
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    width: 200px;
+    height: 200px;
+    background-color: darkblue;
+    border: 2px solid brown;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  /* Initially hidden */
+  .hide {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+  }
+  
+  /* Visible when toggled */
+  .show {
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+  }

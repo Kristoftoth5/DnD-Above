@@ -1,9 +1,13 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import DiceRoller from "./DiceRoller";
+import { useState } from "react";
 
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
+  const [showDiceRoller, setShowDiceRoller] = useState(false);
 
   const handleNavigation = (path) => {
     if (location.pathname === "/character-creator") {
@@ -30,6 +34,17 @@ const Header = () => {
               <button className="nav-link btn btn-link" onClick={() => handleNavigation("/character-creator")}>
                 Saved Characters
               </button>
+            </li>
+            <li className="nav-item">
+            <button
+              className="btn btn-warning"
+              onClick={() => setShowDiceRoller((prev) => !prev)}
+            >
+              Dice Roller
+            </button>
+
+            {/* Dice Roller Component (conditionally rendered) */}
+            <DiceRoller isVisible={showDiceRoller} />
             </li>
           </ul>
         </div>
