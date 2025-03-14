@@ -1,12 +1,17 @@
 import React, { useState } from "react";
+import fetchEverything from "../CommonFunctions/fetchEverything"
 import "../Cards.css"; // Import styles
 
 function RaceCard() {
-    const [selectedRaces, setSelectedRaces] = useState([]); // Stores selected races
+    const [selectedRaceId, setSelectedRaceId] = useState(""); // Stores selected race
   const [dropdownOpen, setDropdownOpen] = useState(false); // Tracks dropdown state
+  const [raceOptionNames, setRaceOptionNames] = useState([]);
 
   // Dummy options for the dropdown (replace with actual race data)
-  const raceOptions = ["Elf", "Dwarf", "Human", "Orc", "Tiefling"];
+  const raceOptionsJSON = fetchEverything("Races");
+  Array.from(raceOptionsJSON).forEach(race => {
+    console.log(race.Name);
+  });
 
   const [chosenRace, setChosenRace] = useState("")
 
@@ -36,7 +41,7 @@ function RaceCard() {
         {/* Dropdown Menu - Now positioned below the button */}
         {dropdownOpen && (
           <div className="dropdown-menu show">
-            {raceOptions.map((race, index) => (
+            {raceOptionNames.map((race, index) => (
               <button
                 key={index}
                 className="dropdown-item"
