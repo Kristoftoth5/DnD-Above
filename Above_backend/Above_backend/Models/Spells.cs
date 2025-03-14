@@ -17,18 +17,7 @@ namespace Above_backend.Models
         public string CastingTime { get; set; }
         public string Component { get; set; }
         public int? ComponentPrice { get; set; }
-
-        public int? OriginClassId { get; set; }
-        [ForeignKey("OriginClassId")]
-        public Classes Classes { get; set; }
-
-        public int? OriginSubClassId { get; set; }
-        [ForeignKey("OriginSubClassId")]
-        public SubClasses SubClasses { get; set; }
-
-        public int? OriginRaceId { get; set; }
-        [ForeignKey("OriginRaceId")]
-        public Races Races { get; set; }
+        public List<int> LearnedBy { get; set; }
 
         public int? OriginEquipmentId { get; set; }
         [ForeignKey("OriginEquipmentId")]

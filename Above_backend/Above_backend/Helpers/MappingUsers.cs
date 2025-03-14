@@ -5,25 +5,27 @@ namespace Above_backend.Helpers
 {
     public class MappingUsers
     {
-        public static Users UsersCreateDTOToUsers(UsersCreateDTO userscreatedto)
-        {
-            return new Users
-            {
-                UserName = userscreatedto.UserName,
-                //Password = userscreatedto.Password,
-                Email = userscreatedto.Email,
-                CreatedAt = DateTime.UtcNow,
-                //UpdatedAt = DateTime.UtcNow,
-            };
-        }
-        public static UsersDisplayDTO UsersToUsersDisplayDTO(Users users)
+        public static UsersDisplayDTO UserToUserDisplayDTO(User user)
         {
             return new UsersDisplayDTO
             {
-                UserName = users.UserName,
-                Email = users.Email,
-                CreatedAt = users.CreatedAt,
-                //UpdatedAt = users.UpdatedAt,
+                Id = user.Id,
+                UserName = user.UserName,
+                Email = user.Email,
+                CreatedAt = user.CreatedAt,
+                UpdatedAt = user.UpdatedAt,
+            };
+        }
+
+        public static User RegisterUserToUser(RegisterDTO userregisterdto)
+        {
+            return new User
+            {
+                UserName = userregisterdto.UserName,
+                Email = userregisterdto.Email,
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(userregisterdto.Password),
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow,
             };
         }
     }

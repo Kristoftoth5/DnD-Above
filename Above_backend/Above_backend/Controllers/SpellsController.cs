@@ -94,9 +94,7 @@ namespace Above_backend.Controllers
                 CastingTime = spellscreatedto.CastingTime,
                 Component = spellscreatedto.Component,
                 ComponentPrice = spellscreatedto.ComponentPrice,
-                OriginClassId = (spellscreatedto.OriginClassId != 0) ? spellscreatedto.OriginClassId : null,
-                OriginSubClassId = (spellscreatedto.OriginSubClassId != 0) ? spellscreatedto.OriginSubClassId : null,
-                OriginRaceId = (spellscreatedto.OriginRaceId != 0) ? spellscreatedto.OriginRaceId : null,
+                LearnedBy = spellscreatedto.LearnedBy,
                 OriginEquipmentId = (spellscreatedto.OriginEquipmentId != 0) ? spellscreatedto.OriginEquipmentId : null,
             };
 

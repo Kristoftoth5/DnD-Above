@@ -3,6 +3,7 @@ using System;
 using Above_backend.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Above_backend.Migrations
 {
     [DbContext(typeof(AboveDBContext))]
-    partial class AboveDBContextModelSnapshot : ModelSnapshot
+    [Migration("20250313071434_AddedNewTableForFeatureToFeatureManyToManyConnections")]
+    partial class AddedNewTableForFeatureToFeatureManyToManyConnections
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.2");
@@ -142,9 +145,7 @@ namespace Above_backend.Migrations
                         .HasColumnType("INTEGER");
 
                     b.PrimitiveCollection<string>("SavingThrows")
-                        .HasColumnType("TEXT");
-
-                    b.PrimitiveCollection<string>("SkillProf")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.PrimitiveCollection<string>("ToolProf")
@@ -297,10 +298,6 @@ namespace Above_backend.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.PrimitiveCollection<string>("LearnedBy")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.Property<int>("Level")
                         .HasColumnType("INTEGER");
 
@@ -308,7 +305,16 @@ namespace Above_backend.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int?>("OriginClassId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<int?>("OriginEquipmentId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("OriginRaceId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int?>("OriginSubClassId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("Range")
@@ -323,7 +329,13 @@ namespace Above_backend.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("OriginClassId");
+
                     b.HasIndex("OriginEquipmentId");
+
+                    b.HasIndex("OriginRaceId");
+
+                    b.HasIndex("OriginSubClassId");
 
                     b.ToTable("Spells");
                 });
@@ -434,11 +446,29 @@ namespace Above_backend.Migrations
 
             modelBuilder.Entity("Above_backend.Models.Spells", b =>
                 {
+                    b.HasOne("Above_backend.Models.Classes", "Classes")
+                        .WithMany()
+                        .HasForeignKey("OriginClassId");
+
                     b.HasOne("Above_backend.Models.Equipment", "Equipment")
                         .WithMany()
                         .HasForeignKey("OriginEquipmentId");
 
+                    b.HasOne("Above_backend.Models.Races", "Races")
+                        .WithMany()
+                        .HasForeignKey("OriginRaceId");
+
+                    b.HasOne("Above_backend.Models.SubClasses", "SubClasses")
+                        .WithMany()
+                        .HasForeignKey("OriginSubClassId");
+
+                    b.Navigation("Classes");
+
                     b.Navigation("Equipment");
+
+                    b.Navigation("Races");
+
+                    b.Navigation("SubClasses");
                 });
 
             modelBuilder.Entity("Above_backend.Models.SubClasses", b =>

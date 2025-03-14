@@ -10,6 +10,7 @@ using System.Security.Claims;
 using System.Text;
 using Above_backend.Models;
 using Above_backend.Models.DTOs;
+using Above_backend.Helpers;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -25,21 +26,12 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] RegisterDTO model)
+    public async Task<IActionResult> Register([FromBody] RegisterDTO user)
     {
-        if (await _context.Users.AnyAsync(u => u.Email == model.Email))
+        if (await _context.Users.AnyAsync(u => u.Email == user.Email))
             return BadRequest("User already exists.");
 
-        var user = new User
-        {
-            UserName = model.UserName,
-            Email = model.Email,
-            PasswordHash = BCrypt.Net.BCrypt.HashPassword(model.Password),
-            CreatedAt = DateTime.UtcNow,
-            UpdatedAt = DateTime.UtcNow,
-        };
-
-        _context.Users.Add(user);
+        _context.Users.Add(MappingUsers.RegisterUserToUser(user));
         await _context.SaveChangesAsync();
 
         return Ok(new { message = "User registered successfully." });
