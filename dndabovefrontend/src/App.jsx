@@ -59,7 +59,9 @@ function App({message}) {
   }
 
   async function fetchproperties() {
-    const data = await fetchEverything("Classes/1")
+    const data = await fetchEverything("Classes/6")
+
+    console.log(typeof data)
     
     console.log(data);
 

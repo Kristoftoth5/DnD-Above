@@ -1,19 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import fetchEverything from "../CommonFunctions/fetchEverything"
 import "../Cards.css"; // Import styles
 
 function RaceCard() {
-    const [selectedRaceId, setSelectedRaceId] = useState(""); // Stores selected race
+
+
+  const [selectedRaceId, setSelectedRaceId] = useState(""); // Stores selected race
   const [dropdownOpen, setDropdownOpen] = useState(false); // Tracks dropdown state
-  const [raceOptionNames, setRaceOptionNames] = useState([]);
-
-  // Dummy options for the dropdown (replace with actual race data)
-  const raceOptionsJSON = fetchEverything("Races");
-  Array.from(raceOptionsJSON).forEach(race => {
-    console.log(race.Name);
-  });
-
+  const [raceOptionNames,setRaceOptionNames] = useState([]);
   const [chosenRace, setChosenRace] = useState("")
+
+  useEffect(()=>{
+    async function fetchdata()
+    {
+    const raceOptionsJSON = await fetchEverything("Races");
+
+      var fasz = [];
+    raceOptionsJSON.forEach(race => {
+      
+      fasz.push(race.name);
+      
+    });
+    setRaceOptionNames(fasz);
+    
+
+    
+
+    }
+
+    fetchdata();
+    
+    
+  },[]);
+
+  console.log(raceOptionNames);
 
   // Handles selection and updates state
   /*const handleSelectRace = (race) => {
@@ -22,6 +42,9 @@ function RaceCard() {
     }
     setDropdownOpen(false); // Close dropdown after selection
   };*/
+
+
+  
 
   return (
     <div className="race-container">
@@ -32,24 +55,24 @@ function RaceCard() {
         <button 
           className="btn btn-secondary dropdown-toggle" 
           type="button"
-          onClick={() => setDropdownOpen(!dropdownOpen)}
+          onClick={() => {console.log(dropdownOpen);setDropdownOpen(!dropdownOpen);}}
           id="plsbepink"
         >
           Select Race
         </button>
 
         {/* Dropdown Menu - Now positioned below the button */}
+        {console.log(dropdownOpen)}
         {dropdownOpen && (
           <div className="dropdown-menu show">
-            {raceOptionNames.map((race, index) => (
+            {raceOptionNames.map( (race,index ) =>(
               <button
-                key={index}
                 className="dropdown-item"
-                onClick={() => {setChosenRace(race);setDropdownOpen(false)}}
+                onClick={() => {setChosenRace(race);setDropdownOpen(false);}}
               >
-                {race}
+              {race}
               </button>
-            ))}
+              ))}
           </div>
         )}
       </div>
