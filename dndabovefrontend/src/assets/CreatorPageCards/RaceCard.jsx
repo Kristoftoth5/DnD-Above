@@ -5,46 +5,55 @@ import "../Cards.css"; // Import styles
 function RaceCard() {
 
 
-  const [selectedRaceId, setSelectedRaceId] = useState(""); // Stores selected race
   const [dropdownOpen, setDropdownOpen] = useState(false); // Tracks dropdown state
   const [raceOptionNames,setRaceOptionNames] = useState([]);
-  const [raceOptionIds,setRaceOptionIds] = useState([]);
-  const [chosenRace, setChosenRace] = useState("")
+  const [chosenRaceId, setChosenRaceId] = useState(0);
+  const [raceChosen, setRaceChosen] = useState(false);
+  const [raceData, setRaceData] = useState();
+
+ 
+
+
 
   useEffect(()=>{
-    async function fetchdata()
+    async function fetchraces()
     {
     const raceOptionsJSON = await fetchEverything("Races");
 
       var fasz = [];
       var fasz2 = [];
     raceOptionsJSON.forEach(race => {
-      
       fasz2.push(race.name);
       fasz2.push(race.id);
 
       fasz.push(fasz2);
-
       fasz2 = [];
-
-      
     });
     setRaceOptionNames(fasz);
     }
-
-    fetchdata();
-    
-    
+    fetchraces();
   },[]);
 
-
-  // Handles selection and updates state
-  /*const handleSelectRace = (race) => {
-    if (!selectedRaces.includes(race)) {
-      setSelectedRaces([...selectedRaces, race]);
+  useEffect(()=>{
+    async function fetchdatabyid() 
+    {
+      setRaceData(await fetchEverything("Races/"+chosenRaceId));
     }
-    setDropdownOpen(false); // Close dropdown after selection
-  };*/
+    fetchdatabyid()
+
+  },[raceChosen])
+
+  
+  function SelectedRace() {
+    return (
+      <>
+        <p className="selected-race"><b>Name: </b>{raceData.name}</p>
+        <p className="selected-race"><b>Age: </b>{raceData.age}</p>
+        <p className="selected-race"><b>Size: </b>{raceData.size}</p>
+        <p className="selected-race"><b>Speed: </b>{raceData.speed}</p>
+      </>
+    )
+  }
 
 
   
@@ -71,7 +80,7 @@ function RaceCard() {
             {raceOptionNames.map( (race, id) =>(
               <button
                 className="dropdown-item"
-                onClick={() => {setChosenRace(race[1]);setDropdownOpen(false);}}
+                onClick={() => {setChosenRaceId(race[1]);setDropdownOpen(false);setRaceChosen(true);}}
               >
               {race[0]}
               </button>
@@ -82,7 +91,8 @@ function RaceCard() {
 
       {/* Display Selected Races BELOW the dropdown */}
       <div className="selected-races">
-        <p className="selected-race">{chosenRace}</p>
+        {raceChosen &&(
+          <SelectedRace/>)}
       </div>
     </div>
   );
