@@ -8,6 +8,7 @@ function RaceCard() {
   const [selectedRaceId, setSelectedRaceId] = useState(""); // Stores selected race
   const [dropdownOpen, setDropdownOpen] = useState(false); // Tracks dropdown state
   const [raceOptionNames,setRaceOptionNames] = useState([]);
+  const [raceOptionIds,setRaceOptionIds] = useState([]);
   const [chosenRace, setChosenRace] = useState("")
 
   useEffect(()=>{
@@ -16,16 +17,19 @@ function RaceCard() {
     const raceOptionsJSON = await fetchEverything("Races");
 
       var fasz = [];
+      var fasz2 = [];
     raceOptionsJSON.forEach(race => {
       
-      fasz.push(race.name);
+      fasz2.push(race.name);
+      fasz2.push(race.id);
+
+      fasz.push(fasz2);
+
+      fasz2 = [];
+
       
     });
     setRaceOptionNames(fasz);
-    
-
-    
-
     }
 
     fetchdata();
@@ -33,7 +37,6 @@ function RaceCard() {
     
   },[]);
 
-  console.log(raceOptionNames);
 
   // Handles selection and updates state
   /*const handleSelectRace = (race) => {
@@ -65,12 +68,12 @@ function RaceCard() {
         {console.log(dropdownOpen)}
         {dropdownOpen && (
           <div className="dropdown-menu show">
-            {raceOptionNames.map( (race,index ) =>(
+            {raceOptionNames.map( (race, id) =>(
               <button
                 className="dropdown-item"
-                onClick={() => {setChosenRace(race);setDropdownOpen(false);}}
+                onClick={() => {setChosenRace(race[1]);setDropdownOpen(false);}}
               >
-              {race}
+              {race[0]}
               </button>
               ))}
           </div>

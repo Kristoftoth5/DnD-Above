@@ -54,7 +54,8 @@
               "RelativeToolTip": "Above_backend\\Migrations\\20250313085852_SwitchedLearnedByToListIntfromListString.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T08:58:52.842Z"
+              "WhenOpened": "2025-03-13T08:58:52.842Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -66,7 +67,8 @@
               "RelativeToolTip": "Above_backend\\Models\\DTOs\\SpellsCreateAndBaseDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T08:57:56.745Z"
+              "WhenOpened": "2025-03-13T08:57:56.745Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -91,7 +93,8 @@
               "RelativeToolTip": "Above_backend\\Migrations\\20250313085445_AddedSkillsprofToFeatures.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T08:54:46.118Z"
+              "WhenOpened": "2025-03-13T08:54:46.118Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -103,7 +106,8 @@
               "RelativeToolTip": "Above_backend\\Controllers\\FeaturesController.cs",
               "ViewState": "AgIAAEcAAAAAAAAAAAAwwGAAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T08:53:18.675Z"
+              "WhenOpened": "2025-03-13T08:53:18.675Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -115,7 +119,8 @@
               "RelativeToolTip": "Above_backend\\Helpers\\MappingFeatures.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T08:53:10.075Z"
+              "WhenOpened": "2025-03-13T08:53:10.075Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -127,7 +132,8 @@
               "RelativeToolTip": "Above_backend\\Models\\DTOs\\FeaturesCreateAndBaseDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T08:53:02.621Z"
+              "WhenOpened": "2025-03-13T08:53:02.621Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -137,9 +143,10 @@
               "RelativeDocumentMoniker": "Above_backend\\Models\\Features.cs",
               "ToolTip": "C:\\Users\\torokmj\\Documents\\GitHub\\DnD-Above\\Above_backend\\Above_backend\\Models\\Features.cs",
               "RelativeToolTip": "Above_backend\\Models\\Features.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAA1wA4AAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAxwA4AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T08:52:23.002Z"
+              "WhenOpened": "2025-03-13T08:52:23.002Z",
+              "EditorCaption": ""
             }
           ]
         }
