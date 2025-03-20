@@ -25,9 +25,9 @@ function AbilityScores() {
   };
 
   return (
-    <div className="race-container"> {/* Reusing race-container design */}
-      <h2 className="race-title">Ability Scores</h2>
-      <h3 className="race-sub-title">Custom or Rolled</h3>
+    <div className="creator-container"> {/* Reusing race-container design */}
+      <h2 className="creator-title">Ability Scores</h2>
+      <h3 className="creator-sub-title">Custom or Rolled</h3>
 
       {/* Six squares for each ability */}
       <div className="ability-grid">

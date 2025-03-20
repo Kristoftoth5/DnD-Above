@@ -503,14 +503,14 @@
         }
       }
     },
-    "/api/Features/{id}": {
+    "/api/Features/Features/originclassid/{originclassid}": {
       "get": {
         "tags": [
           "Features"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "originclassid",
             "in": "path",
             "required": true,
             "schema": {
@@ -525,23 +525,181 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
                 }
               }
             }
           }
         }
-      },
+      }
+    },
+    "/api/Features/Features/originsubclassid/{originsubclassid}": {
+      "get": {
+        "tags": [
+          "Features"
+        ],
+        "parameters": [
+          {
+            "name": "originsubclassid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Features/Features/originequipmentid/{originequipmentid}": {
+      "get": {
+        "tags": [
+          "Features"
+        ],
+        "parameters": [
+          {
+            "name": "originequipmentid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Features/Features/originraceid/{originraceid}": {
+      "get": {
+        "tags": [
+          "Features"
+        ],
+        "parameters": [
+          {
+            "name": "originraceid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Features/{id}": {
       "delete": {
         "tags": [
           "Features"
@@ -648,14 +806,14 @@
         }
       }
     },
-    "/api/FeaturesToFeaturesConnections/{id}": {
+    "/api/FeaturesToFeaturesConnections/{originid}": {
       "get": {
         "tags": [
           "FeaturesToFeaturesConnections"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "originid",
             "in": "path",
             "required": true,
             "schema": {
@@ -670,23 +828,34 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Features"
+                  }
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Features"
+                  }
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Features"
+                  }
                 }
               }
             }
           }
         }
-      },
+      }
+    },
+    "/api/FeaturesToFeaturesConnections/{id}": {
       "put": {
         "tags": [
           "FeaturesToFeaturesConnections"
@@ -1362,37 +1531,6 @@
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Users/register": {
-      "post": {
-        "tags": [
-          "Users"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UsersCreateDTO"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UsersCreateDTO"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UsersCreateDTO"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "OK"
@@ -2545,24 +2683,6 @@
           "updatedAt": {
             "type": "string",
             "format": "date-time"
-          }
-        },
-        "additionalProperties": false
-      },
-      "UsersCreateDTO": {
-        "type": "object",
-        "properties": {
-          "userName": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false

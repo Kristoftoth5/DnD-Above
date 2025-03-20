@@ -38,9 +38,9 @@ function AbilityScores() {
   };
 
   return (
-    <div className="race-container"> {/* Reusing race-container design */}
-      <h2 className="race-title">Ability Scores</h2>
-      <h3 className="race-sub-title">
+    <div className="creator-container"> {/* Reusing race-container design */}
+      <h2 className="creator-title">Ability Scores</h2>
+      <h3 className="creator-sub-title">
         Heroic Point Buy &nbsp; <span className="point-pool">Points Left: {pointPool}</span>
       </h3>
 
