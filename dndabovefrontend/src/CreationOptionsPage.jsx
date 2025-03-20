@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
-import CreatorPage from "./CreatorPage";
+import { CreatorContext } from "./assets/BringStatChoice.jsx";
 
 
 
@@ -10,9 +11,7 @@ function CreationOptionsPage() {
   const [chosenStatCalc, setChosenStatCalc] = useState(1);
   const [dropdown, setDropdown] = useState(false);
 
-  const [selectedOption, setSelectedOption] = useState(0);
-
-  const itIsFalse = false;
+  const { setSelectedOption } = useContext(CreatorContext);
 
   const navigate = useNavigate();
   
@@ -22,7 +21,7 @@ function CreationOptionsPage() {
   }, []);
 
   function statCalcChoice(choice) {
-    setChosenStatCalc(choice);
+    setSelectedOption(choice);
     setDropdown(false); // Close dropdown after selection
   }
 
@@ -65,7 +64,6 @@ function CreationOptionsPage() {
               <button className="btn btn-outline-secondary" onClick={() => {statCalcChoice(3);navigate("/character-creator")}}>
                 Custom or Rolled
               </button>
-              {itIsFalse && <CreatorPage option={selectedOption} />}
             </div>
           )}
         </div>
