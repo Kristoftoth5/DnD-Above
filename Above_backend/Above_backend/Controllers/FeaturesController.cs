@@ -46,9 +46,9 @@ namespace Above_backend.Controllers
         }*/
 
         [HttpGet("Features/originclassid/{originclassid}")]
-        public async Task<ActionResult<IEnumerable<FeaturesDisplayDTO>>> GetFeatures(int originclassid)
+        public async Task<ActionResult<IEnumerable<FeaturesDisplayDTO>>> GetFeaturesByClass(int originclassid)
         {
-            var DisplayDtoFeaturesWithOriginClassId = _context.Features.Where(x => x.OriginClassId != null).Select(x => MappingFeatures.FeaturesToFeaturesDisplayDto(x)).ToList();
+            var DisplayDtoFeaturesWithOriginClassId = await _context.Features.Where(x => x.OriginClassId != originclassid).Select(x => MappingFeatures.FeaturesToFeaturesDisplayDto(x)).ToListAsync();
 
             if (DisplayDtoFeaturesWithOriginClassId == null)
             {
@@ -59,9 +59,9 @@ namespace Above_backend.Controllers
         }
 
         [HttpGet("Features/originsubclassid/{originsubclassid}")]
-        public async Task<ActionResult<IEnumerable<FeaturesDisplayDTO>>> GetFeatures(int originsubclassid)
+        public async Task<ActionResult<IEnumerable<FeaturesDisplayDTO>>> GetFeaturesBySubclass(int originsubclassid)
         {
-            var DisplayDtoFeaturesWithOriginClassId = _context.Features.Where(x => x.OriginSubClassId != null).Select(x => MappingFeatures.FeaturesToFeaturesDisplayDto(x)).ToList();
+            var DisplayDtoFeaturesWithOriginClassId = await _context.Features.Where(x => x.OriginSubClassId != originsubclassid).Select(x => MappingFeatures.FeaturesToFeaturesDisplayDto(x)).ToListAsync();
 
             if (DisplayDtoFeaturesWithOriginClassId == null)
             {
@@ -72,9 +72,9 @@ namespace Above_backend.Controllers
         }
 
         [HttpGet("Features/originequipmentid/{originequipmentid}")]
-        public async Task<ActionResult<IEnumerable<FeaturesDisplayDTO>>> GetFeatures(int originequipmentid)
+        public async Task<ActionResult<IEnumerable<FeaturesDisplayDTO>>> GetFeaturesByEquipment(int originequipmentid)
         {
-            var DisplayDtoFeaturesWithOriginClassId = _context.Features.Where(x => x.OriginEquipmentId != null).Select(x => MappingFeatures.FeaturesToFeaturesDisplayDto(x)).ToList();
+            var DisplayDtoFeaturesWithOriginClassId = await _context.Features.Where(x => x.OriginEquipmentId != originequipmentid).Select(x => MappingFeatures.FeaturesToFeaturesDisplayDto(x)).ToListAsync();
 
             if (DisplayDtoFeaturesWithOriginClassId == null)
             {
@@ -85,9 +85,9 @@ namespace Above_backend.Controllers
         }
 
         [HttpGet("Features/originraceid/{originraceid}")]
-        public async Task<ActionResult<IEnumerable<FeaturesDisplayDTO>>> GetFeatures(int originraceid)
+        public async Task<ActionResult<IEnumerable<FeaturesDisplayDTO>>> GetFeaturesByRace(int originraceid)
         {
-            var DisplayDtoFeaturesWithOriginClassId = _context.Features.Where(x => x.OriginRaceId != null).Select(x => MappingFeatures.FeaturesToFeaturesDisplayDto(x)).ToList();
+            var DisplayDtoFeaturesWithOriginClassId = await _context.Features.Where(x => x.OriginRaceId != originraceid).Select(x => MappingFeatures.FeaturesToFeaturesDisplayDto(x)).ToListAsync();
 
             if (DisplayDtoFeaturesWithOriginClassId == null)
             {
