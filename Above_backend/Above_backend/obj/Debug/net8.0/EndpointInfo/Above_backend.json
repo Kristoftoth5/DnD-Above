@@ -564,6 +564,191 @@
         }
       }
     },
+    "/api/FeaturesToFeaturesConnections": {
+      "get": {
+        "tags": [
+          "FeaturesToFeaturesConnections"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "FeaturesToFeaturesConnections"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/FeaturesToFeaturesConnections/{id}": {
+      "get": {
+        "tags": [
+          "FeaturesToFeaturesConnections"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "FeaturesToFeaturesConnections"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "FeaturesToFeaturesConnections"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Races": {
       "get": {
         "tags": [
@@ -1183,6 +1368,37 @@
           }
         }
       }
+    },
+    "/api/Users/register": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsersCreateDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsersCreateDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsersCreateDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1602,6 +1818,13 @@
             },
             "nullable": true
           },
+          "skillProf": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
           "originClassId": {
             "type": "integer",
             "format": "int32",
@@ -1700,6 +1923,13 @@
               "type": "string"
             },
             "nullable": true
+          },
+          "skillProf": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1768,7 +1998,32 @@
             },
             "nullable": true
           },
+          "skillProf": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
           "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FeaturesToFeaturesConnection": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "originFeatureId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "subFeatureId": {
             "type": "integer",
             "format": "int32"
           }
@@ -2045,29 +2300,13 @@
             "format": "int32",
             "nullable": true
           },
-          "originClassId": {
-            "type": "integer",
-            "format": "int32",
+          "learnedBy": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
             "nullable": true
-          },
-          "classes": {
-            "$ref": "#/components/schemas/Classes"
-          },
-          "originSubClassId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "subClasses": {
-            "$ref": "#/components/schemas/SubClasses"
-          },
-          "originRaceId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "races": {
-            "$ref": "#/components/schemas/Races"
           },
           "originEquipmentId": {
             "type": "integer",
@@ -2128,19 +2367,12 @@
             "format": "int32",
             "nullable": true
           },
-          "originClassId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "originSubClassId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "originRaceId": {
-            "type": "integer",
-            "format": "int32",
+          "learnedBy": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
             "nullable": true
           },
           "originEquipmentId": {
@@ -2199,19 +2431,12 @@
             "format": "int32",
             "nullable": true
           },
-          "originClassId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "originSubClassId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "originRaceId": {
-            "type": "integer",
-            "format": "int32",
+          "learnedBy": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
             "nullable": true
           },
           "originEquipmentId": {
@@ -2320,6 +2545,24 @@
           "updatedAt": {
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UsersCreateDTO": {
+        "type": "object",
+        "properties": {
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
