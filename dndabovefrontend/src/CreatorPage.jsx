@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import RaceCard from './assets/CreatorPageCards/RaceCard'
 import "bootstrap/dist/css/bootstrap.min.css";
+import BackgroundCard from './assets/CreatorPageCards/BackgroundCard';
 
 function CreatorPage () 
 {
@@ -13,6 +14,8 @@ function CreatorPage ()
         
         <div className='container'>
             <RaceCard/>
+
+            <BackgroundCard/>
         </div>
         </>
     );
