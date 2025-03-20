@@ -1,4 +1,4 @@
-.container {
+.creator-container {
   width: 80%;
   margin: 20px auto;
   padding: 20px;
@@ -13,13 +13,13 @@
   position: relative;
 }
 
-.title {
+.creator-title {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-.sub-title {
+.creator-sub-title {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 10px;

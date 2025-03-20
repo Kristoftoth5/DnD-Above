@@ -58,8 +58,8 @@ function RaceCard() {
   
 
   return (
-    <div className="container">
-      <h2 className="title">Races</h2>
+    <div className="creator-container">
+      <h2 className="creator-title">Races</h2>
 
       {/* Dropdown Button */}
       <div className="dropdown-wrapper">

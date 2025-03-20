@@ -32,6 +32,8 @@ function Background()
 
         <p><b>Tool Proficiency: </b>{chosenTool}</p>
 
+        <p><b>Equipment: </b>{chosenTool}, 15gp</p>
+
     </div>
     </>
     )
@@ -39,8 +41,8 @@ function Background()
 
 
 return(
-    <div className="container">
-    <h2 className="title">Background</h2>
+    <div className="creator-container">
+    <h2 className="creator-title">Background</h2>
 
 
     {/*Chosen skill 1*/}
