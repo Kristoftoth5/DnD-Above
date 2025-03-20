@@ -1,37 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\",
+  "WorkspaceRootPath": "F:\\gulyasa\\DnD-Above\\Above_backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250313085852_SwitchedLearnedByToListIntfromListString.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Above_backend\\Migrations\\20250313085852_SwitchedLearnedByToListIntfromListString.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\project\\dnd-above\\above_backend\\above_backend\\models\\spells.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\dnd-above\\above_backend\\above_backend\\models\\spells.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\models\\spells.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\project\\dnd-above\\above_backend\\above_backend\\models\\dtos\\spellscreateandbasedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\dnd-above\\above_backend\\above_backend\\migrations\\20250313085852_switchedlearnedbytolistintfromliststring.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\migrations\\20250313085852_switchedlearnedbytolistintfromliststring.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\dnd-above\\above_backend\\above_backend\\models\\dtos\\spellscreateandbasedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\models\\dtos\\spellscreateandbasedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\project\\dnd-above\\above_backend\\above_backend\\helpers\\mappingfeatures.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\dnd-above\\above_backend\\above_backend\\helpers\\mappingfeatures.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\helpers\\mappingfeatures.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\project\\dnd-above\\above_backend\\above_backend\\models\\features.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\dnd-above\\above_backend\\above_backend\\models\\features.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\models\\features.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\project\\dnd-above\\above_backend\\above_backend\\migrations\\20250313085445_addedskillsproftofeatures.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\dnd-above\\above_backend\\above_backend\\migrations\\20250313085445_addedskillsproftofeatures.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\migrations\\20250313085445_addedskillsproftofeatures.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\project\\dnd-above\\above_backend\\above_backend\\controllers\\featurescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\dnd-above\\above_backend\\above_backend\\controllers\\featurescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\controllers\\featurescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\project\\dnd-above\\above_backend\\above_backend\\models\\dtos\\featurescreateandbasedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\dnd-above\\above_backend\\above_backend\\models\\dtos\\featurescreateandbasedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\models\\dtos\\featurescreateandbasedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -42,15 +42,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "20250313085852_SwitchedLearnedByToListIntfromListString.cs",
-              "DocumentMoniker": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250313085852_SwitchedLearnedByToListIntfromListString.cs",
+              "DocumentMoniker": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250313085852_SwitchedLearnedByToListIntfromListString.cs",
               "RelativeDocumentMoniker": "Above_backend\\Migrations\\20250313085852_SwitchedLearnedByToListIntfromListString.cs",
-              "ToolTip": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250313085852_SwitchedLearnedByToListIntfromListString.cs",
+              "ToolTip": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250313085852_SwitchedLearnedByToListIntfromListString.cs",
               "RelativeToolTip": "Above_backend\\Migrations\\20250313085852_SwitchedLearnedByToListIntfromListString.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -61,24 +61,23 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "SpellsCreateAndBaseDTO.cs",
-              "DocumentMoniker": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Models\\DTOs\\SpellsCreateAndBaseDTO.cs",
+              "DocumentMoniker": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Models\\DTOs\\SpellsCreateAndBaseDTO.cs",
               "RelativeDocumentMoniker": "Above_backend\\Models\\DTOs\\SpellsCreateAndBaseDTO.cs",
-              "ToolTip": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Models\\DTOs\\SpellsCreateAndBaseDTO.cs",
+              "ToolTip": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Models\\DTOs\\SpellsCreateAndBaseDTO.cs",
               "RelativeToolTip": "Above_backend\\Models\\DTOs\\SpellsCreateAndBaseDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T08:57:56.745Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T08:57:56.745Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Spells.cs",
-              "DocumentMoniker": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Models\\Spells.cs",
+              "DocumentMoniker": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Models\\Spells.cs",
               "RelativeDocumentMoniker": "Above_backend\\Models\\Spells.cs",
-              "ToolTip": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Models\\Spells.cs",
+              "ToolTip": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Models\\Spells.cs",
               "RelativeToolTip": "Above_backend\\Models\\Spells.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-13T08:57:48.045Z",
               "EditorCaption": ""
@@ -87,22 +86,21 @@
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "20250313085445_AddedSkillsprofToFeatures.cs",
-              "DocumentMoniker": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250313085445_AddedSkillsprofToFeatures.cs",
+              "DocumentMoniker": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250313085445_AddedSkillsprofToFeatures.cs",
               "RelativeDocumentMoniker": "Above_backend\\Migrations\\20250313085445_AddedSkillsprofToFeatures.cs",
-              "ToolTip": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250313085445_AddedSkillsprofToFeatures.cs",
+              "ToolTip": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250313085445_AddedSkillsprofToFeatures.cs",
               "RelativeToolTip": "Above_backend\\Migrations\\20250313085445_AddedSkillsprofToFeatures.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T08:54:46.118Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T08:54:46.118Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "FeaturesController.cs",
-              "DocumentMoniker": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Controllers\\FeaturesController.cs",
+              "DocumentMoniker": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Controllers\\FeaturesController.cs",
               "RelativeDocumentMoniker": "Above_backend\\Controllers\\FeaturesController.cs",
-              "ToolTip": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Controllers\\FeaturesController.cs",
+              "ToolTip": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Controllers\\FeaturesController.cs",
               "RelativeToolTip": "Above_backend\\Controllers\\FeaturesController.cs",
               "ViewState": "AgIAAEcAAAAAAAAAAAAwwGAAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -112,22 +110,21 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "MappingFeatures.cs",
-              "DocumentMoniker": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Helpers\\MappingFeatures.cs",
+              "DocumentMoniker": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Helpers\\MappingFeatures.cs",
               "RelativeDocumentMoniker": "Above_backend\\Helpers\\MappingFeatures.cs",
-              "ToolTip": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Helpers\\MappingFeatures.cs",
+              "ToolTip": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Helpers\\MappingFeatures.cs",
               "RelativeToolTip": "Above_backend\\Helpers\\MappingFeatures.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T08:53:10.075Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T08:53:10.075Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "FeaturesCreateAndBaseDTO.cs",
-              "DocumentMoniker": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Models\\DTOs\\FeaturesCreateAndBaseDTO.cs",
+              "DocumentMoniker": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Models\\DTOs\\FeaturesCreateAndBaseDTO.cs",
               "RelativeDocumentMoniker": "Above_backend\\Models\\DTOs\\FeaturesCreateAndBaseDTO.cs",
-              "ToolTip": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Models\\DTOs\\FeaturesCreateAndBaseDTO.cs",
+              "ToolTip": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Models\\DTOs\\FeaturesCreateAndBaseDTO.cs",
               "RelativeToolTip": "Above_backend\\Models\\DTOs\\FeaturesCreateAndBaseDTO.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -137,14 +134,13 @@
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Features.cs",
-              "DocumentMoniker": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Models\\Features.cs",
+              "DocumentMoniker": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Models\\Features.cs",
               "RelativeDocumentMoniker": "Above_backend\\Models\\Features.cs",
-              "ToolTip": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Models\\Features.cs",
+              "ToolTip": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Models\\Features.cs",
               "RelativeToolTip": "Above_backend\\Models\\Features.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAA1wA4AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-13T08:52:23.002Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-13T08:52:23.002Z"
             }
           ]
         }

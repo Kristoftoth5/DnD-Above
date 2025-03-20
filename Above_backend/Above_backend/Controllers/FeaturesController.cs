@@ -32,7 +32,7 @@ namespace Above_backend.Controllers
         }
 
         // GET: api/Features/5
-        [HttpGet("{id}")]
+        /*[HttpGet("{id}")]
         public async Task<ActionResult<FeaturesDisplayDTO>> GetFeatures(int id)
         {
             var feature = await _context.Features.FindAsync(id);
@@ -43,6 +43,58 @@ namespace Above_backend.Controllers
             }
 
             return MappingFeatures.FeaturesToFeaturesDisplayDto(feature);
+        }*/
+
+        [HttpGet("Features/originclassid/{originclassid}")]
+        public async Task<ActionResult<IEnumerable<FeaturesDisplayDTO>>> GetFeatures(int originclassid)
+        {
+            var DisplayDtoFeaturesWithOriginClassId = _context.Features.Where(x => x.OriginClassId != null).Select(x => MappingFeatures.FeaturesToFeaturesDisplayDto(x)).ToList();
+
+            if (DisplayDtoFeaturesWithOriginClassId == null)
+            {
+                return NotFound();
+            }
+
+            return DisplayDtoFeaturesWithOriginClassId;
+        }
+
+        [HttpGet("Features/originsubclassid/{originsubclassid}")]
+        public async Task<ActionResult<IEnumerable<FeaturesDisplayDTO>>> GetFeatures(int originsubclassid)
+        {
+            var DisplayDtoFeaturesWithOriginClassId = _context.Features.Where(x => x.OriginSubClassId != null).Select(x => MappingFeatures.FeaturesToFeaturesDisplayDto(x)).ToList();
+
+            if (DisplayDtoFeaturesWithOriginClassId == null)
+            {
+                return NotFound();
+            }
+
+            return DisplayDtoFeaturesWithOriginClassId;
+        }
+
+        [HttpGet("Features/originequipmentid/{originequipmentid}")]
+        public async Task<ActionResult<IEnumerable<FeaturesDisplayDTO>>> GetFeatures(int originequipmentid)
+        {
+            var DisplayDtoFeaturesWithOriginClassId = _context.Features.Where(x => x.OriginEquipmentId != null).Select(x => MappingFeatures.FeaturesToFeaturesDisplayDto(x)).ToList();
+
+            if (DisplayDtoFeaturesWithOriginClassId == null)
+            {
+                return NotFound();
+            }
+
+            return DisplayDtoFeaturesWithOriginClassId;
+        }
+
+        [HttpGet("Features/originraceid/{originraceid}")]
+        public async Task<ActionResult<IEnumerable<FeaturesDisplayDTO>>> GetFeatures(int originraceid)
+        {
+            var DisplayDtoFeaturesWithOriginClassId = _context.Features.Where(x => x.OriginRaceId != null).Select(x => MappingFeatures.FeaturesToFeaturesDisplayDto(x)).ToList();
+
+            if (DisplayDtoFeaturesWithOriginClassId == null)
+            {
+                return NotFound();
+            }
+
+            return DisplayDtoFeaturesWithOriginClassId;
         }
 
         // PUT: api/Features/5
