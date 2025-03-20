@@ -8,7 +8,6 @@ function RaceCard() {
   const [dropdownOpen, setDropdownOpen] = useState(false); // Tracks dropdown state
   const [raceOptionNames,setRaceOptionNames] = useState([]);
   const [chosenRaceId, setChosenRaceId] = useState(0);
-  const [raceChosen, setRaceChosen] = useState(false);
   const [raceData, setRaceData] = useState();
 
  
@@ -41,16 +40,16 @@ function RaceCard() {
     }
     fetchdatabyid()
 
-  },[raceChosen])
+  },[chosenRaceId])
 
   
   function SelectedRace() {
     return (
       <>
-        <p className="selected-race"><b>Name: </b>{raceData.name}</p>
-        <p className="selected-race"><b>Age: </b>{raceData.age}</p>
-        <p className="selected-race"><b>Size: </b>{raceData.size}</p>
-        <p className="selected-race"><b>Speed: </b>{raceData.speed}</p>
+        <p className="selected-singular"><b>Name: </b>{raceData.name}</p>
+        <p className="selected-singular"><b>Age: </b>{raceData.age}</p>
+        <p className="selected-singular"><b>Size: </b>{raceData.size}</p>
+        <p className="selected-singular"><b>Speed: </b>{raceData.speed}</p>
       </>
     )
   }
@@ -59,28 +58,27 @@ function RaceCard() {
   
 
   return (
-    <div className="race-container">
-      <h2 className="race-title">Races</h2>
+    <div className="container">
+      <h2 className="title">Races</h2>
 
       {/* Dropdown Button */}
       <div className="dropdown-wrapper">
         <button 
           className="btn btn-secondary dropdown-toggle" 
           type="button"
-          onClick={() => {console.log(dropdownOpen);setDropdownOpen(!dropdownOpen);}}
+          onClick={() => {setDropdownOpen(!dropdownOpen);}}
           id="plsbepink"
         >
           Select Race
         </button>
 
         {/* Dropdown Menu - Now positioned below the button */}
-        {console.log(dropdownOpen)}
         {dropdownOpen && (
           <div className="dropdown-menu show">
             {raceOptionNames.map( (race, id) =>(
               <button
                 className="dropdown-item"
-                onClick={() => {setChosenRaceId(race[1]);setDropdownOpen(false);setRaceChosen(true);}}
+                onClick={() => {setChosenRaceId(race[1]);setDropdownOpen(false);console.log("chosenRaceId: "+chosenRaceId);}}
               >
               {race[0]}
               </button>
@@ -90,8 +88,8 @@ function RaceCard() {
       </div>
 
       {/* Display Selected Races BELOW the dropdown */}
-      <div className="selected-races">
-        {raceChosen &&(
+      <div className="selected-multiple">
+        {chosenRaceId != 0 &&(
           <SelectedRace/>)}
       </div>
     </div>
