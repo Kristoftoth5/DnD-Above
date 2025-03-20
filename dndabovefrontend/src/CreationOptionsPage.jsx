@@ -1,13 +1,21 @@
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
+import CreatorPage from "./CreatorPage";
+
+
 
 function CreationOptionsPage() {
   const [isChecked1, setIsChecked1] = useState(false);
-  const [chosenStatCalc, setChosenStatCalc] = useState(0);
+  const [chosenStatCalc, setChosenStatCalc] = useState(1);
   const [dropdown, setDropdown] = useState(false);
 
+  const [selectedOption, setSelectedOption] = useState(0);
+
+  const itIsFalse = false;
+
   const navigate = useNavigate();
+  
 
   useEffect(() => {
     console.log("Be van töltve az oldal, ye.");
@@ -55,11 +63,9 @@ function CreationOptionsPage() {
                 Heroic Point Buy
               </button>
               <button className="btn btn-outline-secondary" onClick={() => {statCalcChoice(3);navigate("/character-creator")}}>
-                Rolled
+                Custom or Rolled
               </button>
-              <button className="btn btn-outline-secondary" onClick={() => {statCalcChoice(4);navigate("/character-creator")}}>
-                Custom
-              </button>
+              {itIsFalse && <CreatorPage option={selectedOption} />}
             </div>
           )}
         </div>

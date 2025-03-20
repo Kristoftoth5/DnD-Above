@@ -1,10 +1,15 @@
 import { useEffect, useState } from 'react'
 import RaceCard from './assets/CreatorPageCards/RaceCard'
+import HeroicPointBuyStatCard from './assets/CreatorPageCards/StatCard/HeroicPointBuyStatCard'
 import "bootstrap/dist/css/bootstrap.min.css";
-import BackgroundCard from './assets/CreatorPageCards/BackgroundCard';
+import CustomorRoledStatStatCard from './assets/CreatorPageCards/StatCard/CustomorRolledStatCard'
+import PointBuyStatCard from './assets/CreatorPageCards/StatCard/PointBuyStatCard'
 
-function CreatorPage () 
+function CreatorPage ({option}) 
 {
+
+
+
     useEffect(()=>{
         console.log("Be van töltve az oldal, ye.")
     })
@@ -15,7 +20,7 @@ function CreatorPage ()
         <div className='container'>
             <RaceCard/>
 
-            <BackgroundCard/>
+            {option == 1 ? <PointBuyStatCard/> : option == 2 ? <HeroicPointBuyStatCard/> : <CustomorRoledStatStatCard/>}
         </div>
         </>
     );
