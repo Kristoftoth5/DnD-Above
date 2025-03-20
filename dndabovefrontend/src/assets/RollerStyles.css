@@ -1,0 +1,73 @@
+.dice-roller {
+  background-color: darkblue;
+  border: 2px solid brown;
+  padding: 15px;
+  border-radius: 8px;
+  width: 250px;
+  text-align: center;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+/* Style for input fields */
+.dice-inputs {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.dice-inputs label {
+  color: white;
+  margin-bottom: 5px;
+}
+
+.dice-inputs input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid brown;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Hexagon button container */
+.hexagon-btn-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+/* Hexagon button styling */
+.hexagon-btn {
+  background-color: #ffcc00;
+  color: black;
+  font-weight: bold;
+  border: none;
+  width: 80px;
+  height: 46px;
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect */
+.hexagon-btn:hover {
+  background-color: #e6b800;
+  transform: scale(1.1);
+  box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.4);
+}
+
+.dice-roller
+{
+  color: white;
+}
