@@ -10,7 +10,6 @@ import Header from './assets/Header.jsx'
 import Home from './Home.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
     <BrowserRouter>
       <Header />
       <CreatorProvider>
@@ -22,6 +21,4 @@ createRoot(document.getElementById('root')).render(
       </CreatorProvider>
     </BrowserRouter>
 
-
-  </StrictMode>,
 )

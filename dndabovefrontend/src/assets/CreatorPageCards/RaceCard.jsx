@@ -9,7 +9,8 @@ function RaceCard() {
   const [raceOptionNames,setRaceOptionNames] = useState([]);
   const [chosenRaceId, setChosenRaceId] = useState(0);
   const [raceData, setRaceData] = useState();
-  const [raceFeatures, setraceFeatures] = useState();
+  const [raceFeatures, setRaceFeatures] = useState();
+  const [subRaceFeatures, setSubRaceFeatures] = useState();
 
  
 
@@ -39,12 +40,19 @@ function RaceCard() {
     {
       setRaceData(await fetchEverything("Races/"+chosenRaceId));
 
-      setraceFeatures(await fetchEverything("Features/Features/originraceid/"+chosenRaceId));
-      
+      setRaceFeatures(await fetchEverything("Features/Features/originraceid/"+chosenRaceId));
 
+      raceFeatures.forEach( async feature => {
+        if(feature.name = "Subrace")
+        {
+          setSubRaceFeatures(await fetchEverything("FeaturesToFeaturesConnection/"+feature.id))
+          console.log(subRaceFeatures);
+        }
+        
+      })
+      
     }
     fetchdatabyid()
-
   },[chosenRaceId])
 
   
@@ -61,6 +69,7 @@ function RaceCard() {
             <p><b>{feature.name}</b></p>
             <p><b>Description: </b>{feature.description}</p>
           </div>
+          
         ))}
       </>
     )
