@@ -1,12 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\gulyasa\\DnD-Above\\Above_backend\\",
-  "Documents": [],
+  "WorkspaceRootPath": "D:\\gulyasaz\\DnD-Above\\Above_backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|d:\\gulyasaz\\dnd-above\\above_backend\\above_backend\\controllers\\featurescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\controllers\\featurescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FeaturesController.cs",
+              "DocumentMoniker": "D:\\gulyasaz\\DnD-Above\\Above_backend\\Above_backend\\Controllers\\FeaturesController.cs",
+              "RelativeDocumentMoniker": "Above_backend\\Controllers\\FeaturesController.cs",
+              "ToolTip": "D:\\gulyasaz\\DnD-Above\\Above_backend\\Above_backend\\Controllers\\FeaturesController.cs",
+              "RelativeToolTip": "Above_backend\\Controllers\\FeaturesController.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAwwDUAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-24T08:08:01.186Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj": {}
+    "D:\\gulyasaz\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj": {}
   },
   "projects": {
-    "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj": {
+    "D:\\gulyasaz\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
+        "projectUniqueName": "D:\\gulyasaz\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
         "projectName": "Above_backend",
-        "projectPath": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
+        "projectPath": "D:\\gulyasaz\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
         "packagesPath": "C:\\Users\\gulyasaz\\.nuget\\packages\\",
-        "outputPath": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\obj\\",
+        "outputPath": "D:\\gulyasaz\\DnD-Above\\Above_backend\\Above_backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -25,8 +25,7 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
         },
         "frameworks": {
           "net8.0": {
