@@ -42,16 +42,20 @@ function RaceCard() {
 
       setRaceFeatures(await fetchEverything("Features/Features/originraceid/"+chosenRaceId));
 
+      var prevSubRaceFeatures = subRaceFeatures;
       raceFeatures.forEach( async feature => {
         if(feature.name = "Subrace")
         {
-          setSubRaceFeatures(await fetchEverything("FeaturesToFeaturesConnection/"+feature.id))
-          console.log(subRaceFeatures);
+          setSubRaceFeatures(await fetchEverything("FeaturesToFeaturesConnections/"+feature.id));
         }
-        
       })
+      if (prevSubRaceFeatures == subRaceFeatures)
+      {
+        setSubRaceFeatures(undefined);
+      }
       
     }
+    console.log(subRaceFeatures);
     fetchdatabyid()
   },[chosenRaceId])
 
@@ -68,9 +72,22 @@ function RaceCard() {
           <div className="selected-feature">
             <p><b>{feature.name}</b></p>
             <p><b>Description: </b>{feature.description}</p>
+            
+
+            {/*The subrace features are being displayed at the next selected race. WTF*/} 
           </div>
-          
         ))}
+        <h3>Subrace Features</h3>
+        {subRaceFeatures !== undefined && (
+          subRaceFeatures.map((feature, id)=>(
+            <div className="selected-feature">
+              <p><b>{feature.name}</b></p>
+              <p><b>Description: </b>{feature.description}</p>
+            </div>
+          ))
+
+        )}
+
       </>
     )
   }
@@ -110,7 +127,7 @@ function RaceCard() {
 
       {/* Display Selected Races BELOW the dropdown */}
       <div className="selected-multiple">
-        {chosenRaceId != 0 &&(
+        {chosenRaceId != 0 & raceFeatures !== undefined &&(
           <SelectedRace/>)}
       </div>
     </div>
