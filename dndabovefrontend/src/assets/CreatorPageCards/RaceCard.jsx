@@ -9,6 +9,7 @@ function RaceCard() {
   const [raceOptionNames,setRaceOptionNames] = useState([]);
   const [chosenRaceId, setChosenRaceId] = useState(0);
   const [raceData, setRaceData] = useState();
+  const [raceFeatures, setraceFeatures] = useState();
 
  
 
@@ -38,7 +39,9 @@ function RaceCard() {
     {
       setRaceData(await fetchEverything("Races/"+chosenRaceId));
 
+      setraceFeatures(await fetchEverything("Features/Features/originraceid/"+chosenRaceId));
       
+
     }
     fetchdatabyid()
 
@@ -52,6 +55,13 @@ function RaceCard() {
         <p className="selected-singular"><b>Age: </b>{raceData.age}</p>
         <p className="selected-singular"><b>Size: </b>{raceData.size}</p>
         <p className="selected-singular"><b>Speed: </b>{raceData.speed}</p>
+
+        {raceFeatures.map((feature, id)=>(
+          <div className="selected-feature">
+            <p><b>{feature.name}</b></p>
+            <p><b>Description: </b>{feature.description}</p>
+          </div>
+        ))}
       </>
     )
   }

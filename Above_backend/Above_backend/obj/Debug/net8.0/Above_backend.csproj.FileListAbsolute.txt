@@ -955,6 +955,9 @@ F:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\BCrypt.Net-Nex
 F:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 F:\gulyasa\Project\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\BCrypt.Net-Next.dll
 F:\gulyasa\Project\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\gulyasaz\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.dll
+D:\gulyasaz\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\refint\Above_backend.dll
+D:\gulyasaz\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.pdb
 C:\Users\torokmj\Documents\GitHub\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\torokmj\Documents\GitHub\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\appsettings.json
 C:\Users\torokmj\Documents\GitHub\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Above_backend.staticwebassets.endpoints.json
