@@ -1743,7 +1743,7 @@
             "format": "int32",
             "nullable": true
           },
-          "weaponType": {
+          "equipmentType": {
             "type": "string",
             "nullable": true
           },
@@ -1806,7 +1806,7 @@
             "type": "string",
             "nullable": true
           },
-          "weaponType": {
+          "equipmentType": {
             "type": "string",
             "nullable": true
           },
@@ -1865,7 +1865,7 @@
             "type": "string",
             "nullable": true
           },
-          "weaponType": {
+          "equipmentType": {
             "type": "string",
             "nullable": true
           },

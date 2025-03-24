@@ -6,7 +6,7 @@
         public string Rarity { get; set; }
         public int? ProfReq { get; set; }
         public string? DamageDie { get; set; }
-        public string? WeaponType { get; set; }
+        public string? EquipmentType { get; set; }
         public string? DamageType { get; set; }
         public List<string>? Properties { get; set; }
         public int? AC { get; set; }

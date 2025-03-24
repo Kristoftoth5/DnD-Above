@@ -37,6 +37,8 @@ function RaceCard() {
     async function fetchdatabyid() 
     {
       setRaceData(await fetchEverything("Races/"+chosenRaceId));
+
+      
     }
     fetchdatabyid()
 
