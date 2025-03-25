@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "tKu3qWbsA0BDh3ee4nT1ziekBfnudGFhUAeZSZ0/NnY=",
+  "Hash": "B+Cs0nOSTJ5JqNFinWZitCoj7h5MCV7LErmqZeBGAuM=",
   "Source": "Above_backend",
   "BasePath": "_content/Above_backend",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

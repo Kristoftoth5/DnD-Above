@@ -41,56 +41,72 @@ function RaceCard() {
       setRaceData(await fetchEverything("Races/"+chosenRaceId));
 
       setRaceFeatures(await fetchEverything("Features/Features/originraceid/"+chosenRaceId));
-
-      var prevSubRaceFeatures = subRaceFeatures;
-      raceFeatures.forEach( async feature => {
-        if(feature.name = "Subrace")
-        {
-          setSubRaceFeatures(await fetchEverything("FeaturesToFeaturesConnections/"+feature.id));
-        }
-      })
-      if (prevSubRaceFeatures == subRaceFeatures)
-      {
-        setSubRaceFeatures(undefined);
-      }
-      
     }
-    console.log(subRaceFeatures);
     fetchdatabyid()
   },[chosenRaceId])
 
+  useEffect(()=>{
+    async function fetchsubracethings(id)
+    {
+      setSubRaceFeatures(await fetchEverything("FeaturesToFeaturesConnections/"+id));
+    }
+
+    var prevsubacefeatures = subRaceFeatures;
+    var subracefeature
+    if(raceFeatures !== undefined)
+    {
+      subracefeature = raceFeatures.find(feature => feature.name === "Subrace");
+    }
+    
+    if (subracefeature) {
+      fetchsubracethings(subracefeature.id);
+    }
+
+
+    if (prevsubacefeatures == subRaceFeatures)
+    {
+      setSubRaceFeatures(undefined);
+      prevsubacefeatures = undefined;
+    }
+  },[raceFeatures])
+
+
+    function SelectedRace() {
+      return (
+        <>
+          <p className="selected-singular"><b>Name: </b>{raceData.name}</p>
+          <p className="selected-singular"><b>Age: </b>{raceData.age}</p>
+          <p className="selected-singular"><b>Size: </b>{raceData.size}</p>
+          <p className="selected-singular"><b>Speed: </b>{raceData.speed}</p>
   
-  function SelectedRace() {
-    return (
-      <>
-        <p className="selected-singular"><b>Name: </b>{raceData.name}</p>
-        <p className="selected-singular"><b>Age: </b>{raceData.age}</p>
-        <p className="selected-singular"><b>Size: </b>{raceData.size}</p>
-        <p className="selected-singular"><b>Speed: </b>{raceData.speed}</p>
-
-        {raceFeatures.map((feature, id)=>(
-          <div className="selected-feature">
-            <p><b>{feature.name}</b></p>
-            <p><b>Description: </b>{feature.description}</p>
-            
-
-            {/*The subrace features are being displayed at the next selected race. WTF*/} 
-          </div>
-        ))}
-        <h3>Subrace Features</h3>
-        {subRaceFeatures !== undefined && (
-          subRaceFeatures.map((feature, id)=>(
+          {raceFeatures.map((feature, id)=>(
             <div className="selected-feature">
               <p><b>{feature.name}</b></p>
               <p><b>Description: </b>{feature.description}</p>
+              
+  
+              {/*The subrace features are being displayed at the next selected race. WTF*/} 
             </div>
-          ))
+          ))}
+          <h3>Subrace Features</h3>
+          {subRaceFeatures !== undefined && (
+            
+            subRaceFeatures.map((feature, id)=>(
+              <div className="selected-feature">
+                <p><b>{feature.name}</b></p>
+                <p><b>Description: </b>{feature.description}</p>
+              </div>
+            ))
+          )}
+          {subRaceFeatures === undefined && (
+            <></>
+          )}
+  
+        </>
+      )
+    }
 
-        )}
-
-      </>
-    )
-  }
+ 
 
 
   
