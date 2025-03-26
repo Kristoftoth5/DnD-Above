@@ -116,22 +116,26 @@ function RaceCard() {
     function SelectedRace() {
       return (
         <>
+        {/* Displaying the Race's base details, such as Name, Age, Size and Speed*/}
           <p className="selected-singular"><b>Name: </b>{raceData.name}</p>
           <p className="selected-singular"><b>Age: </b>{raceData.age}</p>
           <p className="selected-singular"><b>Size: </b>{raceData.size}</p>
           <p className="selected-singular"><b>Speed: </b>{raceData.speed}</p>
   
+          {/* Displaying each feature of the race loaded into the raceFeatures array*/}
+
           {raceFeatures.map((feature, id)=>(
             <div className="selected-feature">
               <p><b>{feature.name}</b></p>
               <p><b>Description: </b>{feature.description}</p>
-              
-  
-              {/*The subrace features are being displayed at the next selected race. WTF*/} 
             </div>
           ))}
+
+          {/* All Subrace Related things*/}
           <h3>Subrace Options</h3>
-          {subRaceOptions !== undefined & chosenSubRaceId == 0 && (
+          {/* Displaying the Subrace options for the chosen race*/}
+          {/* The dropdown menu's main button for the subraces*/}
+          { Boolean(subRaceOptions !== undefined) & Boolean(chosenSubRaceId == 0) ? (
             <div className="dropdown-wrapper">
             <button 
               className="btn btn-secondary dropdown-toggle" 
@@ -139,11 +143,11 @@ function RaceCard() {
               onClick={() => {setSubRaceDropdownOpen(!subRaceDropdownOpen);}}
               id="plsbepink"
             >
-              Select Race
+              Select Subrace
             </button>
-    
-            {/* Dropdown Menu - Now positioned below the button */}
-            {subRaceDropdownOpen && (
+            
+            {/* Dropdown Menu - Now positioned below the button, containing the subrace options and displaying them from the subRaceOptions array one by one */}
+            { Boolean(subRaceDropdownOpen) ? (
               <div className="dropdown-menu show">
                 {subRaceOptions.map( (subrace, id) =>(
                   <button
@@ -154,20 +158,21 @@ function RaceCard() {
                   </button>
                   ))}
               </div>
-            )}
-          </div>)}
-          {subRaceFeatures !== undefined & chosenSubRaceId !== 0 && (
+            ):null}
+          </div>):null}
+          {/* Displaying the Selected Subrace's features*/}
+          {Boolean(subRaceFeatures !== undefined) & Boolean(chosenSubRaceId !== 0) ? (
             subRaceFeatures.map((feature, id)=>(
               <div className="selected-feature">
                 <p><b>{feature.name}</b></p>
                 <p><b>Description: </b>{feature.description}</p>
               </div>
             ))
-          )}
-            
-          {subRaceOptions === undefined & subRaceFeatures === undefined && (
+          ): null}
+            {/*Displaying the message in case a race has no subraces */}
+          {Boolean(subRaceOptions === undefined) & Boolean(subRaceFeatures === undefined) ?(
             <p>No Subraces available.</p>
-          )}
+          ): null}
   
         </>
       )
@@ -210,8 +215,8 @@ function RaceCard() {
 
       
       <div className="selected-multiple">
-        {chosenRaceId != 0 & raceFeatures !== undefined &&(
-          <SelectedRace/>)}
+        {Boolean(chosenRaceId != 0) & raceFeatures !== undefined ?(
+          <SelectedRace/>):null}
       </div>
     </div>
   );
