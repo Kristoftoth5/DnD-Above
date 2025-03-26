@@ -5,17 +5,21 @@ import "../Cards.css"; // Import styles
 function RaceCard() {
 
 
-  const [dropdownOpen, setDropdownOpen] = useState(false); // Tracks dropdown state
+  const [dropdownOpen, setDropdownOpen] = useState(false); 
+  const [subRaceDropdownOpen, setSubRaceDropdownOpen] = useState(false);
   const [raceOptionNames,setRaceOptionNames] = useState([]);
   const [chosenRaceId, setChosenRaceId] = useState(0);
+  const [chosenSubRaceId, setChosenSubRaceId] = useState(0);
   const [raceData, setRaceData] = useState();
+  const [subRaceName, setSubRaceName] = useState();
   const [raceFeatures, setRaceFeatures] = useState();
+  const [subRaceOptions, setSubRaceOptions] = useState();
   const [subRaceFeatures, setSubRaceFeatures] = useState();
 
  
 
 
-
+ /*Fetching all the races at startup */
   useEffect(()=>{
     async function fetchraces()
     {
@@ -35,6 +39,7 @@ function RaceCard() {
     fetchraces();
   },[]);
 
+  /*Fetching a specific, chosen Race's features */
   useEffect(()=>{
     async function fetchdatabyid() 
     {
@@ -45,30 +50,67 @@ function RaceCard() {
     fetchdatabyid()
   },[chosenRaceId])
 
+  /*Fetching the subraces of a race if it has them */
   useEffect(()=>{
     async function fetchsubracethings(id)
     {
-      setSubRaceFeatures(await fetchEverything("FeaturesToFeaturesConnections/"+id));
+      const subRaceOptionsJSON = await fetchEverything("FeaturesToFeaturesConnections/"+id);
+
+      var fasz = [];
+      var fasz2 = [];
+    subRaceOptionsJSON.forEach(subrace => {
+      fasz2.push(subrace.name);
+      fasz2.push(subrace.id);
+
+      fasz.push(fasz2);
+      fasz2 = [];
+    });
+    setSubRaceOptions(fasz);
     }
 
-    var prevsubacefeatures = subRaceFeatures;
+    var prevsubraceoptions = subRaceOptions;
     var subracefeature
     if(raceFeatures !== undefined)
     {
       subracefeature = raceFeatures.find(feature => feature.name === "Subrace");
     }
+
+    var prevsubraceoptions;
     
     if (subracefeature) {
       fetchsubracethings(subracefeature.id);
     }
+    
 
-
-    if (prevsubacefeatures == subRaceFeatures)
+    if (prevsubraceoptions == subRaceOptions)
     {
-      setSubRaceFeatures(undefined);
-      prevsubacefeatures = undefined;
+      setSubRaceOptions(undefined);
+      prevsubraceoptions = undefined;
     }
   },[raceFeatures])
+
+  /*Fetching the features of the subrace if there was one */
+  useEffect(()=>{
+    async function fetchsubracefeatures(id)
+    {
+      setSubRaceFeatures(await fetchEverything("FeaturesToFeaturesConnections/"+id));
+    }
+    
+
+    var prevsubracefeatures = subRaceFeatures;
+    
+    if(chosenSubRaceId !== 0)
+    {
+      fetchsubracefeatures(chosenSubRaceId);
+    }
+
+
+    if (prevsubracefeatures == subRaceOptions)
+    {
+      setSubRaceFeatures(undefined);
+      prevsubracefeatures = undefined;
+    }
+  },[chosenSubRaceId])
 
 
     function SelectedRace() {
@@ -88,9 +130,33 @@ function RaceCard() {
               {/*The subrace features are being displayed at the next selected race. WTF*/} 
             </div>
           ))}
-          <h3>Subrace Features</h3>
-          {subRaceFeatures !== undefined && (
-            
+          <h3>Subrace Options</h3>
+          {subRaceOptions !== undefined & chosenSubRaceId == 0 && (
+            <div className="dropdown-wrapper">
+            <button 
+              className="btn btn-secondary dropdown-toggle" 
+              type="button"
+              onClick={() => {setSubRaceDropdownOpen(!subRaceDropdownOpen);}}
+              id="plsbepink"
+            >
+              Select Race
+            </button>
+    
+            {/* Dropdown Menu - Now positioned below the button */}
+            {subRaceDropdownOpen && (
+              <div className="dropdown-menu show">
+                {subRaceOptions.map( (subrace, id) =>(
+                  <button
+                    className="dropdown-item"
+                    onClick={() => {setChosenSubRaceId(subrace[1]);setSubRaceDropdownOpen(false);setSubRaceName(subrace[0]);}}
+                  >
+                  {subrace[0]}
+                  </button>
+                  ))}
+              </div>
+            )}
+          </div>)}
+          {subRaceFeatures !== undefined & chosenSubRaceId !== 0 && (
             subRaceFeatures.map((feature, id)=>(
               <div className="selected-feature">
                 <p><b>{feature.name}</b></p>
@@ -98,8 +164,9 @@ function RaceCard() {
               </div>
             ))
           )}
-          {subRaceFeatures === undefined && (
-            <></>
+            
+          {subRaceOptions === undefined & subRaceFeatures === undefined && (
+            <p>No Subraces available.</p>
           )}
   
         </>
@@ -132,7 +199,7 @@ function RaceCard() {
             {raceOptionNames.map( (race, id) =>(
               <button
                 className="dropdown-item"
-                onClick={() => {setChosenRaceId(race[1]);setDropdownOpen(false);console.log("chosenRaceId: "+chosenRaceId);}}
+                onClick={() => {setChosenRaceId(race[1]);setDropdownOpen(false);setChosenSubRaceId(0);}}
               >
               {race[0]}
               </button>
@@ -141,7 +208,7 @@ function RaceCard() {
         )}
       </div>
 
-      {/* Display Selected Races BELOW the dropdown */}
+      
       <div className="selected-multiple">
         {chosenRaceId != 0 & raceFeatures !== undefined &&(
           <SelectedRace/>)}
