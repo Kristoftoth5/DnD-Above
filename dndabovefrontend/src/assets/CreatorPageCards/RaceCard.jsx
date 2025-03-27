@@ -81,7 +81,7 @@ function RaceCard() {
       fetchsubracethings(subracefeature.id);
     }
     
-
+    console.log(raceFeatures);
     if (prevsubraceoptions == subRaceOptions)
     {
       setSubRaceOptions(undefined);
@@ -125,10 +125,11 @@ function RaceCard() {
           {/* Displaying each feature of the race loaded into the raceFeatures array*/}
 
           {raceFeatures.map((feature, id)=>(
+            feature.name !== "Subrace" ? 
             <div className="selected-feature">
               <p><b>{feature.name}</b></p>
               <p><b>Description: </b>{feature.description}</p>
-            </div>
+            </div> : null
           ))}
 
           {/* All Subrace Related things*/}
