@@ -8344,11 +8344,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
+      "projectUniqueName": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
       "projectName": "Above_backend",
-      "projectPath": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
+      "projectPath": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
       "packagesPath": "C:\\Users\\gulyasaz\\.nuget\\packages\\",
-      "outputPath": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\obj\\",
+      "outputPath": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -8451,7 +8451,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.103/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
