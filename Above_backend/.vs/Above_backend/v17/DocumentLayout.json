@@ -1,116 +1,12 @@
 {
   "Version": 1,
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
   "WorkspaceRootPath": "F:\\gulyasa\\DnD-Above\\Above_backend\\",
   "Documents": [],
-=======
-=======
->>>>>>> Stashed changes
-  "WorkspaceRootPath": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\project\\dnd-above\\above_backend\\above_backend\\controllers\\featurescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\controllers\\featurescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\project\\dnd-above\\above_backend\\above_backend\\helpers\\mappingequipments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\helpers\\mappingequipments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\project\\dnd-above\\above_backend\\above_backend\\models\\dtos\\equipmentsdisplaydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\models\\dtos\\equipmentsdisplaydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\project\\dnd-above\\above_backend\\above_backend\\models\\dtos\\equipmentscreateandbasedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\models\\dtos\\equipmentscreateandbasedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\project\\dnd-above\\above_backend\\above_backend\\models\\equipments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\models\\equipments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FeaturesController.cs",
-              "DocumentMoniker": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Controllers\\FeaturesController.cs",
-              "RelativeDocumentMoniker": "Above_backend\\Controllers\\FeaturesController.cs",
-              "ToolTip": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Controllers\\FeaturesController.cs",
-              "RelativeToolTip": "Above_backend\\Controllers\\FeaturesController.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAASwD0AAABJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T13:03:36.566Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MappingEquipments.cs",
-              "DocumentMoniker": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Helpers\\MappingEquipments.cs",
-              "RelativeDocumentMoniker": "Above_backend\\Helpers\\MappingEquipments.cs",
-              "ToolTip": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Helpers\\MappingEquipments.cs",
-              "RelativeToolTip": "Above_backend\\Helpers\\MappingEquipments.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwCQAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T12:56:30.806Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EquipmentsDisplayDTO.cs",
-              "DocumentMoniker": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Models\\DTOs\\EquipmentsDisplayDTO.cs",
-              "RelativeDocumentMoniker": "Above_backend\\Models\\DTOs\\EquipmentsDisplayDTO.cs",
-              "ToolTip": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Models\\DTOs\\EquipmentsDisplayDTO.cs",
-              "RelativeToolTip": "Above_backend\\Models\\DTOs\\EquipmentsDisplayDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T12:56:27.323Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "EquipmentsCreateAndBaseDTO.cs",
-              "DocumentMoniker": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Models\\DTOs\\EquipmentsCreateAndBaseDTO.cs",
-              "RelativeDocumentMoniker": "Above_backend\\Models\\DTOs\\EquipmentsCreateAndBaseDTO.cs",
-              "ToolTip": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Models\\DTOs\\EquipmentsCreateAndBaseDTO.cs",
-              "RelativeToolTip": "Above_backend\\Models\\DTOs\\EquipmentsCreateAndBaseDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T12:56:23.279Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Equipments.cs",
-              "DocumentMoniker": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Models\\Equipments.cs",
-              "RelativeDocumentMoniker": "Above_backend\\Models\\Equipments.cs",
-              "ToolTip": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Models\\Equipments.cs",
-              "RelativeToolTip": "Above_backend\\Models\\Equipments.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T12:06:50.371Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }
