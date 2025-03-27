@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { CreatorContext } from "./assets/BringStatChoice.jsx";
 import RaceCard from './assets/CreatorPageCards/RaceCard'
 import BackgroundCard from './assets/CreatorPageCards/BackgroundCard'
+import ClassCard from './assets/CreatorPageCards/ClassCard.jsx'
 import HeroicPointBuyStatCard from './assets/CreatorPageCards/StatCard/HeroicPointBuyStatCard'
 import "bootstrap/dist/css/bootstrap.min.css";
 import CustomorRoledStatStatCard from './assets/CreatorPageCards/StatCard/CustomorRolledStatCard'
@@ -22,9 +23,10 @@ function CreatorPage ({option})
         <>
         
         <div className='creator-container'>
+            {selectedOption == 1 ? <PointBuyStatCard/> : selectedOption == 2 ? <HeroicPointBuyStatCard/> : <CustomorRoledStatStatCard/>}
             <RaceCard/> 
             <BackgroundCard/>
-            {selectedOption == 1 ? <PointBuyStatCard/> : selectedOption == 2 ? <HeroicPointBuyStatCard/> : <CustomorRoledStatStatCard/>}
+            <ClassCard/>
         </div>
         </>
     );
