@@ -26,7 +26,7 @@ function CreatorPage ({option})
             {selectedOption == 1 ? <PointBuyStatCard/> : selectedOption == 2 ? <HeroicPointBuyStatCard/> : <CustomorRoledStatStatCard/>}
             <RaceCard/> 
             <BackgroundCard/>
-            {/*<ClassCard/>*/}
+            <ClassCard/>
         </div>
         </>
     );

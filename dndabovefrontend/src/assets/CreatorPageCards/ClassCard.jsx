@@ -23,6 +23,7 @@ function ClassCard()
     async function fetchclasses()
     {
     const classOptionsJSON = await fetchEverything("Classes");
+    console.log(classOptionsJSON);
 
       var fasz = [];
       var fasz2 = [];
@@ -44,20 +45,18 @@ function ClassCard()
       setClassData(await fetchEverything("Classes/"+chosenClassId));
 
       setClassFeatures(await fetchEverything("Features/Features/originclassid/"+chosenClassId));
+      console.log(classFeatures);
     }
     fetchdatabyid()
-    console.log(classFeatures);
   },[chosenClassId]);
 
-  /*Fetching the subclasses of a class*/
-  useEffect(()=>{
-    async function fetchsubclassthings(id)
-    {
-      const subClassOptionsJSON = await fetchEverything("SubClasses/"+id);
-
+ useEffect(()=>{
+    async function fetchsubclasses(id) {
+      const subClassOptionsJSON = fetchEverything("SubClasses/SubClasses/originclassid/"+id)
+      console.log(subClassOptionsJSON);
       var fasz = [];
       var fasz2 = [];
-    subClassOptionsJSON.forEach(subclass => {
+    subClassOptionsJSON.map((subclass,id) => {
       fasz2.push(subclass.name);
       fasz2.push(subclass.id);
 
@@ -66,43 +65,8 @@ function ClassCard()
     });
     setSubClassOptions(fasz);
     }
-
-    var prevsubclassoptions = subClassOptions;
-
-    var prevsubclassoptions;
-    
-    
-
-    if (prevsubraceoptions == subRaceOptions)
-    {
-      setSubRaceOptions(undefined);
-      prevsubraceoptions = undefined;
-    }
-  },[raceFeatures])
-
-  /*Fetching the features of the subrace if there was one */
-  useEffect(()=>{
-    async function fetchsubracefeatures(id)
-    {
-      setSubRaceFeatures(await fetchEverything("FeaturesToFeaturesConnections/"+id));
-    }
-    
-
-    var prevsubracefeatures = subRaceFeatures;
-    
-    if(chosenSubRaceId !== 0)
-    {
-      fetchsubracefeatures(chosenSubRaceId);
-    }
-
-
-    if (prevsubracefeatures == subRaceOptions)
-    {
-      setSubRaceFeatures(undefined);
-      prevsubracefeatures = undefined;
-    }
-  },[chosenSubRaceId])
-
+    fetchsubclasses(chosenClassId);
+ },[chosenClassId])
 
 
 
@@ -128,48 +92,34 @@ function ClassCard()
 
 
 
-        {/* All Subclass Related things*/}
-        <h3>Subclass Options</h3>
-          {/* Displaying the Subclass options for the chosen Class*/}
-          {/* The dropdown menu's main button for the subclasses*/}
-          { Boolean(subClassOptions !== undefined) & Boolean(chosenSubClassId == 0) ? (
-            <div className="dropdown-wrapper">
-            <button 
-              className="btn btn-secondary dropdown-toggle" 
-              type="button"
-              onClick={() => {setSubClassDropdownOpen(!subClassDropdownOpen);}}
-              id="plsbepink"
-            >
-              Select Subrace
-            </button>
-            
-            {/* Dropdown Menu - Now positioned below the button, containing the subrace options and displaying them from the subRaceOptions array one by one */}
-            { Boolean(subClassDropdownOpen) ? (
-              <div className="dropdown-menu show">
-                {subClassOptions.map( (subclass, id) =>(
-                  <button
-                    className="dropdown-item"
-                    onClick={() => {setChosenSubClassId(subclass[1]);setSubClassDropdownOpen(false);setSubClassNames(subclass[0]);}}
-                  >
-                  {subclass[0]}
-                  </button>
-                  ))}
-              </div>
-            ):null}
-          </div>):null}
-          {/* Displaying the Selected Subrace's features*/}
-          {Boolean(subClassFeatures !== undefined) & Boolean(chosenSubClassId !== 0) ? (
-            subClassFeatures.map((feature, id)=>(
-              <div className="selected-feature">
-                <p><b>{feature.name}</b></p>
-                <p><b>Description: </b>{feature.description}</p>
-              </div>
-            ))
-          ): null}
-            {/*Displaying the message in case a race has no subraces */}
-          {Boolean(subClassOptions === undefined) & Boolean(subClassFeatures === undefined) ?(
-            <p>No Subclasses available.</p>
-          ): null}
+       {/*All subclass related things */}
+          {/* Dropdown Button */}
+      
+      <div className="dropdown-wrapper">
+        <button 
+          className="btn btn-secondary dropdown-toggle" 
+          type="button"
+          onClick={() => {setSubClassDropdownOpen(!subClassDropdownOpen);}}
+          id="plsbepink"
+        >
+          Select Subclass
+        </button>
+
+        {/* Dropdown Menu - Now positioned below the button */}
+        {subClassDropdownOpen && (
+          <div className="dropdown-menu show">
+            {subClassOptions.map( (subclass, id) =>(
+              <button
+                className="dropdown-item"
+                onClick={() => {setChosenSubClassId(subclass[1]);setSubClassDropdownOpen(false);}}
+              >
+              {subclass[0]}
+              </button>
+              ))}
+          </div>
+        )}
+      </div>
+
         </>
     )
   }

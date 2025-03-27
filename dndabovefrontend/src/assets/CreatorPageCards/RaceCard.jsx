@@ -81,7 +81,6 @@ function RaceCard() {
       fetchsubracethings(subracefeature.id);
     }
     
-    console.log(raceFeatures);
     if (prevsubraceoptions == subRaceOptions)
     {
       setSubRaceOptions(undefined);
