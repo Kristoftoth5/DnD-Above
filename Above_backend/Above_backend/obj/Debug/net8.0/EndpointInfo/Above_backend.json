@@ -1537,6 +1537,55 @@
           }
         }
       }
+    },
+    "/api/SubClasses/SubClasses/originclassid/{originclassid}": {
+      "get": {
+        "tags": [
+          "SubClasses"
+        ],
+        "parameters": [
+          {
+            "name": "originclassid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SubClassesDisplayDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SubClassesDisplayDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SubClassesDisplayDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -2414,8 +2463,8 @@
             "nullable": true
           },
           "range": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "nullable": true
           },
           "duration": {
             "type": "string",
@@ -2481,8 +2530,8 @@
             "nullable": true
           },
           "range": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "nullable": true
           },
           "duration": {
             "type": "string",
@@ -2545,8 +2594,8 @@
             "nullable": true
           },
           "range": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "nullable": true
           },
           "duration": {
             "type": "string",

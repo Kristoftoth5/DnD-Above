@@ -45,6 +45,19 @@ namespace Above_backend.Controllers
             return MappingSubClasses.SubClassesToSubClassesDisplayDTO(onesubClass);
         }
 
+        [HttpGet("SubClasses/originclassid/{originclassid}")]
+        public async Task<ActionResult<IEnumerable<SubClassesDisplayDTO>>> GetSubClassesByOriginClassId(int originclassid)
+        {
+            var requestedsubclasses = await _context.SubClasses.Where(x => x.OriginClassId == originclassid).Select(x => MappingSubClasses.SubClassesToSubClassesDisplayDTO(x)).ToListAsync(); ;
+
+            if (requestedsubclasses == null)
+            {
+                return NotFound();
+            }
+
+            return requestedsubclasses;
+        }
+
         // PUT: api/SubClasses/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         /*[HttpPut("{id}")]

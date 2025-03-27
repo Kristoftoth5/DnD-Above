@@ -136,7 +136,7 @@ function RaceCard() {
           <h3>Subrace Options</h3>
           {/* Displaying the Subrace options for the chosen race*/}
           {/* The dropdown menu's main button for the subraces*/}
-          { Boolean(subRaceOptions !== undefined) & Boolean(chosenSubRaceId == 0) ? (
+          { Boolean(subRaceOptions !== undefined) ? (
             <div className="dropdown-wrapper">
             <button 
               className="btn btn-secondary dropdown-toggle" 
