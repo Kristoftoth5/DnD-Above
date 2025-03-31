@@ -85,6 +85,7 @@ function RaceCard() {
     {
       setSubRaceOptions(undefined);
       prevsubraceoptions = undefined;
+      setSubRaceName("");
     }
   },[raceFeatures])
 
@@ -108,6 +109,7 @@ function RaceCard() {
     {
       setSubRaceFeatures(undefined);
       prevsubracefeatures = undefined;
+      
     }
   },[chosenSubRaceId])
 
@@ -161,6 +163,9 @@ function RaceCard() {
             ):null}
           </div>):null}
           {/* Displaying the Selected Subrace's features*/}
+          {subRaceFeatures !== undefined ? (
+            <h4> {subRaceName}</h4>
+          ): null}
           {Boolean(subRaceFeatures !== undefined) & Boolean(chosenSubRaceId !== 0) ? (
             subRaceFeatures.map((feature, id)=>(
               <div className="selected-feature">

@@ -21,8 +21,8 @@ function CreatorPage ({option})
 
     return (
         <>
-        
-        <div className='creator-container'>
+        <div className="container">
+
             {selectedOption == 1 ? <PointBuyStatCard/> : selectedOption == 2 ? <HeroicPointBuyStatCard/> : <CustomorRoledStatStatCard/>}
             <RaceCard/> 
             <BackgroundCard/>

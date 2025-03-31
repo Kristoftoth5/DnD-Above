@@ -146,7 +146,7 @@ return(
     <>
     <div className="creator-container">
       <h2 className="creator-title">Class</h2>
-    </div>
+
 
 
     {/* Dropdown Button */}
@@ -179,6 +179,7 @@ return(
     <div className="selected-multiple">
         {Boolean(chosenClassId != 0) & classFeatures !== undefined & classData !== undefined ?(
             <SelectedClass/>):null}
+    </div>
     </div>
     </>
 )
