@@ -14,6 +14,8 @@ function ClassCard()
     const [subClassFeatures, setSubClassFeatures] = useState();
     const [subClassName, setSubClassName] = useState();
     const [chosenSubClassId, setChosenSubClassId] = useState(0);
+    const [subFeatures, setSubFeatures] = useState();
+    const [featureWithSubFeature, setFeatureWithSubFeature] = useState();
 
     const [characterLevel, setCharacterLevel] = useState(0);
 
@@ -51,6 +53,18 @@ function ClassCard()
 
       setSubClassName(undefined);
 
+      classFeatures.forEach(async feature => {
+        try
+        {
+          setSubFeatures(await fetchEverything("FeaturesToFeaturesConnections/"+feature.id));
+          setFeatureWithSubFeature(feature.name);
+        }
+        catch
+        {
+          null
+        }
+      });
+
     }
     fetchdatabyid()
   },[chosenClassId]);
@@ -78,10 +92,25 @@ function ClassCard()
   async function fetchsubracefeatures(id)
   {
     setSubClassFeatures(await fetchEverything("Features/Features/originsubclassid/"+id));
+    
+    subClassFeatures.forEach(async feature => {
+      try
+      {
+        setSubFeatures(await fetchEverything("FeaturesToFeaturesConnections/"+feature.id));
+        setFeatureWithSubFeature(feature.name);
+      }
+      catch
+      {
+        null
+      }
+    });
   }
+
+  
   
 
   var prevsubclassfeatures = subClassFeatures;
+  
   
   if(chosenSubClassId !== 0)
   {
