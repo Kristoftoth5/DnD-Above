@@ -15,6 +15,8 @@ function ClassCard()
     const [subClassName, setSubClassName] = useState();
     const [chosenSubClassId, setChosenSubClassId] = useState(0);
 
+    const [characterLevel, setCharacterLevel] = useState(0);
+
     const [subClassDropdownOpen, setSubClassDropdownOpen] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -44,6 +46,18 @@ function ClassCard()
       setClassData(await fetchEverything("Classes/"+chosenClassId));
 
       setClassFeatures(await fetchEverything("Features/Features/originclassid/"+chosenClassId));
+      var tempClassFeatures;
+      classFeatures.forEach(feature => {
+        if (feature.levelReq <= characterLevel)
+        {
+          tempClassFeatures.push(feature)
+        }
+      });
+
+      setSubClassFeatures(undefined);
+
+      setSubClassName(undefined);
+
     }
     fetchdatabyid()
   },[chosenClassId]);
@@ -89,6 +103,9 @@ function ClassCard()
 
 
 
+
+
+
   function SelectedClass()
   {
     return(
@@ -100,19 +117,21 @@ function ClassCard()
           <p className="selected-singular"><b>Starting Gold: </b>{classData.startingGold}</p>
 
 
-        {/* Displaying each feature of the race loaded into the raceFeatures array*/}
+        {/* Displaying each feature of the class loaded into the classFeatures array*/}
 
         {classFeatures.map((feature, id)=>(
             <div className="selected-feature">
               <p><b>{feature.name}</b></p>
               <p><b>Description: </b>{feature.description}</p>
             </div>
+            
           ))}
 
 
 
        {/*All subclass related things */}
           {/* Dropdown Button */}
+
       
       <div className="dropdown-wrapper">
         <button 
@@ -158,7 +177,20 @@ return(
     <div className="creator-container">
       <h2 className="creator-title">Class</h2>
 
+      {chosenClassId !== 0 ? (
+        <div className="ability-box">
+        <h3 className="ability-title">Character Level</h3>
+        <div className="score-display">{characterLevel}</div>
 
+        {/* Increase & Decrease Buttons */}
+        <div className="button-group">
+          <button className="btn-stat" onClick={() => !((characterLevel+1)>20) ? setCharacterLevel(characterLevel+1) : setCharacterLevel(characterLevel)}>+</button>
+          <button className="btn-stat" onClick={() => (characterLevel-1)!=0 ? setCharacterLevel(characterLevel-1) : setCharacterLevel(characterLevel)()}>-</button>
+        </div>
+
+      </div>
+      ):null}
+      
 
     {/* Dropdown Button */}
     <div className="dropdown-wrapper">
@@ -185,6 +217,10 @@ return(
           </div>
         )}
       </div>
+
+      
+
+      
 
 
     <div className="selected-multiple">
