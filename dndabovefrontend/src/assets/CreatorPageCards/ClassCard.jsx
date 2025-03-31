@@ -46,13 +46,6 @@ function ClassCard()
       setClassData(await fetchEverything("Classes/"+chosenClassId));
 
       setClassFeatures(await fetchEverything("Features/Features/originclassid/"+chosenClassId));
-      var tempClassFeatures;
-      classFeatures.forEach(feature => {
-        if (feature.levelReq <= characterLevel)
-        {
-          tempClassFeatures.push(feature)
-        }
-      });
 
       setSubClassFeatures(undefined);
 
@@ -61,6 +54,8 @@ function ClassCard()
     }
     fetchdatabyid()
   },[chosenClassId]);
+
+  
 
  useEffect(()=>{
     async function fetchsubclasses(id) {
@@ -120,10 +115,12 @@ function ClassCard()
         {/* Displaying each feature of the class loaded into the classFeatures array*/}
 
         {classFeatures.map((feature, id)=>(
+          feature.levelReq <= characterLevel ?(
             <div className="selected-feature">
               <p><b>{feature.name}</b></p>
               <p><b>Description: </b>{feature.description}</p>
             </div>
+          ) : null
             
           ))}
 
@@ -162,10 +159,11 @@ function ClassCard()
       ):null}
       {subClassFeatures !== undefined ?(
       subClassFeatures.map((feature, id)=>(
+        feature.levelReq <= characterLevel ?(
             <div className="selected-feature">
               <p><b>{feature.name}</b></p>
               <p><b>Description: </b>{feature.description}</p>
-            </div>
+            </div>) : null  
           ))
        ): null }
 
