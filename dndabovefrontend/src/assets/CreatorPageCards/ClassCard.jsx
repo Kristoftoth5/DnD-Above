@@ -12,7 +12,7 @@ function ClassCard()
     const [classData, setClassData] = useState();
     const [subClassOptions, setSubClassOptions] = useState();
     const [subClassFeatures, setSubClassFeatures] = useState();
-    const [subClassNames, setSubClassNames] = useState();
+    const [subClassName, setSubClassName] = useState();
     const [chosenSubClassId, setChosenSubClassId] = useState(0);
 
     const [subClassDropdownOpen, setSubClassDropdownOpen] = useState(false);
@@ -68,7 +68,7 @@ function ClassCard()
  useEffect(()=>{
   async function fetchsubracefeatures(id)
   {
-    setSubClassFeatures(await fetchEverything("Features/OriginSubClassidFeatures/Features/originsubclassid/"+id));
+    setSubClassFeatures(await fetchEverything("Features/Features/originsubclassid/"+id));
   }
   
 
@@ -130,7 +130,7 @@ function ClassCard()
             {subClassOptions.map( (subclass, id) =>(
               <button
                 className="dropdown-item"
-                onClick={() => {setChosenSubClassId(subclass[1]);setSubClassDropdownOpen(false);}}
+                onClick={() => {setChosenSubClassId(subclass[1]);setSubClassDropdownOpen(false);setSubClassName(subclass[0]);}}
               >
               {subclass[0]}
               </button>
@@ -138,6 +138,17 @@ function ClassCard()
           </div>
         )}
       </div>
+      {subClassFeatures !== undefined ?(
+        <h4>{subClassName}</h4>
+      ):null}
+      {subClassFeatures !== undefined ?(
+      subClassFeatures.map((feature, id)=>(
+            <div className="selected-feature">
+              <p><b>{feature.name}</b></p>
+              <p><b>Description: </b>{feature.description}</p>
+            </div>
+          ))
+       ): null }
 
         </>
     )
