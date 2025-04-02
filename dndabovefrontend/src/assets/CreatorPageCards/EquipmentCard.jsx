@@ -2,28 +2,42 @@ import React, { useState, useEffect } from "react";
 import fetchEverything from "../CommonFunctions/fetchEverything";
 import "../Cards.css"; // Reuse existing styles
 
-function EquipmentCard({ startingGold }) {
-  const [gold, setGold] = useState(startingGold);
+function EquipmentCard({ classId }) {
+  const [gold, setGold] = useState(0);
   const [equipmentOptions, setEquipmentOptions] = useState([]);
   const [selectedEquipment, setSelectedEquipment] = useState([]);
-  const [showEquipment, setShowEquipment] = useState(false); // State to toggle visibility
+  const [selectedCategory, setSelectedCategory] = useState(null); // Track selected category
 
-  // Fetch all equipment data when the button is clicked
-  const fetchEquipmentData = async () => {
-    const equipmentData = await fetchEverything("Equipments");
+  // Fetch class gold
+  useEffect(() => {
+    async function fetchdatabyid() {
+      const chosenClass = await fetchEverything("Classes/" + classId);
+      setGold(chosenClass.startingGold);
+    }
+    fetchdatabyid();
+  }, [classId]);
 
-    let formattedEquipment = [];
-    equipmentData.forEach((item) => {
-      let equipment = [
+  // Fetch all equipment data
+  useEffect(() => {
+    async function fetchEquipmentData() {
+      const equipmentData = await fetchEverything("Equipments");
+      let formattedEquipment = equipmentData.map((item) => [
         item.name, // Equipment Name
-        item.EquipmentType, // EquipmentType (Weapon, Armor, etc.)
+        item.equipmentType, // EquipmentType (Weapon, Armor, etc.)
         item.price, // Price
-      ];
-      formattedEquipment.push(equipment);
-    });
+      ]);
+      setEquipmentOptions(formattedEquipment);
+    }
+    fetchEquipmentData();
+  }, []);
 
-    setEquipmentOptions(formattedEquipment);
-  };
+  // Filter equipment by category
+  const filteredEquipment = equipmentOptions.filter((item) => {
+    if (selectedCategory === "Weapon") return item[1]?.endsWith("Weapon");
+    if (selectedCategory === "Armor/Shield") return item[1]?.endsWith("Armor") || item[1]?.endsWith("Shield");
+    if (selectedCategory === "Other") return !item[1] || item[1] === "";
+    return false;
+  });
 
   // Buy equipment
   function buyEquipment(item) {
@@ -45,20 +59,32 @@ function EquipmentCard({ startingGold }) {
       <h2 className="creator-title">Equipment</h2>
       <h3 className="race-sub-title">Starting Gold: {gold} gp</h3>
 
-      {/* Button to show equipment */}
-      <button 
-        className="btn btn-secondary"
-        onClick={() => {
-          setShowEquipment(!showEquipment); 
-          if (!showEquipment) fetchEquipmentData();  // Fetch data only when showing
-        }}
-      >
-        {showEquipment ? "Hide Equipment" : "Show Equipment"}
-      </button>
+      {/* Category selection buttons */}
+      <div className="equipment-buttons">
+        <button
+          className="btn btn-secondary"
+          onClick={() => setSelectedCategory("Weapon")}
+        >
+          Weapons
+        </button>
+        <button
+          className="btn btn-secondary"
+          onClick={() => setSelectedCategory("Armor/Shield")}
+        >
+          Armor & Shields
+        </button>
+        <button
+          className="btn btn-secondary"
+          onClick={() => setSelectedCategory("Other")}
+        >
+          Other
+        </button>
+      </div>
 
-      {/* Display equipment in a table */}
-      {showEquipment && (
+      {/* Display filtered equipment in a table */}
+      {selectedCategory && (
         <div className="equipment-table">
+          <h3>{selectedCategory}</h3>
           <table>
             <thead>
               <tr>
@@ -69,13 +95,13 @@ function EquipmentCard({ startingGold }) {
               </tr>
             </thead>
             <tbody>
-              {equipmentOptions.length === 0 ? (
+              {filteredEquipment.length === 0 ? (
                 <tr><td colSpan="4">No equipment available.</td></tr>
               ) : (
-                equipmentOptions.map((item, index) => (
+                filteredEquipment.map((item, index) => (
                   <tr key={index}>
                     <td>{item[0]}</td>
-                    <td>{item[1] !== "" ? item[1] : "N/A"}</td> {/* Show N/A if EquipmentType is empty */}
+                    <td>{item[1] || "Other"}</td>
                     <td>{item[2]} gp</td>
                     <td>
                       <button
@@ -99,9 +125,7 @@ function EquipmentCard({ startingGold }) {
         <h3>Selected Equipment</h3>
         {selectedEquipment.map((item, index) => (
           <div key={index} className="selected-feature">
-            <p>
-              {item[0]} - {item[2]} gp
-            </p>
+            <p>{item[0]} - {item[2]} gp</p>
             <button className="btn btn-danger" onClick={() => removeEquipment(index)}>
               Remove
             </button>
