@@ -57,7 +57,7 @@ function CreatorPage ({option})
             <RaceCard/> 
             <BackgroundCard/>
             <ClassCard/>
-            <EquipmentCard startingGold = {140}/>
+            <EquipmentCard classId = {5}/>
         </div>
         </div>
         </>
