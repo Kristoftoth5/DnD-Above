@@ -21,9 +21,9 @@ import EquipmentCard from './assets/CreatorPageCards/EquipmentCard.jsx';
 
 function CreatorPage () 
 {
-
-    const { selectedOption } = useContext(CreatorContext);
     const { selectedClassId } = useContext(ClassIdContext);
+    const { selectedOption } = useContext(CreatorContext);
+    
 
     var firstbg = Math.floor(Math.random() * 8)
     const [images, setImages] = useState([background1, background2, background3, background4, background5, background6, background7, background8])
@@ -32,6 +32,10 @@ function CreatorPage ()
     useEffect(()=>{
         console.log("Be van töltve az oldal, ye.")
     })
+
+    useEffect(() => {
+       
+    }, [selectedClassId])
 
 
       

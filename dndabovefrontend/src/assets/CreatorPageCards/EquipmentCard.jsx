@@ -12,7 +12,7 @@ function EquipmentCard({ classId }) {
   useEffect(() => {
     async function fetchdatabyid() {
       const chosenClass = await fetchEverything("Classes/" + classId);
-      setGold(chosenClass.startingGold);
+      setGold(chosenClass.startingGold + 15);
     }
     fetchdatabyid();
   }, [classId]);

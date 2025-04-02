@@ -3,10 +3,10 @@ import React, { createContext, useState } from "react";
 export const ClassIdContext = createContext();
 
 export function ClassIdProvider({ children }) {
-  const [selectedClassID, setSelectedClassId] = useState(5);
+  const [selectedClassId, setSelectedClassId] = useState(0);
 
   return (
-    <ClassIdContext.Provider value={{ selectedClassID, setSelectedClassId }}>
+    <ClassIdContext.Provider value={{ selectedClassId, setSelectedClassId }}>
       {children}
     </ClassIdContext.Provider>
   );
