@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import fetchEverything from "../CommonFunctions/fetchEverything"
 import diceToInteger from "../CommonFunctions/diceToInteger"
+import React, { useContext } from "react";
+import { ClassIdContext } from "../BringSelectedClassId.jsx";
 import "../Cards.css"; // Import styles
 
 function ClassCard()
@@ -24,6 +26,8 @@ function ClassCard()
 
     const [subClassDropdownOpen, setSubClassDropdownOpen] = useState(false);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    const { setSelectedClassId } = useContext(ClassIdContext);
 
     /*Fetching all the classes at startup */
   useEffect(()=>{
@@ -59,6 +63,7 @@ function ClassCard()
     setSubFeatures([]);
     setChosenSubFeatures([]);
     setFeatureWithSubFeature("");
+    setSelectedClassId(chosenClassId)
 
     fetchdatabyid()
   },[chosenClassId]);

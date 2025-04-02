@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import React, { useContext } from "react";
 import { CreatorContext } from "./assets/BringStatChoice.jsx";
+import { ClassIdContext } from "./assets/BringSelectedClassId.jsx";
 import RaceCard from './assets/CreatorPageCards/RaceCard'
 import BackgroundCard from './assets/CreatorPageCards/BackgroundCard'
 import ClassCard from './assets/CreatorPageCards/ClassCard.jsx'
@@ -18,10 +19,11 @@ import background7 from './assets/bgImages/seven.jpg'
 import background8 from './assets/bgImages/eight.jpg'
 import EquipmentCard from './assets/CreatorPageCards/EquipmentCard.jsx';
 
-function CreatorPage ({option}) 
+function CreatorPage () 
 {
-
+    const { selectedClassId } = useContext(ClassIdContext);
     const { selectedOption } = useContext(CreatorContext);
+    
 
     var firstbg = Math.floor(Math.random() * 8)
     const [images, setImages] = useState([background1, background2, background3, background4, background5, background6, background7, background8])
@@ -30,6 +32,10 @@ function CreatorPage ({option})
     useEffect(()=>{
         console.log("Be van töltve az oldal, ye.")
     })
+
+    useEffect(() => {
+       
+    }, [selectedClassId])
 
 
       
@@ -57,7 +63,7 @@ function CreatorPage ({option})
             <RaceCard/> 
             <BackgroundCard/>
             <ClassCard/>
-            <EquipmentCard classId = {5}/>
+            <EquipmentCard classId = {selectedClassId}/>
         </div>
         </div>
         </>
