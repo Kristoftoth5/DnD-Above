@@ -20,6 +20,7 @@ function ClassCard() {
   const [featureWithSubFeature, setFeatureWithSubFeature] = useState();
   const [chosenSubFeatures, setChosenSubFeatures] = useState([]); // Updated to store subfeatures in the array format
   const [subFeatureLimits, setSubFeatureLimits] = useState({}); // Tracks the max selections for each feature
+  const [totalSubFeatureCount, setTotalSubFeatureCount] = useState(0); // Track total subfeature selections
 
   const [characterLevel, setCharacterLevel] = useState(1);
 
@@ -129,6 +130,7 @@ function ClassCard() {
     if (!tempSelected.some(subfeature => subfeature[0] === name && subfeature[2] === originfeatureid)) {
       tempSelected.push([name, description, originfeatureid]);
       setChosenSubFeatures(tempSelected);
+      setTotalSubFeatureCount(totalSubFeatureCount + 1); // Increment the total subfeature count
     }
   }
 
@@ -136,6 +138,7 @@ function ClassCard() {
   function subFeatureDelete(name, originfeatureid) {
     const tempSelected = chosenSubFeatures.filter(subfeature => !(subfeature[0] === name && subfeature[2] === originfeatureid));
     setChosenSubFeatures(tempSelected);
+    setTotalSubFeatureCount(totalSubFeatureCount - 1); // Decrement the total subfeature count
   }
 
   // Finalize the selections
@@ -146,10 +149,26 @@ function ClassCard() {
   // Revert selections (reset the state to previous values)
   function revertSelection() {
     setChosenSubFeatures([]);
+    setTotalSubFeatureCount(0); // Reset the total subfeature count
     setFeatureDone(false);
   }
 
   function SelectedClass() {
+    // To ensure that features are unique, we create a Set based on their names (not IDs).
+    const displayedFeatures = new Set(); // Used to track which features have already been displayed
+    const uniqueFeatures = [];
+
+    // Filter out duplicate features by their name, but only show features that are level-appropriate
+    classFeatures.forEach(feature => {
+      if (feature.levelReq <= characterLevel && !displayedFeatures.has(feature.name)) {
+        displayedFeatures.add(feature.name); // Track features by name
+        uniqueFeatures.push(feature); // Add feature to uniqueFeatures list
+      }
+    });
+
+    // Update the total number of features based on eligible ones
+    setTotalSubFeatureCount(uniqueFeatures.length); // Set the number of features that can be selected
+
     return (
       <>
         <p className="selected-singular">
@@ -167,27 +186,37 @@ function ClassCard() {
           <b>Starting Gold: </b>{classData.startingGold}
         </p>
 
-        {/* Displaying each feature of the class loaded into the classFeatures array */}
-        {classFeatures.map((feature, id) => (
+        {/* Displaying each unique feature */}
+        {uniqueFeatures.map((feature, id) => (
           feature.levelReq <= characterLevel ? (
             <div className="selected-feature" key={id}>
               <p><b>{feature.name}</b></p>
               <p><b>Description: </b>{feature.description}</p>
               {feature.name === featureWithSubFeature ? (
-                subFeatures.map((subfeature, subId) => {
+                subFeatures.filter(subfeature => 
+                  !chosenSubFeatures.some(chosen => chosen[0] === subfeature.name)
+                ).map((subfeature, subId) => { // Only show subfeatures that aren't already selected
                   const maxSubFeatures = subFeatureLimits[feature.id] || 1;
                   const alreadySelected = chosenSubFeatures.filter(sub => sub[2] === feature.id).length >= maxSubFeatures;
+                  const canSelectMore = totalSubFeatureCount < maxSubFeatures; // Check if total subfeatures are within limit
+
+                  // Only count subfeatures from features that match the character's level
+                  const featureIsAvailable = feature.levelReq <= characterLevel;
 
                   return (
                     <>
-                      <p key={subId}><b>{subfeature.name}</b></p>
-                      <p><b>Description: </b>{subfeature.description}</p>
-                      <button
-                        onClick={() => subFeatureAdd(subfeature.name, subfeature.description, feature.id)}
-                        disabled={alreadySelected || chosenSubFeatures.filter(sub => sub[2] === feature.id).length >= maxSubFeatures}
-                      >
-                        Select {feature.name}
-                      </button>
+                      {featureIsAvailable && (
+                        <>
+                          <p key={subId}><b>{subfeature.name}</b></p>
+                          <p><b>Description: </b>{subfeature.description}</p>
+                          <button
+                            onClick={() => subFeatureAdd(subfeature.name, subfeature.description, feature.id)}
+                            disabled={alreadySelected || totalSubFeatureCount >= maxSubFeatures}
+                          >
+                            Select {feature.name}
+                          </button>
+                        </>
+                      )}
                     </>
                   );
                 })
