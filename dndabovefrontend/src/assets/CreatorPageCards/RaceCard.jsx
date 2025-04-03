@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import fetchEverything from "../CommonFunctions/fetchEverything"
 import "../Cards.css"; // Import styles
+import FinalDataTransfer from "../FinalDataTransfer";
 
 function RaceCard() {
 
@@ -189,6 +190,7 @@ function RaceCard() {
   
 
   return (
+    <>
     <div className="creator-container">
       <h2 className="creator-title">Race</h2>
 
@@ -224,6 +226,9 @@ function RaceCard() {
           <SelectedRace/>):null}
       </div>
     </div>
+
+    <FinalDataTransfer RaceId={chosenRaceId} SubraceId={chosenSubRaceId}/>
+    </>
   );
 }
 
