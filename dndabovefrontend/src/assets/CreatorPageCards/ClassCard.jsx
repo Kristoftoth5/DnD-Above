@@ -63,6 +63,7 @@ function ClassCard() {
     setSubFeatures([]);
     setChosenSubFeatures([]);
     setFeatureWithSubFeature("");
+    setCharacterLevel(1);
     setSelectedClassId(chosenClassId);
 
     fetchdatabyid();
@@ -71,16 +72,17 @@ function ClassCard() {
   useEffect(() => {
     if (classFeatures !== undefined) {
       classFeatures.forEach(async feature => {
+        
         try {
           setSubFeatures(await fetchEverything("FeaturesToFeaturesConnections/" + feature.id));
           setFeatureWithSubFeature(feature.name);
+          if (feature.name == featureWithSubFeature && feature.levelReq <= characterLevel)
+            {
+              setSubFeatureLimits(subFeatureLimits+1)
+            }
 
           // Set the limit for the number of times a subfeature can be selected
-          const limit = Math.min(feature.levelReq, characterLevel); // Example: if feature can appear 3 times at level 5, it will be 3
-          setSubFeatureLimits(prev => ({
-            ...prev,
-            [feature.id]: limit
-          }));
+          
         } catch {
           null;
         }
@@ -130,7 +132,7 @@ function ClassCard() {
     if (!tempSelected.some(subfeature => subfeature[0] === name && subfeature[2] === originfeatureid)) {
       tempSelected.push([name, description, originfeatureid]);
       setChosenSubFeatures(tempSelected);
-      setTotalSubFeatureCount(totalSubFeatureCount + 1); // Increment the total subfeature count
+      setTotalSubFeatureCount(prev => prev + 1); // Increment the total subfeature count
     }
   }
 
@@ -138,7 +140,7 @@ function ClassCard() {
   function subFeatureDelete(name, originfeatureid) {
     const tempSelected = chosenSubFeatures.filter(subfeature => !(subfeature[0] === name && subfeature[2] === originfeatureid));
     setChosenSubFeatures(tempSelected);
-    setTotalSubFeatureCount(totalSubFeatureCount - 1); // Decrement the total subfeature count
+    setTotalSubFeatureCount(prev => prev - 1); // Decrement the total subfeature count
   }
 
   // Finalize the selections
@@ -154,7 +156,6 @@ function ClassCard() {
   }
 
   function SelectedClass() {
-    // To ensure that features are unique, we create a Set based on their names (not IDs).
     const displayedFeatures = new Set(); // Used to track which features have already been displayed
     const uniqueFeatures = [];
 
@@ -167,7 +168,7 @@ function ClassCard() {
     });
 
     // Update the total number of features based on eligible ones
-    setTotalSubFeatureCount(uniqueFeatures.length); // Set the number of features that can be selected
+    uniqueFeatures.length == 0 ? setTotalSubFeatureCount(1):  setTotalSubFeatureCount(uniqueFeatures.length); // Set the number of features that can be selected
 
     return (
       <>
@@ -200,7 +201,7 @@ function ClassCard() {
                   const alreadySelected = chosenSubFeatures.filter(sub => sub[2] === feature.id).length >= maxSubFeatures;
                   const canSelectMore = totalSubFeatureCount < maxSubFeatures; // Check if total subfeatures are within limit
 
-                  // Only count subfeatures from features that match the character's level
+                  // If there is only one subfeature for this feature, we need to ensure that it can be selected
                   const featureIsAvailable = feature.levelReq <= characterLevel;
 
                   return (
@@ -213,7 +214,7 @@ function ClassCard() {
                             onClick={() => subFeatureAdd(subfeature.name, subfeature.description, feature.id)}
                             disabled={alreadySelected || totalSubFeatureCount >= maxSubFeatures}
                           >
-                            Select {feature.name}
+                            Select {subfeature.name}
                           </button>
                         </>
                       )}

@@ -132,7 +132,6 @@ return(
     <Background/>
         
     </div>
-    <FinalDataTransfer BgToolProf={chosenTool} BgSkillProfList={chosenSkills} BgName={document.getElementById("background-name").value} BgDesc={document.getElementById("background-description").value}/>
 </div>
 )
 }
