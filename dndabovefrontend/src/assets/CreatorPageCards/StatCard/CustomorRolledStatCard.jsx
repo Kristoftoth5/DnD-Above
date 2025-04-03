@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../../Cards.css"; // Reuse existing styles
 import modCalc from "../../CommonFunctions/modCalc";
+import FinalDataTransfer from "../../FinalDataTransfer";
 
 function AbilityScores() {
   const [scores, setScores] = useState({
@@ -60,6 +61,7 @@ function AbilityScores() {
   };
 
   return (
+    <>
     <div className="creator-container">
       <h2 className="creator-title">Ability Scores</h2>
       <h3 className="creator-sub-title">Custom or Rolled</h3>
@@ -121,6 +123,7 @@ function AbilityScores() {
         </div>
       )}
     </div>
+    </>
   );
 }
 
