@@ -156,3 +156,15 @@ th {
 button {
   margin-top: 10px;
 }
+.bonus-item:active {
+  cursor: grabbing;
+}
+.bonus-highlight {
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.bonus-highlight:hover {
+  text-decoration: underline;
+}

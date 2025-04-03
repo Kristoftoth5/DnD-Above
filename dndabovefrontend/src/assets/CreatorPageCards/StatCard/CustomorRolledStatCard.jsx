@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../../Cards.css"; // Reuse existing styles
-import "../../CommonFunctions/modCalc";
 import modCalc from "../../CommonFunctions/modCalc";
 
 function AbilityScores() {
@@ -13,29 +12,51 @@ function AbilityScores() {
     Charisma: 8,
   });
 
+  const [bonuses, setBonuses] = useState({
+    plus2: null, // Tracks which stat got +2
+    plus1: null, // Tracks which stat got +1
+  });
+
   const [availableBonuses, setAvailableBonuses] = useState({ plus2: true, plus1: true });
-  const [bonusApplied, setBonusApplied] = useState({}); // Tracks where bonuses are applied
 
   const handleInputChange = (ability, value) => {
+    let intValue = parseInt(value);
+    if (isNaN(intValue)) return;
+
+    // Ensure manual input stays within 8-18 range
+    intValue = Math.min(Math.max(intValue, 8), 18);
+
     setScores((prevScores) => ({
       ...prevScores,
-      [ability]: parseInt(value),
+      [ability]: intValue,
     }));
   };
 
   const handleDrop = (event, ability) => {
     const bonusType = event.dataTransfer.getData("bonusType");
-    if (!bonusType || bonusApplied[ability]) return; // Prevent multiple bonuses on the same stat
+    if (!bonusType || bonuses[bonusType]) return; // Prevent duplicate bonuses on same stat
 
-    const bonusValue = bonusType === "plus2" ? 2 : 1;
-    
-    setScores((prevScores) => ({
-      ...prevScores,
-      [ability]: prevScores[ability] + bonusValue,
-    }));
-
-    setBonusApplied((prev) => ({ ...prev, [ability]: bonusType })); // Mark ability as having received a bonus
+    setBonuses((prev) => ({ ...prev, [bonusType]: ability })); // Assign bonus to the stat
     setAvailableBonuses((prev) => ({ ...prev, [bonusType]: false })); // Remove bonus from selection
+  };
+
+  const handleRemoveBonus = (ability) => {
+    const updatedBonuses = { ...bonuses };
+    if (bonuses.plus2 === ability) {
+      updatedBonuses.plus2 = null;
+      setAvailableBonuses((prev) => ({ ...prev, plus2: true }));
+    } else if (bonuses.plus1 === ability) {
+      updatedBonuses.plus1 = null;
+      setAvailableBonuses((prev) => ({ ...prev, plus1: true }));
+    }
+    setBonuses(updatedBonuses);
+  };
+
+  const getFinalScore = (ability) => {
+    let baseScore = scores[ability];
+    if (bonuses.plus2 === ability) return Math.min(baseScore + 2, 20);
+    if (bonuses.plus1 === ability) return Math.min(baseScore + 1, 19);
+    return baseScore;
   };
 
   return (
@@ -44,28 +65,36 @@ function AbilityScores() {
       <h3 className="creator-sub-title">Custom or Rolled</h3>
 
       <div className="ability-grid">
-        {Object.keys(scores).map((ability) => (
-          <div 
-            key={ability} 
-            className="ability-box"
-            onDragOver={(e) => e.preventDefault()}
-            onDrop={(e) => handleDrop(e, ability)}
-          >
-            <h3 className="ability-title">{ability}</h3>
-            <div className="score-display">{scores[ability]}</div>
-            <input
-              type="number"
-              min="8"
-              max="18"
-              className="score-input"
-              value={scores[ability]}
-              onChange={(e) => handleInputChange(ability, e.target.value)}
-            />
-            <div className="modifier-display">
-              {modCalc(scores[ability])}
+        {Object.keys(scores).map((ability) => {
+          const isRed = bonuses.plus2 === ability || bonuses.plus1 === ability; // Highlight if stat has bonus
+          return (
+            <div 
+              key={ability} 
+              className="ability-box"
+              onDragOver={(e) => e.preventDefault()}
+              onDrop={(e) => handleDrop(e, ability)}
+            >
+              <h3 className="ability-title">{ability}</h3>
+              <div 
+                className={`score-display ${isRed ? "bonus-highlight" : ""}`}
+                onClick={() => isRed && handleRemoveBonus(ability)} // Click to remove bonus
+              >
+                {getFinalScore(ability)}
+              </div>
+              <input
+                type="number"
+                min="8"
+                max="18"
+                className="score-input"
+                value={scores[ability]}
+                onChange={(e) => handleInputChange(ability, e.target.value)}
+              />
+              <div className="modifier-display">
+                {modCalc(getFinalScore(ability))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Bonus Drag Items */}
