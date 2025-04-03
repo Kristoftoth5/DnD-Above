@@ -18,12 +18,15 @@ import background6 from './assets/bgImages/six.jpg'
 import background7 from './assets/bgImages/seven.jpg'
 import background8 from './assets/bgImages/eight.jpg'
 import EquipmentCard from './assets/CreatorPageCards/EquipmentCard.jsx';
+import FinalDataTransfer from './assets/FinalDataTransfer.jsx';
 
 function CreatorPage () 
 {
     const { selectedClassId } = useContext(ClassIdContext);
     const { selectedOption } = useContext(CreatorContext);
     
+    const [justUpdate, setJustUpdate] = useState(0)
+
 
     var firstbg = Math.floor(Math.random() * 8)
     const [images, setImages] = useState([background1, background2, background3, background4, background5, background6, background7, background8])
@@ -36,6 +39,10 @@ function CreatorPage ()
     useEffect(() => {
        
     }, [selectedClassId])
+
+    useEffect(() => {
+        <FinalDataTransfer/>
+    }, [justUpdate])
 
 
       
@@ -66,6 +73,7 @@ function CreatorPage ()
             <EquipmentCard classId = {selectedClassId}/>
         </div>
         </div>
+        <div><button onClick={() => {setJustUpdate(justUpdate+1)}}>JustWorkPls</button></div>
         </>
     );
 }
