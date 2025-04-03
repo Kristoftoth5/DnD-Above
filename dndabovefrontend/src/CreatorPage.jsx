@@ -24,8 +24,6 @@ function CreatorPage ()
 {
     const { selectedClassId } = useContext(ClassIdContext);
     const { selectedOption } = useContext(CreatorContext);
-    
-    const [justUpdate, setJustUpdate] = useState(0)
 
 
     var firstbg = Math.floor(Math.random() * 8)
@@ -40,9 +38,6 @@ function CreatorPage ()
        
     }, [selectedClassId])
 
-    useEffect(() => {
-        <FinalDataTransfer/>
-    }, [justUpdate])
 
 
       
@@ -73,7 +68,6 @@ function CreatorPage ()
             <EquipmentCard classId = {selectedClassId}/>
         </div>
         </div>
-        <div><button onClick={() => {setJustUpdate(justUpdate+1)}}>JustWorkPls</button></div>
         </>
     );
 }

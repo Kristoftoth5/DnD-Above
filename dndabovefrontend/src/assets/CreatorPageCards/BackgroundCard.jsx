@@ -42,6 +42,7 @@ function Background()
 
 
 return(
+    <>
     <div className="creator-container">
     <h2 className="creator-title">Background</h2>
 
@@ -121,8 +122,8 @@ return(
 
     {/*Background Details written by User */}
     <div>
-        <p><input type="text" id="background-name" value="The name of your background." size={30}/></p>
-        <p><textarea id="background-description" value="You can write the details of what a character with this background could be like." cols={60} rows={15}></textarea></p>
+        <p><input type="text" id="background-name" placeholder="The name of your background." size={30}/></p>
+        <p><textarea id="background-description" placeholder="You can write the details of what a character with this background could be like." cols={60} rows={15}></textarea></p>
     </div>
 
 
@@ -130,10 +131,12 @@ return(
     {/* Display Selected backgrounds BELOW the dropdown */}
     <div className="selected multiple">
     <Background/>
+    <FinalDataTransfer BgTool={chosenTool} BgSkillProfList={chosenSkills} BgDesc={document.getElementById('background-description').value}/>
         
     </div>
-    <FinalDataTransfer BgToolProf={chosenTool} BgSkillProfList={chosenSkills} BgName={document.getElementById("background-name").value} BgDesc={document.getElementById("background-description").value}/>
 </div>
+
+</>
 )
 }
 
