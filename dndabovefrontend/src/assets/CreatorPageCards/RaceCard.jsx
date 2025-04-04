@@ -227,7 +227,6 @@ function RaceCard() {
       </div>
     </div>
 
-    <FinalDataTransfer RaceId={chosenRaceId} SubraceId={chosenSubRaceId}/>
     </>
   );
 }

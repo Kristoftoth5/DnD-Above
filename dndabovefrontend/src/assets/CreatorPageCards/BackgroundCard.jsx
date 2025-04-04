@@ -131,7 +131,6 @@ return(
     {/* Display Selected backgrounds BELOW the dropdown */}
     <div className="selected multiple">
     <Background/>
-    <FinalDataTransfer BgTool={chosenTool} BgSkillProfList={chosenSkills} BgDesc={document.getElementById('background-description').value}/>
         
     </div>
 </div>
