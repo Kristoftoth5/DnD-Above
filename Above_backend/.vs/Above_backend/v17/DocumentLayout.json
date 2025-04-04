@@ -1,12 +1,71 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "F:\\gulyasa\\DnD-Above\\Above_backend\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\dnd-above\\above_backend\\above_backend\\models\\featurestofeaturesconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\models\\featurestofeaturesconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250404100221_Init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Above_backend\\Migrations\\20250404100221_Init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250404095815_FixedFeaturesToFeaturesConnectiontoHaveTwoForeignKeys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Above_backend\\Migrations\\20250404095815_FixedFeaturesToFeaturesConnectiontoHaveTwoForeignKeys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "20250404100221_Init.cs",
+              "DocumentMoniker": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250404100221_Init.cs",
+              "RelativeDocumentMoniker": "Above_backend\\Migrations\\20250404100221_Init.cs",
+              "ToolTip": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250404100221_Init.cs",
+              "RelativeToolTip": "Above_backend\\Migrations\\20250404100221_Init.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-04T10:02:22.134Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "20250404095815_FixedFeaturesToFeaturesConnectiontoHaveTwoForeignKeys.cs",
+              "DocumentMoniker": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250404095815_FixedFeaturesToFeaturesConnectiontoHaveTwoForeignKeys.cs",
+              "RelativeDocumentMoniker": "Above_backend\\Migrations\\20250404095815_FixedFeaturesToFeaturesConnectiontoHaveTwoForeignKeys.cs",
+              "ToolTip": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250404095815_FixedFeaturesToFeaturesConnectiontoHaveTwoForeignKeys.cs",
+              "RelativeToolTip": "Above_backend\\Migrations\\20250404095815_FixedFeaturesToFeaturesConnectiontoHaveTwoForeignKeys.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-04T09:58:15.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FeaturesToFeaturesConnection.cs",
+              "DocumentMoniker": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Models\\FeaturesToFeaturesConnection.cs",
+              "RelativeDocumentMoniker": "Above_backend\\Models\\FeaturesToFeaturesConnection.cs",
+              "ToolTip": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Models\\FeaturesToFeaturesConnection.cs",
+              "RelativeToolTip": "Above_backend\\Models\\FeaturesToFeaturesConnection.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-04T09:54:44.118Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

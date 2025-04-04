@@ -503,8 +503,204 @@
         }
       }
     },
-    "/api/Features/{id}": {
+    "/api/Features/Features/originclassid/{originclassid}": {
       "get": {
+        "tags": [
+          "Features"
+        ],
+        "parameters": [
+          {
+            "name": "originclassid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Features/Features/originsubclassid/{originsubclassid}": {
+      "get": {
+        "tags": [
+          "Features"
+        ],
+        "parameters": [
+          {
+            "name": "originsubclassid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Features/Features/originequipmentid/{originequipmentid}": {
+      "get": {
+        "tags": [
+          "Features"
+        ],
+        "parameters": [
+          {
+            "name": "originequipmentid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Features/Features/originraceid/{originraceid}": {
+      "get": {
+        "tags": [
+          "Features"
+        ],
+        "parameters": [
+          {
+            "name": "originraceid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Features/{id}": {
+      "delete": {
         "tags": [
           "Features"
         ],
@@ -521,30 +717,188 @@
         ],
         "responses": {
           "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/FeaturesToFeaturesConnections": {
+      "get": {
+        "tags": [
+          "FeaturesToFeaturesConnections"
+        ],
+        "responses": {
+          "200": {
             "description": "OK",
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+                  }
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+                  }
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+                  }
                 }
               }
             }
           }
         }
       },
+      "post": {
+        "tags": [
+          "FeaturesToFeaturesConnections"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/FeaturesToFeaturesConnections/{originid}": {
+      "get": {
+        "tags": [
+          "FeaturesToFeaturesConnections"
+        ],
+        "parameters": [
+          {
+            "name": "originid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Features"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Features"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Features"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/FeaturesToFeaturesConnections/{id}": {
+      "put": {
+        "tags": [
+          "FeaturesToFeaturesConnections"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeaturesToFeaturesConnection"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
       "delete": {
         "tags": [
-          "Features"
+          "FeaturesToFeaturesConnections"
         ],
         "parameters": [
           {
@@ -1183,6 +1537,55 @@
           }
         }
       }
+    },
+    "/api/SubClasses/SubClasses/originclassid/{originclassid}": {
+      "get": {
+        "tags": [
+          "SubClasses"
+        ],
+        "parameters": [
+          {
+            "name": "originclassid",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SubClassesDisplayDTO"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SubClassesDisplayDTO"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SubClassesDisplayDTO"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -1389,7 +1792,7 @@
             "format": "int32",
             "nullable": true
           },
-          "weaponType": {
+          "equipmentType": {
             "type": "string",
             "nullable": true
           },
@@ -1452,7 +1855,7 @@
             "type": "string",
             "nullable": true
           },
-          "weaponType": {
+          "equipmentType": {
             "type": "string",
             "nullable": true
           },
@@ -1511,7 +1914,7 @@
             "type": "string",
             "nullable": true
           },
-          "weaponType": {
+          "equipmentType": {
             "type": "string",
             "nullable": true
           },
@@ -1596,6 +1999,13 @@
             "nullable": true
           },
           "savingThrows": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "skillProf": {
             "type": "array",
             "items": {
               "type": "string"
@@ -1700,6 +2110,13 @@
               "type": "string"
             },
             "nullable": true
+          },
+          "skillProf": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1768,7 +2185,32 @@
             },
             "nullable": true
           },
+          "skillProf": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
           "id": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FeaturesToFeaturesConnection": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "originFeatureId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "subFeatureId": {
             "type": "integer",
             "format": "int32"
           }
@@ -2021,8 +2463,8 @@
             "nullable": true
           },
           "range": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "nullable": true
           },
           "duration": {
             "type": "string",
@@ -2045,29 +2487,13 @@
             "format": "int32",
             "nullable": true
           },
-          "originClassId": {
-            "type": "integer",
-            "format": "int32",
+          "learnedBy": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
             "nullable": true
-          },
-          "classes": {
-            "$ref": "#/components/schemas/Classes"
-          },
-          "originSubClassId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "subClasses": {
-            "$ref": "#/components/schemas/SubClasses"
-          },
-          "originRaceId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "races": {
-            "$ref": "#/components/schemas/Races"
           },
           "originEquipmentId": {
             "type": "integer",
@@ -2104,8 +2530,8 @@
             "nullable": true
           },
           "range": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "nullable": true
           },
           "duration": {
             "type": "string",
@@ -2128,19 +2554,12 @@
             "format": "int32",
             "nullable": true
           },
-          "originClassId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "originSubClassId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "originRaceId": {
-            "type": "integer",
-            "format": "int32",
+          "learnedBy": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
             "nullable": true
           },
           "originEquipmentId": {
@@ -2175,8 +2594,8 @@
             "nullable": true
           },
           "range": {
-            "type": "integer",
-            "format": "int32"
+            "type": "string",
+            "nullable": true
           },
           "duration": {
             "type": "string",
@@ -2199,19 +2618,12 @@
             "format": "int32",
             "nullable": true
           },
-          "originClassId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "originSubClassId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "originRaceId": {
-            "type": "integer",
-            "format": "int32",
+          "learnedBy": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
             "nullable": true
           },
           "originEquipmentId": {

@@ -180,6 +180,10 @@ namespace Above_backend.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("OriginFeatureId");
+
+                    b.HasIndex("SubFeatureId");
+
                     b.ToTable("FeaturesToFeaturesConnections");
                 });
 
@@ -409,6 +413,25 @@ namespace Above_backend.Migrations
                     b.Navigation("Races");
 
                     b.Navigation("SubClasses");
+                });
+
+            modelBuilder.Entity("Above_backend.Models.FeaturesToFeaturesConnection", b =>
+                {
+                    b.HasOne("Above_backend.Models.Features", "OriginFeature")
+                        .WithMany()
+                        .HasForeignKey("OriginFeatureId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Above_backend.Models.Features", "SubFeature")
+                        .WithMany()
+                        .HasForeignKey("SubFeatureId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("OriginFeature");
+
+                    b.Navigation("SubFeature");
                 });
 
             modelBuilder.Entity("Above_backend.Models.RefreshToken", b =>

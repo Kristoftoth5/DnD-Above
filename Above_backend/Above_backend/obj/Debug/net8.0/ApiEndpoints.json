@@ -287,32 +287,6 @@
   },
   {
     "ContainingType": "Above_backend.Controllers.FeaturesController",
-    "Method": "GetFeatures",
-    "RelativePath": "api/Features/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Above_backend.Models.DTOs.FeaturesDisplayDTO",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Above_backend.Controllers.FeaturesController",
     "Method": "DeleteFeatures",
     "RelativePath": "api/Features/{id}",
     "HttpMethod": "DELETE",
@@ -326,6 +300,219 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Above_backend.Controllers.FeaturesController",
+    "Method": "GetFeaturesByClass",
+    "RelativePath": "api/Features/Features/originclassid/{originclassid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "originclassid",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.DTOs.FeaturesDisplayDTO, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Above_backend.Controllers.FeaturesController",
+    "Method": "GetFeaturesByEquipment",
+    "RelativePath": "api/Features/Features/originequipmentid/{originequipmentid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "originequipmentid",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.DTOs.FeaturesDisplayDTO, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Above_backend.Controllers.FeaturesController",
+    "Method": "GetFeaturesByRace",
+    "RelativePath": "api/Features/Features/originraceid/{originraceid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "originraceid",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.DTOs.FeaturesDisplayDTO, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Above_backend.Controllers.FeaturesController",
+    "Method": "GetFeaturesBySubclass",
+    "RelativePath": "api/Features/Features/originsubclassid/{originsubclassid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "originsubclassid",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.DTOs.FeaturesDisplayDTO, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Above_backend.Controllers.FeaturesToFeaturesConnectionsController",
+    "Method": "GetFeaturesToFeaturesConnections",
+    "RelativePath": "api/FeaturesToFeaturesConnections",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.FeaturesToFeaturesConnection, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Above_backend.Controllers.FeaturesToFeaturesConnectionsController",
+    "Method": "PostFeaturesToFeaturesConnection",
+    "RelativePath": "api/FeaturesToFeaturesConnections",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "featuresToFeaturesConnection",
+        "Type": "Above_backend.Models.FeaturesToFeaturesConnection",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Above_backend.Models.FeaturesToFeaturesConnection",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Above_backend.Controllers.FeaturesToFeaturesConnectionsController",
+    "Method": "PutFeaturesToFeaturesConnection",
+    "RelativePath": "api/FeaturesToFeaturesConnections/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "featuresToFeaturesConnection",
+        "Type": "Above_backend.Models.FeaturesToFeaturesConnection",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Above_backend.Controllers.FeaturesToFeaturesConnectionsController",
+    "Method": "DeleteFeaturesToFeaturesConnection",
+    "RelativePath": "api/FeaturesToFeaturesConnections/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Above_backend.Controllers.FeaturesToFeaturesConnectionsController",
+    "Method": "GetFeaturesToFeaturesConnectionByOriginId",
+    "RelativePath": "api/FeaturesToFeaturesConnections/{originid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "originid",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.Features, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "Above_backend.Controllers.RacesController",
@@ -699,5 +886,31 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Above_backend.Controllers.SubClassesController",
+    "Method": "GetSubClassesByOriginClassId",
+    "RelativePath": "api/SubClasses/SubClasses/originclassid/{originclassid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "originclassid",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.DTOs.SubClassesDisplayDTO, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   }
 ]
