@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import React, { useContext } from "react";
 import { CreatorContext } from "./assets/BringStatChoice.jsx";
 import { ClassIdContext } from "./assets/BringSelectedClassId.jsx";
@@ -25,18 +25,19 @@ function CreatorPage ()
     const { selectedClassId } = useContext(ClassIdContext);
     const { selectedOption } = useContext(CreatorContext);
 
+    const [updater, setUpdater] = useState(false);
 
     var firstbg = Math.floor(Math.random() * 8)
-    const [images, setImages] = useState([background1, background2, background3, background4, background5, background6, background7, background8])
+    const [images] = useState([background1, background2, background3, background4, background5, background6, background7, background8])
     const [randomBgImage, setRandomBgImage] = useState(firstbg);
 
     useEffect(()=>{
         console.log("Be van töltve az oldal, ye.")
     })
 
-    useEffect(() => {
+    // useEffect(() => {
        
-    }, [selectedClassId])
+    // }, [selectedClassId])
 
 
 
@@ -66,6 +67,8 @@ function CreatorPage ()
             <BackgroundCard/>
             <ClassCard/>
             <EquipmentCard classId = {selectedClassId}/>
+            <button onClick={()=>setUpdater((prev)=>!prev)}>Work PLs</button>
+            {updater ? <FinalDataTransfer Update={updater}/> : <></>}
         </div>
         </div>
         </>
