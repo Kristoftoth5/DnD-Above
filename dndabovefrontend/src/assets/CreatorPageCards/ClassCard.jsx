@@ -77,7 +77,7 @@ function ClassCard() {
   }, [chosenClassId]);
 
   useEffect(() => {
-    setSubFeatureLimits(0);
+    setSubFeatureLimits(1);
     setSubFeatures(undefined);
     setFeatureWithSubFeature("");
     var newSubFeatureLimits = 0;
@@ -91,7 +91,7 @@ function ClassCard() {
             setFeatureWithSubFeature(feature.name);
           }
   
-          else if (feature.name === featureWithSubFeature && feature.levelReq <= characterLevel) {
+          if (feature.name === featureWithSubFeature && feature.levelReq <= characterLevel) {
             newSubFeatureLimits += 1;
           }
         });
