@@ -32,7 +32,7 @@ namespace Above_backend.Controllers
         }
 
         // GET: api/Features/5
-        /*[HttpGet("{id}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<FeaturesDisplayDTO>> GetFeatures(int id)
         {
             var feature = await _context.Features.FindAsync(id);
@@ -43,7 +43,7 @@ namespace Above_backend.Controllers
             }
 
             return MappingFeatures.FeaturesToFeaturesDisplayDto(feature);
-        }*/
+        }
 
         [HttpGet("Features/originclassid/{originclassid}")]
         public async Task<ActionResult<IEnumerable<FeaturesDisplayDTO>>> GetFeaturesByClass(int originclassid)
@@ -126,7 +126,7 @@ namespace Above_backend.Controllers
             }
 
             return NoContent();
-        }*/
+        }
 
         // POST: api/Features
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -175,5 +175,6 @@ namespace Above_backend.Controllers
         {
             return _context.Features.Any(e => e.Id == id);
         }
+        */
     }
 }
