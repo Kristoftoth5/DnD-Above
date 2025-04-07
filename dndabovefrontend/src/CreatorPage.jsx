@@ -18,6 +18,7 @@ import background6 from './assets/bgImages/six.jpg'
 import background7 from './assets/bgImages/seven.jpg'
 import background8 from './assets/bgImages/eight.jpg'
 import EquipmentCard from './assets/CreatorPageCards/EquipmentCard.jsx';
+import SpellCard from './assets/CreatorPageCards/SpellCard.jsx';
 
 function CreatorPage () 
 {
@@ -63,6 +64,7 @@ function CreatorPage ()
             <RaceCard/> 
             <BackgroundCard/>
             <ClassCard/>
+            <SpellCard/>
             <EquipmentCard classId = {selectedClassId}/>
         </div>
         </div>
