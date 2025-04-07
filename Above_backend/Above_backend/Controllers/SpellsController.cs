@@ -45,7 +45,7 @@ namespace Above_backend.Controllers
             return MappingSpells.SpellsToSpellsDisplayDto(onespell);
         }
 
-        [HttpGet("/originclassid/{originclassid}")]
+        [HttpGet("originclassid/{originclassid}")]
         public async Task<ActionResult<IEnumerable<SpellsDisplayDTO>>> GetSpellsByClassId(int originclassid)
         {
             var SpellsDisplayDTOList = await _context.Spells.Where(x => x.LearnedBy.Contains(originclassid)).Select(x => MappingSpells.SpellsToSpellsDisplayDto(x)).ToListAsync();

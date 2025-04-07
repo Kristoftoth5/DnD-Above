@@ -2,55 +2,100 @@ import { useState, useEffect, use } from "react"
 import spellLevelCalc from "../CommonFunctions/spellLevelCalc";
 import fetchEverything from "../CommonFunctions/fetchEverything";
 import profCalc from "../CommonFunctions/profCalc";
+import "../Cards.css"; 
 
 function SpellCard()
 {
-    const [spells, setSpells] = useState(undefined);
-    const [eligibleSpells, setEligibleSpells] = useState(undefined);
+    const [spells, setSpells] = useState([]);
+    const [eligibleSpells, setEligibleSpells] = useState([]);
+    const [displayEligibleSpells, setDisplayEligibleSpells] = useState([]);
     const [chosenSpellId, setChosenSpellId] = useState(-1);
     const [highestSpellLevel, setHighestSpellLevel] = useState();
     const [availableSpellLevels, setAvailableSpellLevels] = useState([]);
     const [proficiencyBonus, setProficiencyBonus] = useState(2);
     const [dropdownOpen, setDropdownOpen] = useState(false);
-    const [chosenSpellLevel, setChosenSpellLevel] = useState(0);
+    const [chosenSpellLevel, setChosenSpellLevel] = useState(undefined);
+    const [chosenSpells, setChosenSpells] = useState([]);
 
     const [characterLevel] = useState(1);
-    const [chosenClassId] = useState(14);
+    const [chosenClassId, setChosenClassId] = useState(14);
     const [spellCastingAbilityModifier] = useState(5);
 
     useEffect(()=>{
-        var halfCaster = false;
-        var spellCaster = true;
-        var temp = [];
-        
-        setHighestSpellLevel(spellLevelCalc(spellCaster,halfCaster,characterLevel));
-        setProficiencyBonus(profCalc(characterLevel));
-        for (let i = 0; i <= highestSpellLevel; i++) {
-            temp.push(i);
-        }
-        setAvailableSpellLevels(temp);
-
         async function fetchSpells()
         {
-            var templist;
-            setSpells(await fetchEverything("Spells/"+chosenClassId));
-            spells !== undefined ?(
-            spells.forEach(spell => {
-                if (spell.level <= highestSpellLevel)
+            try 
+            {
+                const response = await fetchEverything("Spells/originclassid/"+chosenClassId);
+                console.log("Fetched Spells:", response);
+                if (response && Array.isArray(response)) 
                 {
-                    templist.push(spell);
+                    setSpells(response); // Only set if it's an array
                 }
-            })):null;
-            setEligibleSpells(templist);
+                else 
+                {
+                    console.error("Error: Fetched response is not an array.");
+                }
+            }
+            catch (error) 
+            {
+                console.error("Error fetching spells:", error);
+            }
         }
 
         fetchSpells();
+
+        
     }, [chosenClassId, characterLevel])
+
+    useEffect(() => {
+        if(spells !== undefined)
+        {
+            var halfCaster = false;
+            var spellCaster = true;
+            var temp = [];
+            
+            setHighestSpellLevel(spellLevelCalc(spellCaster,halfCaster,characterLevel));
+            setProficiencyBonus(profCalc(characterLevel));
+            for (let i = 0; i <= highestSpellLevel; i++) {
+                temp.push(i);
+            }
+            console.log("nemhiszemel: " + temp)
+            setAvailableSpellLevels(temp);
+
+
+            if (spells.length > 0 && highestSpellLevel !== undefined) {
+                const filteredSpells = spells.filter(spell => spell.level <= highestSpellLevel);
+                setEligibleSpells(filteredSpells);
+            }
+        }
+        
+    }, [spells, highestSpellLevel]);
+
+    function spellSelect(id)
+    {
+        var temparray = chosenSpells;
+        temparray.push(id);
+        setChosenSpells(temparray);
+    }
+
+    function spellDeselect(id)
+    {
+        var temparray = [...chosenSpells];
+        temparray.length !== 0 ? temparray.splice(temparray.findIndex(element === id),1) : null;
+        setChosenSpells(temparray);
+    }
+
+    function spellRemoveDisplay(id)
+    {
+        var temparray = [...displayEligibleSpells];
+        console.log(temparray)
+        temparray.length !== 0 ? temparray.splice((temparray.findIndex(element.id === id)),1):null;
+        setDisplayEligibleSpells(temparray)
+    }
 
     function SelectedSpells()
     {
-        
-
         return(
             <>
             <p><b>Spellcasting Class Name</b></p>
@@ -90,6 +135,46 @@ function SpellCard()
                 ))}
                 </div>
             )}
+
+
+            <div className="selected-multiple">
+                {chosenSpellLevel !== undefined & !dropdownOpen? (
+                    <>
+                    {chosenSpellLevel == 0 ? (<h3>Cantrips</h3>):(<h3>Level {chosenSpellLevel} Spells</h3>)}
+                    <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>School & Level</th>
+                                    <th>Ritual</th>
+                                    <th>Concentration</th>
+                                    <th>Casting Time</th>
+                                    <th>Range</th>
+                                    <th>Components</th>
+                                    <th>Duration</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                        {eligibleSpells.map((spell, id)=>(
+                            <tr key={id}>
+                                <td>{spell.name}</td>
+                                <td>{spell.level} {spell.school} spell</td>
+                                {spell.ritual == 1 ? (<td><i>Ritual</i></td>):(<td>-</td>)}
+                                {spell.concentration == 1 ? (<td><b>Concentration</b></td>):(<td>-</td>)}
+                                <td>{spell.castingTime}</td>
+                                <td>{spell.range}</td>
+                                <td>{spell.components}</td>
+                                <td>{spell.duration}</td>
+                                <td><button className="btn btn-primary" onClick={()=>{spellSelect(spell.id); spellRemoveDisplay(spell.id)}}></button></td>
+                            </tr>
+                        ))}
+                        </tbody>
+                        </table>
+                        </>
+                ):null}
+
+            </div>
             </div>
             </>
         )
@@ -99,7 +184,10 @@ function SpellCard()
 
     return(
         <>
-        <SpellCard/>
+        <div className="creator-container">
+            <h2 className="creator-title">Spells</h2>
+            <SelectedSpells/>
+        </div>
         </>
     )
 }

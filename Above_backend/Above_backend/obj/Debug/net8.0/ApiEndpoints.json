@@ -85,32 +85,6 @@
   },
   {
     "ContainingType": "Above_backend.Controllers.ClassesController",
-    "Method": "PostClasses",
-    "RelativePath": "api/Classes",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "classescreatedto",
-        "Type": "Above_backend.Models.DTOs.ClassesCreateAndBaseDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Above_backend.Models.Classes",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Above_backend.Controllers.ClassesController",
     "Method": "GetClasses",
     "RelativePath": "api/Classes/{id}",
     "HttpMethod": "GET",
@@ -136,22 +110,6 @@
     ]
   },
   {
-    "ContainingType": "Above_backend.Controllers.ClassesController",
-    "Method": "DeleteClasses",
-    "RelativePath": "api/Classes/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "Above_backend.Controllers.EquipmentsController",
     "Method": "GetEquipment",
     "RelativePath": "api/Equipments",
@@ -162,32 +120,6 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.DTOs.EquipmentsDisplayDTO, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Above_backend.Controllers.EquipmentsController",
-    "Method": "PostEquipment",
-    "RelativePath": "api/Equipments",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "equipmentscreatedto",
-        "Type": "Above_backend.Models.DTOs.EquipmentsCreateAndBaseDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Above_backend.Models.Equipment",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -224,22 +156,6 @@
     ]
   },
   {
-    "ContainingType": "Above_backend.Controllers.EquipmentsController",
-    "Method": "DeleteEquipment",
-    "RelativePath": "api/Equipments/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "Above_backend.Controllers.FeaturesController",
     "Method": "GetFeatures",
     "RelativePath": "api/Features",
@@ -261,35 +177,9 @@
   },
   {
     "ContainingType": "Above_backend.Controllers.FeaturesController",
-    "Method": "PostFeatures",
-    "RelativePath": "api/Features",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "featurescreatedto",
-        "Type": "Above_backend.Models.DTOs.FeaturesCreateAndBaseDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Above_backend.Models.Features",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Above_backend.Controllers.FeaturesController",
-    "Method": "DeleteFeatures",
+    "Method": "GetFeatures",
     "RelativePath": "api/Features/{id}",
-    "HttpMethod": "DELETE",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -299,7 +189,17 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "Above_backend.Models.DTOs.FeaturesDisplayDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "Above_backend.Controllers.FeaturesController",
@@ -427,84 +327,21 @@
   },
   {
     "ContainingType": "Above_backend.Controllers.FeaturesToFeaturesConnectionsController",
-    "Method": "PostFeaturesToFeaturesConnection",
-    "RelativePath": "api/FeaturesToFeaturesConnections",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "featuresToFeaturesConnection",
-        "Type": "Above_backend.Models.FeaturesToFeaturesConnection",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Above_backend.Models.FeaturesToFeaturesConnection",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Above_backend.Controllers.FeaturesToFeaturesConnectionsController",
-    "Method": "PutFeaturesToFeaturesConnection",
+    "Method": "GetFeaturesToFeaturesConnection",
     "RelativePath": "api/FeaturesToFeaturesConnections/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "featuresToFeaturesConnection",
-        "Type": "Above_backend.Models.FeaturesToFeaturesConnection",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Above_backend.Controllers.FeaturesToFeaturesConnectionsController",
-    "Method": "DeleteFeaturesToFeaturesConnection",
-    "RelativePath": "api/FeaturesToFeaturesConnections/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Above_backend.Controllers.FeaturesToFeaturesConnectionsController",
-    "Method": "GetFeaturesToFeaturesConnectionByOriginId",
-    "RelativePath": "api/FeaturesToFeaturesConnections/{originid}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "originid",
+        "Name": "id",
         "Type": "System.Int32",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.Features, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Above_backend.Models.FeaturesToFeaturesConnection",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -536,32 +373,6 @@
   },
   {
     "ContainingType": "Above_backend.Controllers.RacesController",
-    "Method": "PostRaces",
-    "RelativePath": "api/Races",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "racescreatedto",
-        "Type": "Above_backend.Models.DTOs.RacesCreateAndBaseDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Above_backend.Models.Races",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Above_backend.Controllers.RacesController",
     "Method": "GetRaces",
     "RelativePath": "api/Races/{id}",
     "HttpMethod": "GET",
@@ -577,42 +388,6 @@
     "ReturnTypes": [
       {
         "Type": "Above_backend.Models.DTOs.RacesDisplayDTO",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Above_backend.Controllers.RacesController",
-    "Method": "DeleteRaces",
-    "RelativePath": "api/Races/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Above_backend.Controllers.SavesController",
-    "Method": "GetSaves",
-    "RelativePath": "api/Saves",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.DTOs.SavesBaseDisplayDTO, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -676,27 +451,6 @@
   },
   {
     "ContainingType": "Above_backend.Controllers.SavesController",
-    "Method": "PutSaves",
-    "RelativePath": "api/Saves/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "saves",
-        "Type": "Above_backend.Models.Saves",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Above_backend.Controllers.SavesController",
     "Method": "DeleteSaves",
     "RelativePath": "api/Saves/{id}",
     "HttpMethod": "DELETE",
@@ -722,32 +476,6 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.DTOs.SpellsDisplayDTO, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Above_backend.Controllers.SpellsController",
-    "Method": "PostSpells",
-    "RelativePath": "api/Spells",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "spellscreatedto",
-        "Type": "Above_backend.Models.DTOs.SpellsCreateAndBaseDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Above_backend.Models.Spells",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -785,19 +513,29 @@
   },
   {
     "ContainingType": "Above_backend.Controllers.SpellsController",
-    "Method": "DeleteSpells",
-    "RelativePath": "api/Spells/{id}",
-    "HttpMethod": "DELETE",
+    "Method": "GetSpellsByClassId",
+    "RelativePath": "api/Spells/originclassid/{originclassid}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "originclassid",
         "Type": "System.Int32",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.DTOs.SpellsDisplayDTO, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "Above_backend.Controllers.SubClassesController",
@@ -810,32 +548,6 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.DTOs.SubClassesDisplayDTO, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Above_backend.Controllers.SubClassesController",
-    "Method": "PostSubClasses",
-    "RelativePath": "api/SubClasses",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "subClassescreatedto",
-        "Type": "Above_backend.Models.DTOs.SubClassesCreateAndBaseDTO",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Above_backend.Models.SubClasses",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -873,22 +585,6 @@
   },
   {
     "ContainingType": "Above_backend.Controllers.SubClassesController",
-    "Method": "DeleteSubClasses",
-    "RelativePath": "api/SubClasses/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Above_backend.Controllers.SubClassesController",
     "Method": "GetSubClassesByOriginClassId",
     "RelativePath": "api/SubClasses/SubClasses/originclassid/{originclassid}",
     "HttpMethod": "GET",
@@ -904,6 +600,37 @@
     "ReturnTypes": [
       {
         "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.DTOs.SubClassesDisplayDTO, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Above_backend.Controllers.FeaturesToFeaturesConnectionsController",
+    "Method": "GetFeaturesToFeaturesConnectionByOriginId",
+    "RelativePath": "originsubclassid/{originsubclassid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "originid",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "originsubclassid",
+        "Type": "",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.Features, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
