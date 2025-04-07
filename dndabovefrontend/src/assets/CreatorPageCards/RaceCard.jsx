@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import fetchEverything from "../CommonFunctions/fetchEverything"
 import "../Cards.css"; // Import styles
+import { useContext } from "react";
+import { RaceIdContext } from "../SaveContexts/RaceContext";
+import { SubraceIdContext } from "../SaveContexts/RaceContext";
 
 function RaceCard() {
 
@@ -16,6 +19,8 @@ function RaceCard() {
   const [subRaceOptions, setSubRaceOptions] = useState();
   const [subRaceFeatures, setSubRaceFeatures] = useState();
 
+  const { setRaceId } = useContext(RaceIdContext);
+  const { setSubraceId } = useContext(SubraceIdContext);
  
 
 
@@ -154,7 +159,7 @@ function RaceCard() {
                 {subRaceOptions.map( (subrace, id) =>(
                   <button
                     className="dropdown-item"
-                    onClick={() => {setChosenSubRaceId(subrace[1]);setSubRaceDropdownOpen(false);setSubRaceName(subrace[0]);}}
+                    onClick={() => {setChosenSubRaceId(subrace[1]);setSubraceId(subrace[1]);setSubRaceDropdownOpen(false);setSubRaceName(subrace[0]);}}
                   >
                   {subrace[0]}
                   </button>
@@ -210,7 +215,7 @@ function RaceCard() {
             {raceOptionNames.map( (race, id) =>(
               <button
                 className="dropdown-item"
-                onClick={() => {setChosenRaceId(race[1]);setDropdownOpen(false);setChosenSubRaceId(0);}}
+                onClick={() => {setChosenRaceId(race[1]);setRaceId(race[1]);setDropdownOpen(false);setChosenSubRaceId(0);}}
               >
               {race[0]}
               </button>

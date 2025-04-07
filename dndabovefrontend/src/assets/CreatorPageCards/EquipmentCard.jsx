@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
 import fetchEverything from "../CommonFunctions/fetchEverything";
 import "../Cards.css"; // Reuse existing styles
+import { useContext } from "react";
+import { EquipmentContext } from "../SaveContexts/EquipmentContext";
+import { RemainingGoldContext } from "../SaveContexts/EquipmentContext";
 
 function EquipmentCard({ classId }) {
   const [gold, setGold] = useState(0);
   const [equipmentOptions, setEquipmentOptions] = useState([]);
   const [selectedEquipment, setSelectedEquipment] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null); // Track selected category
+
+
+  const { setRemainingGold } = useContext(RemainingGoldContext);
+  const { setEquipment } = useContext(EquipmentContext);
 
   // Fetch class gold
   useEffect(() => {
@@ -43,7 +50,9 @@ function EquipmentCard({ classId }) {
   function buyEquipment(item) {
     if (gold >= item[2]) {
       setGold(gold - item[2]);
+      setRemainingGold(gold)
       setSelectedEquipment([...selectedEquipment, item]);
+      setEquipment([selectedEquipment, item])
     }
   }
 
@@ -51,7 +60,9 @@ function EquipmentCard({ classId }) {
   function removeEquipment(index) {
     let item = selectedEquipment[index];
     setGold(gold + item[2]);
+    setRemainingGold(gold)
     setSelectedEquipment(selectedEquipment.filter((_, i) => i !== index));
+    setEquipment(selectedEquipment.filter((_, i) => i !== index));
   }
 
   return (

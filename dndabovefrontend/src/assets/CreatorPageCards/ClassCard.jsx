@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import fetchEverything from "../CommonFunctions/fetchEverything";
 import diceToInteger from "../CommonFunctions/diceToInteger";
-import React, { useContext } from "react";
-import { ClassIdContext } from "../SaveContexts/ClassContext";
+import { useContext } from "react";
+import { ClassIdContext, SubclassIdContext, ChosenClassFeatureIdContext } from "../SaveContexts/ClassContext";
 import "../Cards.css"; 
 
 function ClassCard() {
@@ -27,9 +27,12 @@ function ClassCard() {
   const [subClassDropdownOpen, setSubClassDropdownOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const { setSelectedClassId } = useContext(ClassIdContext);
-
   const [featureDone, setFeatureDone] = useState(false);
+
+
+  const {setClassId} = useContext(ClassIdContext);
+  const {setSubclassId} = useContext(SubclassIdContext);
+  const {setChosenClassFeatrue} = useContext(ChosenClassFeatureIdContext);
 
   // Fetching all the classes at startup
   useEffect(() => {
@@ -71,7 +74,6 @@ function ClassCard() {
     setChosenSubFeatures([]);
     setFeatureWithSubFeature("");
     setCharacterLevel(1);
-    setSelectedClassId(chosenClassId);
 
     fetchdatabyid();
   }, [chosenClassId]);
@@ -151,12 +153,12 @@ function ClassCard() {
   }, [chosenSubClassId]);
 
   // Function to add subfeature
-  function subFeatureAdd(name, description, originfeatureid) {
+  function subFeatureAdd(name, description, originfeatureid, featureid) {
     const tempSelected = [...chosenSubFeatures];
 
     // Check if the feature is already added for this feature (to avoid duplicates)
     if (!tempSelected.some(subfeature => subfeature[0] === name && subfeature[2] === originfeatureid) && !(chosenSubFeatures.length >= subFeatureLimits)) {
-      tempSelected.push([name, description, originfeatureid]);
+      tempSelected.push([name, description, originfeatureid, featureid]);
       setChosenSubFeatures(tempSelected);
       setTotalSubFeatureCount(prev => prev + 1); // Increment the total subfeature count
     }
@@ -239,7 +241,7 @@ function ClassCard() {
                           <p key={subId}><b>{subfeature.name}</b></p>
                           <p><b>Description: </b>{subfeature.description}</p>
                           <button
-                            onClick={() => {subFeatureAdd(subfeature.name, subfeature.description, feature.id); setTotalSubFeatureCount(totalSubFeatureCount+1)}}
+                            onClick={() => {subFeatureAdd(subfeature.name, subfeature.description, feature.id, subfeature.id); setTotalSubFeatureCount(totalSubFeatureCount+1)}}
                             disabled={alreadySelected || totalSubFeatureCount >= maxSubFeatures}
                           >
                             Select {subfeature.name}
@@ -255,7 +257,7 @@ function ClassCard() {
                   <div key={id}>
                     <p><b>{chosensub[0]}</b></p>
                     <p>{chosensub[1]}</p>
-                    <button onClick={() => subFeatureDelete(chosensub[0], feature.id)}>
+                    <button onClick={() => {subFeatureDelete(chosensub[0], feature.id)}}>
                       Deselect {chosensub[0]}
                     </button>
                   </div>
@@ -265,12 +267,55 @@ function ClassCard() {
           ) : null
         ))}
 
+        {/*All subclass related things */}
+          {/* Dropdown Button */}
+ 
+     
+      <div className="dropdown-wrapper">
+        <button
+          className="btn btn-secondary dropdown-toggle"
+          type="button"
+          onClick={() => {setSubClassDropdownOpen(!subClassDropdownOpen);}}
+          id="plsbepink"
+        >
+          Select Subclass
+        </button>
+ 
+        {/* Dropdown Menu - Now positioned below the button */}
+        {subClassDropdownOpen && (
+          <div className="dropdown-menu show">
+            {subClassOptions.map( (subclass, id) =>(
+              <button
+                className="dropdown-item"
+                onClick={() => {setChosenSubClassId(subclass[1]);setSubclassId(subclass[1])}}
+              >
+              {subclass[0]}
+              </button>
+              ))}
+          </div>
+        )}
+      </div>
+      {subClassFeatures !== undefined ?(
+        <h4>{subClassName}</h4>
+      ):null}
+      {subClassFeatures !== undefined ?(
+      subClassFeatures.map((feature, id)=>(
+        feature.levelReq <= characterLevel ?(
+            <div className="selected-feature">
+              <p><b>{feature.name}</b></p>
+              <p><b>Description: </b>{feature.description}</p>
+            </div>) : null  
+          ))
+       ): null }
+
         {/* Finalize / Revert Buttons */}
         <div>
           {featureDone ? (
-            <button onClick={revertSelection}>Revert Selection</button>
+            <button onClick={() => {revertSelection; setChosenClassFeatrue([])}}>Revert Selection</button>
           ) : (
-            <button onClick={finalizeSelection}>Finalize Subfeature Selection</button>
+            <button onClick={() => {finalizeSelection; var temp = []; chosenSubFeatures.forEach(id => {
+              temp.push(id[3])
+            });setChosenClassFeatrue(temp)}}>Finalize Subfeature Selection</button>
           )}
         </div>
       </>
@@ -311,7 +356,7 @@ function ClassCard() {
             {classOptions.map((characterclass, id) => (
               <button
                 className="dropdown-item"
-                onClick={() => { setChosenClassId(characterclass[1]); setDropdownOpen(false); }}
+                onClick={() => { setChosenClassId(characterclass[1]);setClassId(characterclass[1]); setDropdownOpen(false); }}
                 key={id}
               >
                 {characterclass[0]}

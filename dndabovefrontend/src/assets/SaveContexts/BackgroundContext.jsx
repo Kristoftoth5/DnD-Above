@@ -32,7 +32,7 @@ export function BgDescProvider({ children }) {
 
 //Bg Skills
 export function BgSkillsProvider({ children }) {
-    const [BgSkills, setBgSkills] = useState("");
+    const [BgSkills, setBgSkills] = useState(["",""]);
   
     return (
       <BgSkillsContext.Provider value={{ BgSkills, setBgSkills }}>

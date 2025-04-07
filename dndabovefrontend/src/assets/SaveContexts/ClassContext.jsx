@@ -8,10 +8,10 @@ export const ChosenClassFeatureIdContext = createContext();
 
 //Returns Class Id
 export function ClassIdProvider({ children }) {
-  const [selectedClassId, setSelectedClassId] = useState(0);
+  const [ClassId, setClassId] = useState(0);
 
   return (
-    <ClassIdContext.Provider value={{ selectedClassId, setSelectedClassId }}>
+    <ClassIdContext.Provider value={{ ClassId, setClassId }}>
       {children}
     </ClassIdContext.Provider>
   );
@@ -19,10 +19,10 @@ export function ClassIdProvider({ children }) {
 
 //Returns Subclass Id
 export function SubclassIdProvider({ children }) {
-  const [selectedSubclassId, setSelectedSubclassId] = useState(0);
+  const [SubclassId, setSubclassId] = useState(0);
 
   return (
-    <SubclassIdContext.Provider value={{ selectedSubclassId, setSelectedSubclassId }}>
+    <SubclassIdContext.Provider value={{ SubclassId, setSubclassId }}>
       {children}
     </SubclassIdContext.Provider>
   );
