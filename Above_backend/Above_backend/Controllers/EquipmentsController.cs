@@ -45,9 +45,10 @@ namespace Above_backend.Controllers
             return MappingEquipment.EquipmentToEquipmentDisplayDTO(oneequipment);
         }
 
+        /*
         // PUT: api/Equipments/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*[HttpPut("{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> PutEquipment(int id, Equipment equipment)
         {
             if (id != equipment.Id)
@@ -74,7 +75,7 @@ namespace Above_backend.Controllers
             }
 
             return NoContent();
-        }*/
+        }
 
         // POST: api/Equipments
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -107,5 +108,6 @@ namespace Above_backend.Controllers
         {
             return _context.Equipments.Any(e => e.Id == id);
         }
+        */
     }
 }

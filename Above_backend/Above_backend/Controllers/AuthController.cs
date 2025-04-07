@@ -58,6 +58,7 @@ public class AuthController : ControllerBase
         });
     }
 
+    [Authorize]
     [HttpPost("refreshToken")]
     public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenDTO model)
     {
@@ -82,6 +83,7 @@ public class AuthController : ControllerBase
         });
     }
 
+    [Authorize]
     [HttpPost("logout")]
     public async Task<IActionResult> Logout([FromBody] RefreshTokenDTO model)
     {
