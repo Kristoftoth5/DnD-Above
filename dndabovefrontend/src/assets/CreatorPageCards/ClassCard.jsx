@@ -3,7 +3,7 @@ import fetchEverything from "../CommonFunctions/fetchEverything";
 import diceToInteger from "../CommonFunctions/diceToInteger";
 import React, { useContext } from "react";
 import { ClassIdContext } from "../BringSelectedClassId.jsx";
-import "../Cards.css"; // Import styles
+import "../Cards.css"; 
 
 function ClassCard() {
   const [classOptions, setClassOptions] = useState();
@@ -18,9 +18,9 @@ function ClassCard() {
 
   const [subFeatures, setSubFeatures] = useState([]);
   const [featureWithSubFeature, setFeatureWithSubFeature] = useState("");
-  const [chosenSubFeatures, setChosenSubFeatures] = useState([]); // Updated to store subfeatures in the array format
-  const [subFeatureLimits, setSubFeatureLimits] = useState(0); // Tracks the max selections for each feature
-  const [totalSubFeatureCount, setTotalSubFeatureCount] = useState(0); // Track total subfeature selections
+  const [chosenSubFeatures, setChosenSubFeatures] = useState([]); 
+  const [subFeatureLimits, setSubFeatureLimits] = useState(0); 
+  const [totalSubFeatureCount, setTotalSubFeatureCount] = useState(0); 
 
   const [characterLevel, setCharacterLevel] = useState(1);
 
@@ -36,16 +36,16 @@ function ClassCard() {
     async function fetchclasses() {
       const classOptionsJSON = await fetchEverything("Classes");
 
-      var fasz = [];
-      var fasz2 = [];
+      var temp1 = [];
+      var temp2 = [];
       classOptionsJSON.forEach(characterclass => {
-        fasz2.push(characterclass.name);
-        fasz2.push(characterclass.id);
+        temp2.push(characterclass.name);
+        temp2.push(characterclass.id);
 
-        fasz.push(fasz2);
-        fasz2 = [];
+        temp1.push(temp2);
+        temp2 = [];
       });
-      setClassOptions(fasz);
+      setClassOptions(temp1);
     }
     fetchclasses();
   }, []);
@@ -91,7 +91,7 @@ function ClassCard() {
             setFeatureWithSubFeature(feature.name);
           }
   
-          if (feature.name === featureWithSubFeature && feature.levelReq <= characterLevel) {
+          else if (feature.name === featureWithSubFeature && feature.levelReq <= characterLevel) {
             newSubFeatureLimits += 1;
           }
         });
@@ -99,7 +99,7 @@ function ClassCard() {
         // Wait for all promises to resolve
         await Promise.all(subFeaturePromises);
   
-        console.log("newSubFeatureLimits: ", newSubFeatureLimits); // This will show the correct value
+        console.log("newSubFeatureLimits: ", newSubFeatureLimits); 
         if (newSubFeatureLimits !== 0) {
           setSubFeatureLimits(newSubFeatureLimits);
         }
@@ -111,16 +111,16 @@ function ClassCard() {
   useEffect(() => {
     async function fetchsubclasses(id) {
       const subClassOptionsJSON = await fetchEverything("SubClasses/SubClasses/originclassid/" + id);
-      var fasz = [];
-      var fasz2 = [];
+      var temp1 = [];
+      var temp2 = [];
       subClassOptionsJSON.map((subclass, id) => {
-        fasz2.push(subclass.name);
-        fasz2.push(subclass.id);
+        temp2.push(subclass.name);
+        temp2.push(subclass.id);
 
-        fasz.push(fasz2);
-        fasz2 = [];
+        temp1.push(temp2);
+        temp2 = [];
       });
-      setSubClassOptions(fasz);
+      setSubClassOptions(temp1);
     }
     try
     {
@@ -230,7 +230,6 @@ function ClassCard() {
                   const maxSubFeatures = subFeatureLimits;
                   const alreadySelected = chosenSubFeatures.filter(sub => sub[2] === feature.id).length >= maxSubFeatures;
 
-                  // If there is only one subfeature for this feature, we need to ensure that it can be selected
                   const featureIsAvailable = feature.levelReq <= characterLevel;
 
                   return (
