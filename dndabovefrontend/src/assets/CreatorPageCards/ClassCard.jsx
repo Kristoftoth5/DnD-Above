@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import fetchEverything from "../CommonFunctions/fetchEverything";
 import diceToInteger from "../CommonFunctions/diceToInteger";
 import React, { useContext } from "react";
-import { ClassIdContext } from "../BringSelectedClassId.jsx";
+import { ClassIdContext } from "../SaveContexts/ClassContext.jsx";
 import "../Cards.css"; // Import styles
 
 function ClassCard() {
