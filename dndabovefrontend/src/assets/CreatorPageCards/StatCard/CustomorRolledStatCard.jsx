@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "../../Cards.css"; // Reuse existing styles
 import modCalc from "../../CommonFunctions/modCalc";
-import FinalDataTransfer from "../../FinalDataTransfer";
 
 function AbilityScores() {
   const [scores, setScores] = useState({

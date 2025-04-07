@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../Cards.css"; // Import styles
-import FinalDataTransfer from "../FinalDataTransfer";
 
 
 
@@ -131,7 +130,6 @@ return(
     {/* Display Selected backgrounds BELOW the dropdown */}
     <div className="selected multiple">
     <Background/>
-    <FinalDataTransfer BgTool={chosenTool} BgSkillProfList={chosenSkills}/>
         
     </div>
 </div>
