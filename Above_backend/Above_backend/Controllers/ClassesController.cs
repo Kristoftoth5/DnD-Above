@@ -45,9 +45,10 @@ namespace Above_backend.Controllers
             return MappingClasses.ClassesToClassesDisplayDTO(oneclass);
         }
 
+        /*
         // PUT: api/Classes/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*[HttpPut("{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> PutClasses(int id, Classes classes)
         {
             if (id != classes.Id)
@@ -74,7 +75,7 @@ namespace Above_backend.Controllers
             }
 
             return NoContent();
-        }*/
+        }
 
         // POST: api/Classes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -108,5 +109,6 @@ namespace Above_backend.Controllers
         {
             return _context.Classes.Any(e => e.Id == id);
         }
+        */
     }
 }
