@@ -58,9 +58,10 @@ namespace Above_backend.Controllers
             return requestedsubclasses;
         }
 
+        /*
         // PUT: api/SubClasses/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*[HttpPut("{id}")]
+        [HttpPut("{id}")]
         public async Task<IActionResult> PutSubClasses(int id, SubClasses subClasses)
         {
             if (id != subClasses.Id)
@@ -87,7 +88,7 @@ namespace Above_backend.Controllers
             }
 
             return NoContent();
-        }*/
+        }
 
         // POST: api/SubClasses
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -120,5 +121,6 @@ namespace Above_backend.Controllers
         {
             return _context.SubClasses.Any(e => e.Id == id);
         }
+        */
     }
 }

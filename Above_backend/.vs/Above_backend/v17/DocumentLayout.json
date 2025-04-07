@@ -1,18 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\gulyasa\\DnD-Above\\Above_backend\\",
+  "WorkspaceRootPath": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\dnd-above\\above_backend\\above_backend\\models\\featurestofeaturesconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\models\\featurestofeaturesconnection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\project\\dnd-above\\above_backend\\above_backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250404100221_Init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Above_backend\\Migrations\\20250404100221_Init.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\project\\dnd-above\\above_backend\\above_backend\\controllers\\savescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\controllers\\savescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250404095815_FixedFeaturesToFeaturesConnectiontoHaveTwoForeignKeys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Above_backend\\Migrations\\20250404095815_FixedFeaturesToFeaturesConnectiontoHaveTwoForeignKeys.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\project\\dnd-above\\above_backend\\above_backend\\controllers\\subclassescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\controllers\\subclassescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\project\\dnd-above\\above_backend\\above_backend\\controllers\\spellscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\controllers\\spellscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|f:\\gulyasa\\project\\dnd-above\\above_backend\\above_backend\\controllers\\racescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\controllers\\racescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,45 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "20250404100221_Init.cs",
-              "DocumentMoniker": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250404100221_Init.cs",
-              "RelativeDocumentMoniker": "Above_backend\\Migrations\\20250404100221_Init.cs",
-              "ToolTip": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250404100221_Init.cs",
-              "RelativeToolTip": "Above_backend\\Migrations\\20250404100221_Init.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "SavesController.cs",
+              "DocumentMoniker": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Controllers\\SavesController.cs",
+              "RelativeDocumentMoniker": "Above_backend\\Controllers\\SavesController.cs",
+              "ToolTip": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Controllers\\SavesController.cs",
+              "RelativeToolTip": "Above_backend\\Controllers\\SavesController.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAgwDEAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T10:02:22.134Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "20250404095815_FixedFeaturesToFeaturesConnectiontoHaveTwoForeignKeys.cs",
-              "DocumentMoniker": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250404095815_FixedFeaturesToFeaturesConnectiontoHaveTwoForeignKeys.cs",
-              "RelativeDocumentMoniker": "Above_backend\\Migrations\\20250404095815_FixedFeaturesToFeaturesConnectiontoHaveTwoForeignKeys.cs",
-              "ToolTip": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Migrations\\20250404095815_FixedFeaturesToFeaturesConnectiontoHaveTwoForeignKeys.cs",
-              "RelativeToolTip": "Above_backend\\Migrations\\20250404095815_FixedFeaturesToFeaturesConnectiontoHaveTwoForeignKeys.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T09:58:15.426Z",
+              "WhenOpened": "2025-04-07T06:09:10.61Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FeaturesToFeaturesConnection.cs",
-              "DocumentMoniker": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Models\\FeaturesToFeaturesConnection.cs",
-              "RelativeDocumentMoniker": "Above_backend\\Models\\FeaturesToFeaturesConnection.cs",
-              "ToolTip": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Models\\FeaturesToFeaturesConnection.cs",
-              "RelativeToolTip": "Above_backend\\Models\\FeaturesToFeaturesConnection.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAUAAAAAAAAAA==",
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Above_backend\\Controllers\\AuthController.cs",
+              "ToolTip": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Above_backend\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAHkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-04T09:54:44.118Z",
+              "WhenOpened": "2025-04-07T06:07:44.779Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "SubClassesController.cs",
+              "DocumentMoniker": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Controllers\\SubClassesController.cs",
+              "RelativeDocumentMoniker": "Above_backend\\Controllers\\SubClassesController.cs",
+              "ToolTip": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Controllers\\SubClassesController.cs",
+              "RelativeToolTip": "Above_backend\\Controllers\\SubClassesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T06:06:32.249Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SpellsController.cs",
+              "DocumentMoniker": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Controllers\\SpellsController.cs",
+              "RelativeDocumentMoniker": "Above_backend\\Controllers\\SpellsController.cs",
+              "ToolTip": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Controllers\\SpellsController.cs",
+              "RelativeToolTip": "Above_backend\\Controllers\\SpellsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T06:06:11.911Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RacesController.cs",
+              "DocumentMoniker": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Controllers\\RacesController.cs",
+              "RelativeDocumentMoniker": "Above_backend\\Controllers\\RacesController.cs",
+              "ToolTip": "F:\\gulyasa\\Project\\DnD-Above\\Above_backend\\Above_backend\\Controllers\\RacesController.cs",
+              "RelativeToolTip": "Above_backend\\Controllers\\RacesController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAG4AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T06:05:56.905Z",
               "EditorCaption": ""
             }
           ]

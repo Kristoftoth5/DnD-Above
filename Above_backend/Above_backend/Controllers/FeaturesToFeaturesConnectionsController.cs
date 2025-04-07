@@ -28,7 +28,7 @@ namespace Above_backend.Controllers
         }
 
         // GET: api/FeaturesToFeaturesConnections/5
-        /*[HttpGet("{id}")]
+        [HttpGet("{id}")]
         public async Task<ActionResult<FeaturesToFeaturesConnection>> GetFeaturesToFeaturesConnection(int id)
         {
             var featuresToFeaturesConnection = await _context.FeaturesToFeaturesConnections.FindAsync(id);
@@ -39,9 +39,9 @@ namespace Above_backend.Controllers
             }
 
             return featuresToFeaturesConnection;
-        }*/
+        }
 
-        [HttpGet("{originid}")]
+        [HttpGet("/originsubclassid/{originsubclassid}")]
         public async Task<ActionResult<IEnumerable<Features>>> GetFeaturesToFeaturesConnectionByOriginId(int originid)
         {
             var SubFeatureIds = await _context.FeaturesToFeaturesConnections.Where(x => x.OriginFeatureId == originid).Select(x => x.SubFeatureId).ToListAsync();
@@ -60,6 +60,7 @@ namespace Above_backend.Controllers
             return GetFeaturesBySubId;
         }
 
+        /*
         // PUT: api/FeaturesToFeaturesConnections/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -126,5 +127,6 @@ namespace Above_backend.Controllers
         {
             return _context.FeaturesToFeaturesConnections.Any(e => e.Id == id);
         }
+        */
     }
 }

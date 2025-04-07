@@ -74,7 +74,7 @@ namespace Above_backend.Controllers
             }
 
             return NoContent();
-        }*/
+        }
 
         // POST: api/Spells
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
@@ -124,5 +124,6 @@ namespace Above_backend.Controllers
         {
             return _context.Spells.Any(e => e.Id == id);
         }
+        */
     }
 }

@@ -25,6 +25,7 @@ namespace Above_backend.Controllers
             _context = context;
         }
 
+        /*
         // GET: api/Saves
         [HttpGet]
         public async Task<ActionResult<IEnumerable<SavesBaseDisplayDTO>>> GetSaves()
@@ -33,8 +34,10 @@ namespace Above_backend.Controllers
 
             return saves.Select(x => MappingSaves.SavesToSavesBaseDisplayDTO(x)).ToList();
         }
+        */
 
         // GET: api/Saves/5
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<SavesSheetDisplayDTO>> GetSaveById(int id)
         {
@@ -49,6 +52,7 @@ namespace Above_backend.Controllers
             return MappingSaves.SavesToSavesSheetDisplayDTO(save);
         }
 
+        /*
         // PUT: api/Saves/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -79,9 +83,11 @@ namespace Above_backend.Controllers
 
             return NoContent();
         }
+        */
 
         // POST: api/Saves
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Saves>> PostSaves(SavesCreateDTO savescreatedto)
         {
@@ -111,11 +117,6 @@ namespace Above_backend.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
-        }
-
-        private bool SavesExists(int id)
-        {
-            return _context.Saves.Any(e => e.Id == id);
         }
     }
 }
