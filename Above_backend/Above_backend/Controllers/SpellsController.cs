@@ -45,6 +45,18 @@ namespace Above_backend.Controllers
             return MappingSpells.SpellsToSpellsDisplayDto(onespell);
         }
 
+        [HttpGet("/originclassid/{originclassid}")]
+        public async Task<ActionResult<IEnumerable<SpellsDisplayDTO>>> GetSpellsByClassId(int originclassid)
+        {
+            var SpellsDisplayDTOList = await _context.Spells.Where(x => x.LearnedBy.Contains(originclassid)).Select(x => MappingSpells.SpellsToSpellsDisplayDto(x)).ToListAsync();
+
+            if (SpellsDisplayDTOList == null)
+            {
+                return NotFound();
+            }
+
+            return SpellsDisplayDTOList;
+        }
         // PUT: api/Spells/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         /*[HttpPut("{id}")]
