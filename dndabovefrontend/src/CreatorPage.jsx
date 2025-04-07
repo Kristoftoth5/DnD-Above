@@ -18,7 +18,6 @@ import background6 from './assets/bgImages/six.jpg'
 import background7 from './assets/bgImages/seven.jpg'
 import background8 from './assets/bgImages/eight.jpg'
 import EquipmentCard from './assets/CreatorPageCards/EquipmentCard.jsx';
-import FinalDataTransfer from './assets/FinalDataTransfer.jsx';
 
 function CreatorPage () 
 {
@@ -67,8 +66,6 @@ function CreatorPage ()
             <BackgroundCard/>
             <ClassCard/>
             <EquipmentCard classId = {selectedClassId}/>
-            <button onClick={()=>setUpdater((prev)=>!prev)}>Work PLs</button>
-            {updater ? <FinalDataTransfer Update={updater}/> : <></>}
         </div>
         </div>
         </>

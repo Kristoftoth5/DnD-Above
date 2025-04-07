@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import fetchEverything from "../CommonFunctions/fetchEverything"
 import "../Cards.css"; // Import styles
-import FinalDataTransfer from "../FinalDataTransfer";
 
 function RaceCard() {
 
