@@ -2,7 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import { CreatorProvider } from "./assets/BringStatChoice.jsx";
-import { ClassIdProvider } from "./assets/BringSelectedClassId.jsx";
+import { ClassIdProvider } from "./assets/SaveContexts/ClassContext.jsx";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import CreatorPage from './CreatorPage.jsx'
 import CreationOptionsPage from './CreationOptionsPage.jsx'
