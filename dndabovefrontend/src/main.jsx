@@ -17,8 +17,6 @@ createRoot(document.getElementById('root')).render(
       <Header />
       <CreatorProvider>
 
-      <ClassIdProvider>
-
       <EquipmentProvider>
       <RemainingGoldProvider>
 
@@ -42,8 +40,6 @@ createRoot(document.getElementById('root')).render(
             
       </RemainingGoldProvider>
       </EquipmentProvider>
-
-      </ClassIdProvider>
 
       </CreatorProvider>
     </BrowserRouter>

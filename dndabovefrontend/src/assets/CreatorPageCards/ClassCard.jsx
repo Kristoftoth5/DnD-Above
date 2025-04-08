@@ -225,7 +225,7 @@ function ClassCard() {
             <div className="selected-feature" key={id}>
               <p><b>{feature.name}</b></p>
               <p><b>Description: </b>{feature.description}</p>
-              {feature.name === featureWithSubFeature ? (
+              {feature.name === featureWithSubFeature && Array.isArray(subFeatures) ? (
                 subFeatures.filter(subfeature => 
                   !chosenSubFeatures.some(chosen => chosen[0] === subfeature.name)
                 ).map((subfeature, subId) => { // Only show subfeatures that aren't already selected

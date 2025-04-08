@@ -4,12 +4,11 @@ import fetchEverything from "../CommonFunctions/fetchEverything";
 import profCalc from "../CommonFunctions/profCalc";
 import "../Cards.css"; 
 
-function SpellCard()
+function SpellCard({chosenClassId})
 {
     const [spells, setSpells] = useState([]);
     const [eligibleSpells, setEligibleSpells] = useState([]);
     const [displayEligibleSpells, setDisplayEligibleSpells] = useState([]);
-    const [chosenSpellId, setChosenSpellId] = useState(-1);
     const [highestSpellLevel, setHighestSpellLevel] = useState();
     const [availableSpellLevels, setAvailableSpellLevels] = useState([]);
     const [proficiencyBonus, setProficiencyBonus] = useState(2);
@@ -17,13 +16,13 @@ function SpellCard()
     const [chosenSpellLevel, setChosenSpellLevel] = useState(undefined);
     const [chosenSpells, setChosenSpells] = useState([]);
 
-    const [characterLevel] = useState(1);
-    const [chosenClassId, setChosenClassId] = useState(14);
+    const [characterLevel] = useState(6);
     const [spellCastingAbilityModifier] = useState(5);
 
     useEffect(()=>{
         async function fetchSpells()
         {
+            console.log("ChosenClassId: "+chosenClassId)
             try 
             {
                 const response = await fetchEverything("Spells/originclassid/"+chosenClassId);
@@ -42,11 +41,8 @@ function SpellCard()
                 console.error("Error fetching spells:", error);
             }
         }
-
-        fetchSpells();
-
-        
-    }, [chosenClassId, characterLevel])
+        fetchSpells(); 
+    }, [chosenClassId])
 
     useEffect(() => {
         if(spells !== undefined)
@@ -146,8 +142,6 @@ function SpellCard()
                                 <tr>
                                     <th>Name</th>
                                     <th>School & Level</th>
-                                    <th>Ritual</th>
-                                    <th>Concentration</th>
                                     <th>Casting Time</th>
                                     <th>Range</th>
                                     <th>Components</th>
@@ -159,13 +153,11 @@ function SpellCard()
                         {eligibleSpells.map((spell, id)=>(
                             <tr key={id}>
                                 <td>{spell.name}</td>
-                                <td>{spell.level} {spell.school} spell</td>
-                                {spell.ritual == 1 ? (<td><i>Ritual</i></td>):(<td>-</td>)}
-                                {spell.concentration == 1 ? (<td><b>Concentration</b></td>):(<td>-</td>)}
-                                <td>{spell.castingTime}</td>
+                                <td>Level {spell.level} {spell.school}</td>
+                                <td>{spell.castingTime}<sup>{spell.ritual == 1 ? (<i>R</i>):(null)}</sup></td>
                                 <td>{spell.range}</td>
                                 <td>{spell.components}</td>
-                                <td>{spell.duration}</td>
+                                <td>{spell.duration}<sup>{spell.concentration == 1 ? (<b>C</b>):(null)}</sup></td>
                                 <td><button className="btn btn-primary" onClick={()=>{spellSelect(spell.id); spellRemoveDisplay(spell.id)}}></button></td>
                             </tr>
                         ))}
