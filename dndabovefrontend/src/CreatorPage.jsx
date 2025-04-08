@@ -38,9 +38,6 @@ function CreatorPage ()
         console.log("Be van töltve az oldal, ye.")
     })
 
-    // useEffect(() => {
-       
-    // }, [selectedClassId])
 
 
 
@@ -69,6 +66,7 @@ function CreatorPage ()
             <RaceCard/> 
             <BackgroundCard/>
             <ClassCard/>
+            {console.log("ClassID: " + selectedClassId)}
             <EquipmentCard classId = {selectedClassId}/>
             <SpellCard chosenClassId={selectedClassId}/>
         </div>

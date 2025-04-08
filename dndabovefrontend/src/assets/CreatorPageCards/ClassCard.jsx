@@ -356,7 +356,7 @@ function ClassCard() {
             {classOptions.map((characterclass, id) => (
               <button
                 className="dropdown-item"
-                onClick={() => { setChosenClassId(characterclass[1]);setClassId(characterclass[1]); setDropdownOpen(false); }}
+                onClick={() => { setChosenClassId(characterclass[1]);setClassId(chosenClassId); console.log(chosenClassId);setDropdownOpen(false); }}
                 key={id}
               >
                 {characterclass[0]}
