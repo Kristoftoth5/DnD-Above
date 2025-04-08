@@ -1590,7 +1590,3 @@ C:\Users\tothkr\Documents\GitHub\DnD-Above\Above_backend\Above_backend\obj\Debug
 C:\Users\tothkr\Documents\GitHub\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.pdb
 C:\Users\tothkr\Documents\GitHub\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.genruntimeconfig.cache
 C:\Users\tothkr\Documents\GitHub\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\ref\Above_backend.dll
-C:\Users\torokmj\Documents\GitHub\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Above_backend.staticwebassets.endpoints.json
-C:\Users\torokmj\Documents\GitHub\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\torokmj\Documents\GitHub\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\staticwebassets\msbuild.Above_backend.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\Users\torokmj\Documents\GitHub\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

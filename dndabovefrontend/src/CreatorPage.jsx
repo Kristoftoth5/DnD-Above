@@ -68,7 +68,7 @@ function CreatorPage ()
             <ClassCard/>
             {console.log("ClassID: " + selectedClassId)}
             <EquipmentCard classId = {selectedClassId}/>
-            <SpellCard chosenClassId={selectedClassId}/>
+            <SpellCard/>
         </div>
         </div>
         </>

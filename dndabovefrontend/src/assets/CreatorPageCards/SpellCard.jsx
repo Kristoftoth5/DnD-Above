@@ -1,10 +1,11 @@
-import { useState, useEffect, use } from "react"
+import React,{ useState, useEffect, useContext } from "react"
 import spellLevelCalc from "../CommonFunctions/spellLevelCalc";
 import fetchEverything from "../CommonFunctions/fetchEverything";
 import profCalc from "../CommonFunctions/profCalc";
 import "../Cards.css"; 
+import {ClassIdContext} from "../SaveContexts/ClassContext";
 
-function SpellCard({chosenClassId})
+function SpellCard()
 {
     const [spells, setSpells] = useState([]);
     const [eligibleSpells, setEligibleSpells] = useState([]);
@@ -19,17 +20,23 @@ function SpellCard({chosenClassId})
     const [characterLevel] = useState(6);
     const [spellCastingAbilityModifier] = useState(5);
 
+    const {ClassId} = useContext(ClassIdContext);
+    const [lastFetchedClassId, setLastFetchedClassId] = useState(null);
+
+
     useEffect(()=>{
         async function fetchSpells()
         {
-            console.log("ChosenClassId: "+chosenClassId)
+            console.log("ChosenClassId: "+ClassId)
+            if (!ClassId || ClassId === lastFetchedClassId) return;
             try 
             {
-                const response = await fetchEverything("Spells/originclassid/"+chosenClassId);
+                const response = await fetchEverything("Spells/originclassid/"+ClassId);
                 console.log("Fetched Spells:", response);
                 if (response && Array.isArray(response)) 
                 {
                     setSpells(response); // Only set if it's an array
+                    setLastFetchedClassId(ClassId);
                 }
                 else 
                 {
@@ -42,7 +49,7 @@ function SpellCard({chosenClassId})
             }
         }
         fetchSpells(); 
-    }, [chosenClassId])
+    }, [ClassId, lastFetchedClassId])
 
     useEffect(() => {
         if(spells !== undefined)
@@ -63,6 +70,7 @@ function SpellCard({chosenClassId})
             if (spells.length > 0 && highestSpellLevel !== undefined) {
                 const filteredSpells = spells.filter(spell => spell.level <= highestSpellLevel);
                 setEligibleSpells(filteredSpells);
+                setDisplayEligibleSpells(eligibleSpells);
             }
         }
         
@@ -70,9 +78,10 @@ function SpellCard({chosenClassId})
 
     function spellSelect(id)
     {
-        var temparray = chosenSpells;
-        temparray.push(id);
+        var temparray = [...chosenSpells];
+        if(!temparray.includes(id)) temparray.push(id);
         setChosenSpells(temparray);
+        console.log(chosenSpells);
     }
 
     function spellDeselect(id)
@@ -151,6 +160,7 @@ function SpellCard({chosenClassId})
                             </thead>
                             <tbody>
                         {eligibleSpells.map((spell, id)=>(
+                            spell.level === chosenSpellLevel ?(
                             <tr key={id}>
                                 <td>{spell.name}</td>
                                 <td>Level {spell.level} {spell.school}</td>
@@ -159,7 +169,7 @@ function SpellCard({chosenClassId})
                                 <td>{spell.components}</td>
                                 <td>{spell.duration}<sup>{spell.concentration == 1 ? (<b>C</b>):(null)}</sup></td>
                                 <td><button className="btn btn-primary" onClick={()=>{spellSelect(spell.id); spellRemoveDisplay(spell.id)}}></button></td>
-                            </tr>
+                            </tr>):null
                         ))}
                         </tbody>
                         </table>
