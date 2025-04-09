@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import DiceRoller from "./DiceRoller";
 import { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Header = () => {
   const location = useLocation();

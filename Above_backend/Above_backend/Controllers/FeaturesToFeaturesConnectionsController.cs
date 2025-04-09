@@ -41,7 +41,7 @@ namespace Above_backend.Controllers
             return featuresToFeaturesConnection;
         }
 
-        [HttpGet("/originsubclassid/{originsubclassid}")]
+        [HttpGet("originfeatureid/{originid}")]
         public async Task<ActionResult<IEnumerable<Features>>> GetFeaturesToFeaturesConnectionByOriginId(int originid)
         {
             var SubFeatureIds = await _context.FeaturesToFeaturesConnections.Where(x => x.OriginFeatureId == originid).Select(x => x.SubFeatureId).ToListAsync();

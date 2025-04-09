@@ -1,0 +1,16 @@
+-- SQLite
+INSERT INTO Features(Name, Description, LevelReq, ArmorProf, WeaponProf, ToolProf, SkillProf, SavingThrows, OriginClassId, OriginRaceId, OriginSubClassId, OriginEquipmentId) VALUES
+('Eldritch Invocation','In your study of occult lore, you have unearthed Eldritch Invocations, fragments of forbidden knowledge that imbue you with an abiding magical ability.',5,'[""]','[""]','[""]','[""]','[""]',15,0,0,0),
+('Eldritch Invocation','In your study of occult lore, you have unearthed Eldritch Invocations, fragments of forbidden knowledge that imbue you with an abiding magical ability.',7,'[""]','[""]','[""]','[""]','[""]',15,0,0,0),
+('Eldritch Invocation','In your study of occult lore, you have unearthed Eldritch Invocations, fragments of forbidden knowledge that imbue you with an abiding magical ability.',9,'[""]','[""]','[""]','[""]','[""]',15,0,0,0),
+('Eldritch Invocation','In your study of occult lore, you have unearthed Eldritch Invocations, fragments of forbidden knowledge that imbue you with an abiding magical ability.',12,'[""]','[""]','[""]','[""]','[""]',15,0,0,0),
+('Eldritch Invocation','In your study of occult lore, you have unearthed Eldritch Invocations, fragments of forbidden knowledge that imbue you with an abiding magical ability.',15,'[""]','[""]','[""]','[""]','[""]',15,0,0,0),
+('Eldritch Invocation','In your study of occult lore, you have unearthed Eldritch Invocations, fragments of forbidden knowledge that imbue you with an abiding magical ability.',18,'[""]','[""]','[""]','[""]','[""]',15,0,0,0),
+
+('Agonizing Blast','When you cast eldritch blast, add your Charisma modifier to the damage it deals on a hit.',1,'[""]','[""]','[""]','[""]','[""]',0,0,0,0),
+('Devil''s Sight','You can see normally in darkness, both magical and nonmagical, to a distance of 120 feet.',1,'[""]','[""]','[""]','[""]','[""]',0,0,0,0),
+('Eldritch Mind','You have advantage on Constitution saving throws that you make to maintain your concentration on a spell.',1,'[""]','[""]','[""]','[""]','[""]',0,0,0,0),
+('Eyes of the Rune Keeper','You can read all writing.',1,'[""]','[""]','[""]','[""]','[""]',0,0,0,0),
+('Gaze of Two Minds','You can use your action to touch a willing humanoid and perceive through its senses until the end of your next turn. As long as the creature is on the same plane of existence as you, you can use your action on subsequent turns to maintain this connection, extending the duration until the end of your next turn. While perceiving through the other creature''s senses, you benefit from any special senses possessed by that creature, and you are blinded and deafened to your own surroundings.',1,'[""]','[""]','[""]','[""]','[""]',0,0,0,0),
+('Ghostly Gaze','As an action, you gain the ability to see through solid objects to a range of 30 feet. Within that range, you have darkvision if you don''t already have it. This special sight lasts for 1 minute or until your concentration ends (as if you were concentrating on a spell). During that time, you perceive objects as ghostly, transparent images. Once you use this invocation, you can''t use it again until you finish a short or long rest.',7,'[""]','[""]','[""]','[""]','[""]',0,0,0,0),
+('Master of Myriad Forms','You can cast alter self at will, without expending a spell slot.',15,'[""]','[""]','[""]','[""]','[""]',0,0,0,0),
