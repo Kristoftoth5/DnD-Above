@@ -97,6 +97,11 @@ function SpellCard({ClassId})
         setDisplayEligibleSpells(temparray)
     }
 
+    function SpellAddDisplay(id)
+    {
+        
+    }
+
     function SelectedSpells()
     {
         return(
@@ -154,6 +159,7 @@ function SpellCard({ClassId})
                                     <th>Components</th>
                                     <th>Duration</th>
                                     <th>Details</th>
+                                    <th>Add Spell</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -166,7 +172,8 @@ function SpellCard({ClassId})
                                 <td>{spell.range}</td>
                                 <td>{spell.components}</td>
                                 <td>{spell.duration}<sup>{spell.concentration == 1 ? (<b>C</b>):(null)}</sup></td>
-                                <td><button className="btn btn-primary" onClick={()=>{spellSelect(spell.id); spellRemoveDisplay(spell.id)}}></button></td>
+                                <td><button className="btn btn-primary">?</button></td>
+                                {chosenSpells.includes(spell.id)?(<td><button className="btn btn-primary" onClick={()=>{spellSelect(spell.id); spellRemoveDisplay(spell.id)}}>Add</button></td>):<td><button className="btn btn-primary" onClick={()=>{spellDeselect(spell.id); spellRemoveDisplay(spell.id)}}>Remove</button></td>}
                             </tr>):null
                         ))}
                         </tbody>
