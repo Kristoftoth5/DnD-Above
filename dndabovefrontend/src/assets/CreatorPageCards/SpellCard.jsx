@@ -213,7 +213,7 @@ function SpellCard({ClassId})
                                 <td>Level {spell.level} {spell.school}</td>
                                 <td>{spell.castingTime}<sup>{spell.ritual == 1 ? (<i>R</i>):(null)}</sup></td>
                                 <td>{spell.range}</td>
-                                <td>{spell.components}</td>
+                                <td>{spell.components}{spell.componentprice !== 0 ?(<sup><b>{spell.componentprice}</b></sup>):null}</td>
                                 <td>{spell.duration}<sup>{spell.concentration == 1 ? (<b>C</b>):(null)}</sup></td>
                                 <td><button className="btn btn-primary" onClick={()=>{showDetails(spell.description)}}>?</button></td>
                                 {!chosenSpellIds.includes(spell.id)?(<td><button className="btn btn-primary" onClick={()=>{spellSelect(spell.id, spell.level); spellRemoveDisplay(spell.id)}}>Add</button></td>):<td><button className="btn btn-primary" onClick={()=>{spellDeselect(spell.id, spell.level); SpellAddDisplay(spell.id)}}>Remove</button></td>}
