@@ -100,8 +100,7 @@ function ClassCard() {
   
         // Wait for all promises to resolve
         await Promise.all(subFeaturePromises);
-  
-        console.log("newSubFeatureLimits: ", newSubFeatureLimits); 
+   
         if (newSubFeatureLimits !== 0) {
           setSubFeatureLimits(newSubFeatureLimits);
         }
@@ -356,7 +355,7 @@ function ClassCard() {
             {classOptions.map((characterclass, id) => (
               <button
                 className="dropdown-item"
-                onClick={() => { setChosenClassId(characterclass[1]);setClassId(chosenClassId); console.log(chosenClassId);setDropdownOpen(false); }}
+                onClick={() => { setChosenClassId(characterclass[1]);setClassId(characterclass[1]); console.log(characterclass[1]);setDropdownOpen(false); }}
                 key={id}
               >
                 {characterclass[0]}

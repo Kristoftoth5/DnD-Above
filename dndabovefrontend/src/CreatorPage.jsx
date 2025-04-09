@@ -22,21 +22,15 @@ import SpellCard from './assets/CreatorPageCards/SpellCard.jsx';
 
 function CreatorPage () 
 {
-    const { selectedClassId } = useContext(ClassIdContext);
+    const { ClassId } = useContext(ClassIdContext);
     const { selectedOption } = useContext(CreatorContext);
     
 
-    useEffect(() => {
-        console.log(selectedClassId)
-    }, [selectedClassId])
 
     var firstbg = Math.floor(Math.random() * 8)
     const [images] = useState([background1, background2, background3, background4, background5, background6, background7, background8])
     const [randomBgImage, setRandomBgImage] = useState(firstbg);
 
-    useEffect(()=>{
-        console.log("Be van töltve az oldal, ye.")
-    })
 
 
 
@@ -66,9 +60,8 @@ function CreatorPage ()
             <RaceCard/> 
             <BackgroundCard/>
             <ClassCard/>
-            {console.log("ClassID: " + selectedClassId)}
-            <EquipmentCard classId = {selectedClassId}/>
-            <SpellCard/>
+            <EquipmentCard classId = {ClassId}/>
+            <SpellCard ClassId = {ClassId}/>
         </div>
         </div>
         </>

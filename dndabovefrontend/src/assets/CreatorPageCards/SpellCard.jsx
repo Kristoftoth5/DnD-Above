@@ -3,9 +3,8 @@ import spellLevelCalc from "../CommonFunctions/spellLevelCalc";
 import fetchEverything from "../CommonFunctions/fetchEverything";
 import profCalc from "../CommonFunctions/profCalc";
 import "../Cards.css"; 
-import {ClassIdContext} from "../SaveContexts/ClassContext";
 
-function SpellCard()
+function SpellCard({ClassId})
 {
     const [spells, setSpells] = useState([]);
     const [eligibleSpells, setEligibleSpells] = useState([]);
@@ -20,7 +19,6 @@ function SpellCard()
     const [characterLevel] = useState(6);
     const [spellCastingAbilityModifier] = useState(5);
 
-    const {ClassId} = useContext(ClassIdContext);
     const [lastFetchedClassId, setLastFetchedClassId] = useState(null);
 
 
