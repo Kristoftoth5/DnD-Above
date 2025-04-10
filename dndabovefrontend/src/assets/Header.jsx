@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import DiceRoller from "./DiceRoller";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import falmingo from './falmingo.png';
+import { UserIdContext } from "./UserContext";
 
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [token, setToken] = useState(localStorage.getItem('authToken'));
 
   const [showDiceRoller, setShowDiceRoller] = useState(false);
+
+  const {UserId,setUserId} = useContext(UserIdContext)
 
   const handleNavigation = (path) => {
     if (location.pathname === "/character-creator") {
@@ -18,6 +22,10 @@ const Header = () => {
     }
     navigate(path);
   };
+
+  useEffect(()=>{
+    setToken(localStorage.getItem('authToken'))
+  },[token,UserId])
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -61,11 +69,13 @@ const Header = () => {
                 Sign In
               </button>
             </li>
-            <li className="nav-item">
-              <button className="nav-link btn btn-link" onClick={() => handleNavigation("/profile")}>
-                Profile
+            {token ?(<li className="nav-item">
+              <button className="nav-link btn btn-warning" onClick={() => {localStorage.removeItem('authToken');setUserId(0)}}>
+                Logout
               </button>
-            </li>
+            </li>):null}
+            {console.log(UserId)}
+            
           </ul>
         </div>
       </div>

@@ -60,8 +60,8 @@ function SignInPage()
               {
                 localStorage.setItem("authToken", responseData.token);
                 setToken(responseData.token);
-                setUserId(responseData.userId);
-                navigate("/profile"); // Navigate to home after successful sign-in
+                setUserId(responseData. userId);
+                navigate("/"); // Navigate to home after successful sign-in
               } else 
               {
                 window.alert("Failed to retrieve token.");
@@ -78,7 +78,7 @@ function SignInPage()
           
           sendSignIn();
 
-          navigate("/profile");
+          navigate("/");
 
     }
     return(

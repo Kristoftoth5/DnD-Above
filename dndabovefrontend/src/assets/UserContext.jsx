@@ -4,7 +4,7 @@ export const UserIdContext = createContext();
 
 //Stats
 export function UserIdProvider({ children }) {
-  const [UserId, setUserId] = useState([8,8,8,8,8,8]);
+  const [UserId, setUserId] = useState(0);
 
   return (
     <UserIdContext.Provider value={{ UserId, setUserId }}>
