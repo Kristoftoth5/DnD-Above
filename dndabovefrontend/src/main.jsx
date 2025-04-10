@@ -17,6 +17,7 @@ import { FinalSpellsProvider } from './assets/SaveContexts/FinalSpellContext.jsx
 import SignInPage from './assets/UserManagementPages/SignInPage.jsx'
 import SignUpPage from './assets/UserManagementPages/SignUpPage.jsx'
 import { StatsProvider } from './assets/SaveContexts/StatContext.jsx';
+import ProfilePage from './assets/UserManagementPages/ProfilePage.jsx';
 
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>
@@ -49,6 +50,7 @@ createRoot(document.getElementById('root')).render(
                 <Route path="/finalize" element={<CollectedDataTest/>}/>
                 <Route path="/sign-in" element={<SignInPage/>}/>
                 <Route path="/sign-up" element={<SignUpPage/>}/>
+                <Route path="/profile" element={<ProfilePage/>}/>
               </Routes>
       </StatsProvider>
 
