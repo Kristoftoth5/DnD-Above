@@ -325,7 +325,7 @@ function ClassCard() {
     <div className="creator-container">
       <h2 className="creator-title">Class</h2>
 
-      {chosenClassId !== -1 || chosenClassId !== undefined ? (
+      {chosenClassId !== -1? (
         <div className="ability-box">
           <h3 className="ability-title">Character Level</h3>
           <div className="score-display">{characterLevel}</div>
@@ -366,7 +366,7 @@ function ClassCard() {
       </div>
 
       <div className="selected-multiple">
-        {Boolean(chosenClassId !== -1 || chosenClassId !== undefined) && classFeatures !== undefined && classData !== undefined ? (
+        {Boolean(chosenClassId !== -1) && classFeatures !== undefined && classData !== undefined ? (
           <SelectedClass />
         ) : null}
       </div>
