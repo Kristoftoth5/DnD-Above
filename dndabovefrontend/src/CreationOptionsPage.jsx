@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import React, { useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
-import { CreatorContext } from "./assets/BringStatChoice.jsx";
+import { CreatorContext, ExtraFeatContext } from "./assets/BringStatChoice.jsx";
 import background1 from './assets/bgImages/one.jpg'
 import background2 from './assets/bgImages/two.jpg'
 import background3 from './assets/bgImages/three.jpg'
@@ -20,6 +20,7 @@ function CreationOptionsPage() {
   const [dropdown, setDropdown] = useState(false);
 
   const { setSelectedOption } = useContext(CreatorContext);
+  const { setExtraFeat } = useContext(ExtraFeatContext)
 
   const navigate = useNavigate();
 
@@ -68,7 +69,7 @@ function CreationOptionsPage() {
             className="form-check-input me-2"
             id="backgroundFeat"
             checked={isChecked1}
-            onChange={() => setIsChecked1(!isChecked1)}
+            onChange={() => {setIsChecked1(!isChecked1);setExtraFeat(isChecked1);}}
           />
           <label className="form-check-label" htmlFor="backgroundFeat">
             Do you get a Feat at level 1 - akin to a background feature?

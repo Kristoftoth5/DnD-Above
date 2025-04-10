@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
-import { CreatorProvider } from "./assets/BringStatChoice.jsx";
+import { CreatorProvider, ExtraFeatProvider } from "./assets/BringStatChoice.jsx";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import CreatorPage from './CreatorPage.jsx'
 import CreationOptionsPage from './CreationOptionsPage.jsx'
@@ -12,11 +12,14 @@ import Home from './Home.jsx'
 import { EquipmentProvider, RemainingGoldProvider } from './assets/SaveContexts/EquipmentContext.jsx';
 import { RaceIdProvider, SubraceIdProvider } from './assets/SaveContexts/RaceContext.jsx';
 import { ClassIdProvider, SubclassIdProvider, ChosenClassFeatureIdProvider } from './assets/SaveContexts/ClassContext.jsx';
+import { BgNameProvider, BgDescProvider, BgSkillsProvider, BgToolProvider } from './assets/SaveContexts/BackgroundContext.jsx';
+import { FinalSpellsProvider } from './assets/SaveContexts/FinalSpellContext.jsx';
 
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Header />
       <CreatorProvider>
+      <ExtraFeatProvider>
 
       <EquipmentProvider>
       <RemainingGoldProvider>
@@ -27,12 +30,26 @@ createRoot(document.getElementById('root')).render(
       <ClassIdProvider>
       <SubclassIdProvider>
       <ChosenClassFeatureIdProvider>
+
+      <BgNameProvider>
+      <BgDescProvider>
+      <BgSkillsProvider>
+      <BgToolProvider>
+
+      <FinalSpellsProvider>
               <Routes>
                 <Route path="/" element={<Home />} />  
                 <Route path="/creator-options" element={<CreationOptionsPage />} />
                 <Route path="/character-creator" element={<CreatorPage />} />  
                 <Route path="/finalize" element={<CollectedDataTest/>}/>
               </Routes>
+      </FinalSpellsProvider>
+
+      </BgToolProvider>
+      </BgSkillsProvider>
+      </BgDescProvider>      
+      </BgNameProvider>
+
       </ChosenClassFeatureIdProvider>
       </SubclassIdProvider>
       </ClassIdProvider>
@@ -43,6 +60,7 @@ createRoot(document.getElementById('root')).render(
       </RemainingGoldProvider>
       </EquipmentProvider>
 
+      </ExtraFeatProvider>
       </CreatorProvider>
     </BrowserRouter>
 

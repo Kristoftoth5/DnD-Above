@@ -3,6 +3,7 @@ import spellLevelCalc from "../CommonFunctions/spellLevelCalc";
 import fetchEverything from "../CommonFunctions/fetchEverything";
 import profCalc from "../CommonFunctions/profCalc";
 import "../Cards.css"; 
+import { FinalSpellsContext } from "../SaveContexts/FinalSpellContext";
 function SpellCard({ClassId})
 {
     const [spells, setSpells] = useState([]);
@@ -25,6 +26,8 @@ function SpellCard({ClassId})
     const [spellCastingAbilityModifier] = useState(5);
 
     const [lastFetchedClassId, setLastFetchedClassId] = useState(null);
+
+    const { setFinalSpells } = useContext(FinalSpellsContext)
 
 
     useEffect(()=>{
@@ -93,7 +96,7 @@ function SpellCard({ClassId})
             })
         }
         fetchspells();
-        if(temparray !== chosenSpells)setChosenSpells(temparray);
+        if(temparray !== chosenSpells){setChosenSpells(temparray);setFinalSpells(temparray)};
     },[chosenSpellIds])
 
 

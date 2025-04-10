@@ -59,7 +59,7 @@ function CreatorPage ()
 
             {selectedOption == 1 ? <PointBuyStatCard/> : selectedOption == 2 ? <HeroicPointBuyStatCard/> : <CustomorRoledStatStatCard/>}
             <RaceCard/> 
-            {/* <BackgroundCard/> */}
+            <BackgroundCard/>
             <ClassCard/>
             <EquipmentCard classId = {ClassId}/>
             <SpellCard ClassId = {ClassId}/>
