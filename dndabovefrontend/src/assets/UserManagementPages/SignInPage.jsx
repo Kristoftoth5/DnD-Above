@@ -5,9 +5,6 @@ import { useNavigate } from "react-router-dom";
 
 function SignInPage()
 {
-    const [eula, setEula] = useState(false)
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("")
     const [token, setToken] = useState();
     const [tokenPath, setTokenPath] = useState("");
 
@@ -16,7 +13,7 @@ function SignInPage()
     function SignIn()
     {
         var temp = document.getElementById("email").value
-        var temp2 = document.getElementById("password").value
+        var temp2 = document.getElementById("pass").value
 
         if (temp == undefined || temp2 == undefined)
         {
@@ -27,11 +24,11 @@ function SignInPage()
 
         //navigate("/home");
 
-        const sendPostRequest = async () => {
-            const url = "https://localhost:7188/api/Auth/login";  // Your API URL
+        const sendSignIn = async () => {
+            const url = "https://localhost:7188/api/Auth/login";  
             const data = {
-              email: email,
-              password: password
+              "email": temp,
+              "password": temp2
             };
           
             try {
@@ -44,6 +41,7 @@ function SignInPage()
               });
           
               if (!response.ok) {
+                window.alert("Invalid e-mail address or password.");
                 throw new Error("Network response was not ok");
               }
           
@@ -54,8 +52,9 @@ function SignInPage()
             }
           };
           
-          sendPostRequest();
+          sendSignIn();
 
+          navigate("/");
 
     }
     return(

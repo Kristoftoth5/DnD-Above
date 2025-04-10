@@ -38,6 +38,7 @@ const Header = () => {
                 Saved Characters
               </button>
             </li>
+
             <li className="nav-item">
             <button
               className="btn btn-warning"
@@ -48,6 +49,17 @@ const Header = () => {
 
             {/* Dice Roller Component (conditionally rendered) */}
             <DiceRoller isVisible={showDiceRoller} />
+            </li>
+
+            <li className="nav-item">
+              <button className="nav-link btn btn-link" onClick={() => handleNavigation("/sign-up")}>
+                Sign Up
+              </button>
+            </li>
+            <li className="nav-item">
+              <button className="nav-link btn btn-link" onClick={() => handleNavigation("/sign-in")}>
+                Sign In
+              </button>
             </li>
           </ul>
         </div>

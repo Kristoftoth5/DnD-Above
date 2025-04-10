@@ -6,9 +6,6 @@ import { useNavigate } from "react-router-dom";
 function SignUpPage()
 {
     const [eula, setEula] = useState(false)
-    const [userName, setUserName] = useState("")
-    const [password, setPassword] = useState("")
-    const [email, setEmail] = useState("");
 
     const navigate = useNavigate();
 
@@ -16,23 +13,50 @@ function SignUpPage()
     {
         var temp = document.getElementById("username").value
         var temp2 = document.getElementById("email").value
-        var temp3 = document.getElementById("password").value
+        var temp3 = document.getElementById("pass").value
 
-        if (temp == undefined || temp2 == undefined || temp3 == undefined)
+        if (temp == null || temp2 == null || temp3 == null)
         {
             window.alert("Please fill all required fields: Username, E-mail, Password");
             return;
         }
 
-        if (!temp2.includes("@")) {window.alert("The e-mail address is invalid. It must include a '@' character.");return;};
-        
-        setUserName(temp);
-        setEmail(temp2);
-        setPassword(temp3);
+        console.log(temp+"  "+temp2+"  "+temp3 )
 
-        /*Post method here I imagine*/ 
+        if (!temp2.includes("@")) {window.alert("The e-mail address is invalid. It must include a '@' character.");return;};
+
+
+        const sendSignUp = async () => {
+            const url = "https://localhost:7188/api/Auth/register";  
+            const data = {
+              "userName": temp,
+              "email": temp2,
+              "password": temp3
+            };
+          
+            try {
+              const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+              });
+          
+              if (!response.ok) {
+                throw new Error("Network response was not ok");
+              }
+          
+              const responseData = await response.json();
+              console.log("Response Data:", responseData);
+            } catch (error) {
+              console.error("Error:", error);
+            }
+          };
+          
+        sendSignUp();
         
-        //navigate("/home");
+        navigate("/");
 
     }
 
@@ -46,7 +70,7 @@ function SignUpPage()
         <p><b>E-mail</b><input type="email" id="email"/></p><br></br>
         <p><b>Password</b><input type="password" id="pass"/></p>
 
-        <p><input type="checkbox" id="eula" />I accept the terms and conditions of the End-User License Agreement</p>
+        <p><input type="checkbox" id="eula" onClick={()=>{setEula(true)}}/>I accept the terms and conditions of the End-User License Agreement</p>
         
         {eula !== false ?<button className="btn btn-primary" onClick={()=>{SignUp()}}>Sign Up</button>
         :<button className="btn btn-secondary" onClick={()=>{SignUp()}}>Sign Up</button>}
