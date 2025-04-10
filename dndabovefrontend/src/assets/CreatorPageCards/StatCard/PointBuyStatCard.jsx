@@ -19,13 +19,11 @@ function AbilityScores() {
   const [bonuses, setBonuses] = useState({ plus2: null, plus1: null });
   const [availableBonuses, setAvailableBonuses] = useState({ plus2: true, plus1: true });
 
-  const [finalScoresArray, setFinalScoresArray] = useState([]);
   const { setStats } = useContext(StatsContext)
 
   useEffect(() => {
     const updatedArray = Object.keys(scores).map((ability) => getFinalScore(ability));
-    setFinalScoresArray(updatedArray);
-    setStats(finalScoresArray);
+    setStats(updatedArray);
   }, [scores, bonuses]);
 
   // Track how many times each stat has been increased
