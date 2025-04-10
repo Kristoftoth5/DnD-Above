@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../../Cards.css"; // Reuse existing styles
 import modCalc from "../../CommonFunctions/modCalc";
+import { StatsContext } from "../../SaveContexts/StatContext";
 
 function AbilityScores() {
   const [pointPool, setPointPool] = useState(27); // Total available points
@@ -31,6 +32,15 @@ function AbilityScores() {
   });
 
   const [availableBonuses, setAvailableBonuses] = useState({ plus2: true, plus1: true });
+
+  const [finalScoresArray, setFinalScoresArray] = useState([]);
+  const { setStats } = useContext(StatsContext)
+
+  useEffect(() => {
+    const updatedArray = Object.keys(scores).map((ability) => getFinalScore(ability));
+    setFinalScoresArray(updatedArray);
+    setStats(finalScoresArray);
+  }, [scores, bonuses]);
 
   // Function to handle increasing an ability score
   const increaseStat = (ability) => {

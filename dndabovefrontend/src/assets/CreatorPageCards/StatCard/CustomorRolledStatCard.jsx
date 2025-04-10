@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../../Cards.css"; // Reuse existing styles
 import modCalc from "../../CommonFunctions/modCalc";
+import { StatsContext } from "../../SaveContexts/StatContext";
 
 function AbilityScores() {
   const [scores, setScores] = useState({
@@ -18,6 +19,15 @@ function AbilityScores() {
   });
 
   const [availableBonuses, setAvailableBonuses] = useState({ plus2: true, plus1: true });
+
+  const [finalScoresArray, setFinalScoresArray] = useState([]);
+  const { setStats } = useContext(StatsContext)
+
+  useEffect(() => {
+    const updatedArray = Object.keys(scores).map((ability) => getFinalScore(ability));
+    setFinalScoresArray(updatedArray);
+    setStats(finalScoresArray);
+  }, [scores, bonuses]);
 
   const handleInputChange = (ability, value) => {
     let intValue = parseInt(value);
