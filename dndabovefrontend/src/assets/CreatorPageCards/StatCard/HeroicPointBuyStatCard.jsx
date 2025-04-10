@@ -33,13 +33,11 @@ function AbilityScores() {
 
   const [availableBonuses, setAvailableBonuses] = useState({ plus2: true, plus1: true });
 
-  const [finalScoresArray, setFinalScoresArray] = useState([]);
   const { setStats } = useContext(StatsContext)
 
   useEffect(() => {
     const updatedArray = Object.keys(scores).map((ability) => getFinalScore(ability));
-    setFinalScoresArray(updatedArray);
-    setStats(finalScoresArray);
+    setStats(updatedArray);
   }, [scores, bonuses]);
 
   // Function to handle increasing an ability score

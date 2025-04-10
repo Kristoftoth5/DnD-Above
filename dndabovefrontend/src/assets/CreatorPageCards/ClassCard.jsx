@@ -32,7 +32,7 @@ function ClassCard() {
 
   const {setClassId} = useContext(ClassIdContext);
   const {setSubclassId} = useContext(SubclassIdContext);
-  const {setChosenClassFeatrue} = useContext(ChosenClassFeatureIdContext);
+  const {setChosenClassFeatureId} = useContext(ChosenClassFeatureIdContext);
 
   // Fetching all the classes at startup
   useEffect(() => {
@@ -310,11 +310,11 @@ function ClassCard() {
         {/* Finalize / Revert Buttons */}
         <div>
           {featureDone ? (
-            <button onClick={() => {revertSelection; setChosenClassFeatrue([])}}>Revert Selection</button>
+            <button onClick={() => {revertSelection; setChosenClassFeatureId([])}}>Revert Selection</button>
           ) : (
             <button onClick={() => {finalizeSelection; var temp = []; chosenSubFeatures.forEach(id => {
               temp.push(id[3])
-            });setChosenClassFeatrue(temp)}}>Finalize Subfeature Selection</button>
+            });setChosenClassFeatureId(temp)}}>Finalize Subfeature Selection</button>
           )}
         </div>
       </>
