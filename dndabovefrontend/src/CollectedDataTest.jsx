@@ -30,12 +30,12 @@ function CollectedDataTest()
 
     useEffect(() => {
         console.log("All data like... ever")
-        console.log("Race ID: " + selectedRaceId + "\nSubrace ID" + selectedSubraceId + "\n\n") // Race
-        console.log() // Class
-        console.log() // Stats
-        console.log() // Bg
-        console.log() // Equipment
-        console.log() // Spells
+        console.log("Race ID: " + selectedRaceId + "\nSubrace ID: " + selectedSubraceId + "\n\n") // Race
+        console.log("Class ID: " + ClassId + "\nSubrace ID: " + SubclassId + "\nClass features: " + ChosenClassFeatureId + "\n\n") // Class
+        console.log("Stats: " + Stats + "\n\n") // Stats
+        console.log("Bg name: " + BgName + "\nBg Desc: " + BgDesc + "\nSkillls: " + BgSkills + "\nTool: " + BgTool + "\n\n") // Bg
+        console.log("Equipment: " + Equipment + "\nGold: " + RemainingGold + "\n\n") // Equipment
+        console.log("Spells: " + FinalSpells +"\n\n") // Spells
     })
 
     return (

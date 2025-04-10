@@ -19,8 +19,8 @@ function RaceCard() {
   const [subRaceOptions, setSubRaceOptions] = useState();
   const [subRaceFeatures, setSubRaceFeatures] = useState();
 
-  const { setRaceId } = useContext(RaceIdContext);
-  const { setSubraceId } = useContext(SubraceIdContext);
+  const { setSelectedRaceId } = useContext(RaceIdContext);
+  const { setSelectedSubraceId } = useContext(SubraceIdContext);
  
 
 
@@ -159,7 +159,7 @@ function RaceCard() {
                 {subRaceOptions.map( (subrace, id) =>(
                   <button
                     className="dropdown-item"
-                    onClick={() => {setChosenSubRaceId(subrace[1]);setSubRaceDropdownOpen(false);setSubRaceName(subrace[0]);setSubraceId(subrace[1]);}}
+                    onClick={() => {setChosenSubRaceId(subrace[1]);setSubRaceDropdownOpen(false);setSubRaceName(subrace[0]);setSelectedSubraceId(subrace[1]);}}
                   >
                   {subrace[0]}
                   </button>
@@ -215,7 +215,7 @@ function RaceCard() {
             {raceOptionNames.map( (race, id) =>(
               <button
                 className="dropdown-item"
-                onClick={() => {setChosenRaceId(race[1]);setDropdownOpen(false);setChosenSubRaceId(0);setRaceId(race[1]);}}
+                onClick={() => {setChosenRaceId(race[1]);setDropdownOpen(false);setChosenSubRaceId(0);setSelectedRaceId(race[1]);}}
               >
               {race[0]}
               </button>
