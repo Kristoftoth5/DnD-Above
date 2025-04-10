@@ -16,6 +16,7 @@ import { BgNameProvider, BgDescProvider, BgSkillsProvider, BgToolProvider } from
 import { FinalSpellsProvider } from './assets/SaveContexts/FinalSpellContext.jsx';
 import SignInPage from './assets/UserManagementPages/SignInPage.jsx'
 import SignUpPage from './assets/UserManagementPages/SignUpPage.jsx'
+import { StatsProvider } from './assets/SaveContexts/StatContext.jsx';
 
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>
@@ -39,6 +40,8 @@ createRoot(document.getElementById('root')).render(
       <BgToolProvider>
 
       <FinalSpellsProvider>
+
+      <StatsProvider>
               <Routes>
                 <Route path="/" element={<Home />} />  
                 <Route path="/creator-options" element={<CreationOptionsPage />} />
@@ -47,6 +50,8 @@ createRoot(document.getElementById('root')).render(
                 <Route path="/sign-in" element={<SignInPage/>}/>
                 <Route path="/sign-up" element={<SignUpPage/>}/>
               </Routes>
+      </StatsProvider>
+
       </FinalSpellsProvider>
 
       </BgToolProvider>

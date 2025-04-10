@@ -2,6 +2,7 @@ import { use, useEffect, useState } from 'react'
 import React, { useContext } from "react";
 import { CreatorContext } from "./assets/BringStatChoice.jsx";
 import { ClassIdContext } from "./assets/SaveContexts/ClassContext.jsx";
+import { useNavigate } from 'react-router-dom';
 import RaceCard from './assets/CreatorPageCards/RaceCard'
 import BackgroundCard from './assets/CreatorPageCards/BackgroundCard'
 import ClassCard from './assets/CreatorPageCards/ClassCard.jsx'
@@ -26,7 +27,7 @@ function CreatorPage ()
     const { ClassId } = useContext(ClassIdContext);
     const { selectedOption } = useContext(CreatorContext);
     
-
+    const navigate = useNavigate();
 
     var firstbg = Math.floor(Math.random() * 8)
     const [images] = useState([background1, background2, background3, background4, background5, background6, background7, background8])
@@ -66,7 +67,7 @@ function CreatorPage ()
             <div className='save'>
             <button 
                 className="save-button" 
-
+                onClick={() => {navigate("/finalize")}}
                 >
                 <img src={falmingo} alt="Save" className="icon flipped" />
                 Save Character
