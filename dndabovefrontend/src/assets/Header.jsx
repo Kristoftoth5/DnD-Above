@@ -61,6 +61,11 @@ const Header = () => {
                 Sign In
               </button>
             </li>
+            <li className="nav-item">
+              <button className="nav-link btn btn-link" onClick={() => handleNavigation("/profile")}>
+                Profile
+              </button>
+            </li>
           </ul>
         </div>
       </div>

@@ -56,8 +56,9 @@ function SignInPage()
               if (responseData.token) 
               {
                 localStorage.setItem("authToken", responseData.token);
+                console.log(responseData.userId)
                 setToken(responseData.token);
-                navigate("/home"); // Navigate to home after successful sign-in
+                navigate("/profile"); // Navigate to home after successful sign-in
               } else 
               {
                 window.alert("Failed to retrieve token.");
@@ -74,7 +75,7 @@ function SignInPage()
           
           sendSignIn();
 
-          navigate("/");
+          navigate("/profile");
 
     }
     return(

@@ -53,6 +53,7 @@ public class AuthController : ControllerBase
 
         return Ok(new
         {
+            UserId = user.Id,
             Token = token,
             RefreshToken = refreshToken.Token
         });

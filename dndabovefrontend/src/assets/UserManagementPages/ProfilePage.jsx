@@ -9,11 +9,11 @@ function ProfilePage()
     const [email, setEmail] = useState("");
     const [token, setToken] = useState();
 
-    setToken(localStorage.getItem("authToken"));
+    
 
 
     useEffect(()=>{
-
+        setToken(localStorage.getItem("authToken"));
     },[])
 
 
