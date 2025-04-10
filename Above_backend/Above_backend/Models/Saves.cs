@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Reflection.Metadata;
 using System.Reflection.Metadata.Ecma335;
+using System.Text.Json.Serialization;
 
 namespace Above_backend.Models
 {
@@ -13,6 +14,7 @@ namespace Above_backend.Models
         public string? CharacterArtPath { get; set; }
         public int UserId { get; set; }
         [ForeignKey("UserId")]
+        [JsonIgnore]
         public User User { get; set; }
     }
 }

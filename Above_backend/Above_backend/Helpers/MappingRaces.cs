@@ -17,17 +17,5 @@ namespace Above_backend.Helpers
                 Speed = races.Speed,
             };
         }
-
-        public static Races RaceCreateDTOToRaces(RacesCreateAndBaseDTO racescreatedto)
-        {
-            return new Races
-            {
-                Name = racescreatedto.Name,
-                CreatureType = racescreatedto.CreatureType,
-                Age = racescreatedto.Age,
-                Size = racescreatedto.Size,
-                Speed = racescreatedto.Speed,
-            };
-        }
     }
 }

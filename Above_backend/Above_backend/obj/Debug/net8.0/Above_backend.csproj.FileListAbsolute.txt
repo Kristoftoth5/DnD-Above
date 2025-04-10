@@ -641,9 +641,6 @@ D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Above_backend.
 D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Azure.Core.dll
 D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Azure.Identity.dll
 D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Humanizer.dll
-D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
-D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
 D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.AspNetCore.Razor.Language.dll
 D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
@@ -678,8 +675,6 @@ D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.Exte
 D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
 D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
-D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
-D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
 D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
 D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
@@ -1590,3 +1585,5 @@ C:\Users\tothkr\Documents\GitHub\DnD-Above\Above_backend\Above_backend\obj\Debug
 C:\Users\tothkr\Documents\GitHub\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.pdb
 C:\Users\tothkr\Documents\GitHub\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\Above_backend.genruntimeconfig.cache
 C:\Users\tothkr\Documents\GitHub\DnD-Above\Above_backend\Above_backend\obj\Debug\net8.0\ref\Above_backend.dll
+D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\BCrypt.Net-Next.dll
+D:\gulyasa\DnD-Above\Above_backend\Above_backend\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

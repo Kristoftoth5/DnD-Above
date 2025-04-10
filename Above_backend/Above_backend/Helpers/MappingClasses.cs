@@ -23,22 +23,5 @@ namespace Above_backend.Helpers
                 HalfCaster = classes.HalfCaster,
             };
         }
-
-        public static Classes ClassesCreateDtoToClasses(ClassesCreateAndBaseDTO classescreatedto)
-        {
-            return new Classes
-            {
-                Name = classescreatedto.Name,
-                Description = classescreatedto.Description,
-                HitDice = classescreatedto.HitDice,
-                StartingGold = classescreatedto.StartingGold,
-                SpellCaster = classescreatedto.SpellCaster,
-                ArmorProf = classescreatedto.ArmorProf,
-                WeaponProf = classescreatedto.WeaponProf,
-                ToolProf = classescreatedto.ToolProf,
-                SavingThrows = classescreatedto.SavingThrows,
-                HalfCaster = classescreatedto.HalfCaster,
-            };
-        }
     }
 }

@@ -24,24 +24,5 @@ namespace Above_backend.Helpers
                 Attunement = equipment.Attunement,
             };
         }
-
-        public static Equipment EquipmentCreateDtoToEquipment(EquipmentsCreateAndBaseDTO equipmentcreatedto)
-        {
-            return new Equipment
-            {
-                Name = equipmentcreatedto.Name,
-                Rarity = equipmentcreatedto.Rarity,
-                ProfReq = equipmentcreatedto.ProfReq,
-                DamageDie = equipmentcreatedto.DamageDie,
-                DamageType = equipmentcreatedto.DamageType,
-                EquipmentType = equipmentcreatedto.EquipmentType,
-                AC = equipmentcreatedto.AC,
-                Properties = equipmentcreatedto.Properties,
-                Consumable = equipmentcreatedto.Consumable,
-                Price = equipmentcreatedto.Price,
-                Description = equipmentcreatedto.Description,
-                Attunement = equipmentcreatedto.Attunement,
-            };
-        }
     }
 }
