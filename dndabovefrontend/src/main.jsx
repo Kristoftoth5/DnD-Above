@@ -14,6 +14,8 @@ import { RaceIdProvider, SubraceIdProvider } from './assets/SaveContexts/RaceCon
 import { ClassIdProvider, SubclassIdProvider, ChosenClassFeatureIdProvider } from './assets/SaveContexts/ClassContext.jsx';
 import { BgNameProvider, BgDescProvider, BgSkillsProvider, BgToolProvider } from './assets/SaveContexts/BackgroundContext.jsx';
 import { FinalSpellsProvider } from './assets/SaveContexts/FinalSpellContext.jsx';
+import SignInPage from './assets/UserManagementPages/SignInPage.jsx'
+import SignUpPage from './assets/UserManagementPages/SignUpPage.jsx'
 
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>
