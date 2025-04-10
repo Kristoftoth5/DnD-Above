@@ -42,6 +42,8 @@ createRoot(document.getElementById('root')).render(
                 <Route path="/creator-options" element={<CreationOptionsPage />} />
                 <Route path="/character-creator" element={<CreatorPage />} />  
                 <Route path="/finalize" element={<CollectedDataTest/>}/>
+                <Route path="/sign-in" element={<SignInPage/>}/>
+                <Route path="/sign-up" element={<SignUpPage/>}/>
               </Routes>
       </FinalSpellsProvider>
 
