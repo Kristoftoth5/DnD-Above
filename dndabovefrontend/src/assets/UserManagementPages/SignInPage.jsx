@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "../Cards.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
+import { UserIdContext } from "../UserContext";
 
 function SignInPage()
 {
@@ -9,6 +10,8 @@ function SignInPage()
     const [tokenPath, setTokenPath] = useState("");
 
     const navigate = useNavigate();
+
+    const { setUserId } = useContext(UserIdContext)
 
     function SignIn()
     {
@@ -57,6 +60,7 @@ function SignInPage()
               {
                 localStorage.setItem("authToken", responseData.token);
                 setToken(responseData.token);
+                setUserId(responseData.userId);
                 navigate("/home"); // Navigate to home after successful sign-in
               } else 
               {
