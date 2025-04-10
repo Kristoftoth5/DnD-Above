@@ -24,30 +24,50 @@ function SignInPage()
 
         //navigate("/home");
 
-        const sendSignIn = async () => {
+        const sendSignIn = async () => 
+          {
             const url = "https://localhost:7188/api/Auth/login";  
-            const data = {
+            const data = 
+            {
               "email": temp,
               "password": temp2
             };
           
             try {
-              const response = await fetch(url, {
+              const response = await fetch(url, 
+              {
                 method: "POST",
-                headers: {
+                headers: 
+                {
                   "Content-Type": "application/json"
                 },
                 body: JSON.stringify(data)
               });
           
-              if (!response.ok) {
+              if (!response.ok) 
+              {
                 window.alert("Invalid e-mail address or password.");
                 throw new Error("Network response was not ok");
               }
           
               const responseData = await response.json();
               console.log("Response Data:", responseData);
-            } catch (error) {
+
+              if (responseData.token) 
+              {
+                localStorage.setItem("authToken", responseData.token);
+                setToken(responseData.token);
+                navigate("/home"); // Navigate to home after successful sign-in
+              } else 
+              {
+                window.alert("Failed to retrieve token.");
+              }
+
+
+              
+            } 
+            catch (error) 
+            {
               console.error("Error:", error);
             }
           };
