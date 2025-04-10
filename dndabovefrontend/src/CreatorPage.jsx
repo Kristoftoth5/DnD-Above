@@ -19,6 +19,7 @@ import background7 from './assets/bgImages/seven.jpg'
 import background8 from './assets/bgImages/eight.jpg'
 import EquipmentCard from './assets/CreatorPageCards/EquipmentCard.jsx';
 import SpellCard from './assets/CreatorPageCards/SpellCard.jsx';
+import falmingo from './assets/falmingo.png';
 
 function CreatorPage () 
 {
@@ -58,10 +59,20 @@ function CreatorPage ()
 
             {selectedOption == 1 ? <PointBuyStatCard/> : selectedOption == 2 ? <HeroicPointBuyStatCard/> : <CustomorRoledStatStatCard/>}
             <RaceCard/> 
-            <BackgroundCard/>
+            {/* <BackgroundCard/> */}
             <ClassCard/>
             <EquipmentCard classId = {ClassId}/>
             <SpellCard ClassId = {ClassId}/>
+            <div className='save'>
+            <button 
+                className="save-button" 
+
+                >
+                <img src={falmingo} alt="Save" className="icon flipped" />
+                Save Character
+                <img src={falmingo} alt="Save" className="icon" />
+            </button>
+            </div>
         </div>
         </div>
         </>

@@ -110,13 +110,13 @@ function RaceCard() {
     }
 
 
-    if (prevsubracefeatures == subRaceFeatures)
+    if (prevsubracefeatures == subRaceOptions)
     {
       setSubRaceFeatures(undefined);
       prevsubracefeatures = undefined;
       
     }
-  },[chosenSubRaceId, chosenRaceId])
+  },[chosenSubRaceId])
 
 
     function SelectedRace() {

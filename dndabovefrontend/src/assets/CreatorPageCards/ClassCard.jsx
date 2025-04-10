@@ -286,7 +286,7 @@ function ClassCard() {
             {subClassOptions.map( (subclass, id) =>(
               <button
                 className="dropdown-item"
-                onClick={() => {setChosenSubClassId(subclass[1]);setSubclassId(subclass[1])}}
+                onClick={() => {setChosenSubClassId(subclass[1]);setSubclassId(subclass[1]);setSubClassDropdownOpen(false)}}
               >
               {subclass[0]}
               </button>
@@ -294,7 +294,7 @@ function ClassCard() {
           </div>
         )}
       </div>
-      {subClassName !== "" ?(
+      {subClassFeatures !== undefined ?(
         <h4>{subClassName}</h4>
       ):null}
       {subClassFeatures !== undefined ?(
@@ -322,12 +322,10 @@ function ClassCard() {
   }
 
   return (
-    <>
-    {classOptions !== undefined || chosenClassId !== -1 ? (
-      <div className="creator-container">
+    <div className="creator-container">
       <h2 className="creator-title">Class</h2>
 
-      {chosenClassId !== -1 ? (
+      {chosenClassId !== -1 || chosenClassId !== undefined ? (
         <div className="ability-box">
           <h3 className="ability-title">Character Level</h3>
           <div className="score-display">{characterLevel}</div>
@@ -357,7 +355,7 @@ function ClassCard() {
             {classOptions.map((characterclass, id) => (
               <button
                 className="dropdown-item"
-                onClick={() => { setChosenClassId(characterclass[1]);setClassId(characterclass[1]); console.log(characterclass[1]);setDropdownOpen(false); }}
+                onClick={() => { setChosenClassId(characterclass[1]); console.log(characterclass[1]);setDropdownOpen(false);setClassId(characterclass[1]); }}
                 key={id}
               >
                 {characterclass[0]}
@@ -368,14 +366,11 @@ function ClassCard() {
       </div>
 
       <div className="selected-multiple">
-        {Boolean(chosenClassId !== -1) && classFeatures !== undefined && classData !== undefined ? (
+        {Boolean(chosenClassId !== -1 || chosenClassId !== undefined) && classFeatures !== undefined && classData !== undefined ? (
           <SelectedClass />
         ) : null}
       </div>
     </div>
-    ):null}
-    
-    </>
   );
 }
 

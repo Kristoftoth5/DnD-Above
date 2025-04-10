@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "../Cards.css"; // Import styles
+import { useContext } from "react";
+import { BgNameContext } from "../SaveContexts/BackgroundContext";
+import { BgDescContext } from "../SaveContexts/BackgroundContext";
+import { BgSkillsContext } from "../SaveContexts/BackgroundContext";
+import { BgToolContext } from "../SaveContexts/BackgroundContext";
 
 
 
@@ -16,6 +21,10 @@ const [chosenTool, setChosenTool] = useState("Alchemist's Supplies");
 const [skills, setSkills] = useState([["Acrobatics","DEX"],["Animal Handling","WIS"],["Arcana","INT"],["Athletics","STR"],["Deception","CHA"],["History","INT"],["Insight","WIS"],["Intimidiation","CHA"],["Investigation","INT"],["Medicine","WIS"],["Nature","INT"],["Perception","WIS"],["Performance","CHA"],["Persuasion","CHA"],["Religion","INT"],["Sleight of Hand","DEX"],["Stealth","DEX"],["Survival","WIS"]]);
 const [tools, setTools] = useState(["Aclhemist's Supplies","Brewer's supplies","Calligrapher's supplies","Carpenter's tools","Cartographer's tools","Cobbler's tools","Cook's utensils","Glassblower's tools","Jeweler's tools","Leatherworker's tools","Mason's tools","Painter's supplies","Potter's tools","Smith's tools","Tinker's tools","Weaver's tools","Woodcarver's tools"])
 
+const { setBgName } = useContext(BgNameContext);
+const { setBgDesc } = useContext(BgDescContext);
+const { setBgSkills } = useContext(BgSkillsContext);
+const { setBgTool } = useContext(BgToolContext);
 
 function Background() 
 {
@@ -62,7 +71,7 @@ return(
         {skills.map( (skill, stat) =>(
             <button
             className="dropdown-item"
-            onClick={() => {setSkillDropdown1Open(false);var temp = chosenSkills; temp[0]=skill[0]; setChosenSkills(temp); temp = [];}}
+            onClick={() => {setSkillDropdown1Open(false);var temp = chosenSkills; temp[0]=skill[0]; setChosenSkills(temp); setBgSkills(temp); temp = [];}}
             >
             {skill[0]}
             </button>
@@ -86,7 +95,7 @@ return(
         {skills.map( (skill, stat) =>(
             <button
             className="dropdown-item"
-            onClick={() => {setSkillDropdown2Open(false);var temp = chosenSkills; temp[1]=skill[0]; setChosenSkills(temp); temp = [];}}
+            onClick={() => {setSkillDropdown2Open(false);var temp = chosenSkills; temp[1]=skill[0]; setChosenSkills(temp); setBgSkills(temp); temp = [];}}
             >
             {skill[0]}
             </button>
@@ -110,7 +119,7 @@ return(
         {tools.map( (tool) =>(
             <button
             className="dropdown-item"
-            onClick={() => {setToolDropdownOpen(false);setChosenTool(tool);}}
+            onClick={() => {setToolDropdownOpen(false);setChosenTool(tool);setBgTool(tool);}}
             >
             {tool}
             </button>
@@ -124,7 +133,8 @@ return(
         <p><input type="text" id="background-name" placeholder="The name of your background." size={30}/></p>
         <p><textarea id="background-description" placeholder="You can write the details of what a character with this background could be like." cols={60} rows={15}></textarea></p>
     </div>
-
+    {/*setBgName(document.getElementById("background-name").value)*/}
+    {/*setBgDesc(document.getElementById("background-description").value)*/}
 
 
     {/* Display Selected backgrounds BELOW the dropdown */}

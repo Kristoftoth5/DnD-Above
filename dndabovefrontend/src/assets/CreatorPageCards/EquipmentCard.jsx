@@ -20,6 +20,7 @@ function EquipmentCard({ classId }) {
     async function fetchdatabyid() {
       const chosenClass = await fetchEverything("Classes/" + classId);
       setGold(chosenClass.startingGold + 15);
+      setRemainingGold(chosenClass.startingGold + 15);
     }
     fetchdatabyid();
   }, [classId]);
@@ -50,9 +51,9 @@ function EquipmentCard({ classId }) {
   function buyEquipment(item) {
     if (gold >= item[2]) {
       setGold(gold - item[2]);
-      setRemainingGold(gold)
+      setRemainingGold(gold - item[2])
       setSelectedEquipment([...selectedEquipment, item]);
-      setEquipment([selectedEquipment, item])
+      setEquipment([...selectedEquipment, item])
     }
   }
 
@@ -60,7 +61,7 @@ function EquipmentCard({ classId }) {
   function removeEquipment(index) {
     let item = selectedEquipment[index];
     setGold(gold + item[2]);
-    setRemainingGold(gold)
+    setRemainingGold(gold + item[2])
     setSelectedEquipment(selectedEquipment.filter((_, i) => i !== index));
     setEquipment(selectedEquipment.filter((_, i) => i !== index));
   }
@@ -68,7 +69,7 @@ function EquipmentCard({ classId }) {
   return (
     <div className="creator-container">
       <h2 className="creator-title">Equipment</h2>
-      <h3 className="race-sub-title">Starting Gold: {gold} gp</h3>
+      <h3 className="race-sub-title">Starting Gold: {classId != 0 ? gold + " gp" : "Choose a class first"}</h3>
 
       {/* Category selection buttons */}
       <div className="equipment-buttons">

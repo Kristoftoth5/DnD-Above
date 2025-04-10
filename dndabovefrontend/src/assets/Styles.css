@@ -105,3 +105,42 @@
   .bonus-highlight:hover {
     text-decoration: underline;
   }
+  .save-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 12px 24px;
+    background-color: pink;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .save-button:hover:not(:disabled) {
+    background-color: lightpink;
+  }
+  
+  .save-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .icon {
+    width: 30px;
+    height: 20px;
+  }
+  
+  .flipped {
+    transform: scaleX(-1);
+  }
+  .save
+  {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    margin-top: 2rem;
+    padding-bottom: 24px;
+  }

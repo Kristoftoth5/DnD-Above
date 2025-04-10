@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import DiceRoller from "./DiceRoller";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import falmingo from './falmingo.png';
 
 const Header = () => {
   const location = useLocation();
@@ -22,6 +23,7 @@ const Header = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
         <button className="nav-link btn btn-link" onClick={() => handleNavigation("/")}>
+            <img src={falmingo} alt="Save" className="icon flipped" />
             Home
         </button>
         <div className="collapse navbar-collapse">

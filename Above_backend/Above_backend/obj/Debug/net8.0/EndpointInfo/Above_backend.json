@@ -637,7 +637,7 @@
         }
       }
     },
-    "/originsubclassid/{originsubclassid}": {
+    "/api/FeaturesToFeaturesConnections/originfeatureid/{originid}": {
       "get": {
         "tags": [
           "FeaturesToFeaturesConnections"
@@ -645,18 +645,11 @@
         "parameters": [
           {
             "name": "originid",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "originsubclassid",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
