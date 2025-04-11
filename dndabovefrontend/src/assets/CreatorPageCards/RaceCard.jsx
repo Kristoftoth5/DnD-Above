@@ -100,6 +100,7 @@ function RaceCard() {
     async function fetchsubracefeatures(id)
     {
       setSubRaceFeatures(await fetchEverything("FeaturesToFeaturesConnections/originfeatureid/"+id));
+      setSubraceFeature(await fetchEverything("FeaturesToFeaturesConnections/originfeatureid/"+id));
     }
     
 
@@ -117,7 +118,7 @@ function RaceCard() {
       prevsubracefeatures = undefined;
       
     }
-    setSubraceFeature(subRaceFeatures)
+  
   },[chosenSubRaceId])
 
 
