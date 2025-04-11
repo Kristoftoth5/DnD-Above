@@ -14,6 +14,7 @@ function SignUpPage()
         var temp = document.getElementById("username").value
         var temp2 = document.getElementById("email").value
         var temp3 = document.getElementById("pass").value
+        var errorText = "";
 
         if (temp == null || temp2 == null || temp3 == null)
         {
@@ -44,19 +45,33 @@ function SignUpPage()
               });
           
               if (!response.ok) {
+                errorText = await response.text();
+                navigate("/sign-up")
                 throw new Error("Network response was not ok");
+                
               }
           
               const responseData = await response.json();
               console.log("Response Data:", responseData);
-            } catch (error) {
-              console.error("Error:", error);
+              navigate("/sign-in")
+            } 
+            catch (error) {
+              if(errorText=== "User already exists.")
+              {
+                console.log(errorText)
+                window.alert("A user with this e-mail address already exists.")
+                navigate("/sign-up")
+              }
+              else
+              {
+                console.error("Error:", error);
+                navigate("/sign-up")
+              }
+              
             }
           };
           
         sendSignUp();
-        
-        navigate("/");
 
     }
 

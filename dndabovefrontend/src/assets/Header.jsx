@@ -59,16 +59,18 @@ const Header = () => {
             <DiceRoller isVisible={showDiceRoller} />
             </li>
 
-            <li className="nav-item">
+            {!token ? (<li className="nav-item">
               <button className="nav-link btn btn-link" onClick={() => handleNavigation("/sign-up")}>
                 Sign Up
               </button>
-            </li>
-            <li className="nav-item">
+            </li>):null}
+            
+            {!token ? (<li className="nav-item">
               <button className="nav-link btn btn-link" onClick={() => handleNavigation("/sign-in")}>
                 Sign In
               </button>
-            </li>
+            </li>):null}
+            
             {token ?(<li className="nav-item">
               <button className="nav-link btn btn-warning" onClick={() => {localStorage.removeItem('authToken');setUserId(0)}}>
                 Logout
