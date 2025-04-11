@@ -1,10 +1,11 @@
 import { useEffect, useState, useContext } from "react"
-import { RaceIdContext, SubraceIdContext } from "./assets/SaveContexts/RaceContext.jsx";
-import { ClassIdContext, SubclassIdContext, ChosenClassFeatureIdContext } from "./assets/SaveContexts/ClassContext.jsx"
+import { RaceIdContext, SubraceIdContext, SubraceFeatureContext } from "./assets/SaveContexts/RaceContext.jsx";
+import { ClassIdContext, SubclassIdContext, ChosenClassFeatureIdContext, BasicClassFeatureContext } from "./assets/SaveContexts/ClassContext.jsx"
 import { StatsContext } from "./assets/SaveContexts/StatContext.jsx"
 import { BgNameContext, BgDescContext, BgSkillsContext, BgToolContext } from "./assets/SaveContexts/BackgroundContext.jsx"
 import { EquipmentContext, RemainingGoldContext } from "./assets/SaveContexts/EquipmentContext.jsx"
 import { FinalSpellsContext } from "./assets/SaveContexts/FinalSpellContext.jsx"
+
 import fetchEverything from "./assets/CommonFunctions/fetchEverything.js";
 
 
@@ -14,12 +15,12 @@ function CollectedDataTest()
     const [ raceData, setRaceData ] = useState();
     const [ raceFeatures, setRaceFeatures ] = useState();
     const { selectedSubraceId } = useContext(SubraceIdContext);
-    const { subRaceFeatures, setSubRaceFeatures } = useState();
+    const { SubRaceFeature }  = useContext(SubraceFeatureContext);
 
     const { ClassId } = useContext(ClassIdContext);
 
     const { SubclassId } = useContext(SubclassIdContext);
-    const { subClassFeatures, setSubClassFeatures } = useState();
+    const { BasicClassFeature} = useContext(BasicClassFeatureContext);
     const { ChosenClassFeatureId } = useContext(ChosenClassFeatureIdContext);    
 
     const { Stats } = useContext(StatsContext)
