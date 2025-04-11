@@ -60,7 +60,7 @@ export function BasicClassFeatureIdProvider({ children }) {
 
 //Returns the level of the character
 export function CharacterLevelProvider({ children }) {
-  const [CharacterLevel, setCharacterLevel] = useState(0);
+  const [CharacterLevel, setCharacterLevel] = useState(6);
 
   return (
     <CharacterLevelContext.Provider value={{ CharacterLevel, setCharacterLevel }}>
@@ -71,7 +71,7 @@ export function CharacterLevelProvider({ children }) {
 
 //Returns if the character is a caster
 export function CasterProvider({ children }) {
-  const [Caster, setCaster] = useState(0);
+  const [Caster, setCaster] = useState(1);
 
   return (
     <CasterContext.Provider value={{ Caster, setCaster }}>

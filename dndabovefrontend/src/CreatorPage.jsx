@@ -67,7 +67,7 @@ function CreatorPage ()
             <BackgroundCard/>
             <ClassCard/>
             <EquipmentCard classId = {ClassId}/>
-            <SpellCard ClassId = {ClassId} spellCaster={1} halfCaster={0} characterLevel={6}/>
+            <SpellCard ClassId = {ClassId} spellCaster={Caster} halfCaster={Halfcaster} characterLevel={CharacterLevel}/>
             <div className='save'>
             <button 
                 className="save-button" 
