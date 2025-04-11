@@ -50,6 +50,7 @@ function SignInPage()
               if (!response.ok) 
               {
                 window.alert("Invalid e-mail address or password.");
+                navigate("/sign-in");
                 throw new Error("Network response was not ok");
               }
           
@@ -65,6 +66,8 @@ function SignInPage()
               } else 
               {
                 window.alert("Failed to retrieve token.");
+                navigate("/sign-in")
+                return;
               }
 
 
@@ -78,7 +81,7 @@ function SignInPage()
           
           sendSignIn();
 
-          navigate("/");
+          
 
     }
     return(
