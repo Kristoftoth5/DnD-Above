@@ -4,6 +4,8 @@ export const RaceIdContext = createContext();
 
 export const SubraceIdContext = createContext();
 
+export const SubraceFeatureIdContext = createContext();
+
 //Race Id
 export function RaceIdProvider({ children }) {
   const [selectedRaceId, setSelectedRaceId] = useState(0);
@@ -25,4 +27,15 @@ export function SubraceIdProvider({ children }) {
             {children}
         </SubraceIdContext.Provider>
     );
+}
+
+//Subrace features
+export function SubraceFeatureIdProvider({ children }) {
+  const [SubraceFeatureId, setSubraceFeatureId] = useState([]);
+
+  return (
+      <SubraceFeatureIdContext.Provider value={{ SubraceFeatureId, setSubraceFeatureId }}>
+          {children}
+      </SubraceFeatureIdContext.Provider>
+  );
 }
