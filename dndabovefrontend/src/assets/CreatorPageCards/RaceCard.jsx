@@ -1,16 +1,13 @@
-import React, { useState, useEffect } from "react";
-import fetchEverything from "../CommonFunctions/fetchEverything"
-import "../Cards.css"; // Import styles
-import { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import fetchEverything from "../CommonFunctions/fetchEverything";
+import "../Cards.css";
 import { RaceIdContext } from "../SaveContexts/RaceContext";
 import { SubraceIdContext, SubraceFeatureContext } from "../SaveContexts/RaceContext";
 
 function RaceCard() {
-
-
   const [dropdownOpen, setDropdownOpen] = useState(false); 
   const [subRaceDropdownOpen, setSubRaceDropdownOpen] = useState(false);
-  const [raceOptionNames,setRaceOptionNames] = useState([]);
+  const [raceOptionNames, setRaceOptionNames] = useState([]);
   const [chosenRaceId, setChosenRaceId] = useState(0);
   const [chosenSubRaceId, setChosenSubRaceId] = useState(0);
   const [raceData, setRaceData] = useState();
@@ -22,219 +19,162 @@ function RaceCard() {
   const { setSelectedRaceId } = useContext(RaceIdContext);
   const { setSelectedSubraceId } = useContext(SubraceIdContext);
   const { setSubraceFeature } = useContext(SubraceFeatureContext);
- 
 
-
- /*Fetching all the races at startup */
-  useEffect(()=>{
-    async function fetchraces()
-    {
-    const raceOptionsJSON = await fetchEverything("Races");
-
-      var fasz = [];
-      var fasz2 = [];
-    raceOptionsJSON.forEach(race => {
-      fasz2.push(race.name);
-      fasz2.push(race.id);
-
-      fasz.push(fasz2);
-      fasz2 = [];
-    });
-    setRaceOptionNames(fasz);
+  useEffect(() => {
+    async function fetchraces() {
+      const raceOptionsJSON = await fetchEverything("Races");
+      const formatted = raceOptionsJSON.map(race => [race.name, race.id]);
+      setRaceOptionNames(formatted);
     }
     fetchraces();
-  },[]);
+  }, []);
 
-  /*Fetching a specific, chosen Race's features */
-  useEffect(()=>{
-    async function fetchdatabyid() 
-    {
-      setRaceData(await fetchEverything("Races/"+chosenRaceId));
-
-      setRaceFeatures(await fetchEverything("Features/Features/originraceid/"+chosenRaceId));
+  useEffect(() => {
+    async function fetchdatabyid() {
+      const race = await fetchEverything("Races/" + chosenRaceId);
+      const features = await fetchEverything("Features/Features/originraceid/" + chosenRaceId);
+      setRaceData(race);
+      setRaceFeatures(features);
     }
-    fetchdatabyid()
-  },[chosenRaceId])
+    if (chosenRaceId !== 0) {
+      fetchdatabyid();
+    }
+  }, [chosenRaceId]);
 
-  /*Fetching the subraces of a race if it has them */
-  useEffect(()=>{
-    async function fetchsubracethings(id)
-    {
-      const subRaceOptionsJSON = await fetchEverything("FeaturesToFeaturesConnections/originfeatureid/"+id);
-
-      var fasz = [];
-      var fasz2 = [];
-    subRaceOptionsJSON.forEach(subrace => {
-      fasz2.push(subrace.name);
-      fasz2.push(subrace.id);
-
-      fasz.push(fasz2);
-      fasz2 = [];
-    });
-    setSubRaceOptions(fasz);
+  useEffect(() => {
+    async function fetchsubracethings(id) {
+      const subRaceOptionsJSON = await fetchEverything("FeaturesToFeaturesConnections/originfeatureid/" + id);
+      const formatted = subRaceOptionsJSON.map(subrace => [subrace.name, subrace.id]);
+      setSubRaceOptions(formatted);
     }
 
-    var prevsubraceoptions = subRaceOptions;
-    var subracefeature
-    if(raceFeatures !== undefined)
-    {
-      subracefeature = raceFeatures.find(feature => feature.name === "Subrace");
-    }
+    const subraceFeature = raceFeatures?.find(feature => feature.name === "Subrace");
 
-    var prevsubraceoptions;
-    
-    if (subracefeature) {
-      fetchsubracethings(subracefeature.id);
-    }
-    
-    if (prevsubraceoptions == subRaceOptions)
-    {
+    if (subraceFeature) {
+      fetchsubracethings(subraceFeature.id);
+    } else {
       setSubRaceOptions(undefined);
-      prevsubraceoptions = undefined;
       setSubRaceName("");
     }
-  },[raceFeatures])
+  }, [raceFeatures]);
 
-  /*Fetching the features of the subrace if there was one */
-  useEffect(()=>{
-    async function fetchsubracefeatures(id)
-    {
-      setSubRaceFeatures(await fetchEverything("FeaturesToFeaturesConnections/originfeatureid/"+id));
-      setSubraceFeature(await fetchEverything("FeaturesToFeaturesConnections/originfeatureid/"+id));
-    }
-    
+  function SelectedRace() {
+    return (
+      <>
+        <p className="selected-singular"><b>Name: </b>{raceData.name}</p>
+        <p className="selected-singular"><b>Age: </b>{raceData.age}</p>
+        <p className="selected-singular"><b>Size: </b>{raceData.size}</p>
+        <p className="selected-singular"><b>Speed: </b>{raceData.speed}</p>
 
-    var prevsubracefeatures = subRaceFeatures;
-    
-    if(chosenSubRaceId !== 0)
-    {
-      fetchsubracefeatures(chosenSubRaceId);
-    }
-
-
-    if (prevsubracefeatures == subRaceOptions)
-    {
-      setSubRaceFeatures(undefined);
-      prevsubracefeatures = undefined;
-      
-    }
-  
-  },[chosenSubRaceId])
-
-
-    function SelectedRace() {
-      return (
-        <>
-        {/* Displaying the Race's base details, such as Name, Age, Size and Speed*/}
-          <p className="selected-singular"><b>Name: </b>{raceData.name}</p>
-          <p className="selected-singular"><b>Age: </b>{raceData.age}</p>
-          <p className="selected-singular"><b>Size: </b>{raceData.size}</p>
-          <p className="selected-singular"><b>Speed: </b>{raceData.speed}</p>
-  
-          {/* Displaying each feature of the race loaded into the raceFeatures array*/}
-
-          {raceFeatures.map((feature, id)=>(
-            feature.name !== "Subrace" ? 
-            <div className="selected-feature">
+        {raceFeatures.map((feature, id) => (
+          feature.name !== "Subrace" ? (
+            <div key={id} className="selected-feature">
               <p><b>{feature.name}</b></p>
               <p><b>Description: </b>{feature.description}</p>
-            </div> : null
-          ))}
+            </div>
+          ) : null
+        ))}
 
-          {/* All Subrace Related things*/}
-          <h3>Subrace Options</h3>
-          {/* Displaying the Subrace options for the chosen race*/}
-          {/* The dropdown menu's main button for the subraces*/}
-          { Boolean(subRaceOptions !== undefined) ? (
-            <div className="dropdown-wrapper">
+        <h3>Subrace Options</h3>
+
+        {subRaceOptions !== undefined ? (
+          <div className="dropdown-wrapper">
             <button 
               className="btn btn-secondary dropdown-toggle" 
               type="button"
-              onClick={() => {setSubRaceDropdownOpen(!subRaceDropdownOpen);}}
+              onClick={() => setSubRaceDropdownOpen(!subRaceDropdownOpen)}
               id="plsbepink"
             >
               Select Subrace
             </button>
-            
-            {/* Dropdown Menu - Now positioned below the button, containing the subrace options and displaying them from the subRaceOptions array one by one */}
-            { Boolean(subRaceDropdownOpen) ? (
+
+            {subRaceDropdownOpen ? (
               <div className="dropdown-menu show">
-                {subRaceOptions.map( (subrace, id) =>(
+                {subRaceOptions.map((subrace, id) => (
                   <button
+                    key={id}
                     className="dropdown-item"
-                    onClick={() => {setChosenSubRaceId(subrace[1]);setSubRaceDropdownOpen(false);setSubRaceName(subrace[0]);setSelectedSubraceId(subrace[1]);}}
+                    onClick={async () => {
+                      const subraceId = subrace[1];
+                      const subraceName = subrace[0];
+
+                      setChosenSubRaceId(subraceId);
+                      setSubRaceDropdownOpen(false);
+                      setSubRaceName(subraceName);
+                      setSelectedSubraceId(subraceId);
+
+                      const features = await fetchEverything("FeaturesToFeaturesConnections/originfeatureid/" + subraceId);
+                      setSubRaceFeatures(features);
+                      setSubraceFeature([...features]); // ensure new array reference
+                      console.log("Subrace Feature Context Updated:", JSON.stringify(features, null, 2));
+                    }}
                   >
-                  {subrace[0]}
+                    {subrace[0]}
                   </button>
-                  ))}
+                ))}
               </div>
-            ):null}
-          </div>):null}
-          {/* Displaying the Selected Subrace's features*/}
-          {subRaceFeatures !== undefined ? (
-            <h4> {subRaceName}</h4>
-          ): null}
-          {Boolean(subRaceFeatures !== undefined) & Boolean(chosenSubRaceId !== 0) ? (
-            subRaceFeatures.map((feature, id)=>(
-              <div className="selected-feature">
-                <p><b>{feature.name}</b></p>
-                <p><b>Description: </b>{feature.description}</p>
-              </div>
-            ))
-          ): null}
-            {/*Displaying the message in case a race has no subraces */}
-          {Boolean(subRaceOptions === undefined) & Boolean(subRaceFeatures === undefined) ?(
-            <p>No Subraces available.</p>
-          ): null}
-  
-        </>
-      )
-    }
+            ) : null}
+          </div>
+        ) : null}
 
- 
+        {subRaceFeatures !== undefined ? (
+          <h4>{subRaceName}</h4>
+        ) : null}
 
+        {subRaceFeatures !== undefined && chosenSubRaceId !== 0 ? (
+          subRaceFeatures.map((feature, id) => (
+            <div key={id} className="selected-feature">
+              <p><b>{feature.name}</b></p>
+              <p><b>Description: </b>{feature.description}</p>
+            </div>
+          ))
+        ) : null}
 
-  
+        {subRaceOptions === undefined && subRaceFeatures === undefined ? (
+          <p>No Subraces available.</p>
+        ) : null}
+      </>
+    );
+  }
 
   return (
-    <>
     <div className="creator-container">
       <h2 className="creator-title">Race</h2>
 
-      {/* Dropdown Button */}
       <div className="dropdown-wrapper">
         <button 
           className="btn btn-secondary dropdown-toggle" 
           type="button"
-          onClick={() => {setDropdownOpen(!dropdownOpen);}}
+          onClick={() => setDropdownOpen(!dropdownOpen)}
           id="plsbepink"
         >
           Select Race
         </button>
 
-        {/* Dropdown Menu - Now positioned below the button */}
         {dropdownOpen && (
           <div className="dropdown-menu show">
-            {raceOptionNames.map( (race, id) =>(
+            {raceOptionNames.map((race, id) => (
               <button
+                key={id}
                 className="dropdown-item"
-                onClick={() => {setChosenRaceId(race[1]);setDropdownOpen(false);setChosenSubRaceId(0);setSelectedRaceId(race[1]);}}
+                onClick={() => {
+                  setChosenRaceId(race[1]);
+                  setDropdownOpen(false);
+                  setChosenSubRaceId(0);
+                  setSelectedRaceId(race[1]);
+                }}
               >
-              {race[0]}
+                {race[0]}
               </button>
-              ))}
+            ))}
           </div>
         )}
       </div>
 
-      
       <div className="selected-multiple">
-        {Boolean(chosenRaceId != 0) & raceFeatures !== undefined ?(
-          <SelectedRace/>):null}
+        {chosenRaceId !== 0 && raceFeatures !== undefined ? <SelectedRace /> : null}
       </div>
     </div>
-
-    </>
   );
 }
 

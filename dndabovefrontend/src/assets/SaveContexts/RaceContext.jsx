@@ -32,7 +32,8 @@ export function SubraceIdProvider({ children }) {
 
 //Subrace Features
 export function SubraceFeatureProvider({ children }) {
-  const [SubraceFeature, setSubraceFeature] = useState(0);
+  const [SubraceFeature, setSubraceFeature] = useState();
+  console.log("Subrace features "+SubraceFeature)
 
   return (
       <SubraceFeatureContext.Provider value={{ SubraceFeature, setSubraceFeature }}>
