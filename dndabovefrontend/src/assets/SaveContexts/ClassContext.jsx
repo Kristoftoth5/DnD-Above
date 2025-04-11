@@ -4,6 +4,8 @@ export const ClassIdContext = createContext();
 
 export const SubclassIdContext = createContext();
 
+export const BasicClassFeatureIdContext = createContext();
+
 export const ChosenClassFeatureIdContext = createContext();
 
 //Returns Class Id
@@ -36,5 +38,16 @@ export function ChosenClassFeatureIdProvider({ children }) {
     <ChosenClassFeatureIdContext.Provider value={{ ChosenClassFeatureId, setChosenClassFeatureId }}>
       {children}
     </ChosenClassFeatureIdContext.Provider>
+  );
+}
+
+//Returns the basic features of the selected class
+export function BasicClassFeatureIdProvider({ children }) {
+  const [BasicClassFeatureId, setBasicClassFeatureId] = useState([]);
+
+  return (
+    <BasicClassFeatureIdContext.Provider value={{ BasicClassFeatureId, setBasicClassFeatureId }}>
+      {children}
+    </BasicClassFeatureIdContext.Provider>
   );
 }
