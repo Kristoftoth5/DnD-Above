@@ -31,102 +31,27 @@ namespace Above_backend.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<FeaturesToFeaturesConnection>> GetFeaturesToFeaturesConnection(int id)
         {
-            var featuresToFeaturesConnection = await _context.FeaturesToFeaturesConnections.FindAsync(id);
+            var featuresTofeaturesconnection = await _context.FeaturesToFeaturesConnections.FindAsync(id);
 
-            if (featuresToFeaturesConnection == null)
+            if (featuresTofeaturesconnection == null)
             {
                 return NotFound();
             }
 
-            return featuresToFeaturesConnection;
+            return featuresTofeaturesconnection;
         }
 
         [HttpGet("originfeatureid/{originid}")]
         public async Task<ActionResult<IEnumerable<Features>>> GetFeaturesToFeaturesConnectionByOriginId(int originid)
         {
-            var SubFeatureIds = await _context.FeaturesToFeaturesConnections.Where(x => x.OriginFeatureId == originid).Select(x => x.SubFeatureId).ToListAsync();
-
-            if (SubFeatureIds == null)
+            var subfeatures = await _context.FeaturesToFeaturesConnections.Where(x => x.OriginFeatureId == originid).Select(x => x.SubFeature).ToListAsync();
+            
+            if (subfeatures == null)
             {
                 return NotFound();
             }
 
-            List<Features> GetFeaturesBySubId = [];
-            foreach (var OneSubFeatureId in SubFeatureIds)
-            { 
-                GetFeaturesBySubId.Add(await _context.Features.FindAsync(OneSubFeatureId));
-            }
-                
-            return GetFeaturesBySubId;
+            return subfeatures;
         }
-
-        /*
-        // PUT: api/FeaturesToFeaturesConnections/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutFeaturesToFeaturesConnection(int id, FeaturesToFeaturesConnection featuresToFeaturesConnection)
-        {
-            if (id != featuresToFeaturesConnection.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(featuresToFeaturesConnection).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!FeaturesToFeaturesConnectionExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/FeaturesToFeaturesConnections
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<FeaturesToFeaturesConnection>> PostFeaturesToFeaturesConnection(FeaturesToFeaturesConnection featuresToFeaturesConnection)
-        {
-            _context.FeaturesToFeaturesConnections.Add(new FeaturesToFeaturesConnection 
-            {
-                OriginFeatureId = featuresToFeaturesConnection.OriginFeatureId,
-                SubFeatureId = featuresToFeaturesConnection.SubFeatureId,
-            });
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetFeaturesToFeaturesConnection", new { id = featuresToFeaturesConnection.Id }, featuresToFeaturesConnection);
-        }
-
-        // DELETE: api/FeaturesToFeaturesConnections/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteFeaturesToFeaturesConnection(int id)
-        {
-            var featuresToFeaturesConnection = await _context.FeaturesToFeaturesConnections.FindAsync(id);
-            if (featuresToFeaturesConnection == null)
-            {
-                return NotFound();
-            }
-
-            _context.FeaturesToFeaturesConnections.Remove(featuresToFeaturesConnection);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool FeaturesToFeaturesConnectionExists(int id)
-        {
-            return _context.FeaturesToFeaturesConnections.Any(e => e.Id == id);
-        }
-        */
     }
 }

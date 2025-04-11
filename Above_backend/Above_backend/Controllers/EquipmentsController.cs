@@ -24,16 +24,15 @@ namespace Above_backend.Controllers
 
         // GET: api/Equipments
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<EquipmentsDisplayDTO>>> GetEquipment()
+        public async Task<ActionResult<IEnumerable<Equipment>>> GetEquipment()
         {
-            var equipments = await _context.Equipments.ToListAsync();
 
-            return equipments.Select(x => MappingEquipment.EquipmentToEquipmentDisplayDTO(x)).ToList();
+            return await _context.Equipments.ToListAsync();
         }
 
         // GET: api/Equipments/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<EquipmentsDisplayDTO>> GetEquipment(int id)
+        public async Task<ActionResult<Equipment>> GetEquipment(int id)
         {
             var oneequipment = await _context.Equipments.FindAsync(id);
 
@@ -42,72 +41,7 @@ namespace Above_backend.Controllers
                 return NotFound();
             }
 
-            return MappingEquipment.EquipmentToEquipmentDisplayDTO(oneequipment);
+            return oneequipment;
         }
-
-        /*
-        // PUT: api/Equipments/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutEquipment(int id, Equipment equipment)
-        {
-            if (id != equipment.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(equipment).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!EquipmentExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Equipments
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Equipment>> PostEquipment(EquipmentsCreateAndBaseDTO equipmentscreatedto)
-        {
-            _context.Equipments.Add(MappingEquipment.EquipmentCreateDtoToEquipment(equipmentscreatedto));
-            await _context.SaveChangesAsync();
-
-            return Created();
-        }
-
-        // DELETE: api/Equipments/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteEquipment(int id)
-        {
-            var equipment = await _context.Equipments.FindAsync(id);
-            if (equipment == null)
-            {
-                return NotFound();
-            }
-
-            _context.Equipments.Remove(equipment);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool EquipmentExists(int id)
-        {
-            return _context.Equipments.Any(e => e.Id == id);
-        }
-        */
     }
 }

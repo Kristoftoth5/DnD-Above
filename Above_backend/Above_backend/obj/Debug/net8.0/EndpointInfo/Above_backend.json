@@ -182,7 +182,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ClassesDisplayDTO"
+                    "$ref": "#/components/schemas/Classes"
                   }
                 }
               },
@@ -190,7 +190,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ClassesDisplayDTO"
+                    "$ref": "#/components/schemas/Classes"
                   }
                 }
               },
@@ -198,7 +198,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ClassesDisplayDTO"
+                    "$ref": "#/components/schemas/Classes"
                   }
                 }
               }
@@ -229,17 +229,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClassesDisplayDTO"
+                  "$ref": "#/components/schemas/Classes"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClassesDisplayDTO"
+                  "$ref": "#/components/schemas/Classes"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ClassesDisplayDTO"
+                  "$ref": "#/components/schemas/Classes"
                 }
               }
             }
@@ -260,7 +260,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EquipmentsDisplayDTO"
+                    "$ref": "#/components/schemas/Equipment"
                   }
                 }
               },
@@ -268,7 +268,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EquipmentsDisplayDTO"
+                    "$ref": "#/components/schemas/Equipment"
                   }
                 }
               },
@@ -276,7 +276,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/EquipmentsDisplayDTO"
+                    "$ref": "#/components/schemas/Equipment"
                   }
                 }
               }
@@ -307,17 +307,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/EquipmentsDisplayDTO"
+                  "$ref": "#/components/schemas/Equipment"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EquipmentsDisplayDTO"
+                  "$ref": "#/components/schemas/Equipment"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/EquipmentsDisplayDTO"
+                  "$ref": "#/components/schemas/Equipment"
                 }
               }
             }
@@ -338,7 +338,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                    "$ref": "#/components/schemas/Features"
                   }
                 }
               },
@@ -346,7 +346,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                    "$ref": "#/components/schemas/Features"
                   }
                 }
               },
@@ -354,7 +354,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                    "$ref": "#/components/schemas/Features"
                   }
                 }
               }
@@ -385,17 +385,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  "$ref": "#/components/schemas/Features"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  "$ref": "#/components/schemas/Features"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                  "$ref": "#/components/schemas/Features"
                 }
               }
             }
@@ -403,7 +403,7 @@
         }
       }
     },
-    "/api/Features/Features/originclassid/{originclassid}": {
+    "/api/Features/originclassid/{originclassid}": {
       "get": {
         "tags": [
           "Features"
@@ -427,7 +427,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                    "$ref": "#/components/schemas/Features"
                   }
                 }
               },
@@ -435,7 +435,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                    "$ref": "#/components/schemas/Features"
                   }
                 }
               },
@@ -443,7 +443,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                    "$ref": "#/components/schemas/Features"
                   }
                 }
               }
@@ -452,7 +452,7 @@
         }
       }
     },
-    "/api/Features/Features/originsubclassid/{originsubclassid}": {
+    "/api/Features/originsubclassid/{originsubclassid}": {
       "get": {
         "tags": [
           "Features"
@@ -476,7 +476,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                    "$ref": "#/components/schemas/Features"
                   }
                 }
               },
@@ -484,7 +484,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                    "$ref": "#/components/schemas/Features"
                   }
                 }
               },
@@ -492,7 +492,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                    "$ref": "#/components/schemas/Features"
                   }
                 }
               }
@@ -501,7 +501,7 @@
         }
       }
     },
-    "/api/Features/Features/originequipmentid/{originequipmentid}": {
+    "/api/Features/originequipmentid/{originequipmentid}": {
       "get": {
         "tags": [
           "Features"
@@ -525,7 +525,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                    "$ref": "#/components/schemas/Features"
                   }
                 }
               },
@@ -533,7 +533,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                    "$ref": "#/components/schemas/Features"
                   }
                 }
               },
@@ -541,7 +541,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                    "$ref": "#/components/schemas/Features"
                   }
                 }
               }
@@ -550,7 +550,7 @@
         }
       }
     },
-    "/api/Features/Features/originraceid/{originraceid}": {
+    "/api/Features/originraceid/{originraceid}": {
       "get": {
         "tags": [
           "Features"
@@ -574,7 +574,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                    "$ref": "#/components/schemas/Features"
                   }
                 }
               },
@@ -582,7 +582,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                    "$ref": "#/components/schemas/Features"
                   }
                 }
               },
@@ -590,7 +590,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/FeaturesDisplayDTO"
+                    "$ref": "#/components/schemas/Features"
                   }
                 }
               }
@@ -739,7 +739,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/RacesDisplayDTO"
+                    "$ref": "#/components/schemas/Races"
                   }
                 }
               },
@@ -747,7 +747,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/RacesDisplayDTO"
+                    "$ref": "#/components/schemas/Races"
                   }
                 }
               },
@@ -755,7 +755,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/RacesDisplayDTO"
+                    "$ref": "#/components/schemas/Races"
                   }
                 }
               }
@@ -786,17 +786,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/RacesDisplayDTO"
+                  "$ref": "#/components/schemas/Races"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RacesDisplayDTO"
+                  "$ref": "#/components/schemas/Races"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RacesDisplayDTO"
+                  "$ref": "#/components/schemas/Races"
                 }
               }
             }
@@ -926,7 +926,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SpellsDisplayDTO"
+                    "$ref": "#/components/schemas/Spells"
                   }
                 }
               },
@@ -934,7 +934,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SpellsDisplayDTO"
+                    "$ref": "#/components/schemas/Spells"
                   }
                 }
               },
@@ -942,7 +942,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SpellsDisplayDTO"
+                    "$ref": "#/components/schemas/Spells"
                   }
                 }
               }
@@ -973,17 +973,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/SpellsDisplayDTO"
+                  "$ref": "#/components/schemas/Spells"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SpellsDisplayDTO"
+                  "$ref": "#/components/schemas/Spells"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SpellsDisplayDTO"
+                  "$ref": "#/components/schemas/Spells"
                 }
               }
             }
@@ -1015,7 +1015,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SpellsDisplayDTO"
+                    "$ref": "#/components/schemas/Spells"
                   }
                 }
               },
@@ -1023,7 +1023,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SpellsDisplayDTO"
+                    "$ref": "#/components/schemas/Spells"
                   }
                 }
               },
@@ -1031,7 +1031,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SpellsDisplayDTO"
+                    "$ref": "#/components/schemas/Spells"
                   }
                 }
               }
@@ -1053,7 +1053,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SubClassesDisplayDTO"
+                    "$ref": "#/components/schemas/SubClasses"
                   }
                 }
               },
@@ -1061,7 +1061,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SubClassesDisplayDTO"
+                    "$ref": "#/components/schemas/SubClasses"
                   }
                 }
               },
@@ -1069,7 +1069,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SubClassesDisplayDTO"
+                    "$ref": "#/components/schemas/SubClasses"
                   }
                 }
               }
@@ -1100,17 +1100,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/SubClassesDisplayDTO"
+                  "$ref": "#/components/schemas/SubClasses"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SubClassesDisplayDTO"
+                  "$ref": "#/components/schemas/SubClasses"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SubClassesDisplayDTO"
+                  "$ref": "#/components/schemas/SubClasses"
                 }
               }
             }
@@ -1142,7 +1142,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SubClassesDisplayDTO"
+                    "$ref": "#/components/schemas/SubClasses"
                   }
                 }
               },
@@ -1150,7 +1150,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SubClassesDisplayDTO"
+                    "$ref": "#/components/schemas/SubClasses"
                   }
                 }
               },
@@ -1158,7 +1158,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SubClassesDisplayDTO"
+                    "$ref": "#/components/schemas/SubClasses"
                   }
                 }
               }
@@ -1232,68 +1232,6 @@
         },
         "additionalProperties": false
       },
-      "ClassesDisplayDTO": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "hitDice": {
-            "type": "string",
-            "nullable": true
-          },
-          "startingGold": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "spellCaster": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "halfCaster": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "armorProf": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "weaponProf": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "toolProf": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "savingThrows": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
       "Equipment": {
         "type": "object",
         "properties": {
@@ -1351,69 +1289,6 @@
             "nullable": true
           },
           "attunement": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "EquipmentsDisplayDTO": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "rarity": {
-            "type": "string",
-            "nullable": true
-          },
-          "profReq": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "damageDie": {
-            "type": "string",
-            "nullable": true
-          },
-          "equipmentType": {
-            "type": "string",
-            "nullable": true
-          },
-          "damageType": {
-            "type": "string",
-            "nullable": true
-          },
-          "properties": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "ac": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "consumable": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "price": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "attunement": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "id": {
             "type": "integer",
             "format": "int32"
           }
@@ -1480,57 +1355,6 @@
             "format": "int32",
             "nullable": true
           },
-          "classes": {
-            "$ref": "#/components/schemas/Classes"
-          },
-          "originSubClassId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "subClasses": {
-            "$ref": "#/components/schemas/SubClasses"
-          },
-          "originRaceId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "races": {
-            "$ref": "#/components/schemas/Races"
-          },
-          "originEquipmentId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "equipment": {
-            "$ref": "#/components/schemas/Equipment"
-          }
-        },
-        "additionalProperties": false
-      },
-      "FeaturesDisplayDTO": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "levelReq": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "originClassId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
           "originSubClassId": {
             "type": "integer",
             "format": "int32",
@@ -1545,45 +1369,6 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
-          },
-          "armorProf": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "weaponProf": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "toolProf": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "savingThrows": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "skillProf": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "nullable": true
-          },
-          "id": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -1661,36 +1446,6 @@
         },
         "additionalProperties": false
       },
-      "RacesDisplayDTO": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "creatureType": {
-            "type": "string",
-            "nullable": true
-          },
-          "age": {
-            "type": "string",
-            "nullable": true
-          },
-          "size": {
-            "type": "string",
-            "nullable": true
-          },
-          "speed": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
       "RefreshTokenDTO": {
         "type": "object",
         "properties": {
@@ -1734,16 +1489,9 @@
             "type": "string",
             "nullable": true
           },
-          "characterArtPath": {
-            "type": "string",
-            "nullable": true
-          },
           "userId": {
             "type": "integer",
             "format": "int32"
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
           }
         },
         "additionalProperties": false
@@ -1756,10 +1504,6 @@
             "nullable": true
           },
           "sheet": {
-            "type": "string",
-            "nullable": true
-          },
-          "characterArtPath": {
             "type": "string",
             "nullable": true
           }
@@ -1776,17 +1520,17 @@
           "sheet": {
             "type": "string",
             "nullable": true
-          },
-          "characterArtPaht": {
-            "type": "string",
-            "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "SpellsDisplayDTO": {
+      "Spells": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
           "school": {
             "type": "string",
             "nullable": true
@@ -1844,10 +1588,6 @@
             "type": "integer",
             "format": "int32",
             "nullable": true
-          },
-          "id": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -1868,65 +1608,9 @@
             "format": "int32",
             "nullable": true
           },
-          "classes": {
-            "$ref": "#/components/schemas/Classes"
-          },
           "description": {
             "type": "string",
             "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "SubClassesDisplayDTO": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "originClassId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "User": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "userName": {
-            "type": "string",
-            "nullable": true
-          },
-          "passwordHash": {
-            "type": "string",
-            "nullable": true
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
           }
         },
         "additionalProperties": false
@@ -1942,21 +1626,9 @@
             "type": "string",
             "nullable": true
           },
-          "password": {
-            "type": "string",
-            "nullable": true
-          },
           "email": {
             "type": "string",
             "nullable": true
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
           }
         },
         "additionalProperties": false

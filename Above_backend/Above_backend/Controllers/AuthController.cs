@@ -39,7 +39,6 @@ public class AuthController : ControllerBase
         return MappingUsers.UserToUserDisplayDTO(user);
     }
 
-
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterDTO user)
     {

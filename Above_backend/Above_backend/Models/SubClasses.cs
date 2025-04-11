@@ -9,6 +9,7 @@ namespace Above_backend.Models
         public string Name { get; set; }
         public int? OriginClassId { get; set; }
         [ForeignKey("OriginClassId")]
+        [JsonIgnore]
         public Classes Classes { get; set; }
         public string? Description { get; set; }
     }

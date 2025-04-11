@@ -19,7 +19,6 @@ namespace Above_backend.Helpers
             {
                 Name = savescreatedto.Name,
                 Sheet = savescreatedto.Sheet,
-                CharacterArtPath = savescreatedto.CharacterArtPath,
                 //UserId = savescreatedto.UserId,
             };
         }
@@ -29,7 +28,6 @@ namespace Above_backend.Helpers
             {
                 Id = saves.Id,
                 Sheet = saves.Sheet,
-                CharacterArtPaht = saves.CharacterArtPath,
             };
         }
     }
