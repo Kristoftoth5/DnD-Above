@@ -1,9 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import fetchEverything from "../CommonFunctions/fetchEverything";
 import diceToInteger from "../CommonFunctions/diceToInteger";
-import { useContext } from "react";
-import { ClassIdContext, SubclassIdContext, ChosenClassFeatureIdContext } from "../SaveContexts/ClassContext";
-import "../Cards.css"; 
+import {
+  ClassIdContext,
+  SubclassIdContext,
+  ChosenClassFeatureIdContext,
+  BasicClassFeatureIdContext
+} from "../SaveContexts/ClassContext";
+import "../Cards.css";
 
 function ClassCard() {
   const [classOptions, setClassOptions] = useState();
@@ -18,9 +22,9 @@ function ClassCard() {
 
   const [subFeatures, setSubFeatures] = useState([]);
   const [featureWithSubFeature, setFeatureWithSubFeature] = useState("");
-  const [chosenSubFeatures, setChosenSubFeatures] = useState([]); 
-  const [subFeatureLimits, setSubFeatureLimits] = useState(0); 
-  const [totalSubFeatureCount, setTotalSubFeatureCount] = useState(0); 
+  const [chosenSubFeatures, setChosenSubFeatures] = useState([]);
+  const [subFeatureLimits, setSubFeatureLimits] = useState(0);
+  const [totalSubFeatureCount, setTotalSubFeatureCount] = useState(0);
 
   const [characterLevel, setCharacterLevel] = useState(1);
 
@@ -29,47 +33,33 @@ function ClassCard() {
 
   const [featureDone, setFeatureDone] = useState(false);
 
+  const { setClassId } = useContext(ClassIdContext);
+  const { setSubclassId } = useContext(SubclassIdContext);
+  const { setChosenClassFeatureId } = useContext(ChosenClassFeatureIdContext);
+  const { setBasicClassFeatureId } = useContext(BasicClassFeatureIdContext);
 
-  const {setClassId} = useContext(ClassIdContext);
-  const {setSubclassId} = useContext(SubclassIdContext);
-  const {setChosenClassFeatureId} = useContext(ChosenClassFeatureIdContext);
-
-  // Fetching all the classes at startup
   useEffect(() => {
     async function fetchclasses() {
       const classOptionsJSON = await fetchEverything("Classes");
 
-      var temp1 = [];
-      var temp2 = [];
-      classOptionsJSON.forEach(characterclass => {
-        temp2.push(characterclass.name);
-        temp2.push(characterclass.id);
-
-        temp1.push(temp2);
-        temp2 = [];
-      });
-      setClassOptions(temp1);
+      const temp = classOptionsJSON.map(characterclass => [characterclass.name, characterclass.id]);
+      setClassOptions(temp);
     }
     fetchclasses();
   }, []);
 
   useEffect(() => {
     async function fetchdatabyid() {
-      try
-      {
-      setClassData(await fetchEverything("Classes/" + chosenClassId));
-
-      setClassFeatures(await fetchEverything("Features/Features/originclassid/" + chosenClassId));
-
-      setSubClassFeatures(undefined);
-
-      setSubClassName(undefined);
-      }
-      catch
-      {
+      try {
+        setClassData(await fetchEverything("Classes/" + chosenClassId));
+        setClassFeatures(await fetchEverything("Features/Features/originclassid/" + chosenClassId));
+        setSubClassFeatures(undefined);
+        setSubClassName(undefined);
+      } catch {
         null;
       }
     }
+
     setSubFeatures([]);
     setChosenSubFeatures([]);
     setFeatureWithSubFeature("");
@@ -82,56 +72,46 @@ function ClassCard() {
     setSubFeatureLimits(1);
     setSubFeatures(undefined);
     setFeatureWithSubFeature("");
-    var newSubFeatureLimits = 0;
+    let newSubFeatureLimits = 0;
+
     const fetchSubFeatures = async () => {
       if (classFeatures !== undefined) {
         const subFeaturePromises = classFeatures.map(async (feature) => {
           const subFeaturesConnections = await fetchEverything("FeaturesToFeaturesConnections/originfeatureid/" + feature.id);
-  
+
           if (subFeaturesConnections.length !== 0) {
             setSubFeatures(subFeaturesConnections);
             setFeatureWithSubFeature(feature.name);
           }
-  
+
           if (feature.name === featureWithSubFeature && feature.levelReq <= characterLevel) {
             newSubFeatureLimits += 1;
           }
         });
-  
-        // Wait for all promises to resolve
+
         await Promise.all(subFeaturePromises);
-   
+
         if (newSubFeatureLimits !== 0) {
           setSubFeatureLimits(newSubFeatureLimits);
         }
       }
     };
+
     fetchSubFeatures();
   }, [characterLevel, chosenClassId]);
 
   useEffect(() => {
     async function fetchsubclasses(id) {
       const subClassOptionsJSON = await fetchEverything("SubClasses/SubClasses/originclassid/" + id);
-      var temp1 = [];
-      var temp2 = [];
-      subClassOptionsJSON.map((subclass, id) => {
-        temp2.push(subclass.name);
-        temp2.push(subclass.id);
+      const temp = subClassOptionsJSON.map(subclass => [subclass.name, subclass.id]);
+      setSubClassOptions(temp);
+    }
 
-        temp1.push(temp2);
-        temp2 = [];
-      });
-      setSubClassOptions(temp1);
-    }
-    try
-    {
+    try {
       fetchsubclasses(chosenClassId);
-    }
-    catch
-    {
+    } catch {
       null;
     }
-    
   }, [chosenClassId]);
 
   useEffect(() => {
@@ -139,182 +119,160 @@ function ClassCard() {
       setSubClassFeatures(await fetchEverything("Features/Features/originsubclassid/" + id));
     }
 
-    var prevsubclassfeatures = subClassFeatures;
+    const prevsubclassfeatures = subClassFeatures;
 
     if (chosenSubClassId !== 0) {
       fetchsubclassfeatures(chosenSubClassId);
     }
 
-    if (prevsubclassfeatures == subClassFeatures) {
+    if (prevsubclassfeatures === subClassFeatures) {
       setSubClassFeatures(undefined);
-      prevsubclassfeatures = undefined;
     }
   }, [chosenSubClassId]);
 
-  // Function to add subfeature
   function subFeatureAdd(name, description, originfeatureid, featureid) {
     const tempSelected = [...chosenSubFeatures];
 
-    // Check if the feature is already added for this feature (to avoid duplicates)
     if (!tempSelected.some(subfeature => subfeature[0] === name && subfeature[2] === originfeatureid) && !(chosenSubFeatures.length >= subFeatureLimits)) {
       tempSelected.push([name, description, originfeatureid, featureid]);
       setChosenSubFeatures(tempSelected);
-      setTotalSubFeatureCount(prev => prev + 1); // Increment the total subfeature count
+      setTotalSubFeatureCount(prev => prev + 1);
     }
   }
 
-  // Function to delete subfeature
   function subFeatureDelete(name, originfeatureid) {
     const tempSelected = chosenSubFeatures.filter(subfeature => !(subfeature[0] === name && subfeature[2] === originfeatureid));
     setChosenSubFeatures(tempSelected);
-    setTotalSubFeatureCount(prev => prev - 1); // Decrement the total subfeature count
+    setTotalSubFeatureCount(prev => prev - 1);
   }
 
-  // Finalize the selections
   function finalizeSelection() {
     setFeatureDone(true);
+
+    const chosenSubFeatureIds = chosenSubFeatures.map(sub => sub[3]);
+    setChosenClassFeatureId(chosenSubFeatureIds);
+
+    if (classFeatures !== undefined) {
+      const autoFeatureIds = classFeatures
+        .filter(feature => {
+          const hasSub = feature.name === featureWithSubFeature;
+          return feature.levelReq <= characterLevel && !hasSub;
+        })
+        .map(feature => feature.id);
+
+      setBasicClassFeatureId(autoFeatureIds);
+    }
   }
 
-  // Revert selections (reset the state to previous values)
   function revertSelection() {
     setChosenSubFeatures([]);
-    setTotalSubFeatureCount(0); // Reset the total subfeature count
+    setTotalSubFeatureCount(0);
     setFeatureDone(false);
+    setChosenClassFeatureId([]);
+    setBasicClassFeatureId([]);
   }
 
   function SelectedClass() {
-    const displayedFeatures = new Set(); // Used to track which features have already been displayed
+    const displayedFeatures = new Set();
     const uniqueFeatures = [];
 
-    // Filter out duplicate features by their name, but only show features that are level-appropriate
-    if(classFeatures !== undefined)
-    {
+    if (classFeatures !== undefined) {
       classFeatures.forEach(feature => {
         if (feature.levelReq <= characterLevel && !displayedFeatures.has(feature.name)) {
-          displayedFeatures.add(feature.name); // Track features by name
-          uniqueFeatures.push(feature); // Add feature to uniqueFeatures list
+          displayedFeatures.add(feature.name);
+          uniqueFeatures.push(feature);
         }
       });
     }
-    
-
-    // Update the total number of features based on eligible ones
-    
 
     return (
       <>
-        <p className="selected-singular">
-          <b>Name: </b>{classData.name}
-        </p>
-        <p className="selected-singular">
-          <b>Description: </b>{classData.description}
-        </p>
-        {classData.hitDice !== undefined ? (
-          <p className="selected-singular">
-            <b>Hit Dice: </b>{classData.hitDice}(or {diceToInteger(classData.hitDice) / 2 + 1})
-          </p>
-        ) : null}
-        <p className="selected-singular">
-          <b>Starting Gold: </b>{classData.startingGold}
-        </p>
+        <p className="selected-singular"><b>Name: </b>{classData.name}</p>
+        <p className="selected-singular"><b>Description: </b>{classData.description}</p>
+        {classData.hitDice && (
+          <p className="selected-singular"><b>Hit Dice: </b>{classData.hitDice}(or {diceToInteger(classData.hitDice) / 2 + 1})</p>
+        )}
+        <p className="selected-singular"><b>Starting Gold: </b>{classData.startingGold}</p>
 
-        {/* Displaying each unique feature */}
         {uniqueFeatures.map((feature, id) => (
-          feature.levelReq <= characterLevel ? (
+          feature.levelReq <= characterLevel && (
             <div className="selected-feature" key={id}>
               <p><b>{feature.name}</b></p>
               <p><b>Description: </b>{feature.description}</p>
-              {feature.name === featureWithSubFeature && Array.isArray(subFeatures) ? (
-                subFeatures.filter(subfeature => 
-                  !chosenSubFeatures.some(chosen => chosen[0] === subfeature.name)
-                ).map((subfeature, subId) => { // Only show subfeatures that aren't already selected
+              {feature.name === featureWithSubFeature && Array.isArray(subFeatures) &&
+                subFeatures.filter(sub => !chosenSubFeatures.some(chosen => chosen[0] === sub.name)).map((subfeature, subId) => {
                   const maxSubFeatures = subFeatureLimits;
                   const alreadySelected = chosenSubFeatures.filter(sub => sub[2] === feature.id).length >= maxSubFeatures;
-
-                  const featureIsAvailable = feature.levelReq <= characterLevel;
-
                   return (
-                    <>
-                      {featureIsAvailable && (
-                        <>
-                          <p key={subId}><b>{subfeature.name}</b></p>
-                          <p><b>Description: </b>{subfeature.description}</p>
-                          <button
-                            onClick={() => {subFeatureAdd(subfeature.name, subfeature.description, feature.id, subfeature.id); setTotalSubFeatureCount(totalSubFeatureCount+1)}}
-                            disabled={alreadySelected || totalSubFeatureCount >= maxSubFeatures}
-                          >
-                            Select {subfeature.name}
-                          </button>
-                        </>
-                      )}
-                    </>
+                    <div key={subId}>
+                      <p><b>{subfeature.name}</b></p>
+                      <p><b>Description: </b>{subfeature.description}</p>
+                      <button
+                        onClick={() => subFeatureAdd(subfeature.name, subfeature.description, feature.id, subfeature.id)}
+                        disabled={alreadySelected || totalSubFeatureCount >= maxSubFeatures}
+                      >
+                        Select {subfeature.name}
+                      </button>
+                    </div>
                   );
                 })
-              ) : null}
-              {chosenSubFeatures.filter(sub => sub[2] === feature.id).length > 0 && (
-                chosenSubFeatures.filter(sub => sub[2] === feature.id).map((chosensub, id) => (
-                  <div key={id}>
-                    <p><b>{chosensub[0]}</b></p>
-                    <p>{chosensub[1]}</p>
-                    <button onClick={() => {subFeatureDelete(chosensub[0], feature.id)}}>
-                      Deselect {chosensub[0]}
-                    </button>
-                  </div>
-                ))
-              )}
+              }
+              {chosenSubFeatures.filter(sub => sub[2] === feature.id).map((chosensub, id) => (
+                <div key={id}>
+                  <p><b>{chosensub[0]}</b></p>
+                  <p>{chosensub[1]}</p>
+                  <button onClick={() => subFeatureDelete(chosensub[0], feature.id)}>
+                    Deselect {chosensub[0]}
+                  </button>
+                </div>
+              ))}
             </div>
-          ) : null
+          )
         ))}
 
-        {/*All subclass related things */}
-          {/* Dropdown Button */}
- 
-     
-      <div className="dropdown-wrapper">
-        <button
-          className="btn btn-secondary dropdown-toggle"
-          type="button"
-          onClick={() => {setSubClassDropdownOpen(!subClassDropdownOpen);}}
-          id="plsbepink"
-        >
-          Select Subclass
-        </button>
- 
-        {/* Dropdown Menu - Now positioned below the button */}
-        {subClassDropdownOpen && (
-          <div className="dropdown-menu show">
-            {subClassOptions.map( (subclass, id) =>(
-              <button
-                className="dropdown-item"
-                onClick={() => {setChosenSubClassId(subclass[1]);setSubclassId(subclass[1]);setSubClassDropdownOpen(false)}}
-              >
-              {subclass[0]}
-              </button>
+        <div className="dropdown-wrapper">
+          <button
+            className="btn btn-secondary dropdown-toggle"
+            type="button"
+            onClick={() => setSubClassDropdownOpen(!subClassDropdownOpen)}
+            id="plsbepink"
+          >
+            Select Subclass
+          </button>
+
+          {subClassDropdownOpen && (
+            <div className="dropdown-menu show">
+              {subClassOptions.map((subclass, id) => (
+                <button
+                  className="dropdown-item"
+                  key={id}
+                  onClick={() => {
+                    setChosenSubClassId(subclass[1]);
+                    setSubclassId(subclass[1]);
+                    setSubClassDropdownOpen(false);
+                  }}
+                >
+                  {subclass[0]}
+                </button>
               ))}
-          </div>
-        )}
-      </div>
-      {subClassFeatures !== undefined ?(
-        <h4>{subClassName}</h4>
-      ):null}
-      {subClassFeatures !== undefined ?(
-      subClassFeatures.map((feature, id)=>(
-        feature.levelReq <= characterLevel ?(
-            <div className="selected-feature">
+            </div>
+          )}
+        </div>
+
+        {subClassFeatures && subClassFeatures.map((feature, id) => (
+          feature.levelReq <= characterLevel && (
+            <div className="selected-feature" key={id}>
               <p><b>{feature.name}</b></p>
               <p><b>Description: </b>{feature.description}</p>
-            </div>) : null  
-          ))
-       ): null }
+            </div>
+          )
+        ))}
 
-        {/* Finalize / Revert Buttons */}
         <div>
           {featureDone ? (
-            <button onClick={() => {revertSelection; setChosenClassFeatureId([])}}>Revert Selection</button>
+            <button onClick={revertSelection}>Revert Selection</button>
           ) : (
-            <button onClick={() => {finalizeSelection; var temp = []; chosenSubFeatures.forEach(id => {
-              temp.push(id[3])
-            });setChosenClassFeatureId(temp)}}>Finalize Subfeature Selection</button>
+            <button onClick={finalizeSelection}>Finalize Selection</button>
           )}
         </div>
       </>
@@ -325,38 +283,38 @@ function ClassCard() {
     <div className="creator-container">
       <h2 className="creator-title">Class</h2>
 
-      {chosenClassId !== -1? (
+      {chosenClassId !== -1 && (
         <div className="ability-box">
           <h3 className="ability-title">Character Level</h3>
           <div className="score-display">{characterLevel}</div>
-
-          {/* Increase & Decrease Buttons */}
           <div className="button-group">
-            <button className="btn-stat" onClick={() => !((characterLevel + 1) > 20) ? setCharacterLevel(characterLevel + 1) : setCharacterLevel(characterLevel)}>+</button>
-            <button className="btn-stat" onClick={() => (characterLevel - 1) !== 0 ? setCharacterLevel(characterLevel - 1) : setCharacterLevel(characterLevel)}>-</button>
+            <button className="btn-stat" onClick={() => setCharacterLevel(prev => Math.min(20, prev + 1))}>+</button>
+            <button className="btn-stat" onClick={() => setCharacterLevel(prev => Math.max(1, prev - 1))}>-</button>
           </div>
         </div>
-      ) : null}
+      )}
 
-      {/* Dropdown Button */}
       <div className="dropdown-wrapper">
         <button
           className="btn btn-secondary dropdown-toggle"
           type="button"
-          onClick={() => { setDropdownOpen(!dropdownOpen); }}
+          onClick={() => setDropdownOpen(!dropdownOpen)}
           id="plsbepink"
         >
           Select Class
         </button>
 
-        {/* Dropdown Menu */}
         {dropdownOpen && (
           <div className="dropdown-menu show">
             {classOptions.map((characterclass, id) => (
               <button
                 className="dropdown-item"
-                onClick={() => { setChosenClassId(characterclass[1]); console.log(characterclass[1]);setDropdownOpen(false);setClassId(characterclass[1]); }}
                 key={id}
+                onClick={() => {
+                  setChosenClassId(characterclass[1]);
+                  setClassId(characterclass[1]);
+                  setDropdownOpen(false);
+                }}
               >
                 {characterclass[0]}
               </button>
@@ -366,9 +324,9 @@ function ClassCard() {
       </div>
 
       <div className="selected-multiple">
-        {Boolean(chosenClassId !== -1) && classFeatures !== undefined && classData !== undefined ? (
+        {chosenClassId !== -1 && classFeatures && classData && (
           <SelectedClass />
-        ) : null}
+        )}
       </div>
     </div>
   );
