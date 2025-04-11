@@ -11,8 +11,8 @@ import fetchEverything from "./assets/CommonFunctions/fetchEverything.js";
 function CollectedDataTest()
 {
     const { selectedRaceId } = useContext(RaceIdContext);
-    const { raceFeatures, setRaceFeatures } = useState();
     const [ raceData, setRaceData ] = useState();
+    const [ raceFeatures, setRaceFeatures ] = useState();
     const { selectedSubraceId } = useContext(SubraceIdContext);
     const { subRaceFeatures, setSubRaceFeatures } = useState();
 
@@ -49,23 +49,26 @@ function CollectedDataTest()
         var tempracefeatures
         async function fetchallthedataever()
         {
-            tempracedata = fetchEverything("Races/"+selectedRaceId)
-            tempracefeatures = fetchEverything("Features/originraceid/"+selectedRaceId)
+            tempracedata = await fetchEverything("Races/"+selectedRaceId)
+            tempracefeatures = await fetchEverything("Features/Features/originraceid/"+selectedRaceId)
+            console.log(tempracefeatures)
         }
         fetchallthedataever();
         setRaceFeatures(tempracefeatures);
         setRaceData(tempracedata);
-        tempsave+="<><>"
-        raceData.map((element,id)=>(
-            tempsave+=""+element.name+""
-        ))
-        var tempsave = "";
+        var tempsave;
+        tempsave+="<><h1>Race<h1></>"
+        if(raceFeatures!==undefined ? (raceFeatures.map((element,id)=>(
+            tempsave+="<div className='selected-single'>"+element.name+"</div>"+"\n"+"<p>"+element.description+"</p>"
+        ))):null)
+        console.log(tempsave)
+        setSave(tempsave);
         
-    })
+    },[selectedRaceId,selectedSubraceId,ClassId,SubclassId])
 
     return (
         <>
-        
+        {save}
         </>
     )
 }
