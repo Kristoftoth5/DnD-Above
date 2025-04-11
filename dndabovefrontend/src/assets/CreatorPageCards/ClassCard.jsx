@@ -201,7 +201,6 @@ function ClassCard() {
       });
       setFinalUniqueClassFeatures(uniqueFeatures);
       setFinalDisplayClassFeatures(displayedFeatures);
-      setBasicClassFeature(finalUnqiueClassFeatures);
     }
   },[chosenClassId, characterLevel])
 

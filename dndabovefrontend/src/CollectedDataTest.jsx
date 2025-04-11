@@ -45,6 +45,7 @@ function CollectedDataTest()
         console.log("Bg name: " + BgName + "\nBg Desc: " + BgDesc + "\nSkillls: " + BgSkills + "\nTool: " + BgTool + "\n\n") // Bg
         console.log("Equipment: " + Equipment + "\nGold: " + RemainingGold + "\n\n") // Equipment
         console.log("Spells: " + FinalSpells +"\n\n") // Spells
+        console.log("SubRaceFeature: "+SubRaceFeature)
         var tempracedata
         var tempsubracedata
         var tempracefeatures
