@@ -46,8 +46,12 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+<<<<<<< Updated upstream
 app.UseDefaultFiles(); // Serve the index.html file by default
 
+=======
+app.UseDefaultFiles();
+>>>>>>> Stashed changes
 string currentDir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
 
 app.UseStaticFiles(new StaticFileOptions

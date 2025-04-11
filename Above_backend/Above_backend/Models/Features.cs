@@ -17,18 +17,22 @@ namespace Above_backend.Models
 
         public int? OriginClassId { get; set; }
         [ForeignKey("OriginClassId")]
+        [JsonIgnore]
         public Classes Classes { get; set; }
 
         public int? OriginSubClassId { get; set; }
         [ForeignKey("OriginSubClassId")]
+        [JsonIgnore]
         public SubClasses SubClasses { get; set; }
 
         public int? OriginRaceId { get; set; }
         [ForeignKey("OriginRaceId")]
+        [JsonIgnore]
         public Races Races { get; set; }
 
         public int? OriginEquipmentId { get; set; }
         [ForeignKey("OriginEquipmentId")]
+        [JsonIgnore]
         public Equipment Equipment { get; set; }
     }
 }

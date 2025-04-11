@@ -24,16 +24,14 @@ namespace Above_backend.Controllers
 
         // GET: api/SubClasses
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<SubClassesDisplayDTO>>> GetSubClasses()
+        public async Task<ActionResult<IEnumerable<SubClasses>>> GetSubClasses()
         {
-            var subclasses = await _context.SubClasses.ToListAsync();
-
-            return subclasses.Select(x => MappingSubClasses.SubClassesToSubClassesDisplayDTO(x)).ToList();
+            return await _context.SubClasses.ToListAsync();
         }
 
         // GET: api/SubClasses/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<SubClassesDisplayDTO>> GetSubClasses(int id)
+        public async Task<ActionResult<SubClasses>> GetSubClasses(int id)
         {
             var onesubClass = await _context.SubClasses.FindAsync(id);
 
@@ -42,13 +40,13 @@ namespace Above_backend.Controllers
                 return NotFound();
             }
 
-            return MappingSubClasses.SubClassesToSubClassesDisplayDTO(onesubClass);
+            return onesubClass;
         }
 
         [HttpGet("SubClasses/originclassid/{originclassid}")]
-        public async Task<ActionResult<IEnumerable<SubClassesDisplayDTO>>> GetSubClassesByOriginClassId(int originclassid)
+        public async Task<ActionResult<IEnumerable<SubClasses>>> GetSubClassesByOriginClassId(int originclassid)
         {
-            var requestedsubclasses = await _context.SubClasses.Where(x => x.OriginClassId == originclassid).Select(x => MappingSubClasses.SubClassesToSubClassesDisplayDTO(x)).ToListAsync(); ;
+            var requestedsubclasses = await _context.SubClasses.Where(x => x.OriginClassId == originclassid).ToListAsync();
 
             if (requestedsubclasses == null)
             {
@@ -57,70 +55,5 @@ namespace Above_backend.Controllers
 
             return requestedsubclasses;
         }
-
-        /*
-        // PUT: api/SubClasses/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutSubClasses(int id, SubClasses subClasses)
-        {
-            if (id != subClasses.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(subClasses).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SubClassesExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/SubClasses
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<SubClasses>> PostSubClasses(SubClassesCreateAndBaseDTO subClassescreatedto)
-        {
-            _context.SubClasses.Add(MappingSubClasses.SubClassesToSubClassesDisplayDTO(subClassescreatedto));
-            await _context.SaveChangesAsync();
-
-            return Created();
-        }
-
-        // DELETE: api/SubClasses/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteSubClasses(int id)
-        {
-            var subClasses = await _context.SubClasses.FindAsync(id);
-            if (subClasses == null)
-            {
-                return NotFound();
-            }
-
-            _context.SubClasses.Remove(subClasses);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool SubClassesExists(int id)
-        {
-            return _context.SubClasses.Any(e => e.Id == id);
-        }
-        */
     }
 }

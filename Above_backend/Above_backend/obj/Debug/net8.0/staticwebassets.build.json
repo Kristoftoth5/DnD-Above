@@ -1,6 +1,10 @@
 {
   "Version": 1,
+<<<<<<< Updated upstream
   "Hash": "Uwdv/gXYVSF+M0avp9w1PrP8qsHNH2qRz3aSQbir6MA=",
+=======
+  "Hash": "d5CpyC4u+Egn6qkPlIelHbLZ0aBRyXCWNexFjiA4kLY=",
+>>>>>>> Stashed changes
   "Source": "Above_backend",
   "BasePath": "_content/Above_backend",
   "Mode": "Default",
@@ -10,11 +14,16 @@
     {
       "Name": "Above_backend\\wwwroot",
       "Source": "Above_backend",
+<<<<<<< Updated upstream
       "ContentRoot": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\",
+=======
+      "ContentRoot": "C:\\Users\\User\\Desktop\\Vizsga remek\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\",
+>>>>>>> Stashed changes
       "BasePath": "_content/Above_backend",
       "Pattern": "**"
     }
   ],
+<<<<<<< Updated upstream
   "Assets": [
     {
       "Identity": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\eight-DeYF7git.jpg",
@@ -1358,4 +1367,8 @@
       ]
     }
   ]
+=======
+  "Assets": [],
+  "Endpoints": []
+>>>>>>> Stashed changes
 }

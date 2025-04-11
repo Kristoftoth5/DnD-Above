@@ -34,6 +34,10 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
+<<<<<<< Updated upstream
+=======
+    <Folder Include="Services\Interfaces\" />
+>>>>>>> Stashed changes
   </ItemGroup>
 
 </Project>

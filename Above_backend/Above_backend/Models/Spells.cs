@@ -21,6 +21,7 @@ namespace Above_backend.Models
 
         public int? OriginEquipmentId { get; set; }
         [ForeignKey("OriginEquipmentId")]
+        [JsonIgnore]
         public Equipment Equipment { get; set; }
     }
 }

@@ -22,8 +22,6 @@ namespace Above_backend.Helpers
                 UserName = userregisterdto.UserName,
                 Email = userregisterdto.Email,
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(userregisterdto.Password),
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = DateTime.UtcNow,
             };
         }
     }

@@ -6,6 +6,5 @@ namespace Above_backend.Models.DTOs
     {
         public string Name { get; set; }
         public string Sheet { get; set; }
-        public string? CharacterArtPath { get; set; }
     }
 }

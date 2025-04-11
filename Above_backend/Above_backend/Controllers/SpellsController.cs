@@ -24,16 +24,14 @@ namespace Above_backend.Controllers
 
         // GET: api/Spells
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<SpellsDisplayDTO>>> GetSpells()
+        public async Task<ActionResult<IEnumerable<Spells>>> GetSpells()
         {
-            var spells = await _context.Spells.ToListAsync();
-
-            return spells.Select(x => MappingSpells.SpellsToSpellsDisplayDto(x)).ToList();
+            return await _context.Spells.ToListAsync();
         }
 
         // GET: api/Spells/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<SpellsDisplayDTO>> GetSpells(int id)
+        public async Task<ActionResult<Spells>> GetSpells(int id)
         {
             var onespell = await _context.Spells.FindAsync(id);
 
@@ -42,100 +40,20 @@ namespace Above_backend.Controllers
                 return NotFound();
             }
 
-            return MappingSpells.SpellsToSpellsDisplayDto(onespell);
+            return onespell;
         }
 
         [HttpGet("originclassid/{originclassid}")]
-        public async Task<ActionResult<IEnumerable<SpellsDisplayDTO>>> GetSpellsByClassId(int originclassid)
+        public async Task<ActionResult<IEnumerable<Spells>>> GetSpellsByClassId(int originclassid)
         {
-            var SpellsDisplayDTOList = await _context.Spells.Where(x => x.LearnedBy.Contains(originclassid)).Select(x => MappingSpells.SpellsToSpellsDisplayDto(x)).ToListAsync();
+            var spellsdisplaydtolist = await _context.Spells.Where(x => x.LearnedBy.Contains(originclassid)).ToListAsync();
 
-            if (SpellsDisplayDTOList == null)
+            if (spellsdisplaydtolist == null)
             {
                 return NotFound();
             }
 
-            return SpellsDisplayDTOList;
+            return spellsdisplaydtolist;
         }
-        // PUT: api/Spells/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        /*[HttpPut("{id}")]
-        public async Task<IActionResult> PutSpells(int id, Spells spells)
-        {
-            if (id != spells.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(spells).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!SpellsExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Spells
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Spells>> PostSpells(SpellsCreateAndBaseDTO spellscreatedto)
-        {
-            var spells = new Spells
-            {
-                School = spellscreatedto.School,
-                Concentration = spellscreatedto.Concentration,
-                Name = spellscreatedto.Name,
-                Level = spellscreatedto.Level,
-                Description = spellscreatedto.Description,
-                Range = spellscreatedto.Range,
-                Duration = spellscreatedto.Duration,
-                Ritual = spellscreatedto.Ritual,
-                CastingTime = spellscreatedto.CastingTime,
-                Component = spellscreatedto.Component,
-                ComponentPrice = spellscreatedto.ComponentPrice,
-                LearnedBy = spellscreatedto.LearnedBy,
-                OriginEquipmentId = (spellscreatedto.OriginEquipmentId != 0) ? spellscreatedto.OriginEquipmentId : null,
-            };
-
-            _context.Spells.Add(spells);
-            await _context.SaveChangesAsync();
-
-            return Created();
-        }
-
-        // DELETE: api/Spells/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteSpells(int id)
-        {
-            var spells = await _context.Spells.FindAsync(id);
-            if (spells == null)
-            {
-                return NotFound();
-            }
-
-            _context.Spells.Remove(spells);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool SpellsExists(int id)
-        {
-            return _context.Spells.Any(e => e.Id == id);
-        }
-        */
     }
 }
