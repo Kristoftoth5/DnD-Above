@@ -10,7 +10,6 @@ import background5 from './assets/bgImages/five.jpg'
 import background6 from './assets/bgImages/six.jpg'
 import background7 from './assets/bgImages/seven.jpg'
 import background8 from './assets/bgImages/eight.jpg'
-import { MagicString } from "vue/compiler-sfc";
 
 const Home = () => {
   const navigate = useNavigate();

@@ -12,8 +12,6 @@ namespace Above_backend.Helpers
                 Id = user.Id,
                 UserName = user.UserName,
                 Email = user.Email,
-                CreatedAt = user.CreatedAt,
-                UpdatedAt = user.UpdatedAt,
             };
         }
 

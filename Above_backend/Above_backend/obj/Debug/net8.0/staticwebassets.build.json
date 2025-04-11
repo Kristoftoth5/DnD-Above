@@ -1,12 +1,1361 @@
 {
   "Version": 1,
-  "Hash": "B+Cs0nOSTJ5JqNFinWZitCoj7h5MCV7LErmqZeBGAuM=",
+  "Hash": "Uwdv/gXYVSF+M0avp9w1PrP8qsHNH2qRz3aSQbir6MA=",
   "Source": "Above_backend",
   "BasePath": "_content/Above_backend",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "Above_backend\\wwwroot",
+      "Source": "Above_backend",
+      "ContentRoot": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\",
+      "BasePath": "_content/Above_backend",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\eight-DeYF7git.jpg",
+      "SourceId": "Above_backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\",
+      "BasePath": "_content/Above_backend",
+      "RelativePath": "assets/eight-DeYF7git#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "e3tplp3yzg",
+      "Integrity": "dreEMzFPHz/l1NvwOISbAsYaBnnbwywSHrFjYbCMa88=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\eight-DeYF7git.jpg"
+    },
+    {
+      "Identity": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\five-BoV11RLf.jpg",
+      "SourceId": "Above_backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\",
+      "BasePath": "_content/Above_backend",
+      "RelativePath": "assets/five-BoV11RLf#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "sas3yloujv",
+      "Integrity": "BIgNOifS2th2VVfXNe5dOMbRo6JGtCaGiNAPDyn0UgE=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\five-BoV11RLf.jpg"
+    },
+    {
+      "Identity": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\four-D6RT2NSe.jpg",
+      "SourceId": "Above_backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\",
+      "BasePath": "_content/Above_backend",
+      "RelativePath": "assets/four-D6RT2NSe#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "vh0nuhbvds",
+      "Integrity": "vWutnw6Aq7b7jBn7DuWq9KEN2BeyzByt6AsAwrVtmEI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\four-D6RT2NSe.jpg"
+    },
+    {
+      "Identity": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\index-BtqIvw9_.js",
+      "SourceId": "Above_backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\",
+      "BasePath": "_content/Above_backend",
+      "RelativePath": "assets/index-BtqIvw9_#[.{fingerprint}]?.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "nsqvzm1b34",
+      "Integrity": "mXv/ucfvFKu7lq5nNNGDT9QY04S+usAh+QviPVoB2iI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\index-BtqIvw9_.js"
+    },
+    {
+      "Identity": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\index-CkfHZav5.css",
+      "SourceId": "Above_backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\",
+      "BasePath": "_content/Above_backend",
+      "RelativePath": "assets/index-CkfHZav5#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "egr1lpk0jg",
+      "Integrity": "PrqVpun4zuxqb94NuJQXZonQkmH6v+qdxZ1wkJ00wKU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\index-CkfHZav5.css"
+    },
+    {
+      "Identity": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\one-BJ1V6Imt.jpg",
+      "SourceId": "Above_backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\",
+      "BasePath": "_content/Above_backend",
+      "RelativePath": "assets/one-BJ1V6Imt#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "a0taj1jitd",
+      "Integrity": "pgfXZ78OHiHhY2ZpzejUb9vSXicjgICJYPORWB7Z+Ns=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\one-BJ1V6Imt.jpg"
+    },
+    {
+      "Identity": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\react-CHdo91hT.svg",
+      "SourceId": "Above_backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\",
+      "BasePath": "_content/Above_backend",
+      "RelativePath": "assets/react-CHdo91hT#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "7trw0vijr1",
+      "Integrity": "Ne9h7VOzI66UoWqOxlmz0K84gGmHkRM/I7CECFqxwuU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\react-CHdo91hT.svg"
+    },
+    {
+      "Identity": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\seven-xkyRV-K3.jpg",
+      "SourceId": "Above_backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\",
+      "BasePath": "_content/Above_backend",
+      "RelativePath": "assets/seven-xkyRV-K3#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "xtghxyrhs4",
+      "Integrity": "ixeHiNgFClXmBELCFgyJAQDImh5CbJsBCooUAKrXnQY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\seven-xkyRV-K3.jpg"
+    },
+    {
+      "Identity": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\six-pnPyPvzx.jpg",
+      "SourceId": "Above_backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\",
+      "BasePath": "_content/Above_backend",
+      "RelativePath": "assets/six-pnPyPvzx#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "80dxcz7rd7",
+      "Integrity": "GOhy9MmJIKYfVVk6xdxVMfn78WNx3ZtievB2uOB+H0o=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\six-pnPyPvzx.jpg"
+    },
+    {
+      "Identity": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\three-BmlbNmNo.jpg",
+      "SourceId": "Above_backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\",
+      "BasePath": "_content/Above_backend",
+      "RelativePath": "assets/three-BmlbNmNo#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ayawxscmxx",
+      "Integrity": "cvBBQ9P/eZcE6bW8zJ8a+CC2LxqiwDJ9sYyKlzTArVs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\three-BmlbNmNo.jpg"
+    },
+    {
+      "Identity": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\two-B0m7-lCE.jpg",
+      "SourceId": "Above_backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\",
+      "BasePath": "_content/Above_backend",
+      "RelativePath": "assets/two-B0m7-lCE#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "venhipyvlf",
+      "Integrity": "x8beA9Qlw9YCrdlnWmCCKiY//wJnpGdtoWgdcsfg0JU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\two-B0m7-lCE.jpg"
+    },
+    {
+      "Identity": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\index.html",
+      "SourceId": "Above_backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\",
+      "BasePath": "_content/Above_backend",
+      "RelativePath": "index#[.{fingerprint}]?.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "d5tq1hufku",
+      "Integrity": "78T4zQ3141fKIRxPEdUE0LX9uCBNkISBTIq5REixpKc=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\vite.svg",
+      "SourceId": "Above_backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\",
+      "BasePath": "_content/Above_backend",
+      "RelativePath": "vite#[.{fingerprint}]?.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "69kjnsiwqx",
+      "Integrity": "SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\vite.svg"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "assets/eight-DeYF7git.e3tplp3yzg.jpg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\eight-DeYF7git.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2170741"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dreEMzFPHz/l1NvwOISbAsYaBnnbwywSHrFjYbCMa88=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "e3tplp3yzg"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/eight-DeYF7git.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-dreEMzFPHz/l1NvwOISbAsYaBnnbwywSHrFjYbCMa88="
+        }
+      ]
+    },
+    {
+      "Route": "assets/eight-DeYF7git.jpg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\eight-DeYF7git.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2170741"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"dreEMzFPHz/l1NvwOISbAsYaBnnbwywSHrFjYbCMa88=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-dreEMzFPHz/l1NvwOISbAsYaBnnbwywSHrFjYbCMa88="
+        }
+      ]
+    },
+    {
+      "Route": "assets/five-BoV11RLf.jpg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\five-BoV11RLf.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2921138"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BIgNOifS2th2VVfXNe5dOMbRo6JGtCaGiNAPDyn0UgE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-BIgNOifS2th2VVfXNe5dOMbRo6JGtCaGiNAPDyn0UgE="
+        }
+      ]
+    },
+    {
+      "Route": "assets/five-BoV11RLf.sas3yloujv.jpg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\five-BoV11RLf.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2921138"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BIgNOifS2th2VVfXNe5dOMbRo6JGtCaGiNAPDyn0UgE=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sas3yloujv"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/five-BoV11RLf.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-BIgNOifS2th2VVfXNe5dOMbRo6JGtCaGiNAPDyn0UgE="
+        }
+      ]
+    },
+    {
+      "Route": "assets/four-D6RT2NSe.jpg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\four-D6RT2NSe.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4403451"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vWutnw6Aq7b7jBn7DuWq9KEN2BeyzByt6AsAwrVtmEI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-vWutnw6Aq7b7jBn7DuWq9KEN2BeyzByt6AsAwrVtmEI="
+        }
+      ]
+    },
+    {
+      "Route": "assets/four-D6RT2NSe.vh0nuhbvds.jpg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\four-D6RT2NSe.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4403451"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vWutnw6Aq7b7jBn7DuWq9KEN2BeyzByt6AsAwrVtmEI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vh0nuhbvds"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/four-D6RT2NSe.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-vWutnw6Aq7b7jBn7DuWq9KEN2BeyzByt6AsAwrVtmEI="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-BtqIvw9_.js",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\index-BtqIvw9_.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "253123"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mXv/ucfvFKu7lq5nNNGDT9QY04S+usAh+QviPVoB2iI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-mXv/ucfvFKu7lq5nNNGDT9QY04S+usAh+QviPVoB2iI="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-BtqIvw9_.nsqvzm1b34.js",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\index-BtqIvw9_.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "253123"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"mXv/ucfvFKu7lq5nNNGDT9QY04S+usAh+QviPVoB2iI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "nsqvzm1b34"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/index-BtqIvw9_.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-mXv/ucfvFKu7lq5nNNGDT9QY04S+usAh+QviPVoB2iI="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-CkfHZav5.css",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\index-CkfHZav5.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "235982"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PrqVpun4zuxqb94NuJQXZonQkmH6v+qdxZ1wkJ00wKU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-PrqVpun4zuxqb94NuJQXZonQkmH6v+qdxZ1wkJ00wKU="
+        }
+      ]
+    },
+    {
+      "Route": "assets/index-CkfHZav5.egr1lpk0jg.css",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\index-CkfHZav5.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "235982"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PrqVpun4zuxqb94NuJQXZonQkmH6v+qdxZ1wkJ00wKU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "egr1lpk0jg"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/index-CkfHZav5.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-PrqVpun4zuxqb94NuJQXZonQkmH6v+qdxZ1wkJ00wKU="
+        }
+      ]
+    },
+    {
+      "Route": "assets/one-BJ1V6Imt.a0taj1jitd.jpg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\one-BJ1V6Imt.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2845978"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"pgfXZ78OHiHhY2ZpzejUb9vSXicjgICJYPORWB7Z+Ns=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "a0taj1jitd"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/one-BJ1V6Imt.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-pgfXZ78OHiHhY2ZpzejUb9vSXicjgICJYPORWB7Z+Ns="
+        }
+      ]
+    },
+    {
+      "Route": "assets/one-BJ1V6Imt.jpg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\one-BJ1V6Imt.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2845978"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"pgfXZ78OHiHhY2ZpzejUb9vSXicjgICJYPORWB7Z+Ns=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-pgfXZ78OHiHhY2ZpzejUb9vSXicjgICJYPORWB7Z+Ns="
+        }
+      ]
+    },
+    {
+      "Route": "assets/react-CHdo91hT.7trw0vijr1.svg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\react-CHdo91hT.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4126"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Ne9h7VOzI66UoWqOxlmz0K84gGmHkRM/I7CECFqxwuU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "7trw0vijr1"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/react-CHdo91hT.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Ne9h7VOzI66UoWqOxlmz0K84gGmHkRM/I7CECFqxwuU="
+        }
+      ]
+    },
+    {
+      "Route": "assets/react-CHdo91hT.svg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\react-CHdo91hT.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "4126"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Ne9h7VOzI66UoWqOxlmz0K84gGmHkRM/I7CECFqxwuU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Ne9h7VOzI66UoWqOxlmz0K84gGmHkRM/I7CECFqxwuU="
+        }
+      ]
+    },
+    {
+      "Route": "assets/seven-xkyRV-K3.jpg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\seven-xkyRV-K3.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8007351"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ixeHiNgFClXmBELCFgyJAQDImh5CbJsBCooUAKrXnQY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ixeHiNgFClXmBELCFgyJAQDImh5CbJsBCooUAKrXnQY="
+        }
+      ]
+    },
+    {
+      "Route": "assets/seven-xkyRV-K3.xtghxyrhs4.jpg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\seven-xkyRV-K3.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8007351"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ixeHiNgFClXmBELCFgyJAQDImh5CbJsBCooUAKrXnQY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "xtghxyrhs4"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/seven-xkyRV-K3.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ixeHiNgFClXmBELCFgyJAQDImh5CbJsBCooUAKrXnQY="
+        }
+      ]
+    },
+    {
+      "Route": "assets/six-pnPyPvzx.80dxcz7rd7.jpg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\six-pnPyPvzx.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "800403"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GOhy9MmJIKYfVVk6xdxVMfn78WNx3ZtievB2uOB+H0o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "80dxcz7rd7"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/six-pnPyPvzx.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-GOhy9MmJIKYfVVk6xdxVMfn78WNx3ZtievB2uOB+H0o="
+        }
+      ]
+    },
+    {
+      "Route": "assets/six-pnPyPvzx.jpg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\six-pnPyPvzx.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "800403"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"GOhy9MmJIKYfVVk6xdxVMfn78WNx3ZtievB2uOB+H0o=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-GOhy9MmJIKYfVVk6xdxVMfn78WNx3ZtievB2uOB+H0o="
+        }
+      ]
+    },
+    {
+      "Route": "assets/three-BmlbNmNo.ayawxscmxx.jpg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\three-BmlbNmNo.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1130863"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cvBBQ9P/eZcE6bW8zJ8a+CC2LxqiwDJ9sYyKlzTArVs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ayawxscmxx"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/three-BmlbNmNo.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-cvBBQ9P/eZcE6bW8zJ8a+CC2LxqiwDJ9sYyKlzTArVs="
+        }
+      ]
+    },
+    {
+      "Route": "assets/three-BmlbNmNo.jpg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\three-BmlbNmNo.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1130863"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cvBBQ9P/eZcE6bW8zJ8a+CC2LxqiwDJ9sYyKlzTArVs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-cvBBQ9P/eZcE6bW8zJ8a+CC2LxqiwDJ9sYyKlzTArVs="
+        }
+      ]
+    },
+    {
+      "Route": "assets/two-B0m7-lCE.jpg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\two-B0m7-lCE.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "658339"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"x8beA9Qlw9YCrdlnWmCCKiY//wJnpGdtoWgdcsfg0JU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-x8beA9Qlw9YCrdlnWmCCKiY//wJnpGdtoWgdcsfg0JU="
+        }
+      ]
+    },
+    {
+      "Route": "assets/two-B0m7-lCE.venhipyvlf.jpg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\assets\\two-B0m7-lCE.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "658339"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"x8beA9Qlw9YCrdlnWmCCKiY//wJnpGdtoWgdcsfg0JU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "venhipyvlf"
+        },
+        {
+          "Name": "label",
+          "Value": "assets/two-B0m7-lCE.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-x8beA9Qlw9YCrdlnWmCCKiY//wJnpGdtoWgdcsfg0JU="
+        }
+      ]
+    },
+    {
+      "Route": "index.d5tq1hufku.html",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "472"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"78T4zQ3141fKIRxPEdUE0LX9uCBNkISBTIq5REixpKc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "d5tq1hufku"
+        },
+        {
+          "Name": "label",
+          "Value": "index.html"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-78T4zQ3141fKIRxPEdUE0LX9uCBNkISBTIq5REixpKc="
+        }
+      ]
+    },
+    {
+      "Route": "index.html",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\index.html",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "472"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/html"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"78T4zQ3141fKIRxPEdUE0LX9uCBNkISBTIq5REixpKc=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Fri, 11 Apr 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-78T4zQ3141fKIRxPEdUE0LX9uCBNkISBTIq5REixpKc="
+        }
+      ]
+    },
+    {
+      "Route": "vite.69kjnsiwqx.svg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\vite.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1497"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 05:57:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "69kjnsiwqx"
+        },
+        {
+          "Name": "label",
+          "Value": "vite.svg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs="
+        }
+      ]
+    },
+    {
+      "Route": "vite.svg",
+      "AssetFile": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\wwwroot\\vite.svg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1497"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/svg+xml"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 10 Apr 2025 05:57:45 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-SnSK/UQ5GLsWWRyDTEAdrjPoeGGrXbrQgRw6O0qSFPs="
+        }
+      ]
+    }
+  ]
 }

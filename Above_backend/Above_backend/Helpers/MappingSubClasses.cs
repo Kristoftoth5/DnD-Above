@@ -5,15 +5,6 @@ namespace Above_backend.Helpers
 {
     public class MappingSubClasses
     {
-        public static SubClasses SubClassesToSubClassesDisplayDTO(SubClassesCreateAndBaseDTO subclassescreatedto)
-        {
-            return new SubClasses
-            {
-                Name = subclassescreatedto.Name,
-                OriginClassId = subclassescreatedto.OriginClassId,
-                Description = subclassescreatedto.Description,
-            };
-        }
         public static SubClassesDisplayDTO SubClassesToSubClassesDisplayDTO(SubClasses subclasses)
         {
             return new SubClassesDisplayDTO

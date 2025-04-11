@@ -1,37 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\gulyasa\\DnD-Above\\Above_backend\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|d:\\gulyasa\\dnd-above\\above_backend\\above_backend\\models\\dtos\\usersdisplaydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{265DC586-8A23-41EF-A5F5-42BC204B11F7}|Above_backend\\Above_backend.csproj|solutionrelative:above_backend\\models\\dtos\\usersdisplaydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UsersDisplayDTO.cs",
-              "DocumentMoniker": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Models\\DTOs\\UsersDisplayDTO.cs",
-              "RelativeDocumentMoniker": "Above_backend\\Models\\DTOs\\UsersDisplayDTO.cs",
-              "ToolTip": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Models\\DTOs\\UsersDisplayDTO.cs",
-              "RelativeToolTip": "Above_backend\\Models\\DTOs\\UsersDisplayDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-10T14:11:55.744Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }
