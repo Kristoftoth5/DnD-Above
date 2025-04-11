@@ -8,6 +8,12 @@ export const BasicClassFeatureIdContext = createContext();
 
 export const ChosenClassFeatureIdContext = createContext();
 
+export const CharacterLevelContext = createContext();
+
+export const CasterContext = createContext();
+
+export const HalfcasterContext = createContext();
+
 //Returns Class Id
 export function ClassIdProvider({ children }) {
   const [ClassId, setClassId] = useState(0);
@@ -49,5 +55,38 @@ export function BasicClassFeatureIdProvider({ children }) {
     <BasicClassFeatureIdContext.Provider value={{ BasicClassFeatureId, setBasicClassFeatureId }}>
       {children}
     </BasicClassFeatureIdContext.Provider>
+  );
+}
+
+//Returns the level of the character
+export function CharacterLevelProvider({ children }) {
+  const [CharacterLevel, setCharacterLevel] = useState(0);
+
+  return (
+    <CharacterLevelContext.Provider value={{ CharacterLevel, setCharacterLevel }}>
+      {children}
+    </CharacterLevelContext.Provider>
+  );
+}
+
+//Returns if the character is a caster
+export function CasterProvider({ children }) {
+  const [Caster, setCaster] = useState(0);
+
+  return (
+    <CasterContext.Provider value={{ Caster, setCaster }}>
+      {children}
+    </CasterContext.Provider>
+  );
+}
+
+//Returns if the character is a halfcaster
+export function HalfcasterProvider({ children }) {
+  const [Halfcaster, setHalfcaster] = useState(0);
+
+  return (
+    <HalfcasterContext.Provider value={{ Halfcaster, setHalfcaster }}>
+      {children}
+    </HalfcasterContext.Provider>
   );
 }

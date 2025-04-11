@@ -1,7 +1,7 @@
 import { use, useEffect, useState } from 'react'
 import React, { useContext } from "react";
 import { CreatorContext } from "./assets/BringStatChoice.jsx";
-import { ClassIdContext } from "./assets/SaveContexts/ClassContext.jsx";
+import { ClassIdContext, CharacterLevelContext, CasterContext, HalfcasterContext } from "./assets/SaveContexts/ClassContext.jsx";
 import { RaceIdContext } from "./assets/SaveContexts/RaceContext.jsx";
 import { useNavigate } from 'react-router-dom';
 import RaceCard from './assets/CreatorPageCards/RaceCard'
@@ -26,6 +26,11 @@ import falmingo from './assets/falmingo.png';
 function CreatorPage () 
 {
     const { ClassId } = useContext(ClassIdContext);
+
+    const { CharacterLevel } = useContext(CharacterLevelContext)
+    const { Caster } = useContext(CasterContext)
+    const { Halfcaster } = useContext(HalfcasterContext)
+
     const { selectedOption } = useContext(CreatorContext);
     const { selectedRaceId } = useContext(RaceIdContext);
     
@@ -62,7 +67,7 @@ function CreatorPage ()
             <BackgroundCard/>
             <ClassCard/>
             <EquipmentCard classId = {ClassId}/>
-            <SpellCard ClassId = {ClassId}/>
+            <SpellCard ClassId = {ClassId} spellCaster={1} halfCaster={0} characterLevel={6}/>
             <div className='save'>
             <button 
                 className="save-button" 

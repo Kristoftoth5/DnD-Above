@@ -4,7 +4,9 @@ import fetchEverything from "../CommonFunctions/fetchEverything";
 import profCalc from "../CommonFunctions/profCalc";
 import "../Cards.css"; 
 import { FinalSpellsContext } from "../SaveContexts/FinalSpellContext";
-function SpellCard({ClassId})
+
+
+function SpellCard({ClassId, spellCaster, halfCaster, characterLevel})
 {
     const [spells, setSpells] = useState([]);
     const [eligibleSpells, setEligibleSpells] = useState([]);
@@ -20,14 +22,12 @@ function SpellCard({ClassId})
     const [chosenCantripsNumber, setChosenCantripsNumber] = useState(0);
     const [chosenSpells, setChosenSpells] = useState([{}]);
 
-    const [characterLevel] = useState(6);
-    const [spellCaster, setSpellCaster] = useState(0);
-    const [halfCaster, setHalfCaster] = useState(0);
     const [spellCastingAbilityModifier] = useState(5);
 
     const [lastFetchedClassId, setLastFetchedClassId] = useState(null);
 
     const { setFinalSpells } = useContext(FinalSpellsContext)
+
 
 
     useEffect(()=>{
@@ -96,7 +96,7 @@ function SpellCard({ClassId})
             })
         }
         fetchspells();
-        if(temparray !== chosenSpells){setChosenSpells(temparray);setFinalSpells(temparray)};
+        if(temparray !== chosenSpells){setChosenSpells(temparray);setFinalSpells(temparray);console.log("Chosen spells in ids cuz why not: "+temparray)};
     },[chosenSpellIds])
 
 
