@@ -3,7 +3,7 @@ import fetchEverything from "../CommonFunctions/fetchEverything"
 import "../Cards.css"; // Import styles
 import { useContext } from "react";
 import { RaceIdContext } from "../SaveContexts/RaceContext";
-import { SubraceIdContext } from "../SaveContexts/RaceContext";
+import { SubraceIdContext, SubraceFeatureContext } from "../SaveContexts/RaceContext";
 
 function RaceCard() {
 
@@ -21,6 +21,7 @@ function RaceCard() {
 
   const { setSelectedRaceId } = useContext(RaceIdContext);
   const { setSelectedSubraceId } = useContext(SubraceIdContext);
+  const { setSubraceFeature } = useContext(SubraceFeatureContext);
  
 
 
@@ -116,6 +117,7 @@ function RaceCard() {
       prevsubracefeatures = undefined;
       
     }
+    setSubraceFeature(subRaceFeatures)
   },[chosenSubRaceId])
 
 

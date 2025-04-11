@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import fetchEverything from "../CommonFunctions/fetchEverything";
 import diceToInteger from "../CommonFunctions/diceToInteger";
 import { useContext } from "react";
-import { ClassIdContext, SubclassIdContext, ChosenClassFeatureIdContext } from "../SaveContexts/ClassContext";
+import { ClassIdContext, SubclassIdContext, ChosenClassFeatureIdContext, BasicClassFeatureContext } from "../SaveContexts/ClassContext";
 import "../Cards.css"; 
 
 function ClassCard() {
@@ -32,6 +32,7 @@ function ClassCard() {
 
   const {setClassId} = useContext(ClassIdContext);
   const {setSubclassId} = useContext(SubclassIdContext);
+  const {setBasicClassFeature} = useContext(BasicClassFeatureContext)
   const {setChosenClassFeatureId} = useContext(ChosenClassFeatureIdContext);
 
   // Fetching all the classes at startup
@@ -195,6 +196,7 @@ function ClassCard() {
           uniqueFeatures.push(feature); // Add feature to uniqueFeatures list
         }
       });
+      setBasicClassFeature(uniqueFeatures);
     }
     
 

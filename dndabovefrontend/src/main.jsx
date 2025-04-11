@@ -10,8 +10,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Header from './assets/Header.jsx'
 import Home from './Home.jsx'
 import { EquipmentProvider, RemainingGoldProvider } from './assets/SaveContexts/EquipmentContext.jsx';
-import { RaceIdProvider, SubraceIdProvider } from './assets/SaveContexts/RaceContext.jsx';
-import { ClassIdProvider, SubclassIdProvider, ChosenClassFeatureIdProvider } from './assets/SaveContexts/ClassContext.jsx';
+import { RaceIdProvider, SubraceFeatureProvider, SubraceIdProvider } from './assets/SaveContexts/RaceContext.jsx';
+import { ClassIdProvider, SubclassIdProvider, ChosenClassFeatureIdProvider, BasicClassFeatureProvider } from './assets/SaveContexts/ClassContext.jsx';
 import { BgNameProvider, BgDescProvider, BgSkillsProvider, BgToolProvider } from './assets/SaveContexts/BackgroundContext.jsx';
 import { FinalSpellsProvider } from './assets/SaveContexts/FinalSpellContext.jsx';
 import SignInPage from './assets/UserManagementPages/SignInPage.jsx'
@@ -33,9 +33,11 @@ createRoot(document.getElementById('root')).render(
 
       <RaceIdProvider>
       <SubraceIdProvider>
+      <SubraceFeatureProvider>
 
       <ClassIdProvider>
       <SubclassIdProvider>
+      <BasicClassFeatureProvider>
       <ChosenClassFeatureIdProvider>
 
       <BgNameProvider>
@@ -64,9 +66,11 @@ createRoot(document.getElementById('root')).render(
       </BgNameProvider>
 
       </ChosenClassFeatureIdProvider>
+      </BasicClassFeatureProvider>
       </SubclassIdProvider>
       </ClassIdProvider>
 
+      </SubraceFeatureProvider>
       </SubraceIdProvider>
       </RaceIdProvider>      
             

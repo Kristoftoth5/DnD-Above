@@ -1,8 +1,10 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 export const RaceIdContext = createContext();
 
 export const SubraceIdContext = createContext();
+
+export const SubraceFeatureContext = createContext();
 
 //Race Id
 export function RaceIdProvider({ children }) {
@@ -25,4 +27,16 @@ export function SubraceIdProvider({ children }) {
             {children}
         </SubraceIdContext.Provider>
     );
+}
+
+
+//Subrace Features
+export function SubraceFeatureProvider({ children }) {
+  const [SubraceFeature, setSubraceFeature] = useState(0);
+
+  return (
+      <SubraceFeatureContext.Provider value={{ SubraceFeature, setSubraceFeature }}>
+          {children}
+      </SubraceFeatureContext.Provider>
+  );
 }
