@@ -59,9 +59,9 @@ function CollectedDataTest()
         setRaceData(tempracedata);
         var tempsave;
         tempsave+="<><h1>Race<h1></>"
-        if(raceFeatures!==undefined ? (raceFeatures.map((element,id)=>(
+        raceFeatures.map((element,id)=>(
             tempsave+="<div className='selected-single'>"+element.name+"</div>"+"\n"+"<p>"+element.description+"</p>"
-        ))):null)
+        ))
         console.log(tempsave)
         setSave(tempsave);
         

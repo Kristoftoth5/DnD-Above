@@ -10,6 +10,8 @@ function ClassCard() {
   const [classFeatures, setClassFeatures] = useState();
   const [chosenClassId, setChosenClassId] = useState(-1);
   const [classData, setClassData] = useState();
+  const [finalUnqiueClassFeatures, setFinalUniqueClassFeatures] = useState([]);
+  const [finalDisplayClassFeatures, setFinalDisplayClassFeatures] = useState([]);
 
   const [subClassOptions, setSubClassOptions] = useState();
   const [subClassFeatures, setSubClassFeatures] = useState();
@@ -183,7 +185,8 @@ function ClassCard() {
     setFeatureDone(false);
   }
 
-  function SelectedClass() {
+  useEffect(()=>
+  {
     const displayedFeatures = new Set(); // Used to track which features have already been displayed
     const uniqueFeatures = [];
 
@@ -196,13 +199,14 @@ function ClassCard() {
           uniqueFeatures.push(feature); // Add feature to uniqueFeatures list
         }
       });
-      setBasicClassFeature(uniqueFeatures);
+      setFinalUniqueClassFeatures(uniqueFeatures);
+      setFinalDisplayClassFeatures(displayedFeatures);
+      setBasicClassFeature(finalUnqiueClassFeatures);
     }
-    
+  },[chosenClassId, characterLevel])
 
+  function SelectedClass() {
     // Update the total number of features based on eligible ones
-    
-
     return (
       <>
         <p className="selected-singular">
@@ -221,7 +225,7 @@ function ClassCard() {
         </p>
 
         {/* Displaying each unique feature */}
-        {uniqueFeatures.map((feature, id) => (
+        {finalUnqiueClassFeatures.map((feature, id) => (
           feature.levelReq <= characterLevel ? (
             <div className="selected-feature" key={id}>
               <p><b>{feature.name}</b></p>
@@ -322,6 +326,8 @@ function ClassCard() {
       </>
     );
   }
+
+
 
   return (
     <div className="creator-container">
