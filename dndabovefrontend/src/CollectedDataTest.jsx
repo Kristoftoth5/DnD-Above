@@ -13,7 +13,7 @@ function CollectedDataTest()
 {
     const { selectedRaceId } = useContext(RaceIdContext);
     const [ raceData, setRaceData ] = useState();
-    const [ raceFeatures, setRaceFeatures ] = useState();
+    const [ raceFeatures, setRaceFeatures ] = useState([{}]);
     const { selectedSubraceId } = useContext(SubraceIdContext);
     const { SubRaceFeature }  = useContext(SubraceFeatureContext);
 
@@ -60,9 +60,9 @@ function CollectedDataTest()
         setRaceData(tempracedata);
         var tempsave;
         tempsave+="<><h1>Race<h1></>"
-        raceFeatures.map((element,id)=>(
+        raceFeatures.length !== 0 ?raceFeatures.map((element,id)=>(
             tempsave+="<div className='selected-single'>"+element.name+"</div>"+"\n"+"<p>"+element.description+"</p>"
-        ))
+        )) : null;
         console.log(tempsave)
         setSave(tempsave);
         
