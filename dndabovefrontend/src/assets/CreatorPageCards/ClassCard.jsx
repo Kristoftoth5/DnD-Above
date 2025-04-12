@@ -52,7 +52,7 @@ function ClassCard() {
     async function fetchdatabyid() {
       try {
         setClassData(await fetchEverything("Classes/" + chosenClassId));
-        setClassFeatures(await fetchEverything("Features/Features/originclassid/" + chosenClassId));
+        setClassFeatures(await fetchEverything("Features/originclassid/" + chosenClassId));
         setSubClassFeatures(undefined);
         setSubClassName(undefined);
       } catch {
@@ -102,7 +102,7 @@ function ClassCard() {
 
   useEffect(() => {
     async function fetchsubclasses(id) {
-      const subClassOptionsJSON = await fetchEverything("SubClasses/SubClasses/originclassid/" + id);
+      const subClassOptionsJSON = await fetchEverything("SubClasses/originclassid/" + id);
       const temp = subClassOptionsJSON.map(subclass => [subclass.name, subclass.id]);
       setSubClassOptions(temp);
     }
@@ -116,7 +116,7 @@ function ClassCard() {
 
   useEffect(() => {
     async function fetchsubclassfeatures(id) {
-      setSubClassFeatures(await fetchEverything("Features/Features/originsubclassid/" + id));
+      setSubClassFeatures(await fetchEverything("Features/originsubclassid/" + id));
     }
 
     const prevsubclassfeatures = subClassFeatures;

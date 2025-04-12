@@ -1118,7 +1118,7 @@
         }
       }
     },
-    "/api/SubClasses/SubClasses/originclassid/{originclassid}": {
+    "/api/SubClasses/originclassid/{originclassid}": {
       "get": {
         "tags": [
           "SubClasses"

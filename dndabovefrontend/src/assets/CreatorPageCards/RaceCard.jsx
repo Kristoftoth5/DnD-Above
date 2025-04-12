@@ -32,7 +32,7 @@ function RaceCard() {
   useEffect(() => {
     async function fetchdatabyid() {
       const race = await fetchEverything("Races/" + chosenRaceId);
-      const features = await fetchEverything("Features/Features/originraceid/" + chosenRaceId);
+      const features = await fetchEverything("Features/originraceid/" + chosenRaceId);
       setRaceData(race);
       setRaceFeatures(features);
     }
