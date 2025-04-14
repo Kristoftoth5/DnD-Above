@@ -25,23 +25,28 @@ namespace Above_backend.Controllers
             _context = context;
         }
 
-        /*
-        // GET: api/Saves
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<SavesBaseDisplayDTO>>> GetSaves()
+        [Authorize]
+        [HttpGet("userid/{userid}")]
+        public async Task<ActionResult<IEnumerable<SavesBaseDisplayDTO>>> GetSaveByUserId(int userid)
         {
-            var saves = await _context.Saves.ToListAsync();
+            var saves = await _context.Saves
+                .Where(x => x.UserId == userid)
+                .Select(x => MappingSaves.SavesToSavesBaseDisplayDTO(x))
+                .ToListAsync();
 
-            return saves.Select(x => MappingSaves.SavesToSavesBaseDisplayDTO(x)).ToList();
+            if (saves == null)
+            {
+                return NotFound();
+            }
+
+            return saves;
         }
-        */
 
         // GET: api/Saves/5
         [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<SavesSheetDisplayDTO>> GetSaveById(int id)
         {
-            //IDE KELL TALÁN A FELHASZNÁLÓ ELLENŐRZÉS, NEM BIZTOS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             var save = await _context.Saves.FindAsync(id);
 
             if (save == null)
