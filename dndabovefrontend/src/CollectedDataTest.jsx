@@ -11,15 +11,15 @@ import fetchEverything from "./assets/CommonFunctions/fetchEverything.js";
 function CollectedDataTest()
 {
     const { selectedRaceId } = useContext(RaceIdContext);
-    const { raceFeatures, setRaceFeatures } = useState();
+    const [ raceFeatures, setRaceFeatures ] = useState();
     const [ raceData, setRaceData ] = useState();
     const { selectedSubraceId } = useContext(SubraceIdContext);
-    const { subRaceFeatures, setSubRaceFeatures } = useState();
+    const [ subRaceFeatures, setSubRaceFeatures ] = useState();
 
     const { ClassId } = useContext(ClassIdContext);
 
     const { SubclassId } = useContext(SubclassIdContext);
-    const { subClassFeatures, setSubClassFeatures } = useState();
+    const [ subClassFeatures, setSubClassFeatures ] = useState();
     const { ChosenClassFeatureId } = useContext(ChosenClassFeatureIdContext);    
 
     const { Stats } = useContext(StatsContext)
@@ -49,23 +49,36 @@ function CollectedDataTest()
         var tempracefeatures
         async function fetchallthedataever()
         {
-            tempracedata = fetchEverything("Races/"+selectedRaceId)
-            tempracefeatures = fetchEverything("Features/originraceid/"+selectedRaceId)
+            try 
+            {
+                // Fetch race data and race features
+                const raceDataResponse = await fetchEverything("Races/" + selectedRaceId);
+                const raceFeaturesResponse = await fetchEverything("Features/originraceid/" + selectedRaceId);
+        
+                // Update state with fetched data
+                setRaceData(raceDataResponse);
+                setRaceFeatures(raceFeaturesResponse);
+        
+                // Now create the HTML output string
+                let tempSave = ``;
+                raceFeaturesResponse.forEach((element, id) => {
+                {element.name !== "Subrace" ? ( tempSave += `<h3>  ${element.name} </h3> \n <p> ${element.description} </p>`) : null}
+                 
+                });
+                setSave(tempSave); // Set the HTML string
+            }
+            catch(error)
+            {
+                console.error("Error fetching data: ", error);
+            }
         }
         fetchallthedataever();
-        setRaceFeatures(tempracefeatures);
-        setRaceData(tempracedata);
-        tempsave+="<><>"
-        raceData.map((element,id)=>(
-            tempsave+=""+element.name+""
-        ))
-        var tempsave = "";
         
-    })
+    },[selectedRaceId, selectedSubraceId, ClassId, SubclassId])
 
     return (
         <>
-        
+        <div dangerouslySetInnerHTML={{__html: save}}/>
         </>
     )
 }
