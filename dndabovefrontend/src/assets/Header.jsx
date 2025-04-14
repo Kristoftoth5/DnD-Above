@@ -23,6 +23,16 @@ const Header = () => {
     navigate(path);
   };
 
+  const handeLogOut = () => {
+   
+      const confirmLogOut = window.confirm("Are you sure you want to log out? You will not have access to the Saves menu until you sign in again.");
+      if (!confirmLogOut) return;
+      else
+      {
+        localStorage.removeItem('authToken');setUserId(0);
+      }
+  };
+
   useEffect(()=>{
     setToken(localStorage.getItem('authToken'))
   },[token,UserId])
@@ -72,7 +82,7 @@ const Header = () => {
             </li>):null}
             
             {token ?(<li className="nav-item">
-              <button className="nav-link btn btn-warning" onClick={() => {localStorage.removeItem('authToken');setUserId(0)}}>
+              <button className="nav-link btn btn-warning" onClick={() => { handeLogOut();}}>
                 Logout
               </button>
             </li>):null}

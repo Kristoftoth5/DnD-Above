@@ -3,11 +3,21 @@ import "../Cards.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 
+
 function SignUpPage()
 {
     const [eula, setEula] = useState(false)
 
     const navigate = useNavigate();
+
+    function downloadEula()
+    {
+      // Create an invisible link
+      const link = document.createElement('a');
+      link.href = '/ABOVE_EULA.pdf'; 
+      link.download = 'ABOVE_EULA.pdf'; 
+      link.click(); 
+    }
 
     function SignUp()
     {
@@ -85,7 +95,7 @@ function SignUpPage()
         <p><b>E-mail</b><input type="email" id="email"/></p><br></br>
         <p><b>Password</b><input type="password" id="pass"/></p>
 
-        <p><input type="checkbox" id="eula" onClick={()=>{setEula(true)}}/>I accept the terms and conditions of the End-User License Agreement</p>
+        <p><input type="checkbox" id="eula" onClick={()=>{setEula(!eula)}}/>I accept the terms and conditions of the End-User License Agreement <button onClick={()=>{downloadEula()}} className="btn btn-warning">EULA</button></p>
         
         {eula !== false ?<button className="btn btn-primary" onClick={()=>{SignUp()}}>Sign Up</button>
         :<button className="btn btn-secondary" onClick={()=>{SignUp()}}>Sign Up</button>}
