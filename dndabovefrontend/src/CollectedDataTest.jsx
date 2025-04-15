@@ -7,6 +7,8 @@ import { EquipmentContext, RemainingGoldContext } from "./assets/SaveContexts/Eq
 import { FinalSpellsContext } from "./assets/SaveContexts/FinalSpellContext.jsx"
 import fetchEverything from "./assets/CommonFunctions/fetchEverything.js";
 import modCalc from "./assets/CommonFunctions/modCalc.js";
+import { CharacterLevelContext } from "./assets/SaveContexts/ClassContext.jsx";
+import profCalc from "./assets/CommonFunctions/profCalc.js"
 
 
 function CollectedDataTest()
@@ -21,7 +23,9 @@ function CollectedDataTest()
     const [classData, setClassData] = useState();
     const { SubclassId } = useContext(SubclassIdContext);
     const [ subClassFeatures, setSubClassFeatures ] = useState();
-    const { ChosenClassFeatureId } = useContext(ChosenClassFeatureIdContext);    
+    const { ChosenClassFeatureId } = useContext(ChosenClassFeatureIdContext);
+    
+    const [profBonus, setProfBonus] = useState();
 
     const { Stats } = useContext(StatsContext)
 
@@ -34,6 +38,8 @@ function CollectedDataTest()
     const { RemainingGold } = useContext(RemainingGoldContext);
 
     const { FinalSpells } = useContext(FinalSpellsContext);
+
+    const { CharacterLevel } = useContext(CharacterLevelContext)
 
     const [save, setSave] = useState();
 
@@ -48,6 +54,7 @@ function CollectedDataTest()
         var tempracedata
         var tempsubracedata
         var tempracefeatures
+        setProfBonus(profCalc(CharacterLevel));
         async function fetchallthedataever()
         {
             try 
@@ -62,6 +69,28 @@ function CollectedDataTest()
 
         
                 const statNames = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"];
+                const skills = [["Acrobatics","2"],["Animal Handling","5"],["Arcana","4"],["Athletics","1"],["Deception","6"],["History","4"],["Insight","5"],["Intimidiation","6"],["Investigation","4"],["Medicine","5"],["Nature","4"],["Perception","5"],["Performance","6"],["Persuasion","6"],["Religion","4"],["Sleight of Hand","2"],["Stealth","2"],["Survival","5"]];
+
+                var skillProfs = [];
+
+                raceFeaturesResponse.forEach((element, id)=>{
+                    if(element.skillProf.length !== 0)
+                        {
+                            element.skillProf.forEach(skill => {
+                                skillProfs.push(skill);
+                            });
+                        }
+                });
+
+                subRaceFeaturesResponse.forEach((element, id)=>{
+                    if(element.skillProf.length !== 0)
+                        {
+                            element.skillProf.forEach(skill => {
+                                skillProfs.push(skill);
+                            });
+                        }
+                });
+
                 // Now create the HTML output string
                 let tempSave = `
                     <div class="container-fluid mt-4">
@@ -83,7 +112,7 @@ function CollectedDataTest()
                                 <!-- Level Display -->
                                 <div class="col-md-2">
                                     <label class="form-label fw-bold">Level</label>
-                                    <div id="characterLevel">[Level]</div>
+                                    <div id="characterLevel">${CharacterLevel}</div>
                                 </div>
 
                                 <!-- Race Display -->
@@ -123,9 +152,36 @@ function CollectedDataTest()
                             </div>
                         </div>
 
-                        <!-- Right Column: Race Features -->
-                        <div class="col-md-8">
-                `;
+                        <!-- Right Column: Rest of front page -->
+                        <!-- Skills -->
+                        <div class="col-md-4 mb-4">
+                                        <h4 class="mb-3 text-center">Skills</h4>`;
+
+
+                if (BgSkills)
+                {
+                    skills.forEach((element, index)=>{
+                        var stat = Stats[element[1]-1]
+                        var mod = modCalc(stat);
+                        var pbmod = mod+profBonus;
+                        if(element[0] == BgSkills[0] || element[0] == BgSkills[1])
+                        {
+                            tempSave+=`<p><b>${element[0]}(<i>P</i>)</b>: ${pbmod>=0 ? "+" : ""}${pbmod} </p>`
+                        }
+                        else if(skillProfs.find(item => item == element[0]))
+                        {
+                            tempSave+=`<p><b>${element[0]}(<i>P</i>)</b>: ${pbmod>=0 ? "+" : ""}${pbmod} </p>`
+                        }
+                        else
+                        {
+                            tempSave+=`<p><b>${element[0]}</b>: ${mod>=0 ? "+" : ""}${mod}</p>`
+                        }
+
+                    });
+                }
+                
+                tempSave+=`<div class="col-md-8">`
+
 
                 tempSave+=`<h3>Race Features</h3>`
                 raceFeaturesResponse.forEach((element) => {
