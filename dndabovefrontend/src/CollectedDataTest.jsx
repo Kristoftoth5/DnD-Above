@@ -8,6 +8,7 @@ import { FinalSpellsContext } from "./assets/SaveContexts/FinalSpellContext.jsx"
 import fetchEverything from "./assets/CommonFunctions/fetchEverything.js";
 import modCalc from "./assets/CommonFunctions/modCalc.js";
 import profCalc from "./assets/CommonFunctions/profCalc.js"
+import diceToInteger from "./assets/CommonFunctions/diceToInteger.js"
 
 
 function CollectedDataTest()
@@ -25,6 +26,8 @@ function CollectedDataTest()
     const { ChosenClassFeatureId } = useContext(ChosenClassFeatureIdContext);
     
     const [profBonus, setProfBonus] = useState();
+    const [currentHP, setCurrentHP] = useState(0);
+
 
     const { Stats } = useContext(StatsContext)
 
@@ -71,6 +74,12 @@ function CollectedDataTest()
                 const skills = [["Acrobatics","2"],["Animal Handling","5"],["Arcana","4"],["Athletics","1"],["Deception","6"],["History","4"],["Insight","5"],["Intimidiation","6"],["Investigation","4"],["Medicine","5"],["Nature","4"],["Perception","5"],["Performance","6"],["Persuasion","6"],["Religion","4"],["Sleight of Hand","2"],["Stealth","2"],["Survival","5"]];
 
                 var skillProfs = [];
+                const conMod = modCalc(Stats[2]);
+                const hitDice = diceToInteger(classDataResponse.hitDice);
+                const maxHpCalc = (FinalCharacterLevel * conMod) + (FinalCharacterLevel * (hitDice / 2));
+                setCurrentHP(maxHpCalc); 
+
+
 
                 raceFeaturesResponse.forEach((element, id)=>{
                     if(element.skillProf.length !== 0)
@@ -184,6 +193,66 @@ function CollectedDataTest()
                 }
                 
                 tempSave+=`<div class="col-md-8">`
+                tempSave += `
+                <div class="card shadow-sm mb-4 p-3">
+                    <h4 class="fw-bold mb-3">Combat Stats</h4>
+                    <div class="row g-3">
+                        <!-- Max HP -->
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">Max HP</label>
+                        <input type="number" class="form-control" id="maxHP" value="${maxHpCalc}" readonly />
+                    </div>
+
+                    <!-- Current HP -->
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">Current HP</label>
+                        <input 
+                            type="number" 
+                            class="form-control" 
+                            id="currentHP" 
+                            value="${currentHP}" 
+                            min="0" 
+                            max="${maxHpCalc}" 
+                            oninput="if(this.value > ${maxHpCalc}) this.value = ${maxHpCalc}" 
+                        />
+                    </div>
+
+
+                        <!-- Armor Class -->
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold">Armor Class</label>
+                            <div id="armorClass" class="form-control bg-light">15</div>
+                        </div>
+
+                        <!-- Speed -->
+                        <div class="col-md-4">
+                            <label class="form-label fw-bold">Speed</label>
+                            <div id="movementSpeed" class="form-control bg-light">30 ft</div>
+                        </div>
+                    </div>
+
+                    <!-- Saving Throws -->
+                    <div class="mt-4">
+                        <h5 class="fw-bold">Saving Throws</h5>
+                        <ul id="savingThrows" class="list-group list-group-flush">
+                            <li class="list-group-item">Strength: +2</li>
+                            <li class="list-group-item">Dexterity: +1</li>
+                            <li class="list-group-item">Constitution: +3</li>
+                            <li class="list-group-item">Intelligence: +0</li>
+                            <li class="list-group-item">Wisdom: +1</li>
+                            <li class="list-group-item">Charisma: +2</li>
+                        </ul>
+                    </div>
+
+                    <!-- Resistances -->
+                    <div class="mt-4">
+                        <h5 class="fw-bold">Resistances</h5>
+                        <div id="resistances">Fire, Cold</div>
+                    </div>
+                </div>
+                `;
+
+
 
 
                 tempSave+=`<h3>Race Features</h3>`
