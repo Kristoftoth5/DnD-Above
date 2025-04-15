@@ -1,7 +1,7 @@
 import { use, useEffect, useState } from 'react'
 import React, { useContext } from "react";
 import { CreatorContext } from "./assets/BringStatChoice.jsx";
-import { ClassIdContext, FinalCharacterLevelContext, CasterContext, HalfcasterContext } from "./assets/SaveContexts/ClassContext.jsx";
+import { ClassIdContext } from "./assets/SaveContexts/ClassContext.jsx";
 import { RaceIdContext } from "./assets/SaveContexts/RaceContext.jsx";
 import { useNavigate } from 'react-router-dom';
 import RaceCard from './assets/CreatorPageCards/RaceCard'
@@ -27,9 +27,6 @@ function CreatorPage ()
 {
     const { ClassId } = useContext(ClassIdContext);
 
-    const { FinalCharacterLevel } = useContext(FinalCharacterLevelContext)
-    const { Caster } = useContext(CasterContext)
-    const { Halfcaster } = useContext(HalfcasterContext)
 
     const { selectedOption } = useContext(CreatorContext);
     const { selectedRaceId } = useContext(RaceIdContext);
@@ -67,7 +64,7 @@ function CreatorPage ()
             <BackgroundCard/>
             <ClassCard/>
             <EquipmentCard classId = {ClassId}/>
-            <SpellCard ClassId = {ClassId} spellCaster={Caster} halfCaster={Halfcaster} characterLevel={FinalCharacterLevel}/>
+            <SpellCard ClassId={ClassId}/>
             <div className='save'>
             <button 
                 className="save-button" 

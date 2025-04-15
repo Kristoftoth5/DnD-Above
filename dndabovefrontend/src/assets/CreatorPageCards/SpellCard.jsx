@@ -4,9 +4,10 @@ import fetchEverything from "../CommonFunctions/fetchEverything";
 import profCalc from "../CommonFunctions/profCalc";
 import "../Cards.css"; 
 import { FinalSpellsContext } from "../SaveContexts/FinalSpellContext";
+import { FinalCharacterLevelContext, CasterContext, HalfcasterContext } from "../SaveContexts/ClassContext";
 
 
-function SpellCard({ClassId, spellCaster, halfCaster, characterLevel})
+function SpellCard({ClassId})
 {
     const [spells, setSpells] = useState([]);
     const [eligibleSpells, setEligibleSpells] = useState([]);
@@ -28,6 +29,10 @@ function SpellCard({ClassId, spellCaster, halfCaster, characterLevel})
 
     const { setFinalSpells } = useContext(FinalSpellsContext)
 
+    const { FinalCharacterLevel } = useContext(FinalCharacterLevelContext)
+    const { Caster } = useContext(CasterContext)
+    const { Halfcaster } = useContext(HalfcasterContext)
+
 
 
     useEffect(()=>{
@@ -43,11 +48,6 @@ function SpellCard({ClassId, spellCaster, halfCaster, characterLevel})
                 {
                     setSpells(response); // Only set if it's an array
                     setLastFetchedClassId(ClassId);
-                }
-                if(classData && Array.isArray(classData))
-                {
-                    setSpellCaster(classData.spellcaster);
-                    setHalfCaster(classData.halfcaster);
                 }
                 else 
                 {
@@ -67,15 +67,15 @@ function SpellCard({ClassId, spellCaster, halfCaster, characterLevel})
         {
             var temp = [];
             
-            setHighestSpellLevel(spellLevelCalc(spellCaster,halfCaster,characterLevel));
-            setProficiencyBonus(profCalc(characterLevel));
+            setHighestSpellLevel(spellLevelCalc(Caster,Halfcaster,FinalCharacterLevel));
+            setProficiencyBonus(profCalc(FinalCharacterLevel));
             for (let i = 0; i <= highestSpellLevel; i++) {
                 temp.push(i);
             }
             console.log("nemhiszemel: " + temp)
             setAvailableSpellLevels(temp);
-            setChosenCantripsLimit(Math.floor(characterLevel/4));
-            setChosenSpellsLimit(characterLevel+spellCastingAbilityModifier);
+            setChosenCantripsLimit(Math.floor(FinalCharacterLevel/4));
+            setChosenSpellsLimit(FinalCharacterLevel+spellCastingAbilityModifier);
 
 
             if (spells.length > 0 && highestSpellLevel !== undefined) {
@@ -85,7 +85,7 @@ function SpellCard({ClassId, spellCaster, halfCaster, characterLevel})
             }
         }
         
-    }, [spells, highestSpellLevel]);
+    }, [spells, Caster, Halfcaster, FinalCharacterLevel, highestSpellLevel]);
 
     useEffect(()=>{
         var temparray = [{}]
@@ -276,7 +276,7 @@ function SpellCard({ClassId, spellCaster, halfCaster, characterLevel})
 
     return(
     <>
-        {spellCaster !== 0 || halfCaster !== 0 ?(
+        {Caster !== 0 || Halfcaster !== 0 ?(
         <>
         <div className="creator-container">
             <h2 className="creator-title">Spells</h2>
