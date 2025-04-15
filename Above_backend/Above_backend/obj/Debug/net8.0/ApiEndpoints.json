@@ -518,6 +518,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Above_backend.Controllers.SavesController",
+    "Method": "GetSaveByUserId",
+    "RelativePath": "api/Saves/userid/{userid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userid",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Above_backend.Models.DTOs.SavesBaseDisplayDTO, Above_backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "Above_backend.Controllers.SpellsController",
     "Method": "GetSpells",
     "RelativePath": "api/Spells",

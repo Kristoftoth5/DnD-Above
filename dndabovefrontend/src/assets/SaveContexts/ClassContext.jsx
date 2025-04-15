@@ -8,7 +8,7 @@ export const BasicClassFeatureIdContext = createContext();
 
 export const ChosenClassFeatureIdContext = createContext();
 
-export const CharacterLevelContext = createContext();
+export const FinalCharacterLevelContext = createContext();
 
 export const CasterContext = createContext();
 
@@ -59,13 +59,13 @@ export function BasicClassFeatureIdProvider({ children }) {
 }
 
 //Returns the level of the character
-export function CharacterLevelProvider({ children }) {
-  const [CharacterLevel, setCharacterLevel] = useState(6);
+export function FinalCharacterLevelProvider({ children }) {
+  const [FinalCharacterLevel, setFinalCharacterLevel] = useState(6);
 
   return (
-    <CharacterLevelContext.Provider value={{ CharacterLevel, setCharacterLevel }}>
+    <FinalCharacterLevelContext.Provider value={{ FinalCharacterLevel, setFinalCharacterLevel }}>
       {children}
-    </CharacterLevelContext.Provider>
+    </FinalCharacterLevelContext.Provider>
   );
 }
 

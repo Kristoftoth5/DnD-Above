@@ -11,7 +11,7 @@ import Header from './assets/Header.jsx'
 import Home from './Home.jsx'
 import { EquipmentProvider, RemainingGoldProvider } from './assets/SaveContexts/EquipmentContext.jsx';
 import { RaceIdProvider, SubraceFeatureIdProvider, SubraceIdProvider } from './assets/SaveContexts/RaceContext.jsx';
-import { ClassIdProvider, SubclassIdProvider, ChosenClassFeatureIdProvider, BasicClassFeatureIdProvider, CharacterLevelProvider, CasterProvider, HalfcasterProvider } from './assets/SaveContexts/ClassContext.jsx';
+import { ClassIdProvider, SubclassIdProvider, ChosenClassFeatureIdProvider, BasicClassFeatureIdProvider, FinalCharacterLevelProvider, CasterProvider, HalfcasterProvider } from './assets/SaveContexts/ClassContext.jsx';
 import { BgNameProvider, BgDescProvider, BgSkillsProvider, BgToolProvider } from './assets/SaveContexts/BackgroundContext.jsx';
 import { FinalSpellsProvider } from './assets/SaveContexts/FinalSpellContext.jsx';
 import SignInPage from './assets/UserManagementPages/SignInPage.jsx'
@@ -39,7 +39,7 @@ createRoot(document.getElementById('root')).render(
       <SubclassIdProvider>
       <ChosenClassFeatureIdProvider>
       <BasicClassFeatureIdProvider>
-      <CharacterLevelProvider>
+      <FinalCharacterLevelProvider>
       <CasterProvider>
       <HalfcasterProvider>
 
@@ -70,7 +70,7 @@ createRoot(document.getElementById('root')).render(
 
       </HalfcasterProvider>
       </CasterProvider>
-      </CharacterLevelProvider>
+      </FinalCharacterLevelProvider>
       </BasicClassFeatureIdProvider>
       </ChosenClassFeatureIdProvider>
       </SubclassIdProvider>

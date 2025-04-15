@@ -1,12 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import fetchEverything from "../CommonFunctions/fetchEverything";
 import diceToInteger from "../CommonFunctions/diceToInteger";
-import {
-  ClassIdContext,
-  SubclassIdContext,
-  ChosenClassFeatureIdContext,
-  BasicClassFeatureIdContext
-} from "../SaveContexts/ClassContext";
+import { ClassIdContext, SubclassIdContext, ChosenClassFeatureIdContext, BasicClassFeatureIdContext, FinalCharacterLevelContext, CasterContext, HalfcasterContext } from "../SaveContexts/ClassContext";
 import "../Cards.css";
 
 function ClassCard() {
@@ -37,6 +32,9 @@ function ClassCard() {
   const { setSubclassId } = useContext(SubclassIdContext);
   const { setChosenClassFeatureId } = useContext(ChosenClassFeatureIdContext);
   const { setBasicClassFeatureId } = useContext(BasicClassFeatureIdContext);
+  const { setFinalCharacterLevel } = useContext(FinalCharacterLevelContext)
+  const { setCaster } = useContext(CasterContext)
+  const { setHalfcaster } = useContext(HalfcasterContext)
 
   useEffect(() => {
     async function fetchclasses() {
@@ -64,8 +62,11 @@ function ClassCard() {
     setChosenSubFeatures([]);
     setFeatureWithSubFeature("");
     setCharacterLevel(1);
+    setFinalCharacterLevel(1);
 
     fetchdatabyid();
+    setCaster(classData.spellcaster);
+    setHalfcaster(classData.halfcaster);
   }, [chosenClassId]);
 
   useEffect(() => {
@@ -288,8 +289,8 @@ function ClassCard() {
           <h3 className="ability-title">Character Level</h3>
           <div className="score-display">{characterLevel}</div>
           <div className="button-group">
-            <button className="btn-stat" onClick={() => setCharacterLevel(prev => Math.min(20, prev + 1))}>+</button>
-            <button className="btn-stat" onClick={() => setCharacterLevel(prev => Math.max(1, prev - 1))}>-</button>
+            <button className="btn-stat" onClick={() => {setCharacterLevel(prev => Math.min(20, prev + 1));setFinalCharacterLevel(prev => Math.min(20, prev + 1))}}>+</button>
+            <button className="btn-stat" onClick={() => {setCharacterLevel(prev => Math.max(1, prev - 1));setFinalCharacterLevel(prev => Math.max(1, prev - 1))}}>-</button>
           </div>
         </div>
       )}
