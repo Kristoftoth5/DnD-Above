@@ -65,8 +65,9 @@ function ClassCard() {
     setFinalCharacterLevel(1);
 
     fetchdatabyid();
-    setCaster(classData.spellcaster);
-    setHalfcaster(classData.halfcaster);
+
+
+
   }, [chosenClassId]);
 
   useEffect(() => {
@@ -189,7 +190,7 @@ function ClassCard() {
     return (
       <>
         <p className="selected-singular"><b>Name: </b>{classData.name}</p>
-        <p className="selected-singular"><b>Description: </b>{classData.description}</p>
+        <p className="selected-singular"><b>Caster: </b>{classData.spellCaster}</p>
         {classData.hitDice && (
           <p className="selected-singular"><b>Hit Dice: </b>{classData.hitDice}(or {diceToInteger(classData.hitDice) / 2 + 1})</p>
         )}
@@ -325,9 +326,11 @@ function ClassCard() {
       </div>
 
       <div className="selected-multiple">
-        {chosenClassId !== -1 && classFeatures && classData && (
+        {chosenClassId !== -1 && classFeatures && classData ? (
           <SelectedClass />
-        )}
+        ): null}
+        {classData !== undefined ? setCaster(classData.spellCaster) : null}
+        {classData !== undefined ? setHalfcaster(classData.halfCaster) : null}
       </div>
     </div>
   );
