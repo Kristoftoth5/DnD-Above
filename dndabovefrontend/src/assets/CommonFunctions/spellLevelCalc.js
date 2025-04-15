@@ -5,7 +5,7 @@ function spellLevelCalc(spellCaster,halfCaster,characterLevel)
     {
         spellLevel = (Math.round(characterLevel/2));
     } 
-    if(!spellCaster & halfCaster & characterLevel <= 17)
+    else if(!spellCaster & halfCaster & characterLevel <= 17)
     {
         spellLevel = (Math.round(((characterLevel-1)/4)));
     }

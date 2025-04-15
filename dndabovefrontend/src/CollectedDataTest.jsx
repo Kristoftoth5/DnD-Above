@@ -1,13 +1,12 @@
 import { useEffect, useState, useContext } from "react"
 import { RaceIdContext, SubraceIdContext } from "./assets/SaveContexts/RaceContext.jsx";
-import { ClassIdContext, SubclassIdContext, ChosenClassFeatureIdContext } from "./assets/SaveContexts/ClassContext.jsx"
+import { ClassIdContext, SubclassIdContext, ChosenClassFeatureIdContext, FinalCharacterLevelContext } from "./assets/SaveContexts/ClassContext.jsx"
 import { StatsContext } from "./assets/SaveContexts/StatContext.jsx"
 import { BgNameContext, BgDescContext, BgSkillsContext, BgToolContext } from "./assets/SaveContexts/BackgroundContext.jsx"
 import { EquipmentContext, RemainingGoldContext } from "./assets/SaveContexts/EquipmentContext.jsx"
 import { FinalSpellsContext } from "./assets/SaveContexts/FinalSpellContext.jsx"
 import fetchEverything from "./assets/CommonFunctions/fetchEverything.js";
 import modCalc from "./assets/CommonFunctions/modCalc.js";
-import { CharacterLevelContext } from "./assets/SaveContexts/ClassContext.jsx";
 import profCalc from "./assets/CommonFunctions/profCalc.js"
 
 
@@ -39,7 +38,7 @@ function CollectedDataTest()
 
     const { FinalSpells } = useContext(FinalSpellsContext);
 
-    const { CharacterLevel } = useContext(CharacterLevelContext)
+    const { FinalCharacterLevel } = useContext(FinalCharacterLevelContext)
 
     const [save, setSave] = useState();
 
@@ -54,7 +53,7 @@ function CollectedDataTest()
         var tempracedata
         var tempsubracedata
         var tempracefeatures
-        setProfBonus(profCalc(CharacterLevel));
+        setProfBonus(profCalc(FinalCharacterLevel));
         async function fetchallthedataever()
         {
             try 
@@ -112,7 +111,7 @@ function CollectedDataTest()
                                 <!-- Level Display -->
                                 <div class="col-md-2">
                                     <label class="form-label fw-bold">Level</label>
-                                    <div id="characterLevel">${CharacterLevel}</div>
+                                    <div id="characterLevel">${FinalCharacterLevel}</div>
                                 </div>
 
                                 <!-- Race Display -->
@@ -158,12 +157,16 @@ function CollectedDataTest()
                                         <h4 class="mb-3 text-center">Skills</h4>`;
 
 
+                {/*Background skills checking.*/}
                 if (BgSkills)
                 {
                     skills.forEach((element, index)=>{
                         var stat = Stats[element[1]-1]
+                        console.log("stat: ",stat)
                         var mod = modCalc(stat);
+                        console.log("mod: ",mod)
                         var pbmod = mod+profBonus;
+                        console.log("pbmod: ",pbmod)
                         if(element[0] == BgSkills[0] || element[0] == BgSkills[1])
                         {
                             tempSave+=`<p><b>${element[0]}(<i>P</i>)</b>: ${pbmod>=0 ? "+" : ""}${pbmod} </p>`

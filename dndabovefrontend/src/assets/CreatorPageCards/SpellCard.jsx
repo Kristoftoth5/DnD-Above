@@ -21,7 +21,7 @@ function SpellCard({ClassId})
     const [chosenSpellsLimit, setChosenSpellsLimit] = useState(1);
     const [chosenCantripsLimit, setChosenCantripsLimit] = useState(2);
     const [chosenCantripsNumber, setChosenCantripsNumber] = useState(0);
-    const [chosenSpells, setChosenSpells] = useState([{}]);
+    const [chosenSpells, setChosenSpells] = useState([]);
 
     const [spellCastingAbilityModifier] = useState(5);
 
@@ -62,10 +62,12 @@ function SpellCard({ClassId})
         fetchSpells(); 
     }, [ClassId, lastFetchedClassId])
 
-    useEffect(() => {
+    /*useEffect(() => {
         if(spells !== undefined)
         {
             var temp = [];
+            setChosenSpells([]);
+            setChosenSpellIds([]);
             
             setHighestSpellLevel(spellLevelCalc(Caster,Halfcaster,FinalCharacterLevel));
             setProficiencyBonus(profCalc(FinalCharacterLevel));
@@ -83,27 +85,54 @@ function SpellCard({ClassId})
                 setEligibleSpells(filteredSpells);
                 setDisplayEligibleSpells(eligibleSpells);
             }
+
         }
         
-    }, [spells, Caster, Halfcaster, FinalCharacterLevel, highestSpellLevel]);
+    }, [spells, Caster, Halfcaster, FinalCharacterLevel, highestSpellLevel]);*/
 
-    useEffect(()=>{
-        var temparray = [{}]
-        async function fetchspells()
-        {
-            chosenSpellIds.forEach(async id =>{
-                temparray.push(await fetchEverything("Spells/"+id));
-            })
+    useEffect(() => {
+        if (spells.length === 0 || highestSpellLevel === undefined) return;
+    
+        const filteredSpells = spells.filter(spell => spell.level <= highestSpellLevel);
+        setEligibleSpells(filteredSpells);
+        setDisplayEligibleSpells(filteredSpells);
+    }, [spells, highestSpellLevel, FinalCharacterLevel, ClassId]);
+
+    useEffect(() => {
+        if (!spells || spells.length === 0) return;
+    
+        const level = spellLevelCalc(Caster, Halfcaster, FinalCharacterLevel);
+        const tempLevels = Array.from({length: level + 1}, (_, i) => i);
+    
+        setHighestSpellLevel(level);
+        setProficiencyBonus(profCalc(FinalCharacterLevel));
+        setAvailableSpellLevels(tempLevels);
+        setChosenCantripsLimit(Math.floor(FinalCharacterLevel / 4));
+        setChosenSpellsLimit(FinalCharacterLevel + spellCastingAbilityModifier);
+    }, [spells, Caster, Halfcaster, FinalCharacterLevel]);
+    useEffect(() => {
+        const fetchSpells = async () => {
+            const spells = await Promise.all(
+                chosenSpellIds.map(id => fetchEverything("Spells/" + id))
+            );
+            setChosenSpells(spells);
+            setFinalSpells(spells); 
+        };
+
+    
+        if (chosenSpellIds.length > 0) {
+            fetchSpells();
+        } else {
+            setChosenSpells([]);
+            setFinalSpells([]); 
         }
-        fetchspells();
-        if(temparray !== chosenSpells){setChosenSpells(temparray);setFinalSpells(temparray);console.log("Chosen spells in ids cuz why not: "+temparray)};
-    },[chosenSpellIds])
+    }, [chosenSpellIds, setFinalSpells]);
 
 
     function spellSelect(id, level)
     {
-        if(level == 0 & chosenCantripsNumber == chosenCantripsLimit)return;
-        else if(level != 0 & chosenSpellsLimit == chosenSpellIds.length)return; 
+        if(level == 0 && chosenCantripsNumber == chosenCantripsLimit)return;
+        else if(level != 0 && chosenSpellsLimit == chosenSpellIds.length)return; 
         var temparray = [...chosenSpellIds];
         var temp = 0;
         level == 0 ? temp = chosenCantripsNumber : null;
@@ -130,17 +159,24 @@ function SpellCard({ClassId})
     function spellRemoveDisplay(id)
     {
         var temparray = [...displayEligibleSpells];
-        console.log(temparray)
         var isId = (element) => element.id == id;
         temparray.length !== 0 ? temparray.splice((temparray.findIndex(isId)),1):null;
         setDisplayEligibleSpells(temparray)
     }
 
-    async function SpellAddDisplay(id)
-    {
-        var temparray = [...displayEligibleSpells];
-        temparray.push(await fetchEverything("Spells/"+id))
-        setDisplayEligibleSpells(temparray)
+    async function SpellAddDisplay(id) {
+        try {
+            const spell = await fetchEverything("Spells/" + id);
+    
+            setDisplayEligibleSpells(prev => {
+                if (!prev.some(s => s.id === spell.id)) {
+                    return [...prev, spell];
+                }
+                return prev;
+            });
+        } catch (err) {
+            console.error("Error adding spell to display:", err);
+        }
     }
 
     function showDetails(data)
@@ -192,7 +228,7 @@ function SpellCard({ClassId})
 
 
             <div className="selected-multiple">
-                {chosenSpellLevel !== undefined & !dropdownOpen? (
+                {chosenSpellLevel !== undefined && !dropdownOpen? (
                     <>
                     {chosenSpellLevel == 0 ? (<h3>Cantrips</h3>):(<h3>Level {chosenSpellLevel} Spells</h3>)}
                     <table>
@@ -205,21 +241,21 @@ function SpellCard({ClassId})
                                     <th>Components</th>
                                     <th>Duration</th>
                                     <th>Details</th>
-                                    <th>Add Spell</th>
+                                    {!chosenSpellsLimit==chosenSpells.length?(<th>Add Spell</th>):null}
                                 </tr>
                             </thead>
                             <tbody>
-                        {eligibleSpells.map((spell, id)=>(
+                        {displayEligibleSpells.map((spell, id)=>(
                             spell.level === chosenSpellLevel ?(
                             <tr key={id}>
                                 <td>{spell.name}</td>
                                 <td>Level {spell.level} {spell.school}</td>
                                 <td>{spell.castingTime}<sup>{spell.ritual == 1 ? (<i>R</i>):(null)}</sup></td>
                                 <td>{spell.range}</td>
-                                <td>{spell.components}</td>
+                                <td>{spell.component}<sup>{spell.componentPrice}GP</sup></td>
                                 <td>{spell.duration}<sup>{spell.concentration == 1 ? (<b>C</b>):(null)}</sup></td>
                                 <td><button className="btn btn-primary" onClick={()=>{showDetails(spell.description)}}>?</button></td>
-                                {!chosenSpellIds.includes(spell.id)?(<td><button className="btn btn-primary" onClick={()=>{spellSelect(spell.id, spell.level); spellRemoveDisplay(spell.id)}}>Add</button></td>):<td><button className="btn btn-primary" onClick={()=>{spellDeselect(spell.id, spell.level); SpellAddDisplay(spell.id)}}>Remove</button></td>}
+                                {!chosenSpellIds.includes(spell.id)?(<td><button className="btn btn-primary" onClick={()=>{spellSelect(spell.id, spell.level); spellRemoveDisplay(spell.id)}}>Add</button></td>):null}
                             </tr>):null
                         ))}
                         </tbody>
@@ -238,7 +274,7 @@ function SpellCard({ClassId})
         return(
             <>
             {chosenSpells.length !== 0 ? (
-                <>
+                <div className="selected-multiple">
                     <table>
                             <thead>
                                 <tr>
@@ -259,14 +295,15 @@ function SpellCard({ClassId})
                                 <td>Level {spell.level} {spell.school}</td>
                                 <td>{spell.castingTime}<sup>{spell.ritual == 1 ? (<i>R</i>):(null)}</sup></td>
                                 <td>{spell.range}</td>
-                                <td>{spell.components}</td>
+                                <td>{spell.component}<sup>{spell.componentPrice}GP</sup></td>
                                 <td>{spell.duration}<sup>{spell.concentration == 1 ? (<b>C</b>):(null)}</sup></td>
                                 <td><button className="btn btn-primary" onClick={()=>{showDetails(spell.description)}}>?</button></td>
+                                <td><button className="btn btn-primary" onClick={()=>{spellDeselect(spell.id, spell.level); SpellAddDisplay(spell.id)}}>Remove</button></td>
                             </tr>
                         ))}
                         </tbody>
                         </table>
-                        </>
+                        </div>
             ):null}
             </>
         )
@@ -281,9 +318,10 @@ function SpellCard({ClassId})
         <div className="creator-container">
             <h2 className="creator-title">Spells</h2>
             <AvailableSpells/>
-        </div>
+
         <div className="selected-multiple">
-            {chosenSpellIds.length !== 0 ? (<SelectedSpells/>):null}
+            {chosenSpells.length !== 0 ? (<SelectedSpells/>):null}
+        </div>
         </div>
         </>
     ):null}
