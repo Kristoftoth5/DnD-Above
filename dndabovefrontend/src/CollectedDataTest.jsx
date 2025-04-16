@@ -275,7 +275,6 @@ function CollectedDataTest()
                 tempSave+=`<p> <b> Successes </b> <input type="checkbox" /><input type="checkbox" /><input type="checkbox" /></p>
                 <p> <b> Failures </b> <input type="checkbox" /><input type="checkbox" /><input type="checkbox" /></p>
                 <sup>Remember, you roll a death saving throw when: You take damage while on 0 hit points or at the start of your turn if you are at 0 hit points.</sup>
-                
                 </div>`
 
 
