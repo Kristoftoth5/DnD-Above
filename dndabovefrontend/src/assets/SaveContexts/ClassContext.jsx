@@ -14,6 +14,8 @@ export const CasterContext = createContext();
 
 export const HalfcasterContext = createContext();
 
+export const SpellCastingAMContext = createContext();
+
 //Returns Class Id
 export function ClassIdProvider({ children }) {
   const [ClassId, setClassId] = useState(0);
@@ -61,7 +63,7 @@ export function BasicClassFeatureIdProvider({ children }) {
 //Returns the level of the character
 export function FinalCharacterLevelProvider({ children }) {
   const [FinalCharacterLevel, setFinalCharacterLevel] = useState(6);
-  console.log("Level: "+FinalCharacterLevel)
+
   return (
     <FinalCharacterLevelContext.Provider value={{ FinalCharacterLevel, setFinalCharacterLevel }}>
       {children}
@@ -72,7 +74,7 @@ export function FinalCharacterLevelProvider({ children }) {
 //Returns if the character is a caster
 export function CasterProvider({ children }) {
   const [Caster, setCaster] = useState(1);
-  console.log("Caster: "+Caster)
+
   return (
     <CasterContext.Provider value={{ Caster, setCaster }}>
       {children}
@@ -83,10 +85,21 @@ export function CasterProvider({ children }) {
 //Returns if the character is a halfcaster
 export function HalfcasterProvider({ children }) {
   const [Halfcaster, setHalfcaster] = useState(0);
-  console.log("Halfcaster: " + Halfcaster)
+
   return (
     <HalfcasterContext.Provider value={{ Halfcaster, setHalfcaster }}>
       {children}
     </HalfcasterContext.Provider>
+  );
+}
+
+//Returns the spellcasting ability modifier
+export function SpellCastingAMProvider({ children }) {
+  const [SpellCastingAM, setSpellCastingAM] = useState("");
+
+  return (
+    <SpellCastingAMContext.Provider value={{ SpellCastingAM, setSpellCastingAM }}>
+      {children}
+    </SpellCastingAMContext.Provider>
   );
 }
