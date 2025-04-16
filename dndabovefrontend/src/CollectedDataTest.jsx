@@ -14,18 +14,12 @@ import diceToInteger from "./assets/CommonFunctions/diceToInteger.js"
 function CollectedDataTest()
 {
     const { selectedRaceId } = useContext(RaceIdContext);
-    const [ raceFeatures, setRaceFeatures ] = useState();
-    const [ raceData, setRaceData ] = useState();
     const { selectedSubraceId } = useContext(SubraceIdContext);
-    const [ subRaceFeatures, setSubRaceFeatures ] = useState();
 
     const { ClassId } = useContext(ClassIdContext);
-    const [classData, setClassData] = useState();
     const { SubclassId } = useContext(SubclassIdContext);
-    const [ subClassFeatures, setSubClassFeatures ] = useState();
     const { ChosenClassFeatureId } = useContext(ChosenClassFeatureIdContext);
     
-    const [profBonus, setProfBonus] = useState();
     const [currentHP, setCurrentHP] = useState(0);
 
 
@@ -56,7 +50,6 @@ function CollectedDataTest()
         var tempracedata
         var tempsubracedata
         var tempracefeatures
-        setProfBonus(profCalc(FinalCharacterLevel));
         async function fetchallthedataever()
         {
             try 
@@ -73,11 +66,16 @@ function CollectedDataTest()
                 const statNames = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"];
                 const skills = [["Acrobatics","2"],["Animal Handling","5"],["Arcana","4"],["Athletics","1"],["Deception","6"],["History","4"],["Insight","5"],["Intimidiation","6"],["Investigation","4"],["Medicine","5"],["Nature","4"],["Perception","5"],["Performance","6"],["Persuasion","6"],["Religion","4"],["Sleight of Hand","2"],["Stealth","2"],["Survival","5"]];
 
+                var savingThrowProfs;
+                var savingThrows=[["Strength",1],["Dexterity",2],["Constitution",3],["Intelligence",4],["Wisdom",5],["Charisma",6],]
                 var skillProfs = [];
+                var profBonus = profCalc(FinalCharacterLevel)
                 const conMod = modCalc(Stats[2]);
                 const hitDice = diceToInteger(classDataResponse.hitDice);
                 const maxHpCalc = (FinalCharacterLevel * conMod) + (FinalCharacterLevel * (hitDice / 2));
                 setCurrentHP(maxHpCalc); 
+                savingThrowProfs = classDataResponse.savingThrows;
+                
 
 
 
@@ -99,8 +97,15 @@ function CollectedDataTest()
                         }
                 });
 
+                
+
+                
+
                 // Now create the HTML output string
                 let tempSave = `
+                    <head>
+                        <link rel="stylesheet" href="/CreatorPageCards/SheetStyle.css">
+                    </head>
                     <div class="container-fluid mt-4">
                         <!-- Character Header Info -->
                         <div class="card mb-4 p-3 shadow-sm">
@@ -171,9 +176,7 @@ function CollectedDataTest()
                 {
                     skills.forEach((element, index)=>{
                         var stat = Stats[element[1]-1]
-                        console.log("stat: ",stat)
                         var mod = modCalc(stat);
-                        console.log("mod: ",mod)
                         var pbmod = mod+profBonus;
                         console.log("pbmod: ",pbmod)
                         if(element[0] == BgSkills[0] || element[0] == BgSkills[1])
@@ -190,6 +193,11 @@ function CollectedDataTest()
                         }
 
                     });
+                }
+                if(BgTool)
+                {
+                    tempSave+=`<h5 class="fw-bold">Tools</h5>
+                    <input class="form-control" value="${BgTool}"/>`;
                 }
                 
                 tempSave+=`<div class="col-md-8">`
@@ -226,32 +234,47 @@ function CollectedDataTest()
 
                         <!-- Speed -->
                         <div class="col-md-4">
-                            <label class="form-label fw-bold">Speed</label>
-                            <div id="movementSpeed" class="form-control bg-light">30 ft</div>
+                            <label class="form-label fw-bold">Walking Speed</label>
+                            <div class=" bg-light"><input 
+                            type="number" 
+                            class="form-control" 
+                            value="${raceDataResponse.speed}" 
+                            min="0"  
+                            /></div>
                         </div>
                     </div>
 
-                    <!-- Saving Throws -->
+                `;
+                tempSave+=`<!-- Saving Throws -->
                     <div class="mt-4">
                         <h5 class="fw-bold">Saving Throws</h5>
                         <ul id="savingThrows" class="list-group list-group-flush">
-                            <li class="list-group-item">Strength: +2</li>
-                            <li class="list-group-item">Dexterity: +1</li>
-                            <li class="list-group-item">Constitution: +3</li>
-                            <li class="list-group-item">Intelligence: +0</li>
-                            <li class="list-group-item">Wisdom: +1</li>
-                            <li class="list-group-item">Charisma: +2</li>
-                        </ul>
-                    </div>
+                            
+                        `;
+                savingThrows.forEach((element, id)=>{
+                    var stat = Stats[element[1]-1]
+                    var mod = modCalc(stat);
+                    var pbmod = mod+profBonus;
+                    tempSave+=` `
+                    if(element[0] == savingThrowProfs[0] || element[0] == savingThrowProfs[1])
+                    {
+                        tempSave+=`<li class="list-group-item">${element[0]} : ${pbmod}</li>`
+                    }
+                    else
+                    {
+                        tempSave+=`<li class="list-group-item">${element[0]} : ${mod>=0 ? "+" : ""}${mod}</li>`
+                    }
+                })
+                tempSave+=`
+                </ul>`
 
-                    <!-- Resistances -->
-                    <div class="mt-4">
-                        <h5 class="fw-bold">Resistances</h5>
-                        <div id="resistances">Fire, Cold</div>
-                    </div>
-                </div>
-                `;
 
+                tempSave+=`
+                <div class="mt-4">
+                        <h5 class="fw-bold">Death Saving Throws</h5>`
+                tempSave+=`<p> <div class="custom-checkbox-wrapper"><input type="checkbox" class="custom-checkbox" id="customCheckbox" /> <label htmlFor="customCheckbox" class="custom-checkbox-label"></label></div></p>
+                
+                </div>`
 
 
 

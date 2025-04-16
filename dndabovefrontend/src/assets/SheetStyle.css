@@ -1,0 +1,43 @@
+.custom-checkbox-wrapper {
+    display: inline-block;
+    position: relative;
+    width: 40px;
+    height: 40px;
+  }
+
+  .custom-checkbox {
+    display: none;
+  }
+
+  .custom-checkbox-label {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #e0e0e0;
+    border-radius: 12px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.2s ease;
+  }
+
+  .custom-checkbox-label::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background-image: url('/public/skullIcon.png'); /* Your custom icon */
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease;
+  }
+
+  .custom-checkbox:checked + .custom-checkbox-label::before {
+    transform: translate(-50%, -50%) scale(0.8); /* Custom animation or change on check */
+  }
+
+  .custom-checkbox:checked + .custom-checkbox-label {
+    background-color: #4CAF50; /* Change background color when checked */
+  }
