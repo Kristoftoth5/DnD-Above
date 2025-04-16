@@ -4,7 +4,7 @@ import fetchEverything from "../CommonFunctions/fetchEverything";
 import profCalc from "../CommonFunctions/profCalc";
 import "../Cards.css";
 import { FinalSpellsContext } from "../SaveContexts/FinalSpellContext";
-import { FinalCharacterLevelContext, CasterContext, HalfcasterContext } from "../SaveContexts/ClassContext";
+import { FinalCharacterLevelContext, CasterContext, HalfcasterContext, SpellCastingAMContext } from "../SaveContexts/ClassContext";
 
 function SpellCard({ ClassId }) {
     const [spells, setSpells] = useState([]);
@@ -21,13 +21,13 @@ function SpellCard({ ClassId }) {
     const [chosenCantripsLimit, setChosenCantripsLimit] = useState(2);
     const [chosenCantripsNumber, setChosenCantripsNumber] = useState(0);
     const [chosenSpells, setChosenSpells] = useState([]);
-    const [spellCastingAbilityModifier] = useState(5);
     const [lastFetchedClassId, setLastFetchedClassId] = useState(null);
 
     const { setFinalSpells } = useContext(FinalSpellsContext);
     const { FinalCharacterLevel } = useContext(FinalCharacterLevelContext);
     const { Caster } = useContext(CasterContext);
     const { Halfcaster } = useContext(HalfcasterContext);
+    const { SpellCastingAM } = useContext(SpellCastingAMContext)
 
     useEffect(() => {
         async function fetchSpells() {
@@ -66,7 +66,7 @@ function SpellCard({ ClassId }) {
         setProficiencyBonus(profCalc(FinalCharacterLevel));
         setAvailableSpellLevels(tempLevels);
         setChosenCantripsLimit(Halfcaster !== 0 ? 0 : Math.ceil(FinalCharacterLevel / 4) + 1);
-        setChosenSpellsLimit(FinalCharacterLevel + spellCastingAbilityModifier);
+        setChosenSpellsLimit(FinalCharacterLevel + SpellCastingAM);
     }, [spells, Caster, Halfcaster, FinalCharacterLevel]);
 
     useEffect(() => {
@@ -147,8 +147,8 @@ function SpellCard({ ClassId }) {
         return (
             <>
                 <p><b>Spellcasting Class Name</b></p>
-                <p><b>Spellcasting DC: </b> {8 + spellCastingAbilityModifier + proficiencyBonus} </p>
-                <p><b>Spell Attack Bonus: </b> {spellCastingAbilityModifier + proficiencyBonus} </p>
+                <p><b>Spellcasting DC: </b> {8 + SpellCastingAM + proficiencyBonus} </p>
+                <p><b>Spell Attack Bonus: </b> {SpellCastingAM + proficiencyBonus} </p>
                 <div className="dropdown-wrapper">
                     <button className="btn btn-secondary dropdown-toggle" onClick={() => setDropdownOpen(!dropdownOpen)}>
                         Select Spell Level

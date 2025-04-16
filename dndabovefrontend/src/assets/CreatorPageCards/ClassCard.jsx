@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import fetchEverything from "../CommonFunctions/fetchEverything";
 import diceToInteger from "../CommonFunctions/diceToInteger";
+import { StatsContext } from "../SaveContexts/StatContext";
 import { ClassIdContext, SubclassIdContext, ChosenClassFeatureIdContext, BasicClassFeatureIdContext, FinalCharacterLevelContext, CasterContext, HalfcasterContext, SpellCastingAMContext } from "../SaveContexts/ClassContext";
 import "../Cards.css";
+import modCalc from "../CommonFunctions/modCalc";
 
 function ClassCard() {
   const [classOptions, setClassOptions] = useState();
@@ -36,6 +38,8 @@ function ClassCard() {
   const { setCaster } = useContext(CasterContext)
   const { setHalfcaster } = useContext(HalfcasterContext)
   const { setSpellCastingAM } = useContext(SpellCastingAMContext)
+  
+  const { Stats } = useContext(StatsContext)
 
   useEffect(() => {
     async function fetchclasses() {
@@ -188,17 +192,22 @@ function ClassCard() {
       });
     }
 
+    //sets caster, spellcaster, calculates spellcasting ability mod
     useEffect(() => {
+      var statNames = [["Strength", 0], ["Dexterity",1], ["Constitution",2], ["Intelligence",3], ["Wisdom",4], ["Charisma",5]];
+      var stat = Stats[element[1]]
+      var mod = modCalc(stat);
+
       if (classData) {
           setCaster(classData.spellCaster);
           setHalfcaster(classData.halfCaster);
           if (Array.isArray(classData.savingThrows) && classData.savingThrows.length > 1) {
-              setSpellCastingAM(classData.savingThrows[1]);
+              setSpellCastingAM(null); // fix later
           } else {
               setSpellCastingAM(null); // or default/fallback value
           }
       }
-  }, [classData]);
+  }, [classData, characterLevel]);
 
     return (
       <>
