@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import fetchEverything from "../CommonFunctions/fetchEverything";
 import diceToInteger from "../CommonFunctions/diceToInteger";
-import { ClassIdContext, SubclassIdContext, ChosenClassFeatureIdContext, BasicClassFeatureIdContext, FinalCharacterLevelContext, CasterContext, HalfcasterContext } from "../SaveContexts/ClassContext";
+import { ClassIdContext, SubclassIdContext, ChosenClassFeatureIdContext, BasicClassFeatureIdContext, FinalCharacterLevelContext, CasterContext, HalfcasterContext, SpellCastingAMContext } from "../SaveContexts/ClassContext";
 import "../Cards.css";
 
 function ClassCard() {
@@ -35,6 +35,7 @@ function ClassCard() {
   const { setFinalCharacterLevel } = useContext(FinalCharacterLevelContext)
   const { setCaster } = useContext(CasterContext)
   const { setHalfcaster } = useContext(HalfcasterContext)
+  const { setSpellCastingAM } = useContext(SpellCastingAMContext)
 
   useEffect(() => {
     async function fetchclasses() {
@@ -187,6 +188,18 @@ function ClassCard() {
       });
     }
 
+    useEffect(() => {
+      if (classData) {
+          setCaster(classData.spellCaster);
+          setHalfcaster(classData.halfCaster);
+          if (Array.isArray(classData.savingThrows) && classData.savingThrows.length > 1) {
+              setSpellCastingAM(classData.savingThrows[1]);
+          } else {
+              setSpellCastingAM(null); // or default/fallback value
+          }
+      }
+  }, [classData]);
+
     return (
       <>
         <p className="selected-singular"><b>Name: </b>{classData.name}</p>
@@ -329,8 +342,6 @@ function ClassCard() {
         {chosenClassId !== -1 && classFeatures && classData ? (
           <SelectedClass />
         ): null}
-        {classData !== undefined ? setCaster(classData.spellCaster) : null}
-        {classData !== undefined ? setHalfcaster(classData.halfCaster) : null}
       </div>
     </div>
   );
