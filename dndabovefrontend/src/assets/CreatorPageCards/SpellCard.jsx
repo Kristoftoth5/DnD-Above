@@ -17,6 +17,7 @@ function SpellCard({ ClassId }) {
     const [chosenSpellLevel, setChosenSpellLevel] = useState(undefined);
     const [chosenSpellIds, setChosenSpellIds] = useState([]);
     const [chosenSpellsLimit, setChosenSpellsLimit] = useState(1);
+    const [chosenSpellsNumber, setChosenSpellsNumber] = useState(0);
     const [chosenCantripsLimit, setChosenCantripsLimit] = useState(2);
     const [chosenCantripsNumber, setChosenCantripsNumber] = useState(0);
     const [chosenSpells, setChosenSpells] = useState([]);
@@ -35,6 +36,7 @@ function SpellCard({ ClassId }) {
                 setChosenSpellIds([]);
                 setChosenSpells([]);
                 setChosenCantripsNumber(0);
+                setChosenSpellsNumber(0);
                 setChosenSpellLevel(undefined);
                 setDisplayEligibleSpells([]);
 
@@ -94,11 +96,14 @@ function SpellCard({ ClassId }) {
         const isCantrip = level === 0;
 
         if (isCantrip) {
-            if (Halfcaster !== 0) return;
             if (chosenCantripsNumber >= chosenCantripsLimit) return;
             setChosenCantripsNumber(prev => prev + 1);
-        } else {
-            if (chosenSpellIds.length >= chosenSpellsLimit) return;
+        } 
+        else 
+        {
+            if (chosenSpellsNumber == chosenSpellsLimit) return;
+            else setChosenSpellsNumber(prev => prev + 1);
+            
         }
 
         setChosenSpellIds(prev => [...prev, id]);
@@ -109,6 +114,10 @@ function SpellCard({ ClassId }) {
         setChosenSpellIds(prev => prev.filter(spellId => spellId !== id));
         if (isCantrip) {
             setChosenCantripsNumber(prev => Math.max(0, prev - 1));
+        }
+        else
+        {
+            setChosenSpellsNumber(prev => Math.max(0, prev - 1));
         }
     }
 
@@ -191,17 +200,17 @@ function SpellCard({ ClassId }) {
                                                                 spellRemoveDisplay(spell.id);
                                                             }}
                                                             disabled={
-                                                                (spell.level === 0 && (Halfcaster !== 0 || chosenCantripsNumber >= chosenCantripsLimit)) ||
-                                                                (spell.level !== 0 && chosenSpellIds.length >= chosenSpellsLimit)
+                                                                (spell.level === 0 && (Halfcaster !== 0 || chosenCantripsNumber == chosenCantripsLimit)) ||
+                                                                (spell.level !== 0 && chosenSpellsNumber == chosenSpellsLimit)
                                                             }
                                                             style={{
                                                                 backgroundColor: (
-                                                                    (spell.level === 0 && (Halfcaster !== 0 || chosenCantripsNumber >= chosenCantripsLimit)) ||
-                                                                    (spell.level !== 0 && chosenSpellIds.length >= chosenSpellsLimit)
+                                                                    (spell.level === 0 && (Halfcaster !== 0 || chosenCantripsNumber == chosenCantripsLimit)) ||
+                                                                    (spell.level !== 0 && chosenSpellsNumber == chosenSpellsLimit)
                                                                 ) ? "#007bff" : "",
                                                                 cursor: (
-                                                                    (spell.level === 0 && (Halfcaster !== 0 || chosenCantripsNumber >= chosenCantripsLimit)) ||
-                                                                    (spell.level !== 0 && chosenSpellIds.length >= chosenSpellsLimit)
+                                                                    (spell.level === 0 && (Halfcaster !== 0 || chosenCantripsNumber == chosenCantripsLimit)) ||
+                                                                    (spell.level !== 0 && chosenSpellsNumber == chosenSpellsLimit)
                                                                 ) ? "not-allowed" : "pointer"
                                                             }}
                                                         >
