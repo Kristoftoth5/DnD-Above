@@ -206,8 +206,7 @@ function ClassCard() {
               if (element[0] == classData.savingThrows[1]) {
                 var stat = Stats[element[1]]
                 var mod = modCalc(stat);
-                var pbmod = mod+profCalc(characterLevel);
-                setSpellCastingAM(pbmod);
+                setSpellCastingAM(mod);
               }
             });
 

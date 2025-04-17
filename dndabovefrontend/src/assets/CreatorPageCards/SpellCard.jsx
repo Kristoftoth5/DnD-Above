@@ -39,6 +39,7 @@ function SpellCard({ ClassId }) {
                 setChosenSpellsNumber(0);
                 setChosenSpellLevel(undefined);
                 setDisplayEligibleSpells([]);
+                setFinalSpells([]);
 
                 const response = await fetchEverything("Spells/originclassid/" + ClassId);
                 const classData = await fetchEverything("Classes/" + ClassId);
@@ -87,6 +88,7 @@ function SpellCard({ ClassId }) {
             fetchSpells();
         } else {
             setChosenSpells([]);
+            setFinalSpells([]);
         }
     }, [chosenSpellIds]);
 
@@ -107,11 +109,13 @@ function SpellCard({ ClassId }) {
         }
 
         setChosenSpellIds(prev => [...prev, id]);
+        setFinalSpells(prev => [...prev, id]);
     }
 
     function spellDeselect(id, level) {
         const isCantrip = level === 0;
         setChosenSpellIds(prev => prev.filter(spellId => spellId !== id));
+        setFinalSpells(prev => prev.filter(spellId => spellId !== id));
         if (isCantrip) {
             setChosenCantripsNumber(prev => Math.max(0, prev - 1));
         }

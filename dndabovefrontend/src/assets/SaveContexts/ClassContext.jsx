@@ -96,7 +96,7 @@ export function HalfcasterProvider({ children }) {
 //Returns the spellcasting ability modifier
 export function SpellCastingAMProvider({ children }) {
   const [SpellCastingAM, setSpellCastingAM] = useState(-1);
-  console.log("Spellcastgnajhgap: "+SpellCastingAM)
+
   return (
     <SpellCastingAMContext.Provider value={{ SpellCastingAM, setSpellCastingAM }}>
       {children}
