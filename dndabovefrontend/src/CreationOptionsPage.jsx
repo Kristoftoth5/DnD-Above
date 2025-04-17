@@ -16,7 +16,6 @@ import background8 from './assets/bgImages/eight.jpg'
 
 function CreationOptionsPage() {
   const [isChecked1, setIsChecked1] = useState(false);
-  const [chosenStatCalc, setChosenStatCalc] = useState(1);
   const [dropdown, setDropdown] = useState(false);
 
   const { setSelectedOption } = useContext(CreatorContext);
@@ -69,7 +68,7 @@ function CreationOptionsPage() {
             className="form-check-input me-2"
             id="backgroundFeat"
             checked={isChecked1}
-            onChange={() => {setIsChecked1(!isChecked1);setExtraFeat(isChecked1);}}
+            onChange={() => {setIsChecked1(!isChecked1);setExtraFeat(!isChecked1);}}
           />
           <label className="form-check-label" htmlFor="backgroundFeat">
             Do you get a Feat at level 1 - akin to a background feature?

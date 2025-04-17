@@ -38,8 +38,9 @@ const Header = () => {
   },[token,UserId])
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container">
+    <div className="container">
+      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+
         <button className="nav-link btn btn-link" onClick={() => handleNavigation("/")}>
             <img src={falmingo} alt="Save" className="icon flipped" />
             Home
@@ -95,8 +96,9 @@ const Header = () => {
             
           </ul>
         </div>
-      </div>
-    </nav>
+
+      </nav>
+    </div>
   );
 };
 

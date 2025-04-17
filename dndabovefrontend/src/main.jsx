@@ -9,6 +9,7 @@ import CollectedDataTest from './CollectedDataTest.jsx'
 import "bootstrap/dist/css/bootstrap.min.css";
 import Header from './assets/Header.jsx'
 import Home from './Home.jsx'
+import AsiFeatPage from "./assets/AsiFeatPage.jsx"
 import { EquipmentProvider, RemainingGoldProvider } from './assets/SaveContexts/EquipmentContext.jsx';
 import { RaceIdProvider, SubraceFeatureIdProvider, SubraceIdProvider } from './assets/SaveContexts/RaceContext.jsx';
 import { ClassIdProvider, SubclassIdProvider, ChosenClassFeatureIdProvider, BasicClassFeatureIdProvider, FinalCharacterLevelProvider, CasterProvider, HalfcasterProvider, SpellCastingAMProvider } from './assets/SaveContexts/ClassContext.jsx';
@@ -61,6 +62,7 @@ createRoot(document.getElementById('root')).render(
                 <Route path="/sign-in" element={<SignInPage/>}/>
                 <Route path="/sign-up" element={<SignUpPage/>}/>
                 <Route path="/saves-list" element={<SavesListPage/>}/>
+                <Route path="/asi-feat" element={<AsiFeatPage/>}/>
               </Routes>
       </StatsProvider>
 

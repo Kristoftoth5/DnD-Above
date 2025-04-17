@@ -68,7 +68,7 @@ function CreatorPage ()
             <div className='save'>
             <button 
                 className="save-button" 
-                onClick={() => {ClassId == 0 || selectedRaceId == 0 ? window.alert("You need to select a Race and a Class") : navigate("/finalize")}}
+                onClick={() => {ClassId == 0 || selectedRaceId == 0 ? window.alert("You need to select a Race and a Class") : navigate("/asi-feat")}}
                 >
                 <img src={falmingo} alt="Save" className="icon flipped" />
                 Save Character
