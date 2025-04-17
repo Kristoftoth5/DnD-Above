@@ -23,7 +23,7 @@ const Header = () => {
     navigate(path);
   };
 
-  const handeLogOut = () => {
+  const handleLogOut = () => {
    
       const confirmLogOut = window.confirm("Are you sure you want to log out? You will not have access to the Saves menu until you sign in again.");
       if (!confirmLogOut) return;
@@ -82,8 +82,13 @@ const Header = () => {
             </li>):null}
             
             {token ?(<li className="nav-item">
-              <button className="nav-link btn btn-warning" onClick={() => { handeLogOut();}}>
+              <button className="nav-link btn btn-warning" onClick={() => { handleLogOut();}}>
                 Logout
+              </button>
+            </li>):null}
+            {token ?(<li className="nav-item">
+              <button className="nav-link btn btn-warning" onClick={() => { navigate("/saves-list");}}>
+                Saves
               </button>
             </li>):null}
             {console.log(UserId)}

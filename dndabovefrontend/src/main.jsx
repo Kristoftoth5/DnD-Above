@@ -18,6 +18,7 @@ import SignInPage from './assets/UserManagementPages/SignInPage.jsx'
 import SignUpPage from './assets/UserManagementPages/SignUpPage.jsx'
 import { StatsProvider } from './assets/SaveContexts/StatContext.jsx';
 import { UserIdProvider } from './assets/UserContext.jsx';
+import SavesListPage from './SavesListPage.jsx';
 
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>
@@ -59,6 +60,7 @@ createRoot(document.getElementById('root')).render(
                 <Route path="/finalize" element={<CollectedDataTest/>}/>
                 <Route path="/sign-in" element={<SignInPage/>}/>
                 <Route path="/sign-up" element={<SignUpPage/>}/>
+                <Route path="/saves-list" element={<SavesListPage/>}/>
               </Routes>
       </StatsProvider>
 

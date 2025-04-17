@@ -61,7 +61,7 @@ function SignInPage()
               {
                 localStorage.setItem("authToken", responseData.token);
                 setToken(responseData.token);
-                setUserId(responseData. userId);
+                setUserId(responseData.userId);
                 navigate("/"); // Navigate to home after successful sign-in
               } else 
               {

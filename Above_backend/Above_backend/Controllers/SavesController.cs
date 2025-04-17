@@ -96,12 +96,9 @@ namespace Above_backend.Controllers
         [HttpPost]
         public async Task<ActionResult<Saves>> PostSaves(SavesCreateDTO savescreatedto)
         {
-            var UserClaim = User.Claims;
-            var user = _context.Users.FindAsync();
-            var Saves = new Saves
-            {
-
-            };
+            //var UserClaim = User.Claims;
+            //var user = _context.Users.FindAsync();
+            
             _context.Saves.Add(MappingSaves.SavesCreateDTOToSaves(savescreatedto));
             await _context.SaveChangesAsync();
 
