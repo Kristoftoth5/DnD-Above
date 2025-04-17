@@ -5,6 +5,7 @@ import { StatsContext } from "../SaveContexts/StatContext";
 import { ClassIdContext, SubclassIdContext, ChosenClassFeatureIdContext, BasicClassFeatureIdContext, FinalCharacterLevelContext, CasterContext, HalfcasterContext, SpellCastingAMContext } from "../SaveContexts/ClassContext";
 import "../Cards.css";
 import modCalc from "../CommonFunctions/modCalc";
+import profCalc from "../CommonFunctions/profCalc";
 
 function ClassCard() {
   const [classOptions, setClassOptions] = useState();
@@ -194,20 +195,27 @@ function ClassCard() {
 
     //sets caster, spellcaster, calculates spellcasting ability mod
     useEffect(() => {
-      var statNames = [["Strength", 0], ["Dexterity",1], ["Constitution",2], ["Intelligence",3], ["Wisdom",4], ["Charisma",5]];
-      var stat = Stats[element[1]]
-      var mod = modCalc(stat);
 
       if (classData) {
           setCaster(classData.spellCaster);
           setHalfcaster(classData.halfCaster);
           if (Array.isArray(classData.savingThrows) && classData.savingThrows.length > 1) {
-              setSpellCastingAM(null); // fix later
+
+            var statNames = [["Strength", 0], ["Dexterity",1], ["Constitution",2], ["Intelligence",3], ["Wisdom",4], ["Charisma",5]];
+            statNames.forEach((element, id)=>{
+              if (element[0] == classData.savingThrows[1]) {
+                var stat = Stats[element[1]]
+                var mod = modCalc(stat);
+                var pbmod = mod+profCalc(characterLevel);
+                setSpellCastingAM(pbmod);
+              }
+            });
+
           } else {
               setSpellCastingAM(null); // or default/fallback value
           }
       }
-  }, [classData, characterLevel]);
+  }, [classData, characterLevel, chosenClassId]);
 
     return (
       <>
