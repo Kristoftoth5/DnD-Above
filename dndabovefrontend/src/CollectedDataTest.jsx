@@ -85,6 +85,19 @@ function CollectedDataTest() {
                     }
                 })
 
+                // Equipment Section
+                const strength = Stats[0]; // Strength stat
+                const equipmentFields = [];
+                const equipmentCount = strength * 3; // Calculate the number of fields based on Strength stat
+                for (let i = 0; i < equipmentCount; i++) {
+                    const itemName = Equipment[i] || ""; // If no equipment exists, leave blank
+                    equipmentFields.push({
+                        itemName,
+                        itemQuantity: 1
+                    });
+                }
+
+
                 // Start building the tempSave HTML content
                 let tempSave = `
                     <div class="container-fluid mt-4">
@@ -132,6 +145,8 @@ function CollectedDataTest() {
                                         `;
                                     }).join('')}
                                 </div>
+
+
 
                                 <!-- Skills -->
                                 <div class="card shadow-sm mb-4 p-3">
@@ -196,6 +211,9 @@ function CollectedDataTest() {
                                 </div>
                             </div>
 
+                            
+
+
                             <!-- Right Column: Combat & Weapon Attacks -->
                             <div class="col-md-6">
                                 <!-- Combat Box -->
@@ -250,10 +268,33 @@ function CollectedDataTest() {
                                     <p>Weapon Attack 2: Placeholder for weapon stats</p>
                                     <p>Weapon Attack 3: Placeholder for weapon stats</p>
                                 </div>
-                            </div>
+                            
+                            <!-- Equipment Section -->
+                                <div class="card shadow-sm mb-4 p-3">
+                                    <h4 class="mb-3">Equipment</h4>
+                                    ${equipmentFields.map((field, index) => {
+                                        return `
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" value="${field.itemName}" placeholder="Enter equipment name..." />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="number" class="form-control" value="${field.itemQuantity}" min="1" placeholder="Enter quantity" />
+                                                </div>
+                                            </div>
+                                        `;
+                                    }).join('')}
+                                </div>
+                            
+                            
+                                </div>
                         </div>
                     </div>
+
+                    
                 `;
+
+                
 
                 setSave(tempSave);
             } catch (error) {
