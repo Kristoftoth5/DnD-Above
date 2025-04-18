@@ -1,45 +1,39 @@
-import { useEffect, useState, useContext } from "react"
+import { useEffect, useState, useContext } from "react";
 import { RaceIdContext, SubraceIdContext } from "./assets/SaveContexts/RaceContext.jsx";
-import { ClassIdContext, SubclassIdContext, ChosenClassFeatureIdContext, FinalCharacterLevelContext } from "./assets/SaveContexts/ClassContext.jsx"
-import { StatsContext } from "./assets/SaveContexts/StatContext.jsx"
-import { BgNameContext, BgDescContext, BgSkillsContext, BgToolContext } from "./assets/SaveContexts/BackgroundContext.jsx"
-import { EquipmentContext, RemainingGoldContext } from "./assets/SaveContexts/EquipmentContext.jsx"
-import { FinalSpellsContext } from "./assets/SaveContexts/FinalSpellContext.jsx"
+import { ClassIdContext, SubclassIdContext, ChosenClassFeatureIdContext, FinalCharacterLevelContext } from "./assets/SaveContexts/ClassContext.jsx";
+import { StatsContext } from "./assets/SaveContexts/StatContext.jsx";
+import { BgNameContext, BgDescContext, BgSkillsContext, BgToolContext } from "./assets/SaveContexts/BackgroundContext.jsx";
+import { EquipmentContext, RemainingGoldContext } from "./assets/SaveContexts/EquipmentContext.jsx";
+import { FinalSpellsContext } from "./assets/SaveContexts/FinalSpellContext.jsx";
 import fetchEverything from "./assets/CommonFunctions/fetchEverything.js";
 import modCalc from "./assets/CommonFunctions/modCalc.js";
-import profCalc from "./assets/CommonFunctions/profCalc.js"
-import diceToInteger from "./assets/CommonFunctions/diceToInteger.js"
+import profCalc from "./assets/CommonFunctions/profCalc.js";
+import diceToInteger from "./assets/CommonFunctions/diceToInteger.js";
 
-
-function CollectedDataTest()
-{
+function CollectedDataTest() {
     const { selectedRaceId } = useContext(RaceIdContext);
     const { selectedSubraceId } = useContext(SubraceIdContext);
-
     const { ClassId } = useContext(ClassIdContext);
     const { SubclassId } = useContext(SubclassIdContext);
     const { ChosenClassFeatureId } = useContext(ChosenClassFeatureIdContext);
-    
-    const [currentHP, setCurrentHP] = useState(0);
-
-
-    const { Stats } = useContext(StatsContext)
-
+    const { Stats } = useContext(StatsContext);
     const { BgName } = useContext(BgNameContext);
     const { BgDesc } = useContext(BgDescContext);
     const { BgSkills } = useContext(BgSkillsContext);
     const { BgTool } = useContext(BgToolContext);
-
     const { Equipment } = useContext(EquipmentContext);
     const { RemainingGold } = useContext(RemainingGoldContext);
-
     const { FinalSpells } = useContext(FinalSpellsContext);
-
-    const { FinalCharacterLevel } = useContext(FinalCharacterLevelContext)
+    const { FinalCharacterLevel } = useContext(FinalCharacterLevelContext);
 
     const [save, setSave] = useState();
+    const [currentHP, setCurrentHP] = useState(0);
+    const [raceFeatures, setRaceFeatures] = useState([]);
+    const [subraceFeatures, setSubraceFeatures] = useState([]);
 
     useEffect(() => {
+        console.log("Fetching all data...");
+        var tempraceData, tempsubraceData, tempraceFeatures;
         console.log("All data like... ever")
         console.log("Race ID: " + selectedRaceId + "\nSubrace ID: " + selectedSubraceId + "\n\n") // Race
         console.log("Class ID: " + ClassId + "\nSubrace ID: " + SubclassId + "\nClass features: " + ChosenClassFeatureId + "\n\n") // Class
@@ -47,162 +41,166 @@ function CollectedDataTest()
         console.log("Bg name: " + BgName + "\nBg Desc: " + BgDesc + "\nSkillls: " + BgSkills + "\nTool: " + BgTool + "\n\n") // Bg
         console.log("Equipment: " + Equipment + "\nGold: " + RemainingGold + "\n\n") // Equipment
         console.log("Spells: " + FinalSpells +"\n\n") // Spells
-        var tempracedata
-        var tempsubracedata
-        var tempracefeatures
-        async function fetchallthedataever()
-        {
-            try 
-            {
+        async function fetchAllData() {
+            try {
                 // Fetch race data and race features
                 const raceDataResponse = await fetchEverything("Races/" + selectedRaceId);
                 const raceFeaturesResponse = await fetchEverything("Features/originraceid/" + selectedRaceId);
-                const classDataResponse = await fetchEverything("Classes/"+ClassId)
-                const subRaceFeaturesResponse = await fetchEverything("FeaturesToFeaturesConnections/originfeatureid/"+selectedSubraceId)
-        
-                // Update state with fetched data
+                const classDataResponse = await fetchEverything("Classes/" + ClassId);
+                const subRaceFeaturesResponse = await fetchEverything("FeaturesToFeaturesConnections/originfeatureid/" + selectedSubraceId);
+                
+                // Store race and subrace features
+                setRaceFeatures(raceFeaturesResponse);
+                setSubraceFeatures(subRaceFeaturesResponse);
 
-        
-                const statNames = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"];
-                const skills = [["Acrobatics","2"],["Animal Handling","5"],["Arcana","4"],["Athletics","1"],["Deception","6"],["History","4"],["Insight","5"],["Intimidiation","6"],["Investigation","4"],["Medicine","5"],["Nature","4"],["Perception","5"],["Performance","6"],["Persuasion","6"],["Religion","4"],["Sleight of Hand","2"],["Stealth","2"],["Survival","5"]];
-
-                var savingThrowProfs;
-                var savingThrows=[["Strength",1],["Dexterity",2],["Constitution",3],["Intelligence",4],["Wisdom",5],["Charisma",6],]
-                var skillProfs = [];
-                var profBonus = profCalc(FinalCharacterLevel)
+                // Calculate stats
+                const profBonus = profCalc(FinalCharacterLevel);
                 const conMod = modCalc(Stats[2]);
                 const hitDice = diceToInteger(classDataResponse.hitDice);
                 const maxHpCalc = (FinalCharacterLevel * conMod) + (FinalCharacterLevel * (hitDice / 2));
-                setCurrentHP(maxHpCalc); 
-                savingThrowProfs = classDataResponse.savingThrows;
-                
+                setCurrentHP(maxHpCalc); // Set Current HP
 
-
-
-                raceFeaturesResponse.forEach((element, id)=>{
-                    if(element.skillProf.length !== 0)
-                        {
-                            element.skillProf.forEach(skill => {
-                                skillProfs.push(skill);
-                            });
-                        }
+                // Collect skill proficiencies
+                let skillProfs = [];
+                raceFeaturesResponse.forEach((element) => {
+                    if (element.skillProf.length !== 0) {
+                        element.skillProf.forEach(skill => {
+                            skillProfs.push(skill);
+                        });
+                    }
                 });
 
-                subRaceFeaturesResponse.forEach((element, id)=>{
-                    if(element.skillProf.length !== 0)
-                        {
-                            element.skillProf.forEach(skill => {
-                                skillProfs.push(skill);
-                            });
-                        }
+                subRaceFeaturesResponse.forEach((element) => {
+                    if (element.skillProf.length !== 0) {
+                        element.skillProf.forEach(skill => {
+                            skillProfs.push(skill);
+                        });
+                    }
                 });
 
-                
+                BgSkills.forEach((element)=>{
+                    if(!skillProfs.find(item=>item === element))
+                    {
+                        skillProfs.push(element);
+                    }
+                })
 
-                
-
-                // Now create the HTML output string
+                // Start building the tempSave HTML content
                 let tempSave = `
-                    <head>
-                        <link rel="stylesheet" href="/CreatorPageCards/SheetStyle.css">
-                    </head>
                     <div class="container-fluid mt-4">
-                        <!-- Character Header Info -->
-                        <div class="card mb-4 p-3 shadow-sm">
-                            <div class="row g-3 align-items-center">
-                                <!-- Character Name Input -->
-                                <div class="col-md-4">
-                                    <label for="characterName" class="form-label fw-bold">Character Name</label>
-                                    <input type="text" id="characterName" class="form-control" placeholder="Enter name..." />
-                                </div>
-
-                                <!-- Class Display -->
-                                <div class="col-md-2">
-                                    <label class="form-label fw-bold">Class</label>
-                                    <div id="characterClass">${classDataResponse.name}</div>
-                                </div>
-
-                                <!-- Level Display -->
-                                <div class="col-md-2">
-                                    <label class="form-label fw-bold">Level</label>
-                                    <div id="characterLevel">${FinalCharacterLevel}</div>
-                                </div>
-
-                                <!-- Race Display -->
-                                <div class="col-md-4">
-                                    <label class="form-label fw-bold">Race</label>
-                                    <div id="characterRace">${raceDataResponse.name}</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Main Content Row -->
                         <div class="row">
-                    `;
-                tempSave += `<div class="container-fluid mt-4">
-                                <div class="row">
-                                    <!-- Left Column: Stats -->
-                                    <div class="col-md-4 mb-4">
-                                        <h4 class="mb-3 text-center">Ability Scores</h4>
-                            `;
+                            <!-- Left Column: Stats, Skills, Saving Throws -->
+                            <div class="col-md-6">
+                                <!-- Character Header Info -->
+                                <div class="card mb-4 p-3 shadow-sm">
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-md-4">
+                                            <label for="characterName" class="form-label fw-bold">Character Name</label>
+                                            <input type="text" id="characterName" class="form-control" placeholder="Enter name..." />
+                                        </div>
 
-                if (Stats) {
-                    Stats.forEach((stat, index) => {
-                        const modifier = modCalc(stat);
-                        tempSave += `
-                            <div class="card shadow-sm mb-3 mx-auto" style="width: 130px;">
-                                <div class="card-body text-center p-3">
-                                    <h6 class="card-title mb-1" style="font-size: 1rem;">${statNames[index]}</h6>
-                                    <p class="fw-bold mb-1" style="font-size: 1.5rem;">${stat}</p>
-                                    <p class="text-muted mb-0" style="font-size: 0.9rem;">
-                                        ${modifier >= 0 ? "+" : ""}${modifier}
-                                    </p>
+                                        <div class="col-md-2">
+                                            <label class="form-label fw-bold">Class</label>
+                                            <div id="characterClass">${classDataResponse.name}</div>
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <label class="form-label fw-bold">Level</label>
+                                            <div id="characterLevel">${FinalCharacterLevel}</div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label class="form-label fw-bold">Race</label>
+                                            <div id="characterRace">${raceDataResponse.name}</div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>`;
-                    });
-                }
-                tempSave += `
+
+                                <!-- Ability Scores -->
+                                <div class="card shadow-sm mb-4 p-3">
+                                    <h4 class="mb-3 text-center">Ability Scores</h4>
+                                    ${Stats.map((stat, index) => {
+                                        const modifier = modCalc(stat);
+                                        return `
+                                            <div class="card shadow-sm mb-3 mx-auto" style="width: 130px;">
+                                                <div class="card-body text-center p-3">
+                                                    <h6 class="card-title mb-1">${["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"][index]}</h6>
+                                                    <p class="fw-bold mb-1">${stat}</p>
+                                                    <p class="text-muted mb-0">${modifier >= 0 ? "+" : ""}${modifier}</p>
+                                                </div>
+                                            </div>
+                                        `;
+                                    }).join('')}
+                                </div>
+
+                                <!-- Skills -->
+                                <div class="card shadow-sm mb-4 p-3">
+                                    <h4 class="mb-3 text-center">Skills</h4>
+                                    ${[["Acrobatics",2],["Animal Handling",5],["Arcana",4],["Athletics",1],["Deception",6],["History",4],["Insight",5],["Intimidiation",6],["Investigation",4],["Medicine",5],["Nature",4],["Perception",5],["Performance",6],["Persuasion",6],["Religion",4],["Sleight of Hand",2],["Stealth",2],["Survival",5]]
+                                        .map((skill, index) => {
+                                            const stat = Stats[skill[1]-1];
+                                            const mod = modCalc(stat);
+                                            const pbMod = mod + profBonus;
+                                            return `
+                                                <p><b>${skill[0]}</b> (${["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"][skill[1]-1]}): ${skillProfs.includes(skill[0]) ? (`(<i>P</i>) ${pbMod > 0 ? "+" : ""}${pbMod}`) :  mod > 0 ? `+${mod}` : `${mod}`}</p>
+                                            `;
+                                        }).join('')}
+                                </div>
+
+                                <!-- Background Tool Proficiency -->
+                                <div class="card shadow-sm mb-4 p-3">
+                                    <h4 class="mb-3">Tool Proficiency</h4>
+                                    <input type="text" class="form-control" value="${BgTool}" placeholder="Enter tool proficiency..." />
+                                </div>
+
+                                <!-- Saving Throws -->
+                                <div class="card shadow-sm mb-4 p-3">
+                                    <h4 class="mb-3 text-center">Saving Throws</h4>
+                                    ${["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"].map((throwName, index) => {
+                                        const mod = modCalc(Stats[index]);
+                                        return `<p><b>${throwName}</b>: ${mod >= 0 ? "+" : ""}${mod}</p>`;
+                                    }).join('')}
+                                </div>
+
+                                <!-- Race and Subrace Features -->
+                                <div class="card shadow-sm mb-4 p-3">
+                                    <h4 class="mb-3">Race Features</h4>
+                                    ${raceFeatures.map((feature) => {
+                                        if(feature.name!=="Subrace")
+                                        {
+                                            return `
+                                            <div class="mb-3">
+                                                <h5 class="fw-bold">${feature.name}</h5>
+                                                <p>${feature.description}</p>
+                                            </div>
+                                        `;
+                                        }
+                                        else
+                                        {
+                                            return ``;
+                                        }
+                                        
+                                    }).join('')}
+                                </div>
+
+                                <div class="card shadow-sm mb-4 p-3">
+                                    <h4 class="mb-3">Subrace Features</h4>
+                                    ${subraceFeatures.map((feature) => {
+                                        return `
+                                            <div class="mb-3">
+                                                <h5 class="fw-bold">${feature.name}</h5>
+                                                <p>${feature.description}</p>
+                                            </div>
+                                        `;
+                                    }).join('')}
+                                </div>
                             </div>
-                        </div>
 
-                        <!-- Right Column: Rest of front page -->
-                        <!-- Skills -->
-                        <div class="col-md-4 mb-4">
-                                        <h4 class="mb-3 text-center">Skills</h4>`;
-
-
-                {/*Background skills checking.*/}
-                if (BgSkills)
-                {
-                    skills.forEach((element, index)=>{
-                        var stat = Stats[element[1]-1]
-                        var mod = modCalc(stat);
-                        var pbmod = mod+profBonus;
-                        console.log("pbmod: ",pbmod)
-                        if(element[0] == BgSkills[0] || element[0] == BgSkills[1])
-                        {
-                            tempSave+=`<p><b>${element[0]}(<i>P</i>)</b>: ${pbmod>=0 ? "+" : ""}${pbmod} </p>`
-                        }
-                        else if(skillProfs.find(item => item == element[0]))
-                        {
-                            tempSave+=`<p><b>${element[0]}(<i>P</i>)</b>: ${pbmod>=0 ? "+" : ""}${pbmod} </p>`
-                        }
-                        else
-                        {
-                            tempSave+=`<p><b>${element[0]}</b>: ${mod>=0 ? "+" : ""}${mod}</p>`
-                        }
-
-                    });
-                }
-                if(BgTool)
-                {
-                    tempSave+=`<h5 class="fw-bold">Tools</h5>
-                    <input class="form-control" value="${BgTool}"/>`;
-                }
-                
-                tempSave+=`<div class="col-md-8">`
-                tempSave += `
-                <div class="card shadow-sm mb-4 p-3">
+                            <!-- Right Column: Combat & Weapon Attacks -->
+                            <div class="col-md-6">
+                                <!-- Combat Box -->
+                                <div class="card shadow-sm mb-4 p-3">
+                                    <div class="card shadow-sm mb-4 p-3">
                     <h4 class="fw-bold mb-3">Combat Stats</h4>
                     <div class="row g-3">
                         <!-- Max HP -->
@@ -229,7 +227,7 @@ function CollectedDataTest()
                         <!-- Armor Class -->
                         <div class="col-md-4">
                             <label class="form-label fw-bold">Armor Class</label>
-                            <div id="armorClass" class="form-control bg-light">15</div>
+                            <input id="armorClass" type="number" value=10 class="form-control bg-light"/>
                         </div>
 
                         <!-- Speed -->
@@ -243,84 +241,34 @@ function CollectedDataTest()
                             /></div>
                         </div>
                     </div>
+                                </div>
 
-                `;
-                tempSave+=`<!-- Saving Throws -->
-                    <div class="mt-4">
-                        <h5 class="fw-bold">Saving Throws</h5>
-                        <ul id="savingThrows" class="list-group list-group-flush">
-                            
-                        `;
-                savingThrows.forEach((element, id)=>{
-                    var stat = Stats[element[1]-1]
-                    var mod = modCalc(stat);
-                    var pbmod = mod+profBonus;
-                    tempSave+=` `
-                    if(element[0] == savingThrowProfs[0] || element[0] == savingThrowProfs[1])
-                    {
-                        tempSave+=`<li class="list-group-item">${element[0]} : ${pbmod}</li>`
-                    }
-                    else
-                    {
-                        tempSave+=`<li class="list-group-item">${element[0]} : ${mod>=0 ? "+" : ""}${mod}</li>`
-                    }
-                })
-                tempSave+=`
-                </ul>`
-
-
-                tempSave+=`
-                <div class="mt-4">
-                        <h5 class="fw-bold">Death Saving Throws</h5>`
-                tempSave+=`<p> <b> Successes </b> <input type="checkbox" /><input type="checkbox" /><input type="checkbox" /></p>
-                <p> <b> Failures </b> <input type="checkbox" /><input type="checkbox" /><input type="checkbox" /></p>
-                <sup>Remember, you roll a death saving throw when: You take damage while on 0 hit points or at the start of your turn if you are at 0 hit points.</sup>
-                </div>`
-
-
-
-                tempSave+=`<h3>Race Features</h3>`
-                raceFeaturesResponse.forEach((element) => {
-                    if (element.name !== "Subrace") {
-                        tempSave += `
-                        <div class="mb-4">
-                            <h5 class="fw-bold">${element.name}</h5>
-                            <p>${element.description}</p>
-                        </div>`;
-                    }
-                });
-                tempSave+=`<h3>Subrace Features</h3>`
-                subRaceFeaturesResponse.forEach((element) => {
-                        tempSave += `
-                        <div class="mb-4">
-                            <h5 class="fw-bold">${element.name}</h5>
-                            <p>${element.description}</p>
-                        </div>`;
-                });
-
-
-                tempSave += `
-                        </div> <!-- End Right Column -->
-                    </div> <!-- End Row -->
-                </div> <!-- End Container -->
+                                <!-- Weapon Attacks -->
+                                <div class="card shadow-sm mb-4 p-3">
+                                    <h4 class="fw-bold mb-3">Weapon Attacks</h4>
+                                    <p>Weapon Attack 1: Placeholder for weapon stats</p>
+                                    <p>Weapon Attack 2: Placeholder for weapon stats</p>
+                                    <p>Weapon Attack 3: Placeholder for weapon stats</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 `;
 
                 setSave(tempSave);
-
-            }
-            catch(error)
-            {
+            } catch (error) {
                 console.error("Error fetching data: ", error);
             }
         }
-        fetchallthedataever();
-        
-    },[selectedRaceId, selectedSubraceId, ClassId, SubclassId])
+
+        fetchAllData();
+    }, [selectedRaceId, selectedSubraceId, ClassId, SubclassId, ChosenClassFeatureId, FinalCharacterLevel, Stats]);
 
     return (
-        <>
-        <div dangerouslySetInnerHTML={{__html: save}}/>
-        </>
-    )
+        <div className="CollectedDataTest">
+            {save && <div dangerouslySetInnerHTML={{ __html: save }} />}
+        </div>
+    );
 }
-export default CollectedDataTest
+
+export default CollectedDataTest;
