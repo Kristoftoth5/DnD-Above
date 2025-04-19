@@ -93,11 +93,13 @@ function CollectedDataTest() {
                     
                     for (let i = 0; i < equipmentCount; i++) {
                         const itemName = Equipment[i] || ""; // If no equipment exists, leave blank
+
                         equipmentFields.push({
                             itemName,
                             itemQuantity: 1
                         });
                     }
+                    console.log(Equipment)
                 }
                 else
                 {

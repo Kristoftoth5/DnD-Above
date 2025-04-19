@@ -33,6 +33,7 @@ function EquipmentCard({ classId }) {
         item.name, // Equipment Name
         item.equipmentType, // EquipmentType (Weapon, Armor, etc.)
         item.price, // Price
+        item.id
       ]);
       setEquipmentOptions(formattedEquipment);
     }
@@ -48,23 +49,25 @@ function EquipmentCard({ classId }) {
   });
 
   // Buy equipment
-  function buyEquipment(item) {
-    if (gold >= item[2]) {
-      setGold(gold - item[2]);
-      setRemainingGold(gold - item[2])
-      setSelectedEquipment([...selectedEquipment, item]);
-      setEquipment([...selectedEquipment, item])
-    }
+function buyEquipment(item) {
+  if (gold >= item[2]) {
+    const newSelected = [...selectedEquipment, item];
+    setGold(gold - item[2]);
+    setRemainingGold(gold - item[2]);
+    setSelectedEquipment(newSelected);
+    setEquipment(newSelected.map(e => e[3])); // Send only IDs
   }
+}
 
-  // Remove selected equipment
-  function removeEquipment(index) {
-    let item = selectedEquipment[index];
-    setGold(gold + item[2]);
-    setRemainingGold(gold + item[2])
-    setSelectedEquipment(selectedEquipment.filter((_, i) => i !== index));
-    setEquipment(selectedEquipment.filter((_, i) => i !== index));
-  }
+// Remove selected equipment
+function removeEquipment(index) {
+  const updatedSelected = selectedEquipment.filter((_, i) => i !== index);
+  const item = selectedEquipment[index];
+  setGold(gold + item[2]);
+  setRemainingGold(gold + item[2]);
+  setSelectedEquipment(updatedSelected);
+  setEquipment(updatedSelected.map(e => e[3])); // Send only IDs
+}
 
   return (
     <div className="creator-container">
