@@ -89,13 +89,27 @@ function CollectedDataTest() {
                 const strength = Stats[0]; // Strength stat
                 const equipmentFields = [];
                 const equipmentCount = strength * 3; // Calculate the number of fields based on Strength stat
-                for (let i = 0; i < equipmentCount; i++) {
-                    const itemName = Equipment[i] || ""; // If no equipment exists, leave blank
-                    equipmentFields.push({
-                        itemName,
-                        itemQuantity: 1
-                    });
+                if (Equipment) {
+                    
+                    for (let i = 0; i < equipmentCount; i++) {
+                        const itemName = Equipment[i] || ""; // If no equipment exists, leave blank
+                        equipmentFields.push({
+                            itemName,
+                            itemQuantity: 1
+                        });
+                    }
                 }
+                else
+                {
+                    for (let i = 0; i < equipmentCount; i++) {
+                        const itemName = "No equipment was selected"; // If no equipment exists, leave blank
+                        equipmentFields.push({
+                            itemName,
+                            itemQuantity: 0
+                        });
+                    }
+                }
+                
 
 
                 // Start building the tempSave HTML content
