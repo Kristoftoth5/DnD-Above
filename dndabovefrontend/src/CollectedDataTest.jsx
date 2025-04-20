@@ -47,8 +47,18 @@ function CollectedDataTest() {
                 const raceDataResponse = await fetchEverything("Races/" + selectedRaceId);
                 const raceFeaturesResponse = await fetchEverything("Features/originraceid/" + selectedRaceId);
                 const classDataResponse = await fetchEverything("Classes/" + ClassId);
+                const classFeaturesResponse = await fetchEverything("Features/originclassid/" + ClassId);
                 const subRaceFeaturesResponse = await fetchEverything("FeaturesToFeaturesConnections/originfeatureid/" + selectedSubraceId);
                 
+                var filteredClassFeatures = [];
+                classFeaturesResponse.map((feature,index)=>{
+                    if(!filteredClassFeatures.includes(feature)&&feature.levelReq<=FinalCharacterLevel)
+                    {
+                        filteredClassFeatures.push(feature)
+                    }
+                });
+
+
                 // Store race and subrace features
                 setRaceFeatures(raceFeaturesResponse);
                 setSubraceFeatures(subRaceFeaturesResponse);
@@ -60,15 +70,39 @@ function CollectedDataTest() {
                 const maxHpCalc = (FinalCharacterLevel * conMod) + (FinalCharacterLevel * (hitDice / 2));
                 setCurrentHP(maxHpCalc); // Set Current HP
 
-                // Collect skill proficiencies
+                // Collect proficiencies
                 let skillProfs = [];
+                let weaponProfs = [];
+                let armorProfs = [];
                 raceFeaturesResponse.forEach((element) => {
                     if (element.skillProf.length !== 0) {
-                        element.skillProf.forEach(skill => {
-                            skillProfs.push(skill);
+                        element.skillProf.forEach(prof => {
+                            !skillProfs.find(item=>item === prof)?skillProfs.push(prof):null;
                         });
                     }
+                    if (element.armorProf.length !== 0) {
+                        element.armorProf.forEach(prof => {
+                            !armorProfs.find(item=>item === prof)?armorProfs.push(prof):null;
+                        });
+                    }
+                    if (element.weaponProf.length !== 0) {
+                        element.weaponProf.forEach(prof => {
+                            !weaponProfs.find(item=>item === prof)?weaponProfs.push(prof):null;
+                        });
+                    }
+                    
                 });
+
+                if (classDataResponse.armorProf.length !== 0) {
+                    classDataResponse.armorProf.forEach(prof => {
+                        !armorProfs.find(item=>item === prof)?armorProfs.push(prof):null;
+                    });
+                }
+                if (classDataResponse.weaponProf.length !== 0) {
+                    classDataResponse.weaponProf.forEach(prof => {
+                        !weaponProfs.find(item=>item === prof)?weaponProfs.push(prof):null;
+                    });
+                }
 
                 subRaceFeaturesResponse.forEach((element) => {
                     if (element.skillProf.length !== 0) {
@@ -85,6 +119,9 @@ function CollectedDataTest() {
                     }
                 })
 
+
+                console.log("WeaponProfs: "+weaponProfs)
+                console.log("ArmorProfs: "+armorProfs)
                 // Equipment Section
                 const EquipmentData=[];
                 for (const id of Equipment) {
@@ -104,16 +141,30 @@ function CollectedDataTest() {
                         const item = EquipmentData[i] || ""; // If no equipment exists, leave blank
                         if(item !== "")
                         {
+                            var armorBonus;
+                            if(item.ac>2)
+                            {
+                                item.equipmentType == "Light Armor"?armorBonus="+DEX":"";
+                                item.equipmentType == "Medium Armor"?armorBonus="+DEX(Max. +2)":"";
+                                item.equipmentType == "Heavy Armor"?armorBonus="":"";
+                            }
+                            var profHaveTemp;
+                            weaponProfs.includes(item.equipmentType)||armorProfs.includes(item.equipmentType)||weaponProfs.includes(item.name)?profHaveTemp=1:profHaveTemp=0;
+
                             var temp={
                                 name:item.name,
                                 equipmentType:item.equipmentType,
                                 properties:item.properties,
                                 damageDie:item.damageDie,
+                                damageType:item.damageType,
                                 ac:item.ac,
                                 rarity:item.rarity,
                                 consumable:item.consumable,
                                 description:item.description,
                                 attunement:item.attunement,
+                                armorBonus:armorBonus,
+                                profReq:item.profReq,
+                                profHave:profHaveTemp,
                                 quantity:1
                             }
                             equipmentFields.push(temp)
@@ -130,6 +181,8 @@ function CollectedDataTest() {
                                 consumable:"",
                                 description:"",
                                 attunement:"",
+                                armorBonus:"",
+                                profHave:"",
                                 quantity:0
                             }
                             equipmentFields.push(temp);
@@ -154,6 +207,8 @@ function CollectedDataTest() {
                             consumable:"",
                             description:"",
                             attunement:"",
+                            armorBonus:"",
+                            profHave:"",
                             quantity:0
                         }
                         equipmentFields.push(temp);
@@ -161,7 +216,7 @@ function CollectedDataTest() {
                 }
                 const weapons=[];
                 //Weapon attacks calculation and filtering
-                for (const item of EquipmentData) 
+                for (const item of equipmentFields) 
                     {
                     if(item.damageDie!=="")
                     {
@@ -173,7 +228,7 @@ function CollectedDataTest() {
                             damageType:item.damageType,
                             statIndex:item.properties.includes("Finesse") ? 1 : 0,
                             profReq:item.profReq,
-
+                            profHave:item.profHave
                         }
                         
                         weapons.push(temp)
@@ -206,9 +261,13 @@ function CollectedDataTest() {
                                             <div id="characterLevel">${FinalCharacterLevel}</div>
                                         </div>
 
-                                        <div class="col-md-4">
+                                        <div class="col-md-2">
                                             <label class="form-label fw-bold">Race</label>
                                             <div id="characterRace">${raceDataResponse.name}</div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label class="form-label fw-bold">Background</label>
+                                            <div id="characterRace">${BgName}</div>
                                         </div>
                                     </div>
                                 </div>
@@ -228,6 +287,12 @@ function CollectedDataTest() {
                                             </div>
                                         `;
                                     }).join('')}
+                                    <div class="card shadow-sm mb-3 mx-auto" style="width: 130px;">
+                                                <div class="card-body text-center p-3">
+                                                    <h6 class="card-title mb-1">Proficiency Bonus</h6>
+                                                    <p class="fw-bold mb-1">+${profBonus}</p>
+                                                </div>
+                                    </div>
                                 </div>
 
 
@@ -281,6 +346,18 @@ function CollectedDataTest() {
                                 <div class="card shadow-sm mb-4 p-3">
                                     <h4 class="mb-3">Subrace Features</h4>
                                     ${subRaceFeaturesResponse.map((feature) => {
+                                        return `
+                                            <div class="mb-3">
+                                                <h5 class="fw-bold">${feature.name}</h5>
+                                                <p>${feature.description}</p>
+                                            </div>
+                                        `;
+                                    }).join('')}
+                                </div>
+
+                                <div class="card shadow-sm mb-4 p-3">
+                                    <h4 class="mb-3">Class Features</h4>
+                                    ${filteredClassFeatures.map((feature) => {
                                         return `
                                             <div class="mb-3">
                                                 <h5 class="fw-bold">${feature.name}</h5>
@@ -345,7 +422,11 @@ function CollectedDataTest() {
                                 <div class="card shadow-sm mb-4 p-3">
                                 <h4 class="fw-bold mb-3">Weapon Attacks</h4>
                                     ${weapons.map((weapon, index)=>{
-                                        return `<p><b>${weapon.name}</b>| ${modCalc(Stats[weapon.statIndex])>=0?"+":""}${modCalc(Stats[weapon.statIndex])} | ${weapon.damageDie} ${modCalc(Stats[weapon.statIndex])>=0?"+":""}${modCalc(Stats[weapon.statIndex])} ${weapon.damageType} | </p>`
+                                        var mod;
+                                        weapon.profHave==1?mod=modCalc(Stats[weapon.statIndex])+profBonus:mod=modCalc(Stats[weapon.statIndex]);
+                                        console.log(weapon.name+": "+weapon.profHave)
+
+                                        return `<p><b><input value="${weapon.name}"></input></b><input value="${mod>=0?"+":""}${mod}"> </input>  <input value="${weapon.damageDie} ${mod>=0?"+":""}${mod} ${weapon.damageType}"> </input>  </p>`
                                     }).join('')}
                                 </div>
                                 
@@ -361,6 +442,12 @@ function CollectedDataTest() {
                                                 </div>
                                                 <div class="col-md-6">
                                                     <input type="number" class="form-control" value="${field.quantity}" min="1" placeholder="Enter quantity" />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" value="${field.properties}"placeholder="(Properties,Rarity, etc.)" />
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="text" class="form-control" value="${field.equipmentType}(${field.ac!=0?'AC '+field.ac+field.armorBonus:field.damageDie})" placeholder="" />
                                                 </div>
                                             </div>
                                         `;
