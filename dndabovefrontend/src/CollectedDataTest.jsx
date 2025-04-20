@@ -86,29 +86,97 @@ function CollectedDataTest() {
                 })
 
                 // Equipment Section
+                const EquipmentData=[];
+                for (const id of Equipment) {
+                    try {
+                    EquipmentData.push(await fetchEverything(`Equipments/${id}`));
+                    } catch (error) {
+                    console.error(`Failed to fetch item with id ${id}`, error);
+                    }
+                }
+
                 const strength = Stats[0]; // Strength stat
                 const equipmentFields = [];
                 const equipmentCount = strength * 3; // Calculate the number of fields based on Strength stat
-                if (Equipment) {
+                if (Equipment&&EquipmentData) {
                     
                     for (let i = 0; i < equipmentCount; i++) {
-                        const itemName = Equipment[i] || ""; // If no equipment exists, leave blank
+                        const item = EquipmentData[i] || ""; // If no equipment exists, leave blank
+                        if(item !== "")
+                        {
+                            var temp={
+                                name:item.name,
+                                equipmentType:item.equipmentType,
+                                properties:item.properties,
+                                damageDie:item.damageDie,
+                                ac:item.ac,
+                                rarity:item.rarity,
+                                consumable:item.consumable,
+                                description:item.description,
+                                attunement:item.attunement,
+                                quantity:1
+                            }
+                            equipmentFields.push(temp)
+                        }
+                        else
+                        {
+                            var temp={
+                                name:"",
+                                equipmentType:"",
+                                properties:[],
+                                damageDie:"",
+                                ac:0,
+                                rarity:"",
+                                consumable:"",
+                                description:"",
+                                attunement:"",
+                                quantity:0
+                            }
+                            equipmentFields.push(temp);
+                        }
+                        
 
-                        equipmentFields.push({
-                            itemName,
-                            itemQuantity: 1
-                        });
+                        
                     }
-                    console.log(Equipment)
+                    console.log(equipmentFields)
                 }
                 else
                 {
                     for (let i = 0; i < equipmentCount; i++) {
                         const itemName = "No equipment was selected"; // If no equipment exists, leave blank
-                        equipmentFields.push({
-                            itemName,
-                            itemQuantity: 0
-                        });
+                        var temp={
+                            name:"",
+                            equipmentType:"",
+                            properties:[],
+                            damageDie:"",
+                            ac:0,
+                            rarity:"",
+                            consumable:"",
+                            description:"",
+                            attunement:"",
+                            quantity:0
+                        }
+                        equipmentFields.push(temp);
+                    }
+                }
+                const weapons=[];
+                //Weapon attacks calculation and filtering
+                for (const item of EquipmentData) 
+                    {
+                    if(item.damageDie!=="")
+                    {
+                        var temp={
+                            name:item.name,
+                            equipmentType:item.equipmentType,
+                            properties:item.properties,
+                            damageDie:item.damageDie,
+                            damageType:item.damageType,
+                            statIndex:item.properties.includes("Finesse") ? 1 : 0,
+                            profReq:item.profReq,
+
+                        }
+                        
+                        weapons.push(temp)
                     }
                 }
                 
@@ -196,7 +264,7 @@ function CollectedDataTest() {
                                 <!-- Race and Subrace Features -->
                                 <div class="card shadow-sm mb-4 p-3">
                                     <h4 class="mb-3">Race Features</h4>
-                                    ${raceFeatures.map((feature) => {
+                                    ${raceFeaturesResponse.map((feature) => {
                                         if(feature.name!=="Subrace")
                                         {
                                             return `
@@ -206,17 +274,13 @@ function CollectedDataTest() {
                                             </div>
                                         `;
                                         }
-                                        else
-                                        {
-                                            return ``;
-                                        }
                                         
                                     }).join('')}
                                 </div>
 
                                 <div class="card shadow-sm mb-4 p-3">
                                     <h4 class="mb-3">Subrace Features</h4>
-                                    ${subraceFeatures.map((feature) => {
+                                    ${subRaceFeaturesResponse.map((feature) => {
                                         return `
                                             <div class="mb-3">
                                                 <h5 class="fw-bold">${feature.name}</h5>
@@ -279,11 +343,12 @@ function CollectedDataTest() {
 
                                 <!-- Weapon Attacks -->
                                 <div class="card shadow-sm mb-4 p-3">
-                                    <h4 class="fw-bold mb-3">Weapon Attacks</h4>
-                                    <p>Weapon Attack 1: Placeholder for weapon stats</p>
-                                    <p>Weapon Attack 2: Placeholder for weapon stats</p>
-                                    <p>Weapon Attack 3: Placeholder for weapon stats</p>
+                                <h4 class="fw-bold mb-3">Weapon Attacks</h4>
+                                    ${weapons.map((weapon, index)=>{
+                                        return `<p><b>${weapon.name}</b>| ${modCalc(Stats[weapon.statIndex])>=0?"+":""}${modCalc(Stats[weapon.statIndex])} | ${weapon.damageDie} ${modCalc(Stats[weapon.statIndex])>=0?"+":""}${modCalc(Stats[weapon.statIndex])} ${weapon.damageType} | </p>`
+                                    }).join('')}
                                 </div>
+                                
                             
                             <!-- Equipment Section -->
                                 <div class="card shadow-sm mb-4 p-3">
@@ -292,10 +357,10 @@ function CollectedDataTest() {
                                         return `
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
-                                                    <input type="text" class="form-control" value="${field.itemName}" placeholder="Enter equipment name..." />
+                                                    <input type="text" class="form-control" value="${field.name}" placeholder="Enter equipment name..." />
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <input type="number" class="form-control" value="${field.itemQuantity}" min="1" placeholder="Enter quantity" />
+                                                    <input type="number" class="form-control" value="${field.quantity}" min="1" placeholder="Enter quantity" />
                                                 </div>
                                             </div>
                                         `;
