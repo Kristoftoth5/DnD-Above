@@ -48,15 +48,64 @@ function CollectedDataTest() {
                 const raceFeaturesResponse = await fetchEverything("Features/originraceid/" + selectedRaceId);
                 const classDataResponse = await fetchEverything("Classes/" + ClassId);
                 const classFeaturesResponse = await fetchEverything("Features/originclassid/" + ClassId);
+                const subClassFeaturesResponse = await fetchEverything("Features/originsubclassid/" + SubclassId);
                 const subRaceFeaturesResponse = await fetchEverything("FeaturesToFeaturesConnections/originfeatureid/" + selectedSubraceId);
                 
                 var filteredClassFeatures = [];
-                classFeaturesResponse.map((feature,index)=>{
-                    if(!filteredClassFeatures.includes(feature)&&feature.levelReq<=FinalCharacterLevel)
+                var filteredSubClassFeatures = [];
+                if(classFeaturesResponse.length!==0&&classFeaturesResponse!==undefined)
+                {
+                    try
                     {
-                        filteredClassFeatures.push(feature)
+                        classFeaturesResponse.map((feature,index)=>{
+                            if(!filteredClassFeatures.includes(feature)&&feature.levelReq<=FinalCharacterLevel)
+                            {
+                                filteredClassFeatures.push(feature)
+                            }
+                        });
                     }
-                });
+
+                    catch(error)
+                    {
+                        console.log("There was an error fetching class features: ",error);
+                    }
+                    
+                }
+                
+
+                for(const id of ChosenClassFeatureId)
+                {
+                    try
+                    {
+                        filteredClassFeatures.push(await fetchEverything("Features/"+id));
+                    }
+                    catch(error)
+                    {
+                        console.log("There was an error fetching chosen subfeature results: ",error)
+                    }
+                }
+
+                if(subClassFeaturesResponse.length!==0&&subClassFeaturesResponse!==undefined)
+                    {
+                        try
+                        {
+                            subClassFeaturesResponse.map((feature,index)=>{
+                                if(!filteredSubClassFeatures.includes(feature)&&feature.levelReq<=FinalCharacterLevel)
+                                {
+                                    filteredSubClassFeatures.push(feature);
+                                }
+                            })
+                        }
+    
+                        catch(error)
+                        {
+                            console.log("There was an error fetching subclass features: ",error);
+                        }
+                        
+                    }
+                
+                
+                
 
 
                 // Store race and subrace features
@@ -74,43 +123,79 @@ function CollectedDataTest() {
                 let skillProfs = [];
                 let weaponProfs = [];
                 let armorProfs = [];
-                raceFeaturesResponse.forEach((element) => {
-                    if (element.skillProf.length !== 0) {
-                        element.skillProf.forEach(prof => {
-                            !skillProfs.find(item=>item === prof)?skillProfs.push(prof):null;
-                        });
-                    }
-                    if (element.armorProf.length !== 0) {
-                        element.armorProf.forEach(prof => {
-                            !armorProfs.find(item=>item === prof)?armorProfs.push(prof):null;
-                        });
-                    }
-                    if (element.weaponProf.length !== 0) {
-                        element.weaponProf.forEach(prof => {
-                            !weaponProfs.find(item=>item === prof)?weaponProfs.push(prof):null;
-                        });
-                    }
-                    
-                });
 
-                if (classDataResponse.armorProf.length !== 0) {
-                    classDataResponse.armorProf.forEach(prof => {
-                        !armorProfs.find(item=>item === prof)?armorProfs.push(prof):null;
-                    });
-                }
-                if (classDataResponse.weaponProf.length !== 0) {
-                    classDataResponse.weaponProf.forEach(prof => {
-                        !weaponProfs.find(item=>item === prof)?weaponProfs.push(prof):null;
-                    });
-                }
-
-                subRaceFeaturesResponse.forEach((element) => {
-                    if (element.skillProf.length !== 0) {
-                        element.skillProf.forEach(skill => {
-                            skillProfs.push(skill);
+                if(raceFeaturesResponse!==undefined&&raceFeaturesResponse.length!==0)
+                {
+                    try
+                    {
+                        raceFeaturesResponse.forEach((element) => {
+                            if (element.skillProf.length !== 0) {
+                                element.skillProf.forEach(prof => {
+                                    !skillProfs.find(item=>item === prof)?skillProfs.push(prof):null;
+                                });
+                            }
+                            if (element.armorProf.length !== 0) {
+                                element.armorProf.forEach(prof => {
+                                    !armorProfs.find(item=>item === prof)?armorProfs.push(prof):null;
+                                });
+                            }
+                            if (element.weaponProf.length !== 0) {
+                                element.weaponProf.forEach(prof => {
+                                    !weaponProfs.find(item=>item === prof)?weaponProfs.push(prof):null;
+                                });
+                            }
+                            
                         });
                     }
-                });
+                    catch(error)
+                    {
+                        console.log("There was an error processing race features: ",error)
+                    }
+                }
+                
+
+                if(classDataResponse!==undefined&&classDataResponse.length!==0)
+                {
+                    try
+                    {
+                        if (classDataResponse.armorProf.length !== 0) {
+                            classDataResponse.armorProf.forEach(prof => {
+                                !armorProfs.find(item=>item === prof)?armorProfs.push(prof):null;
+                            });
+                        }
+                        if (classDataResponse.weaponProf.length !== 0) {
+                            classDataResponse.weaponProf.forEach(prof => {
+                                !weaponProfs.find(item=>item === prof)?weaponProfs.push(prof):null;
+                            });
+                        }
+                    }
+                    catch(error)
+                    {
+                        console.log("There was an error processing class data: ",error)
+                    }
+                }
+
+                if(subRaceFeaturesResponse!==undefined&&subRaceFeaturesResponse.length!==0)
+                {
+                    try
+                    {
+                        subRaceFeaturesResponse.forEach((element) => {
+                            if (element.skillProf.length !== 0) {
+                                element.skillProf.forEach(skill => {
+                                    skillProfs.push(skill);
+                                });
+                            }
+                        });
+                    }
+                    catch(error)
+                    {
+                        console.log("There was an error processing subrace features: ",error)
+                    }
+                }
+
+                
+
+                
 
                 BgSkills.forEach((element)=>{
                     if(!skillProfs.find(item=>item === element))
@@ -120,22 +205,24 @@ function CollectedDataTest() {
                 })
 
 
-                console.log("WeaponProfs: "+weaponProfs)
-                console.log("ArmorProfs: "+armorProfs)
+                
                 // Equipment Section
                 const EquipmentData=[];
-                for (const id of Equipment) {
-                    try {
-                    EquipmentData.push(await fetchEverything(`Equipments/${id}`));
-                    } catch (error) {
-                    console.error(`Failed to fetch item with id ${id}`, error);
-                    }
-                }
-
                 const strength = Stats[0]; // Strength stat
                 const equipmentFields = [];
                 const equipmentCount = strength * 3; // Calculate the number of fields based on Strength stat
-                if (Equipment&&EquipmentData) {
+                const weapons=[];
+                if(Equipment !== undefined&&Equipment.length!==0)
+                {
+                    for (const id of Equipment) {
+                        try {
+                        EquipmentData.push(await fetchEverything(`Equipments/${id}`));
+                        } catch (error) {
+                        console.error(`Failed to fetch item with id ${id}`, error);
+                        }
+                    }
+                    
+                    if (Equipment&&EquipmentData) {
                     
                     for (let i = 0; i < equipmentCount; i++) {
                         const item = EquipmentData[i] || ""; // If no equipment exists, leave blank
@@ -191,7 +278,6 @@ function CollectedDataTest() {
 
                         
                     }
-                    console.log(equipmentFields)
                 }
                 else
                 {
@@ -214,10 +300,10 @@ function CollectedDataTest() {
                         equipmentFields.push(temp);
                     }
                 }
-                const weapons=[];
+                
                 //Weapon attacks calculation and filtering
                 for (const item of equipmentFields) 
-                    {
+                {
                     if(item.damageDie!=="")
                     {
                         var temp={
@@ -234,6 +320,74 @@ function CollectedDataTest() {
                         weapons.push(temp)
                     }
                 }
+                }
+                
+                if(equipmentFields?.length==0)
+                {
+                    for (let i = 0; i <= equipmentCount; i++) {
+                        var temp={
+                            name:"",
+                            equipmentType:"",
+                            properties:[],
+                            damageDie:"",
+                            ac:0,
+                            rarity:"",
+                            consumable:"",
+                            description:"",
+                            attunement:"",
+                            armorBonus:"",
+                            profHave:"",
+                            quantity:0
+                        }
+                        equipmentFields.push(temp);
+                    }
+                }
+
+                if(!weapons?.length>0)
+                {
+                    var temp={
+                        name:"Weapon name",
+                        equipmentType:"Item's Type(Armor, weapon)",
+                        properties:"Properties(Finesse, loud)",
+                        damageDie:"Damage dice",
+                        damageType:"Damage type",
+                        statIndex:0,
+                        profReq:0,
+                        profHave:1
+                    }
+                        
+                    weapons.push(temp)
+
+                    var temp={
+                        name:"",
+                        equipmentType:"",
+                        properties:"",
+                        damageDie:"",
+                        damageType:"",
+                        statIndex:0,
+                        profReq:0,
+                        profHave:1
+                    }
+                        
+                    weapons.push(temp)
+
+                    var temp={
+                        name:"",
+                        equipmentType:"",
+                        properties:"",
+                        damageDie:"",
+                        damageType:"",
+                        statIndex:0,
+                        profReq:0,
+                        profHave:1
+                    }
+                        
+                    weapons.push(temp)
+                }
+
+                
+                
+                
                 
 
 
@@ -345,26 +499,38 @@ function CollectedDataTest() {
 
                                 <div class="card shadow-sm mb-4 p-3">
                                     <h4 class="mb-3">Subrace Features</h4>
-                                    ${subRaceFeaturesResponse.map((feature) => {
+                                    ${subRaceFeaturesResponse!==undefined&&subRaceFeaturesResponse.length!==0?subRaceFeaturesResponse.map((feature) => {
                                         return `
                                             <div class="mb-3">
                                                 <h5 class="fw-bold">${feature.name}</h5>
                                                 <p>${feature.description}</p>
                                             </div>
                                         `;
-                                    }).join('')}
+                                    }).join(''):''}
                                 </div>
 
                                 <div class="card shadow-sm mb-4 p-3">
                                     <h4 class="mb-3">Class Features</h4>
-                                    ${filteredClassFeatures.map((feature) => {
+                                    ${filteredClassFeatures!==undefined&&filteredClassFeatures.length!==0?filteredClassFeatures.map((feature) => {
                                         return `
                                             <div class="mb-3">
                                                 <h5 class="fw-bold">${feature.name}</h5>
                                                 <p>${feature.description}</p>
                                             </div>
                                         `;
-                                    }).join('')}
+                                    }).join(''):''}
+                                </div>
+
+                                <div class="card shadow-sm mb-4 p-3">
+                                    <h4 class="mb-3">Subclass Features</h4>
+                                    ${filteredSubClassFeatures!==undefined&&filteredSubClassFeatures.length!==0?filteredSubClassFeatures.map((feature) => {
+                                        return `
+                                            <div class="mb-3">
+                                                <h5 class="fw-bold">${feature.name}</h5>
+                                                <p>${feature.description}</p>
+                                            </div>
+                                        `;
+                                    }).join(''):''}
                                 </div>
                             </div>
 
@@ -391,7 +557,7 @@ function CollectedDataTest() {
                             type="number" 
                             class="form-control" 
                             id="currentHP" 
-                            value="${currentHP}" 
+                            value="${maxHpCalc}" 
                             min="0" 
                             max="${maxHpCalc}" 
                             oninput="if(this.value > ${maxHpCalc}) this.value = ${maxHpCalc}" 
@@ -421,13 +587,14 @@ function CollectedDataTest() {
                                 <!-- Weapon Attacks -->
                                 <div class="card shadow-sm mb-4 p-3">
                                 <h4 class="fw-bold mb-3">Weapon Attacks</h4>
-                                    ${weapons.map((weapon, index)=>{
-                                        var mod;
-                                        weapon.profHave==1?mod=modCalc(Stats[weapon.statIndex])+profBonus:mod=modCalc(Stats[weapon.statIndex]);
-                                        console.log(weapon.name+": "+weapon.profHave)
+                                    ${weapons?.length?weapons.map((weapon, index)=>{
+                                        var amod;
+                                        var dmod;
+                                        weapon.profHave==1?amod=modCalc(Stats[weapon.statIndex])+profBonus:amod=modCalc(Stats[weapon.statIndex]);
+                                        dmod = modCalc(Stats[weapon.statIndex]);
 
-                                        return `<p><b><input value="${weapon.name}"></input></b><input value="${mod>=0?"+":""}${mod}"> </input>  <input value="${weapon.damageDie} ${mod>=0?"+":""}${mod} ${weapon.damageType}"> </input>  </p>`
-                                    }).join('')}
+                                        return `<p><b><input value="${weapon.name}"></input></b><input value="${amod>=0?"+":""}${amod}"> </input>  <input value="${weapon.damageDie} ${amod>=0?"+":""}${dmod} ${weapon.damageType}"> </input>  </p>`
+                                    }).join(''):''}
                                 </div>
                                 
                             

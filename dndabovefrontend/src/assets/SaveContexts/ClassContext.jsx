@@ -18,7 +18,7 @@ export const SpellCastingAMContext = createContext();
 
 //Returns Class Id
 export function ClassIdProvider({ children }) {
-  const [ClassId, setClassId] = useState(0);
+  const [ClassId, setClassId] = useState(-1);
 
   return (
     <ClassIdContext.Provider value={{ ClassId, setClassId }}>
@@ -29,7 +29,7 @@ export function ClassIdProvider({ children }) {
 
 //Returns Subclass Id
 export function SubclassIdProvider({ children }) {
-  const [SubclassId, setSubclassId] = useState(0);
+  const [SubclassId, setSubclassId] = useState(-1);
 
   return (
     <SubclassIdContext.Provider value={{ SubclassId, setSubclassId }}>
