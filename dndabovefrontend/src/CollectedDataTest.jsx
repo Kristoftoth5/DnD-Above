@@ -50,17 +50,21 @@ function CollectedDataTest() {
                 const classFeaturesResponse = await fetchEverything("Features/originclassid/" + ClassId);
                 const subClassFeaturesResponse = await fetchEverything("Features/originsubclassid/" + SubclassId);
                 const subRaceFeaturesResponse = await fetchEverything("FeaturesToFeaturesConnections/originfeatureid/" + selectedSubraceId);
+
+                
                 
                 var filteredClassFeatures = [];
                 var filteredSubClassFeatures = [];
                 if(classFeaturesResponse.length!==0&&classFeaturesResponse!==undefined)
                 {
+                    var seen = new Set();
                     try
                     {
                         classFeaturesResponse.map((feature,index)=>{
-                            if(!filteredClassFeatures.includes(feature)&&feature.levelReq<=FinalCharacterLevel)
+                            if (feature.levelReq <= FinalCharacterLevel && !seen.has(feature.name)) 
                             {
                                 filteredClassFeatures.push(feature)
+                                seen.add(feature.name);
                             }
                         });
                     }
@@ -206,6 +210,7 @@ function CollectedDataTest() {
 
 
                 
+            
                 // Equipment Section
                 const EquipmentData=[];
                 const strength = Stats[0]; // Strength stat
@@ -386,7 +391,24 @@ function CollectedDataTest() {
                 }
 
                 
-                
+                //Spells section
+                const spellData=[];
+                if(FinalSpells?.length>0)
+                {
+                    for(const id of FinalSpells)
+                    {
+                        try
+                        {
+                            spellData.push(await fetchEverything("Spells/"+id));
+                        }
+                        catch(error)
+                        {
+                            console.log("There was an error fetching chosen spell results: ",error)
+                        }
+                    }
+                }
+
+                spellData.sort((a, b) => a.level - b.level)
                 
                 
 
@@ -593,7 +615,7 @@ function CollectedDataTest() {
                                         weapon.profHave==1?amod=modCalc(Stats[weapon.statIndex])+profBonus:amod=modCalc(Stats[weapon.statIndex]);
                                         dmod = modCalc(Stats[weapon.statIndex]);
 
-                                        return `<p><b><input value="${weapon.name}"></input></b><input value="${amod>=0?"+":""}${amod}"> </input>  <input value="${weapon.damageDie} ${amod>=0?"+":""}${dmod} ${weapon.damageType}"> </input>  </p>`
+                                        return `<p><b><input value="${weapon.name}"></input></b><input value="${amod>=0?"+":""}${amod}"> </input>  <input value="${weapon.damageDie} ${dmod>=0?"+":""}${dmod} ${weapon.damageType}"> </input>  </p>`
                                     }).join(''):''}
                                 </div>
                                 
@@ -620,18 +642,70 @@ function CollectedDataTest() {
                                         `;
                                     }).join('')}
                                 </div>
-                            
-                            
-                                </div>
+                                
+                                
+                                
+                                    
+                                        
                         </div>
                     </div>
 
-                    
+                    <!-- Spells Section -->
+                                <div class="card shadow-sm mb-4 p-3">
+                                <h4 class="mb-3">Spells</h4>
+
+                                ${spellData?.length > 0 ? spellData.map((spell, index) => {
+                                    return `
+                                    <table style="margin-bottom: 16px; width: 100%; border-collapse: collapse; table-layout: fixed;">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>School & Level</th>
+                                                <th>Casting Time</th>
+                                                <th>Range</th>
+                                                <th>Components</th>
+                                                <th>Duration</th>
+                                                <th>Details</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>${spell.name}</td>
+                                                <td>Level ${spell.level} ${spell.school}</td>
+                                                <td>
+                                                    ${spell.castingTime}${spell.ritual === 1 ? '<sup><i>R</i></sup>' : ''}
+                                                </td>
+                                                <td>${spell.range}</td>
+                                                <td>
+                                                    ${spell.component}${spell.componentPrice ? `<sup>${spell.componentPrice}GP</sup>` : ''}
+                                                </td>
+                                                <td>
+                                                    ${spell.duration}${spell.concentration === 1 ? '<sup><b>C</b></sup>' : ''}
+                                                </td>
+                                                <td>
+                                                    <button onclick="
+                                                        const descRow = document.getElementById('desc-${index}');
+                                                        descRow.style.display = descRow.style.display === 'none' ? 'table-row' : 'none';
+                                                        this.innerText = descRow.style.display === 'none' ? 'Show' : 'Hide';
+                                                    ">Show</button>
+                                                </td>
+                                            </tr>
+                                            <tr id="desc-${index}" style="display: none; background-color: #f9f9f9;">
+                                                <td colspan="7">
+                                                    <div style="padding: 10px;">
+                                                        <strong>Description:</strong><br>
+                                                        ${spell.description || 'No description available.'}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    `;
+                                }).join('') : ''}
                 `;
-
-                
-
                 setSave(tempSave);
+
+
             } catch (error) {
                 console.error("Error fetching data: ", error);
             }
