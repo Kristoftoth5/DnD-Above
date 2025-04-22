@@ -228,83 +228,77 @@ function CollectedDataTest() {
                     }
                     
                     if (Equipment&&EquipmentData) {
-                    
-                    for (let i = 0; i < equipmentCount; i++) {
-                        const item = EquipmentData[i] || ""; // If no equipment exists, leave blank
-                        if(item !== "")
-                        {
-                            var armorBonus;
-                            if(item.ac>2)
+                    const equipmentMap = {};
+                    let realItemCount = 0;
+
+                        for (let i = 0; i < equipmentCount; i++) {
+                            const item = EquipmentData[i];
+                            if(!item)continue;
+                            const key = item.name; // Customize if needed
+
+                            if (equipmentMap[key]) 
                             {
-                                item.equipmentType == "Light Armor"?armorBonus="+DEX":"";
-                                item.equipmentType == "Medium Armor"?armorBonus="+DEX(Max. +2)":"";
-                                item.equipmentType == "Heavy Armor"?armorBonus="":"";
-                            }
-                            var profHaveTemp;
-                            weaponProfs.includes(item.equipmentType)||armorProfs.includes(item.equipmentType)||weaponProfs.includes(item.name)?profHaveTemp=1:profHaveTemp=0;
+                                equipmentMap[key].quantity += 1;
+                            } 
+                            else 
+                            {
+                                let armorBonus = "";
+                                if (item.ac > 2) {
+                                    if (item.equipmentType === "Light Armor") armorBonus = "+DEX";
+                                    else if (item.equipmentType === "Medium Armor") armorBonus = "+DEX(Max. +2)";
+                                    else if (item.equipmentType === "Heavy Armor") armorBonus = "";
+                                }
 
-                            var temp={
-                                name:item.name,
-                                equipmentType:item.equipmentType,
-                                properties:item.properties,
-                                damageDie:item.damageDie,
-                                damageType:item.damageType,
-                                ac:item.ac,
-                                rarity:item.rarity,
-                                consumable:item.consumable,
-                                description:item.description,
-                                attunement:item.attunement,
-                                armorBonus:armorBonus,
-                                profReq:item.profReq,
-                                profHave:profHaveTemp,
-                                quantity:1
-                            }
-                            equipmentFields.push(temp)
-                        }
-                        else
-                        {
-                            var temp={
-                                name:"",
-                                equipmentType:"",
-                                properties:[],
-                                damageDie:"",
-                                ac:0,
-                                rarity:"",
-                                consumable:"",
-                                description:"",
-                                attunement:"",
-                                armorBonus:"",
-                                profHave:"",
-                                quantity:0
-                            }
-                            equipmentFields.push(temp);
-                        }
-                        
+                                const profHaveTemp =
+                                    weaponProfs.includes(item.equipmentType) ||
+                                    armorProfs.includes(item.equipmentType) ||
+                                    weaponProfs.includes(item.name)
+                                        ? 1
+                                        : 0;
 
-                        
-                    }
-                }
-                else
-                {
-                    for (let i = 0; i < equipmentCount; i++) {
-                        const itemName = "No equipment was selected"; // If no equipment exists, leave blank
-                        var temp={
-                            name:"",
-                            equipmentType:"",
-                            properties:[],
-                            damageDie:"",
-                            ac:0,
-                            rarity:"",
-                            consumable:"",
-                            description:"",
-                            attunement:"",
-                            armorBonus:"",
-                            profHave:"",
-                            quantity:0
+                                const temp = {
+                                    name: item.name,
+                                    equipmentType: item.equipmentType,
+                                    properties: item.properties,
+                                    damageDie: item.damageDie,
+                                    damageType: item.damageType,
+                                    ac: item.ac,
+                                    rarity: item.rarity,
+                                    consumable: item.consumable,
+                                    description: item.description,
+                                    attunement: item.attunement,
+                                    armorBonus: armorBonus,
+                                    profReq: item.profReq,
+                                    profHave: profHaveTemp,
+                                    quantity: 1,
+                                };
+
+                                equipmentMap[key] = temp;
+                                equipmentFields.push(temp);
+                                realItemCount++;
+                            }
                         }
-                        equipmentFields.push(temp);
-                    }
-                }
+
+                        // Pad with blanks if needed
+                        while (equipmentFields.length < equipmentCount) {
+                            equipmentFields.push({
+                                name: "",
+                                equipmentType: "",
+                                properties: [],
+                                damageDie: "",
+                                damageType: "",
+                                ac: 0,
+                                rarity: "",
+                                consumable: "",
+                                description: "",
+                                attunement: "",
+                                armorBonus: "",
+                                profReq: "",
+                                profHave: "",
+                                quantity: 0,
+                            });
+                        }}
+                
                 
                 //Weapon attacks calculation and filtering
                 for (const item of equipmentFields) 
@@ -497,7 +491,12 @@ function CollectedDataTest() {
                                 <div class="card shadow-sm mb-4 p-3">
                                     <h4 class="mb-3 text-center">Saving Throws</h4>
                                     ${["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"].map((throwName, index) => {
-                                        const mod = modCalc(Stats[index]);
+                                        var mod=modCalc(Stats[index]);
+                                        if(classDataResponse.savingThrows.includes(throwName))
+                                        {
+                                            mod = modCalc(Stats[index])+profBonus;
+                                        }
+                                        
                                         return `<p><b>${throwName}</b>: ${mod >= 0 ? "+" : ""}${mod}</p>`;
                                     }).join('')}
                                 </div>
