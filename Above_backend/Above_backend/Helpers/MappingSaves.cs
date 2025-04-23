@@ -19,6 +19,7 @@ namespace Above_backend.Helpers
             {
                 Name = savescreatedto.Name,
                 Sheet = savescreatedto.Sheet,
+                SpellSheet = savescreatedto.SpellSheet,
                 UserId = savescreatedto.UserId,
             };
         }
@@ -28,6 +29,7 @@ namespace Above_backend.Helpers
             {
                 Id = saves.Id,
                 Sheet = saves.Sheet,
+                SpellSheet = saves.SpellSheet,
             };
         }
     }

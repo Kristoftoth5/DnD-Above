@@ -6,5 +6,6 @@ namespace Above_backend.Models.DTOs
     {
         public int Id { get; set; }
         public string Sheet {  get; set; }
+        public string SpellSheet { get; set; }
     }
 }
