@@ -30,6 +30,8 @@ function CreatorPage ()
 
     const { selectedOption } = useContext(CreatorContext);
     const { selectedRaceId } = useContext(RaceIdContext);
+
+    const [token] = useState(localStorage.getItem('authToken'));
     
     const navigate = useNavigate();
 
@@ -66,14 +68,15 @@ function CreatorPage ()
             <EquipmentCard classId = {ClassId}/>
             <SpellCard ClassId={ClassId}/>
             <div className='save'>
-            <button 
+            {token?(<button 
                 className="save-button" 
                 onClick={() => {ClassId == 0 || selectedRaceId == 0 ? window.alert("You need to select a Race and a Class") : navigate("/asi-feat")}}
                 >
                 <img src={falmingo} alt="Save" className="icon flipped" />
                 Save Character
                 <img src={falmingo} alt="Save" className="icon" />
-            </button>
+            </button>):null}
+            
             </div>
         </div>
         </div>

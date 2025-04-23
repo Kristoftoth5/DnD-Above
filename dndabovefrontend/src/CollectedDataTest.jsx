@@ -5,10 +5,12 @@ import { StatsContext } from "./assets/SaveContexts/StatContext.jsx";
 import { BgNameContext, BgDescContext, BgSkillsContext, BgToolContext } from "./assets/SaveContexts/BackgroundContext.jsx";
 import { EquipmentContext, RemainingGoldContext } from "./assets/SaveContexts/EquipmentContext.jsx";
 import { FinalSpellsContext } from "./assets/SaveContexts/FinalSpellContext.jsx";
+import { UserIdContext } from "./assets/UserContext.jsx";
 import fetchEverything from "./assets/CommonFunctions/fetchEverything.js";
 import modCalc from "./assets/CommonFunctions/modCalc.js";
 import profCalc from "./assets/CommonFunctions/profCalc.js";
 import diceToInteger from "./assets/CommonFunctions/diceToInteger.js";
+import { useNavigate } from "react-router-dom";
 
 function CollectedDataTest() {
     const { selectedRaceId } = useContext(RaceIdContext);
@@ -25,11 +27,15 @@ function CollectedDataTest() {
     const { RemainingGold } = useContext(RemainingGoldContext);
     const { FinalSpells } = useContext(FinalSpellsContext);
     const { FinalCharacterLevel } = useContext(FinalCharacterLevelContext);
+    const { UserId } = useContext(UserIdContext);
 
     const [save, setSave] = useState();
     const [currentHP, setCurrentHP] = useState(0);
     const [raceFeatures, setRaceFeatures] = useState([]);
     const [subraceFeatures, setSubraceFeatures] = useState([]);
+    const [sheetName, setSheetName] = useState("");
+    const [token] = useState(localStorage.getItem('authToken'));
+    const navigate = useNavigate();
 
     useEffect(() => {
         console.log("Fetching all data...");
@@ -648,7 +654,9 @@ function CollectedDataTest() {
                                         
                         </div>
                     </div>
+                    
 
+                    
                     <!-- Spells Section -->
                                 <div class="card shadow-sm mb-4 p-3">
                                 <h4 class="mb-3">Spells</h4>
@@ -703,20 +711,76 @@ function CollectedDataTest() {
                                 }).join('') : ''}
                 `;
                 setSave(tempSave);
+                setSheetName(raceDataResponse.name+" "+classDataResponse.name+" "+"level "+FinalCharacterLevel);
+
+
+                const sendSave = async () => {
+                    const url = "https://localhost:7188/api/Saves/";  
+                    const data = {
+                      "name": sheetName,
+                      "sheet": tempSave,
+                      "userId": UserId
+                    };
+                  
+                    try {
+                    console.log("Sheet size in bytes:", new Blob([JSON.stringify(data)]).size);
+                      const response = await fetch(url, {
+                        method: "POST",
+                        headers: {
+                          "Content-Type": "application/json",
+                          'Authorization': `Bearer ${token}`
+                        },
+                        body: JSON.stringify(data)
+                      });
+                  
+                  
+                      const responseData = await response.json();
+                      console.log("Response Data:", responseData);
+                      navigate("/")
+                    }
+                    catch(error)
+                    {
+                        console.log("Error: ",error);
+                    } 
+                  };
+        
+        
+        
+                  sendSave();
 
 
             } catch (error) {
                 console.error("Error fetching data: ", error);
             }
+
+
+            
+
+
+
+
+
         }
 
         fetchAllData();
+
+
+
+        
+
+
+
+
+
+
     }, [selectedRaceId, selectedSubraceId, ClassId, SubclassId, ChosenClassFeatureId, FinalCharacterLevel, Stats]);
 
     return (
         <div className="CollectedDataTest">
             {save && <div dangerouslySetInnerHTML={{ __html: save }} />}
         </div>
+
+        
     );
 }
 
