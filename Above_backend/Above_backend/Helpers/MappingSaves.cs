@@ -20,6 +20,9 @@ namespace Above_backend.Helpers
                 Name = savescreatedto.Name,
                 Sheet = savescreatedto.Sheet,
                 //UserId = savescreatedto.UserId,
+=======
+                SpellSheet = savescreatedto.SpellsSheet,
+                UserId = savescreatedto.UserId,
             };
         }
         public static SavesSheetDisplayDTO SavesToSavesSheetDisplayDTO(Saves saves)
@@ -28,6 +31,7 @@ namespace Above_backend.Helpers
             {
                 Id = saves.Id,
                 Sheet = saves.Sheet,
+                SpellSheet = saves.SpellSheet,
             };
         }
     }

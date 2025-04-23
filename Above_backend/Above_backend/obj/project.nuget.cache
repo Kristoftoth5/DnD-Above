@@ -1,9 +1,15 @@
 {
   "version": 2,
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   "dgSpecHash": "WwfJBXJ5bAc=",
   "success": true,
   "projectFilePath": "D:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
+=======
+  "dgSpecHash": "tKzvlmXiHsw=",
+  "success": true,
+  "projectFilePath": "F:\\gulyasa\\DnD-Above\\Above_backend\\Above_backend\\Above_backend.csproj",
+>>>>>>> Stashed changes
   "expectedPackageFiles": [
     "C:\\Users\\gulyasaz\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\gulyasaz\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
@@ -176,6 +182,7 @@
     "C:\\Users\\gulyasaz\\.nuget\\packages\\system.threading.tasks.dataflow\\7.0.0\\system.threading.tasks.dataflow.7.0.0.nupkg.sha512",
     "C:\\Users\\gulyasaz\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\gulyasaz\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
+<<<<<<< Updated upstream
 =======
   "dgSpecHash": "n+4FKPiWaPc=",
   "success": true,
@@ -352,6 +359,8 @@
     "C:\\Users\\User\\.nuget\\packages\\system.threading.tasks.dataflow\\7.0.0\\system.threading.tasks.dataflow.7.0.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\system.windows.extensions\\7.0.0\\system.windows.extensions.7.0.0.nupkg.sha512"
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   ],
   "logs": []
