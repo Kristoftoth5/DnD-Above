@@ -170,6 +170,7 @@ namespace Above_backend.Migrations
                         .Annotation("Sqlite:Autoincrement", true),
                     Name = table.Column<string>(type: "TEXT", nullable: false),
                     Sheet = table.Column<string>(type: "TEXT", nullable: false),
+                    SpellSheet = table.Column<string>(type: "TEXT", nullable: false),
                     UserId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

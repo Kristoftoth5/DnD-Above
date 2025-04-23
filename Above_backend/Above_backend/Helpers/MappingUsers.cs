@@ -12,8 +12,6 @@ namespace Above_backend.Helpers
                 Id = user.Id,
                 UserName = user.UserName,
                 Email = user.Email,
-                CreatedAt = System.DateTime.Now,
-                UpdatedAt = System.DateTime.Now,
             };
         }
 
@@ -24,8 +22,6 @@ namespace Above_backend.Helpers
                 UserName = userregisterdto.UserName,
                 Email = userregisterdto.Email,
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(userregisterdto.Password),
-                CreatedAt = System.DateTime.Now,
-                UpdatedAt = System.DateTime.Now,
             };
         }
     }

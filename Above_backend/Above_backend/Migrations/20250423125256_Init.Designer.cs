@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Above_backend.Migrations
 {
     [DbContext(typeof(AboveDBContext))]
-    [Migration("20250413170124_Init")]
+    [Migration("20250423125256_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -261,6 +261,10 @@ namespace Above_backend.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Sheet")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("SpellSheet")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
