@@ -71,6 +71,48 @@
   border: none;
 }
 
+#plsbeselect
+{
+  background-color: pink;
+  border: 3px solid salmon;
+  margin: 10px;
+}
+
+#plsbeselect:hover
+{
+  background-color: lightpink;
+  border: 3px solid salmon;
+}
+
+#plsbedeselect
+{
+  background-color: lightblue;
+  border: 3px solid darkblue;
+  margin: 10px;
+}
+
+#plsbedeselect:hover
+{
+  color: white;
+  background-color: blue;
+  border: 3px solid darkblue;
+}
+
+#plsberevorfin
+{
+  color: white;
+  background-color: red;
+  border: 3px solid darkred;
+  margin: 10px;
+}
+
+#plsberevorfin:hover
+{
+  color: white;
+  background-color: red;
+  border: 3px solid darkred;
+}
+
 .selected-feature
 {
   border: 1px solid grey;

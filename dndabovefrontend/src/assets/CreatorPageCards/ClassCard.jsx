@@ -69,6 +69,7 @@ function ClassCard() {
     setFeatureWithSubFeature("");
     setCharacterLevel(1);
     setFinalCharacterLevel(1);
+    setTotalSubFeatureCount(0);
 
     fetchdatabyid();
 
@@ -241,6 +242,7 @@ function ClassCard() {
                       <button
                         onClick={() => subFeatureAdd(subfeature.name, subfeature.description, feature.id, subfeature.id)}
                         disabled={alreadySelected || totalSubFeatureCount >= maxSubFeatures}
+                         id="plsbeselect"
                       >
                         Select {subfeature.name}
                       </button>
@@ -252,7 +254,7 @@ function ClassCard() {
                 <div key={id}>
                   <p><b>{chosensub[0]}</b></p>
                   <p>{chosensub[1]}</p>
-                  <button onClick={() => subFeatureDelete(chosensub[0], feature.id)}>
+                  <button onClick={() => subFeatureDelete(chosensub[0], feature.id)} id="plsbedeselect">
                     Deselect {chosensub[0]}
                   </button>
                 </div>
@@ -301,9 +303,9 @@ function ClassCard() {
 
         <div>
           {featureDone ? (
-            <button onClick={revertSelection}>Revert Selection</button>
+            <button onClick={revertSelection} id="plsberevorfin">Revert Selection</button>
           ) : (
-            <button onClick={finalizeSelection}>Finalize Selection</button>
+            <button onClick={finalizeSelection} id="plsberevorfin">Finalize Selection</button>
           )}
         </div>
       </>
