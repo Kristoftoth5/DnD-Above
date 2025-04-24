@@ -66,6 +66,8 @@ function ClassCard() {
 
     setSubFeatures([]);
     setChosenSubFeatures([]);
+    setChosenClassFeatureId([]);
+    setChosenSubClassId(0);
     setFeatureWithSubFeature("");
     setCharacterLevel(1);
     setFinalCharacterLevel(1);
