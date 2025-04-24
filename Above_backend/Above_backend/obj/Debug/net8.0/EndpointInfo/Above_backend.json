@@ -1538,6 +1538,10 @@
             "type": "string",
             "nullable": true
           },
+          "spellSheet": {
+            "type": "string",
+            "nullable": true
+          },
           "userId": {
             "type": "integer",
             "format": "int32"
@@ -1570,6 +1574,10 @@
             "type": "string",
             "nullable": true
           },
+          "spellSheet": {
+            "type": "string",
+            "nullable": true
+          },
           "userId": {
             "type": "integer",
             "format": "int32"
@@ -1585,6 +1593,10 @@
             "format": "int32"
           },
           "sheet": {
+            "type": "string",
+            "nullable": true
+          },
+          "spellSheet": {
             "type": "string",
             "nullable": true
           }
@@ -1696,14 +1708,6 @@
           "email": {
             "type": "string",
             "nullable": true
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
           }
         },
         "additionalProperties": false

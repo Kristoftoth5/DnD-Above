@@ -42,10 +42,17 @@ function AbilityScores() {
 
   const handleDrop = (event, ability) => {
     const bonusType = event.dataTransfer.getData("bonusType");
-    if (!bonusType || bonuses[bonusType]) return; // Prevent duplicate bonuses on same stat
+    if (!bonusType) return;
 
-    setBonuses((prev) => ({ ...prev, [bonusType]: ability })); // Assign bonus to the stat
-    setAvailableBonuses((prev) => ({ ...prev, [bonusType]: false })); // Remove bonus from selection
+    if (bonuses[bonusType] === ability) return; // Prevent re-assigning to the same stat
+
+    // Check if the stat already has an increase
+    const alreadyHasBonus = bonuses.plus2 === ability || bonuses.plus1 === ability;
+    if (alreadyHasBonus) return; // Don't allow stacking bonuses in one stat
+
+    // Assign the bonus
+    setBonuses((prev) => ({ ...prev, [bonusType]: ability }));
+    setAvailableBonuses((prev) => ({ ...prev, [bonusType]: false }));
   };
 
   const handleRemoveBonus = (ability) => {
