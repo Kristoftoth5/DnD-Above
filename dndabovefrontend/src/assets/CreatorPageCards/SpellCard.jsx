@@ -57,6 +57,7 @@ function SpellCard() {
             }
         }
         fetchSpells();
+        console.log("Spell number limit: "+ chosenSpellsLimit + "\nChosen spell amount: "+ chosenSpellsNumber)
     }, [ClassId, lastFetchedClassId, FinalCharacterLevel]);
 
     useEffect(() => {
@@ -77,8 +78,8 @@ function SpellCard() {
         setAvailableSpellLevels(tempLevels);
         
         setChosenCantripsLimit(Halfcaster !== 0 ? 0 : Math.ceil(FinalCharacterLevel / 4) + 1);
-        setChosenSpellsLimit(FinalCharacterLevel + SpellCastingAM);
-    }, [spells, Caster, Halfcaster, FinalCharacterLevel, ClassId]);
+        chosenSpellsLimit < 1 ? setChosenSpellsLimit(1) : setChosenSpellsLimit(FinalCharacterLevel + SpellCastingAM);
+    }, [spells, Caster, Halfcaster, FinalCharacterLevel, ClassId, SpellCastingAM]);
 
     useEffect(() => {
         if (spells.length === 0 || highestSpellLevel === undefined) return;

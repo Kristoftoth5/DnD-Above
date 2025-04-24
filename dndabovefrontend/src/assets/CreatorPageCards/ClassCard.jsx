@@ -217,7 +217,7 @@ function ClassCard() {
               setSpellCastingAM(null); // or default/fallback value
           }
       }
-  }, [classData, characterLevel, chosenClassId]);
+  }, [classData, characterLevel, chosenClassId, Stats]);
 
     return (
       <>
