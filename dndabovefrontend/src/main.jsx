@@ -29,7 +29,6 @@ createRoot(document.getElementById('root')).render(
       <ExtraFeatProvider>
 
       <UserIdProvider>
-      <Header />
 
       <EquipmentProvider>
       <RemainingGoldProvider>
@@ -55,6 +54,7 @@ createRoot(document.getElementById('root')).render(
       <FinalSpellsProvider>
 
       <StatsProvider>
+      <Header />
               <Routes>
                 <Route path="/" element={<Home />} />  
                 <Route path="/creator-options" element={<CreationOptionsPage />} />
