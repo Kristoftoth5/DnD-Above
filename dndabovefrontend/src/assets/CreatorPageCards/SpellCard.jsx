@@ -5,8 +5,9 @@ import profCalc from "../CommonFunctions/profCalc";
 import "../Cards.css";
 import { FinalSpellsContext } from "../SaveContexts/FinalSpellContext";
 import { FinalCharacterLevelContext, CasterContext, HalfcasterContext, SpellCastingAMContext } from "../SaveContexts/ClassContext";
+import { ClassIdContext } from "../SaveContexts/ClassContext";
 
-function SpellCard({ ClassId }) {
+function SpellCard() {
     const [spells, setSpells] = useState([]);
     const [eligibleSpells, setEligibleSpells] = useState([]);
     const [displayEligibleSpells, setDisplayEligibleSpells] = useState([]);
@@ -28,6 +29,7 @@ function SpellCard({ ClassId }) {
     const { Caster } = useContext(CasterContext);
     const { Halfcaster } = useContext(HalfcasterContext);
     const { SpellCastingAM } = useContext(SpellCastingAMContext)
+    const { ClassId } = useContext(ClassIdContext)
 
     useEffect(() => {
         async function fetchSpells() {
@@ -55,20 +57,28 @@ function SpellCard({ ClassId }) {
             }
         }
         fetchSpells();
-    }, [ClassId, lastFetchedClassId]);
+    }, [ClassId, lastFetchedClassId, FinalCharacterLevel]);
 
     useEffect(() => {
-        if (!spells || spells.length === 0) return;
+        console.log("Caster:", Caster);
+        console.log("Halfcaster:", Halfcaster);
+        console.log("FinalCharacterLevel:", FinalCharacterLevel);
+
         const level = spellLevelCalc(Caster, Halfcaster, FinalCharacterLevel);
 
+        console.log("Calculated Spell Level:", level);  // Check if this is correct
+
         const tempLevels = Array.from({ length: level + 1 }, (_, i) => i).filter(lvl => Halfcaster === 0 || lvl !== 0);
+
+        console.log("Available Spell Levels:", tempLevels);  // Check if this is correct
 
         setHighestSpellLevel(level);
         setProficiencyBonus(profCalc(FinalCharacterLevel));
         setAvailableSpellLevels(tempLevels);
+        
         setChosenCantripsLimit(Halfcaster !== 0 ? 0 : Math.ceil(FinalCharacterLevel / 4) + 1);
         setChosenSpellsLimit(FinalCharacterLevel + SpellCastingAM);
-    }, [spells, Caster, Halfcaster, FinalCharacterLevel]);
+    }, [spells, Caster, Halfcaster, FinalCharacterLevel, ClassId]);
 
     useEffect(() => {
         if (spells.length === 0 || highestSpellLevel === undefined) return;
@@ -143,6 +153,7 @@ function SpellCard({ ClassId }) {
         }
     }
 
+    console.log("Available Spell Levels: ", availableSpellLevels);
     function showDetails(data) {
         window.alert(data);
     }
@@ -150,9 +161,7 @@ function SpellCard({ ClassId }) {
     function AvailableSpells() {
         return (
             <>
-                <p><b>Spellcasting Class Name</b></p>
-                <p><b>Spellcasting DC: </b> {8 + SpellCastingAM + proficiencyBonus} </p>
-                <p><b>Spell Attack Bonus: </b> {SpellCastingAM + proficiencyBonus} </p>
+            
                 <div className="dropdown-wrapper">
                     <button className="btn btn-secondary dropdown-toggle" onClick={() => setDropdownOpen(!dropdownOpen)} id="plsbepink">
                         Select Spell Level

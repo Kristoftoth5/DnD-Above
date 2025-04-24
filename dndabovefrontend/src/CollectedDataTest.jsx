@@ -741,11 +741,12 @@ function CollectedDataTest() {
                                 const sendSave = async (data) => {
                                     const token = localStorage.getItem('authToken');
                                     var data={
-                                        name:raceDataResponse.name+" "+classDataResponse.name+" Level "+FinalCharacterLevel,
-                                        sheet:tempSave,
-                                        spellSheet:tempSpellSave,
-                                        userId:UserId
+                                        "name":raceDataResponse.name+" "+classDataResponse.name+" Level "+FinalCharacterLevel,
+                                        "sheet":tempSave,
+                                        "spellSheet":tempSpellSave,
+                                        "userId":UserId
                                     }
+                                    console.log("Payload to send:", data);
                                   
                                     try {
                                       const response = await fetch('https://localhost:7188/api/Saves', {

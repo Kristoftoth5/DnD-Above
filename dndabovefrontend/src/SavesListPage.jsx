@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./assets/Styles.css";
 import "./assets/Cards.css";
 import { UserIdContext } from "./assets/UserContext";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 function SavesListPage()
 {
@@ -11,6 +12,7 @@ function SavesListPage()
     const [token, setToken] = useState(localStorage.getItem('authToken'));
     const [userName, setUserName] = useState("");
     const [saves, setSaves] = useState();
+    const navigate = useNavigate();
     console.log(typeof(UserId));
 
     
@@ -62,7 +64,7 @@ function SavesListPage()
 
     function HandleNavigate(id)
     {
-      navigate(`/save/${id}`);
+      navigate(`/save-display/${id}`);
     }
 
     
