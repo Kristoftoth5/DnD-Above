@@ -86,6 +86,8 @@ function SignInPage()
     }
     return(
         <>
+        <br/>
+        <br/>
         <div className="creator-container">
         <div className="selected-single">
         <p><b>E-mail</b><input type="email" id="email"/></p><br></br>

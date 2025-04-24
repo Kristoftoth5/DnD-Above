@@ -89,6 +89,8 @@ function SignUpPage()
 
     return(
         <>
+        <br/>
+        <br/>
         <div className="creator-container">
         <div className="selected-single">
         <p><b>Username</b><input type="text" id="username"/></p><br></br>

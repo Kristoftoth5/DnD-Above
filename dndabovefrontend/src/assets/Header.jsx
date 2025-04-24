@@ -47,16 +47,23 @@ const Header = () => {
         </button>
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
+            {token?(<li className="nav-item">
               <button className="nav-link btn btn-link" onClick={() => handleNavigation("/creator-options")}>
                 Create New Character
               </button>
-            </li>
-            <li className="nav-item">
-              <button className="nav-link btn btn-link" onClick={() => handleNavigation("/character-creator")}>
+            </li>):null}
+            
+            {token?(<li className="nav-item">
+              <button className="nav-link btn btn-link" onClick={() => handleNavigation("/saves-list")}>
                 Saved Characters
               </button>
-            </li>
+            </li>):null}
+            
+            {token ?(<li className="nav-item">
+              <button className="nav-link btn btn-warning" onClick={() => { handleLogOut();}}>
+                Logout
+              </button>
+            </li>):null}
 
             <li className="nav-item">
             <button
@@ -69,29 +76,6 @@ const Header = () => {
             {/* Dice Roller Component (conditionally rendered) */}
             <DiceRoller isVisible={showDiceRoller} />
             </li>
-
-            {!token ? (<li className="nav-item">
-              <button className="nav-link btn btn-link" onClick={() => handleNavigation("/sign-up")}>
-                Sign Up
-              </button>
-            </li>):null}
-            
-            {!token ? (<li className="nav-item">
-              <button className="nav-link btn btn-link" onClick={() => handleNavigation("/sign-in")}>
-                Sign In
-              </button>
-            </li>):null}
-            
-            {token ?(<li className="nav-item">
-              <button className="nav-link btn btn-warning" onClick={() => { handleLogOut();}}>
-                Logout
-              </button>
-            </li>):null}
-            {token ?(<li className="nav-item">
-              <button className="nav-link btn btn-warning" onClick={() => { navigate("/saves-list");}}>
-                Saves
-              </button>
-            </li>):null}
             {console.log(UserId)}
             
           </ul>

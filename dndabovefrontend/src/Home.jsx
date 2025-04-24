@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserIdContext } from "./assets/UserContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './assets/Styles.css';
 import background1 from './assets/bgImages/one.jpg'
@@ -17,6 +18,12 @@ const Home = () => {
   var firstbg = Math.floor(Math.random() * 8)
   const [images, setImages] = useState([background1, background2, background3, background4, background5, background6, background7, background8])
   const [randomBgImage, setRandomBgImage] = useState(firstbg);
+  var token = localStorage.getItem('authToken');
+  const { UserId } = useContext(UserIdContext);
+
+  useEffect(()=>{
+    token = localStorage.getItem('authToken');
+  },[UserId])
 
   useEffect(()=>{
           const interval = setInterval(() => {
@@ -37,21 +44,33 @@ const Home = () => {
     <div style={myStyle}>
       <div className="container d-flex justify-content-center align-items-center vh-100">
         <div className="row">
-          <div className="col-md-6">
-            <div 
+          <div className="col-md-6 d-flex justify-content-center">
+            {token?(<div 
               className="option-card"
               onClick={() => navigate("/creator-options")}
             >
               Create New Character
-            </div>
+            </div>):(<div 
+              className="option-card"
+              onClick={() => navigate("/sign-up")}
+            >
+              Create a new account
+            </div>)}
+            
           </div>
-          <div className="col-md-6">
-            <div 
+          
+          <div className="col-md-6 d-flex justify-content-center">
+          {token?(<div 
               className="option-card"
               onClick={() => navigate("/character-creator")}
             >
               Saved Characters
-            </div>
+            </div>):(<div 
+              className="option-card"
+              onClick={() => navigate("/sign-in")}
+            >
+              Log in to existing account
+            </div>)}
           </div>
         </div>
       </div>

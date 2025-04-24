@@ -5,6 +5,7 @@ import { StatsContext } from "./assets/SaveContexts/StatContext.jsx";
 import { BgNameContext, BgDescContext, BgSkillsContext, BgToolContext } from "./assets/SaveContexts/BackgroundContext.jsx";
 import { EquipmentContext, RemainingGoldContext } from "./assets/SaveContexts/EquipmentContext.jsx";
 import { FinalSpellsContext } from "./assets/SaveContexts/FinalSpellContext.jsx";
+import { UserIdContext } from "./assets/UserContext.jsx";
 import fetchEverything from "./assets/CommonFunctions/fetchEverything.js";
 import modCalc from "./assets/CommonFunctions/modCalc.js";
 import profCalc from "./assets/CommonFunctions/profCalc.js";
@@ -33,12 +34,14 @@ function CollectedDataTest() {
     const { RemainingGold } = useContext(RemainingGoldContext);
     const { FinalSpells } = useContext(FinalSpellsContext);
     const { FinalCharacterLevel } = useContext(FinalCharacterLevelContext);
+    const { UserId } = useContext(UserIdContext);
 
     var firstbg = Math.floor(Math.random() * 8)
     const [images, setImages] = useState([background1, background2, background3, background4, background5, background6, background7, background8])
     const [randomBgImage, setRandomBgImage] = useState(firstbg);
 
     const [save, setSave] = useState();
+    const [spellSave, setSpellSave] = useState();
     const [currentHP, setCurrentHP] = useState(0);
     const [raceFeatures, setRaceFeatures] = useState([]);
     const [subraceFeatures, setSubraceFeatures] = useState([]);
@@ -675,8 +678,11 @@ function CollectedDataTest() {
                                         
                         </div>
                     </div>
+                `;
+                setSave(tempSave);
 
-                    <!-- Spells Section -->
+                var tempSpellSave=`
+                <!-- Spells Section -->
                                 <div class="card shadow-sm mb-4 p-3">
                                 <h4 class="mb-3">Spells</h4>
 
@@ -727,9 +733,42 @@ function CollectedDataTest() {
                                         </tbody>
                                     </table>
                                     `;
-                                }).join('') : ''}
-                `;
-                setSave(tempSave);
+                                }).join('') : ''}`;
+
+                                setSpellSave(tempSpellSave);
+
+
+
+                                const sendSave = async (data) => {
+                                    const token = localStorage.getItem('authToken');
+                                    var data={
+                                        name:raceDataResponse.name+" "+classDataResponse.name+" Level "+FinalCharacterLevel,
+                                        sheet:save,
+                                        spellSheet:spellSave,
+                                        userId:UserId
+                                    }
+                                  
+                                    try {
+                                      const response = await fetch('https://localhost:7188/api/Saves', {
+                                        method: 'POST',
+                                        headers: {
+                                          'Content-Type': 'application/json',
+                                          'Authorization': `Bearer ${token}` // Include the token here
+                                        },
+                                        body: JSON.stringify(data)
+                                      });
+                                  
+                                      if (!response.ok) {
+                                        throw new Error(`HTTP error! Status: ${response.status}`);
+                                      }
+                                  
+                                      const result = await response.json();
+                                      console.log('Success:', result);
+                                      return result;
+                                    } catch (error) {
+                                      console.error('Error:', error);
+                                    }
+                                  };
 
 
             } catch (error) {
