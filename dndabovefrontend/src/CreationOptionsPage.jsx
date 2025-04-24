@@ -52,8 +52,21 @@ function CreationOptionsPage() {
     setDropdown(false); // Close dropdown after selection
   }
 
+  function downloadHelp()
+    {
+      // Create an invisible link
+      const link = document.createElement('a');
+      link.href = '/HELP.pdf'; 
+      link.download = 'HELP.pdf'; 
+      link.click(); 
+    }
+
   return (
     <div style={myStyle}>
+    <br/>
+    <br/>
+    <br/>
+    
     <div className="d-flex justify-content-center align-items-center vh-100">
       <div className="creation-container p-4 rounded shadow-lg">
         <h1 className="text-center mb-3">Character Creation Options</h1>
@@ -74,6 +87,8 @@ function CreationOptionsPage() {
             Do you get a Feat at level 1 - akin to a background feature?
           </label>
         </div>
+
+        <button className="btn btn-secondary" onClick={()=>{downloadHelp()}}>Need help understanding Stat Calculation Methods?</button>
 
         {/* Dropdown Button & List */}
         <div className="text-center position-relative">
