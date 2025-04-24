@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserIdContext } from "./assets/UserContext";
+import { ClassIdContext } from "./assets/SaveContexts/ClassContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './assets/Styles.css';
 import background1 from './assets/bgImages/one.jpg'
@@ -20,6 +21,8 @@ const Home = () => {
   const [randomBgImage, setRandomBgImage] = useState(firstbg);
   var token = localStorage.getItem('authToken');
   const { UserId } = useContext(UserIdContext);
+
+  const { setClassId } = useContext(ClassIdContext);
 
   useEffect(()=>{
     token = localStorage.getItem('authToken');
@@ -47,7 +50,7 @@ const Home = () => {
           <div className="col-md-6 d-flex justify-content-center">
             {token?(<div 
               className="option-card"
-              onClick={() => navigate("/creator-options")}
+              onClick={() => {navigate("/creator-options");setClassId(0)}}
             >
               Create New Character
             </div>):(<div 
@@ -62,7 +65,7 @@ const Home = () => {
           <div className="col-md-6 d-flex justify-content-center">
           {token?(<div 
               className="option-card"
-              onClick={() => navigate("/character-creator")}
+              onClick={() => navigate("/saves-list")}
             >
               Saved Characters
             </div>):(<div 

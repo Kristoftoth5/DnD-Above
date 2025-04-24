@@ -5,6 +5,7 @@ import { useState, useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import falmingo from './falmingo.png';
 import { UserIdContext } from "./UserContext";
+import { ClassIdContext } from "./SaveContexts/ClassContext";
 
 const Header = () => {
   const location = useLocation();
@@ -14,6 +15,7 @@ const Header = () => {
   const [showDiceRoller, setShowDiceRoller] = useState(false);
 
   const {UserId,setUserId} = useContext(UserIdContext)
+  const { setClassId } = useContext(ClassIdContext)
 
   const handleNavigation = (path) => {
     if (location.pathname === "/character-creator") {
@@ -48,7 +50,7 @@ const Header = () => {
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ms-auto">
             {token?(<li className="nav-item">
-              <button className="nav-link btn btn-link" onClick={() => handleNavigation("/creator-options")}>
+              <button className="nav-link btn btn-link" onClick={() => {handleNavigation("/creator-options");setClassId(0)}}>
                 Create New Character
               </button>
             </li>):null}
