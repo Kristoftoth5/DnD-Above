@@ -9,6 +9,14 @@ import fetchEverything from "./assets/CommonFunctions/fetchEverything.js";
 import modCalc from "./assets/CommonFunctions/modCalc.js";
 import profCalc from "./assets/CommonFunctions/profCalc.js";
 import diceToInteger from "./assets/CommonFunctions/diceToInteger.js";
+import background1 from './assets/bgImages/one.jpg'
+import background2 from './assets/bgImages/two.jpg'
+import background3 from './assets/bgImages/three.jpg'
+import background4 from './assets/bgImages/four.jpg'
+import background5 from './assets/bgImages/five.jpg'
+import background6 from './assets/bgImages/six.jpg'
+import background7 from './assets/bgImages/seven.jpg'
+import background8 from './assets/bgImages/eight.jpg'
 
 function CollectedDataTest() {
     const { selectedRaceId } = useContext(RaceIdContext);
@@ -26,10 +34,29 @@ function CollectedDataTest() {
     const { FinalSpells } = useContext(FinalSpellsContext);
     const { FinalCharacterLevel } = useContext(FinalCharacterLevelContext);
 
+    var firstbg = Math.floor(Math.random() * 8)
+    const [images, setImages] = useState([background1, background2, background3, background4, background5, background6, background7, background8])
+    const [randomBgImage, setRandomBgImage] = useState(firstbg);
+
     const [save, setSave] = useState();
     const [currentHP, setCurrentHP] = useState(0);
     const [raceFeatures, setRaceFeatures] = useState([]);
     const [subraceFeatures, setSubraceFeatures] = useState([]);
+
+      useEffect(()=>{
+                  const interval = setInterval(() => {
+                      setRandomBgImage(Math.floor(Math.random() * 8));
+                  }, 600000);
+                  return () => clearInterval(interval);
+              }, [randomBgImage])
+          
+          const myStyle = {
+              backgroundImage: `url(${images[randomBgImage]})`,
+              backgroundAttachment: "fixed", // Keeps the background fixed while scrolling
+              backgroundRepeat: "no-repeat", // Prevents the image from repeating
+              backgroundSize: "cover", // Makes the image cover the entire background
+              backgroundPosition: "center center" // Centers the image properly
+          };
 
     useEffect(() => {
         console.log("Fetching all data...");
@@ -715,7 +742,7 @@ function CollectedDataTest() {
 
     return (
        
-        <div className="CollectedDataTest"> 
+        <div className="CollectedDataTest" style={myStyle}> 
         <br/><br/>
             {save && <div dangerouslySetInnerHTML={{ __html: save }} />}
         </div>

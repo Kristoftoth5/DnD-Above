@@ -43,7 +43,7 @@ export function BgSkillsProvider({ children }) {
 
 //Bg Tool
 export function BgToolProvider({ children }) {
-    const [BgTool, setBgTool] = useState("Aclhemist's Supplies");
+    const [BgTool, setBgTool] = useState("Alchemist's Supplies");
 
     return (
         <BgToolContext.Provider value={{ BgTool, setBgTool }}>
