@@ -304,11 +304,15 @@ function ClassCard() {
         ))}
 
         <div>
-          {featureDone ? (
-            <button onClick={revertSelection} id="plsberevorfin">Revert Selection</button>
-          ) : (
-            <button onClick={finalizeSelection} id="plsberevorfin">Finalize Selection</button>
-          )}
+          {
+            chosenSubFeatures.length != 0 ?
+            (featureDone ? (
+              <button onClick={revertSelection} id="plsberevorfin">Revert Selection</button>
+            ) : (
+              <button onClick={finalizeSelection} id="plsberevorfin">Finalize Selection</button>
+            )) : null
+          }
+          
         </div>
       </>
     );
