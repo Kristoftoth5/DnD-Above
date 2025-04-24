@@ -58,7 +58,7 @@ function CreatorPage ()
         <>
         <div style={myStyle}>
         <div className="container">
-
+            <br/>
             {selectedOption == 1 ? <PointBuyStatCard/> : selectedOption == 2 ? <HeroicPointBuyStatCard/> : <CustomorRoledStatStatCard/>}
             <RaceCard/> 
             <BackgroundCard/>

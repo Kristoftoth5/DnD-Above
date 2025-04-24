@@ -714,7 +714,9 @@ function CollectedDataTest() {
     }, [selectedRaceId, selectedSubraceId, ClassId, SubclassId, ChosenClassFeatureId, FinalCharacterLevel, Stats]);
 
     return (
-        <div className="CollectedDataTest">
+       
+        <div className="CollectedDataTest"> 
+        <br/><br/>
             {save && <div dangerouslySetInnerHTML={{ __html: save }} />}
         </div>
     );

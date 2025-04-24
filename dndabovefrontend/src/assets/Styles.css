@@ -144,3 +144,11 @@
     margin-top: 2rem;
     padding-bottom: 24px;
   }
+  .navbar
+  {
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
+    left: 0;
+  }

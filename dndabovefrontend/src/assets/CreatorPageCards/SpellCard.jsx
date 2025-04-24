@@ -154,7 +154,7 @@ function SpellCard({ ClassId }) {
                 <p><b>Spellcasting DC: </b> {8 + SpellCastingAM + proficiencyBonus} </p>
                 <p><b>Spell Attack Bonus: </b> {SpellCastingAM + proficiencyBonus} </p>
                 <div className="dropdown-wrapper">
-                    <button className="btn btn-secondary dropdown-toggle" onClick={() => setDropdownOpen(!dropdownOpen)}>
+                    <button className="btn btn-secondary dropdown-toggle" onClick={() => setDropdownOpen(!dropdownOpen)} id="plsbepink">
                         Select Spell Level
                     </button>
 
