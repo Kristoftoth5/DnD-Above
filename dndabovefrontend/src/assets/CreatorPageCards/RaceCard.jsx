@@ -161,6 +161,7 @@ function RaceCard() {
                   setChosenRaceId(race[1]);
                   setDropdownOpen(false);
                   setChosenSubRaceId(0);
+                  setSelectedSubraceId(0);
                   setSelectedRaceId(race[1]);
                   setSubRaceFeatures(undefined);
                   setSubraceFeatureId([]); // Clear context on new race
