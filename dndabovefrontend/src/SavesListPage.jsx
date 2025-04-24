@@ -60,6 +60,11 @@ function SavesListPage()
         fetchSavesByUserId();
     },[UserId]);
 
+    function HandleNavigate(id)
+    {
+      navigate(`/save/${id}`);
+    }
+
     
     function SavesDisplay()
     {
@@ -79,7 +84,7 @@ function SavesListPage()
                     <tr key={index}>
                       <td>{save.name}</td>
                       <td>
-                        <button onClick={()=>{null}}  className="btn btn-primary">
+                        <button onClick={()=>{HandleNavigate(save.id)}}  className="btn btn-primary">
                           Open
                         </button>
                       </td>

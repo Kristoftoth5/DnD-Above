@@ -63,7 +63,6 @@ function CollectedDataTest() {
 
     useEffect(() => {
         console.log("Fetching all data...");
-        var tempraceData, tempsubraceData, tempraceFeatures;
         console.log("All data like... ever")
         console.log("Race ID: " + selectedRaceId + "\nSubrace ID: " + selectedSubraceId + "\n\n") // Race
         console.log("Class ID: " + ClassId + "\nSubrace ID: " + SubclassId + "\nClass features: " + ChosenClassFeatureId + "\n\n") // Class
@@ -743,8 +742,8 @@ function CollectedDataTest() {
                                     const token = localStorage.getItem('authToken');
                                     var data={
                                         name:raceDataResponse.name+" "+classDataResponse.name+" Level "+FinalCharacterLevel,
-                                        sheet:save,
-                                        spellSheet:spellSave,
+                                        sheet:tempSave,
+                                        spellSheet:tempSpellSave,
                                         userId:UserId
                                     }
                                   
@@ -769,6 +768,8 @@ function CollectedDataTest() {
                                       console.error('Error:', error);
                                     }
                                   };
+
+                                  sendSave();
 
 
             } catch (error) {
