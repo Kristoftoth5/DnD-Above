@@ -79,18 +79,21 @@ function removeEquipment(index) {
         <button
           className="btn btn-secondary"
           onClick={() => setSelectedCategory("Weapon")}
+          id="plsbepink"
         >
           Weapons
         </button>
         <button
           className="btn btn-secondary"
           onClick={() => setSelectedCategory("Armor/Shield")}
+          id="plsbepink"
         >
           Armor & Shields
         </button>
         <button
           className="btn btn-secondary"
           onClick={() => setSelectedCategory("Other")}
+          id="plsbepink"
         >
           Other
         </button>
