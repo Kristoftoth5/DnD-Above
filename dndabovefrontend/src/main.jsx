@@ -20,6 +20,7 @@ import SignUpPage from './assets/UserManagementPages/SignUpPage.jsx'
 import { StatsProvider } from './assets/SaveContexts/StatContext.jsx';
 import { UserIdProvider } from './assets/UserContext.jsx';
 import SavesListPage from './SavesListPage.jsx';
+import SaveDisplayPage from './SaveDisplayPage.jsx';
 
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>
@@ -63,6 +64,7 @@ createRoot(document.getElementById('root')).render(
                 <Route path="/sign-up" element={<SignUpPage/>}/>
                 <Route path="/saves-list" element={<SavesListPage/>}/>
                 <Route path="/asi-feat" element={<AsiFeatPage/>}/>
+                <Route path="/save-display:id" element={<SaveDisplayPage/>}/>
               </Routes>
       </StatsProvider>
 
