@@ -23,6 +23,8 @@ function EquipmentCard({ classId }) {
       setRemainingGold(chosenClass.startingGold + 15);
     }
     fetchdatabyid();
+    setSelectedEquipment([]);
+    setEquipment([]);
   }, [classId]);
 
   // Fetch all equipment data
