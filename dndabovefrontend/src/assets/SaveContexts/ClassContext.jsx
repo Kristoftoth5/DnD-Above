@@ -73,7 +73,7 @@ export function FinalCharacterLevelProvider({ children }) {
 
 //Returns if the character is a caster
 export function CasterProvider({ children }) {
-  const [Caster, setCaster] = useState(1);
+  const [Caster, setCaster] = useState(0);
 
   return (
     <CasterContext.Provider value={{ Caster, setCaster }}>

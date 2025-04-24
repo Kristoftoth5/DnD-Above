@@ -50,7 +50,7 @@ const Header = () => {
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav ms-auto">
             {token?(<li className="nav-item">
-              <button className="nav-link btn btn-link" onClick={() => {handleNavigation("/creator-options");setClassId(0)}}>
+              <button className="nav-link btn btn-link" onClick={() => {handleNavigation("/creator-options");setClassId(0);window.location.reload();}}>
                 Create New Character
               </button>
             </li>):null}
@@ -62,7 +62,7 @@ const Header = () => {
             </li>):null}
             
             {token ?(<li className="nav-item">
-              <button className="nav-link btn btn-warning" onClick={() => { handleLogOut();}}>
+              <button className="nav-link btn btn-warning" onClick={() => {handleLogOut();window.location.reload();}}>
                 Logout
               </button>
             </li>):null}

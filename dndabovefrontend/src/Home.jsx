@@ -50,7 +50,7 @@ const Home = () => {
           <div className="col-md-6 d-flex justify-content-center">
             {token?(<div 
               className="option-card"
-              onClick={() => {navigate("/creator-options");setClassId(0)}}
+              onClick={() => {navigate("/creator-options");setClassId(0);window.location.reload();}}
             >
               Create New Character
             </div>):(<div 
