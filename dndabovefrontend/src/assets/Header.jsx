@@ -7,7 +7,6 @@ import falmingo from './falmingo.png';
 import { UserIdContext } from "./UserContext";
 import { ClassIdContext } from "./SaveContexts/ClassContext";
 
-
 const Header = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -18,6 +17,10 @@ const Header = () => {
   const { UserId, setUserId } = useContext(UserIdContext);
   const { setClassId } = useContext(ClassIdContext)
 
+  const [isTokenExpired, setIsTokenExpired] = useState(false);
+  const refreshToken = localStorage.getItem('refreshToken');
+
+
   const handleNavigation = (path) => {
     if (location.pathname === "/character-creator") {
       const confirmLeave = window.confirm("Are you sure you want to return? Everything unsaved will be lost.");
@@ -25,7 +28,45 @@ const Header = () => {
     }
     navigate(path);
   };
+
+  const checkTokenExpiration = () => {
+    const token = localStorage.getItem('authToken');
+    
+    if (!token) {
+        return false; 
+    }
+
+    const payload = token.split('.')[1];
+    
+    const decodedPayload = JSON.parse(atob(payload));
+
+    const currentTime = Math.floor(Date.now() / 1000); 
+    const expirationTime = decodedPayload.exp;
+
+    setIsTokenExpired( expirationTime > currentTime);
+  };
+
+  useEffect(() => {
+    const logOutOnExpiredAccessToken = async () => {
+      
   
+      if (!refreshToken && token) {
+          console.error('No refresh token available');
+          localStorage.removeItem('authToken');setToken("");
+          localStorage.removeItem('UserId');setUserId(0);
+          localStorage.removeItem('refreshToken');
+          navigate("/");
+          window.location.reload();
+          return;
+      }
+  
+      
+    };
+
+    logOutOnExpiredAccessToken();
+  }, [isTokenExpired]);
+
+
 
   const handleLogOut = async () => {
    
@@ -35,33 +76,9 @@ const Header = () => {
       {
         localStorage.removeItem('authToken');setUserId(0);
         localStorage.removeItem('UserId');
-        var url = "https://localhost:7188/api/Auth/logout"
-        data = 
-        {
-          "token":token
-        }
-        try
-        {
-          const response = await fetch(url, 
-            {
-              method: "GET",
-              headers: 
-              {
-                "Content-Type": "application/json",
-                'Authorization': `Bearer ${token}`
-              },
-              body:JSON.stringify(data),
-            });
-        
-        
-            const responseData = await response.json();
-            console.log("Response Data:", responseData);
-        }
-        catch(error)
-        {
-          console.log("Error: ",error)
-        }
+        localStorage.removeItem('refreshToken');
         navigate("/");
+        window.location.reload();
       }
   };
 

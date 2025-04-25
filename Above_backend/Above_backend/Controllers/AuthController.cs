@@ -73,19 +73,19 @@ public class AuthController : ControllerBase
         });
     }
 
-    [Authorize]
     [HttpPost("refreshToken")]
     public async Task<IActionResult> RefreshToken([FromBody] RefreshTokenDTO model)
     {
         var refreshToken = await _context.RefreshTokens
             .Include(rt => rt.User)
             .SingleOrDefaultAsync(rt => rt.Token == model.Token);
-
+        Console.WriteLine(refreshToken.Token);
         if (refreshToken == null || refreshToken.Expires < DateTime.UtcNow)
             return Unauthorized("Invalid or expired refresh token.");
-
+        
         var newToken = GenerateJwtToken(refreshToken.User);
         var newRefreshToken = GenerateRefreshToken(refreshToken.User.Id);
+        
 
         _context.RefreshTokens.Remove(refreshToken);
         _context.RefreshTokens.Add(newRefreshToken);

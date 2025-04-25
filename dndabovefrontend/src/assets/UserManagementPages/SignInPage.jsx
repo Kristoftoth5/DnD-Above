@@ -66,6 +66,8 @@ function SignInPage()
                 setUserId(responseData.userId);
                 setRefreshToken(responseData.refreshToken);
                 navigate("/"); // Navigate to home after successful sign-in
+                window.location.reload()
+
               } else 
               {
                 window.alert("Failed to retrieve token.");
