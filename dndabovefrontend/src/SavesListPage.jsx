@@ -134,11 +134,14 @@ function SavesListPage() {
   }
 
   return (
+    <>
+    <br />
+    <br />
     <div className="creator-container">
-      <br/><br/>
       <h3>Welcome, {userName}</h3>
       <SavesDisplay />
     </div>
+    </>
   );
 }
 
