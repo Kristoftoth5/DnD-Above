@@ -1,8 +1,8 @@
+import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import DiceRoller from "./DiceRoller";
 import { useState, useContext } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import falmingo from './falmingo.png';
 import { UserIdContext } from "./UserContext";
 import { ClassIdContext } from "./SaveContexts/ClassContext";
@@ -18,7 +18,7 @@ const Header = () => {
   const { setClassId } = useContext(ClassIdContext)
 
   const [isTokenExpired, setIsTokenExpired] = useState(false);
-  const refreshToken = localStorage.getItem('refreshToken');
+  const refreshToken = localStorage.getItem("refreshToken");
 
 
   const handleNavigation = (path) => {
@@ -29,22 +29,26 @@ const Header = () => {
     navigate(path);
   };
 
-  const checkTokenExpiration = () => {
+  useEffect(()=>{
     const token = localStorage.getItem('authToken');
     
     if (!token) {
-        return false; 
+        null;
+    }
+    else
+    {
+      const payload = token.split('.')[1];
+    
+      const decodedPayload = JSON.parse(atob(payload));
+
+      const currentTime = Math.floor(Date.now() / 1000); 
+      const expirationTime = decodedPayload.exp;
+
+      setIsTokenExpired( expirationTime > currentTime);
     }
 
-    const payload = token.split('.')[1];
     
-    const decodedPayload = JSON.parse(atob(payload));
-
-    const currentTime = Math.floor(Date.now() / 1000); 
-    const expirationTime = decodedPayload.exp;
-
-    setIsTokenExpired( expirationTime > currentTime);
-  };
+  },[token,UserId])
 
   useEffect(() => {
     const logOutOnExpiredAccessToken = async () => {
@@ -66,6 +70,29 @@ const Header = () => {
     logOutOnExpiredAccessToken();
   }, [isTokenExpired]);
 
+  const sendLogOut = async () => {
+    const url = "https://localhost:7188/api/Auth/logout";  
+    const data = {
+      token: refreshToken
+    };
+  
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify(data)
+      });
+  
+      
+      
+    } catch (error) {
+      console.log("Logout error:", error);
+    }
+  };
+
 
 
   const handleLogOut = async () => {
@@ -74,12 +101,16 @@ const Header = () => {
       if (!confirmLogOut) return;
       else
       {
-        localStorage.removeItem('authToken');setUserId(0);
+        const a = await sendLogOut();
+        localStorage.removeItem('authToken');
         localStorage.removeItem('UserId');
         localStorage.removeItem('refreshToken');
+        setToken(null);
+        setUserId(0);
+    
         navigate("/");
-        window.location.reload();
       }
+      
   };
 
   useEffect(()=>{
@@ -87,14 +118,14 @@ const Header = () => {
   },[token,UserId])
 
   return (
-    <div className="container">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <div className="container-fluid">
+      <nav className="navbar navbar-expand navbar-light bg-light">
 
         <button className="nav-link btn btn-link" onClick={() => handleNavigation("/")}>
             <img src={falmingo} alt="Save" className="icon flipped" />
             Home
         </button>
-        <div className="collapse navbar-collapse">
+        <div className="navbar-text">
           <ul className="navbar-nav ms-auto">
             {token?(<li className="nav-item">
               <button className="nav-link btn btn-link" onClick={() => {handleNavigation("/creator-options");setClassId(0);window.location.reload();}}>
