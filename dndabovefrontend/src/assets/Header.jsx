@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import falmingo from './falmingo.png';
 import { UserIdContext } from "./UserContext";
 import { ClassIdContext } from "./SaveContexts/ClassContext";
-import { decode } from 'jwt-decode';
+
 
 const Header = () => {
   const location = useLocation();
@@ -25,18 +25,7 @@ const Header = () => {
     }
     navigate(path);
   };
-  const isTokenExpired = (token) => {
-    try {
-      const decoded = decode(token);
-      const currentTime = Date.now() / 1000; // Current time in seconds
-      return decoded.exp < currentTime;
-    } catch (e) {
-      return false; // Token might be invalid
-    }
-    };
-  useEffect(()=>{
-    
-  },[isTokenExpired])
+  
 
   const handleLogOut = async () => {
    
