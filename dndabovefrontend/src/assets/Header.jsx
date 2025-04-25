@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import falmingo from './falmingo.png';
 import { UserIdContext } from "./UserContext";
 import { ClassIdContext } from "./SaveContexts/ClassContext";
+import { decode } from 'jwt-decode';
 
 const Header = () => {
   const location = useLocation();
@@ -24,8 +25,20 @@ const Header = () => {
     }
     navigate(path);
   };
+  const isTokenExpired = (token) => {
+    try {
+      const decoded = decode(token);
+      const currentTime = Date.now() / 1000; // Current time in seconds
+      return decoded.exp < currentTime;
+    } catch (e) {
+      return false; // Token might be invalid
+    }
+    };
+  useEffect(()=>{
+    
+  },[isTokenExpired])
 
-  const handleLogOut = () => {
+  const handleLogOut = async () => {
    
       const confirmLogOut = window.confirm("Are you sure you want to log out? You will not have access to the Saves menu or character creation until you sign in again.");
       if (!confirmLogOut) return;
@@ -33,6 +46,32 @@ const Header = () => {
       {
         localStorage.removeItem('authToken');setUserId(0);
         localStorage.removeItem('UserId');
+        var url = "https://localhost:7188/api/Auth/logout"
+        data = 
+        {
+          "token":token
+        }
+        try
+        {
+          const response = await fetch(url, 
+            {
+              method: "GET",
+              headers: 
+              {
+                "Content-Type": "application/json",
+                'Authorization': `Bearer ${token}`
+              },
+              body:JSON.stringify(data),
+            });
+        
+        
+            const responseData = await response.json();
+            console.log("Response Data:", responseData);
+        }
+        catch(error)
+        {
+          console.log("Error: ",error)
+        }
         navigate("/");
       }
   };

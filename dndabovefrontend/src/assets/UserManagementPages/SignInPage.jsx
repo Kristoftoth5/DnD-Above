@@ -7,7 +7,7 @@ import { UserIdContext } from "../UserContext";
 function SignInPage()
 {
     const [token, setToken] = useState();
-    const [tokenPath, setTokenPath] = useState("");
+    const [refreshToken, setRefreshToken] = useState();
 
     const navigate = useNavigate();
 
@@ -61,8 +61,10 @@ function SignInPage()
               {
                 localStorage.setItem("authToken", responseData.token);
                 localStorage.setItem("UserId",responseData.userId);
+                localStorage.setItem("refreshToken", responseData.refreshToken);
                 setToken(responseData.token);
                 setUserId(responseData.userId);
+                setRefreshToken(responseData.refreshToken);
                 navigate("/"); // Navigate to home after successful sign-in
               } else 
               {

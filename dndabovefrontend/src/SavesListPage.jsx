@@ -62,30 +62,35 @@ function SavesListPage() {
   }
 
   // Handle delete operation and re-fetch the updated saves
-  async function HandleDelete(id) {
+  async function HandleDelete(id, sheetName) {
     if (!token) return;
     const apiAddress = "https://localhost:7188/api/Saves/" + id;
-  
-    try {
-      const response = await fetch(apiAddress, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-  
-      if (!response.ok) {
-        throw new Error('Failed to delete');
+    const confirmLeave = window.confirm("Are you sure you want to delete the character sheet: "+sheetName+"?");
+    if (!confirmLeave) return;
+    else
+    {
+      try {
+        const response = await fetch(apiAddress, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+        });
+    
+        if (!response.ok) {
+          throw new Error('Failed to delete');
+        }
+    
+        // Find and remove the deleted save from the state directly
+        setSaves((prevSaves) => prevSaves.filter((save) => save.id !== id));
+    
+        console.log('Deleted successfully');
+      } catch (error) {
+        console.error('Error:', error);
       }
-  
-      // Find and remove the deleted save from the state directly
-      setSaves((prevSaves) => prevSaves.filter((save) => save.id !== id));
-  
-      console.log('Deleted successfully');
-    } catch (error) {
-      console.error('Error:', error);
     }
+    
   }
   
 
@@ -109,7 +114,7 @@ function SavesListPage() {
                     </button>
                   </td>
                   <td>
-                    <button onClick={() => { HandleDelete(save.id) }} className="btn btn-danger">
+                    <button onClick={() => { HandleDelete(save.id, save.name) }} className="btn btn-danger">
                       Delete
                     </button>
                   </td>
