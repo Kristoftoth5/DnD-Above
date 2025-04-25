@@ -651,6 +651,14 @@ function CollectedDataTest() {
                             <!-- Equipment Section -->
                                 <div class="card shadow-sm mb-4 p-3">
                                     <h4 class="mb-3">Equipment</h4>
+                                    <div class="row mb-3">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" value="Gold"/>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="number" class="form-control" value="${RemainingGold}"/>
+                                        </div>
+                                    </div>
                                     ${equipmentFields.map((field, index) => {
                                         return `
                                             <div class="row mb-3">

@@ -4,7 +4,7 @@ export const UserIdContext = createContext();
 
 //Stats
 export function UserIdProvider({ children }) {
-  const [UserId, setUserId] = useState(0);
+  const [UserId, setUserId] = useState(() => localStorage.getItem("UserId") || null);
 
   return (
     <UserIdContext.Provider value={{ UserId, setUserId }}>

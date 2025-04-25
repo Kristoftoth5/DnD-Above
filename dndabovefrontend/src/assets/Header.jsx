@@ -14,7 +14,7 @@ const Header = () => {
 
   const [showDiceRoller, setShowDiceRoller] = useState(false);
 
-  const {UserId,setUserId} = useContext(UserIdContext)
+  const { UserId, setUserId } = useContext(UserIdContext);
   const { setClassId } = useContext(ClassIdContext)
 
   const handleNavigation = (path) => {
@@ -27,11 +27,13 @@ const Header = () => {
 
   const handleLogOut = () => {
    
-      const confirmLogOut = window.confirm("Are you sure you want to log out? You will not have access to the Saves menu until you sign in again.");
+      const confirmLogOut = window.confirm("Are you sure you want to log out? You will not have access to the Saves menu or character creation until you sign in again.");
       if (!confirmLogOut) return;
       else
       {
         localStorage.removeItem('authToken');setUserId(0);
+        localStorage.removeItem('UserId');
+        navigate("/");
       }
   };
 

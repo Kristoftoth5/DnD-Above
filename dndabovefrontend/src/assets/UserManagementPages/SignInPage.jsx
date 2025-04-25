@@ -60,6 +60,7 @@ function SignInPage()
               if (responseData.token) 
               {
                 localStorage.setItem("authToken", responseData.token);
+                localStorage.setItem("UserId",responseData.userId);
                 setToken(responseData.token);
                 setUserId(responseData.userId);
                 navigate("/"); // Navigate to home after successful sign-in

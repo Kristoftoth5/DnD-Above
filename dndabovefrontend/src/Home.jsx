@@ -20,7 +20,7 @@ const Home = () => {
   const [images, setImages] = useState([background1, background2, background3, background4, background5, background6, background7, background8])
   const [randomBgImage, setRandomBgImage] = useState(firstbg);
   var token = localStorage.getItem('authToken');
-  const { UserId } = useContext(UserIdContext);
+  const {UserId} = useContext(UserIdContext);
 
   const { setClassId } = useContext(ClassIdContext);
 
