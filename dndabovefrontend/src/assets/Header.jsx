@@ -60,7 +60,6 @@ const Header = () => {
           localStorage.removeItem('UserId');setUserId(0);
           localStorage.removeItem('refreshToken');
           navigate("/");
-          window.location.reload();
           return;
       }
   
@@ -71,7 +70,7 @@ const Header = () => {
   }, [isTokenExpired]);
 
   const sendLogOut = async () => {
-    const url = "https://localhost:7188/api/Auth/logout";  
+    const url = "https://localhost:5001/api/Auth/logout";  
     const data = {
       token: refreshToken
     };
@@ -128,7 +127,7 @@ const Header = () => {
         <div className="navbar-text">
           <ul className="navbar-nav ms-auto">
             {token?(<li className="nav-item">
-              <button className="nav-link btn btn-link" onClick={() => {handleNavigation("/creator-options");setClassId(0);window.location.reload();}}>
+              <button className="nav-link btn btn-link" onClick={() => {handleNavigation("/creator-options");setClassId(0);}}>
                 Create New Character
               </button>
             </li>):null}
@@ -140,7 +139,7 @@ const Header = () => {
             </li>):null}
             
             {token ?(<li className="nav-item">
-              <button className="nav-link btn btn-warning" onClick={() => {handleLogOut();window.location.reload();}}>
+              <button className="nav-link btn btn-warning" onClick={() => {handleLogOut();}}>
                 Logout
               </button>
             </li>):null}

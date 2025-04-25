@@ -757,7 +757,7 @@ function CollectedDataTest() {
                                     console.log("Payload to send:", data);
                                   
                                     try {
-                                      const response = await fetch('https://localhost:7188/api/Saves', {
+                                      const response = await fetch('https://localhost:5001/api/Saves', {
                                         method: 'POST',
                                         headers: {
                                           'Content-Type': 'application/json',

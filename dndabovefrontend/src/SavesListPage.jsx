@@ -17,7 +17,7 @@ function SavesListPage() {
   useEffect(() => {
     async function fetchUserData() {
       if (!token) return;
-      const apiAddress = "https://localhost:7188/api/Auth/" + UserId;
+      const apiAddress = "https://localhost:5001/api/Auth/" + UserId;
       const userDataResponse = await fetch(apiAddress, {
         method: 'GET',
         headers: {
@@ -36,7 +36,7 @@ function SavesListPage() {
 
     async function fetchSavesByUserId() {
       if (!token) return;
-      const apiAddress = "https://localhost:7188/api/Saves/userid/" + UserId;
+      const apiAddress = "https://localhost:5001/api/Saves/userid/" + UserId;
       const savesDataResponse = await fetch(apiAddress, {
         method: 'GET',
         headers: {
@@ -64,7 +64,7 @@ function SavesListPage() {
   // Handle delete operation and re-fetch the updated saves
   async function HandleDelete(id, sheetName) {
     if (!token) return;
-    const apiAddress = "https://localhost:7188/api/Saves/" + id;
+    const apiAddress = "https://localhost:5001/api/Saves/" + id;
     const confirmLeave = window.confirm("Are you sure you want to delete the character sheet: "+sheetName+"?");
     if (!confirmLeave) return;
     else

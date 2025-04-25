@@ -12,7 +12,7 @@ function SaveDisplayPage()
 
         const fetchsavedata = async () => 
             {
-              const url = "https://localhost:7188/api/Saves/"+id;  
+              const url = "https://localhost:5001/api/Saves/"+id;  
             
               try {
                 const response = await fetch(url, 

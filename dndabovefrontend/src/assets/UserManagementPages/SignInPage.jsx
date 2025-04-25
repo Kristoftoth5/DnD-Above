@@ -29,7 +29,7 @@ function SignInPage()
 
         const sendSignIn = async () => 
           {
-            const url = "https://localhost:7188/api/Auth/login";  
+            const url = "https://localhost:5001/api/Auth/login";  
             const data = 
             {
               "email": temp,
@@ -66,7 +66,6 @@ function SignInPage()
                 setUserId(responseData.userId);
                 setRefreshToken(responseData.refreshToken);
                 navigate("/"); // Navigate to home after successful sign-in
-                window.location.reload()
 
               } else 
               {

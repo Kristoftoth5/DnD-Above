@@ -38,7 +38,7 @@ function SignUpPage()
 
 
         const sendSignUp = async () => {
-            const url = "https://localhost:7188/api/Auth/register";  
+            const url = "https://localhost:5001/api/Auth/register";  
             const data = {
               "userName": temp,
               "email": temp2,

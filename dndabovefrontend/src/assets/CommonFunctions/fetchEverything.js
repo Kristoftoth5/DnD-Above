@@ -5,7 +5,7 @@ async function fetchEverything(choice)
         choice = "";
     }
 
-    const response = await fetch('https://localhost:7188/api/'+choice);
+    const response = await fetch('https://localhost:5001/api/'+choice);
     var data = await response.json();
 
     return data;
