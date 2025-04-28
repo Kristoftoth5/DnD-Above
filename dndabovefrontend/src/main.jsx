@@ -1,0 +1,100 @@
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App.jsx'
+import { CreatorProvider, ExtraFeatProvider } from "./assets/BringStatChoice.jsx";
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import CreatorPage from './CreatorPage.jsx'
+import CreationOptionsPage from './CreationOptionsPage.jsx'
+import CollectedDataTest from './CollectedDataTest.jsx'
+import "bootstrap/dist/css/bootstrap.min.css";
+import Header from './assets/Header.jsx'
+import Home from './Home.jsx'
+import AsiFeatPage from "./assets/AsiFeatPage.jsx"
+import { EquipmentProvider, RemainingGoldProvider } from './assets/SaveContexts/EquipmentContext.jsx';
+import { RaceIdProvider, SubraceFeatureIdProvider, SubraceIdProvider } from './assets/SaveContexts/RaceContext.jsx';
+import { ClassIdProvider, SubclassIdProvider, ChosenClassFeatureIdProvider, BasicClassFeatureIdProvider, FinalCharacterLevelProvider, CasterProvider, HalfcasterProvider, SpellCastingAMProvider } from './assets/SaveContexts/ClassContext.jsx';
+import { BgNameProvider, BgDescProvider, BgSkillsProvider, BgToolProvider } from './assets/SaveContexts/BackgroundContext.jsx';
+import { FinalSpellsProvider } from './assets/SaveContexts/FinalSpellContext.jsx';
+import SignInPage from './assets/UserManagementPages/SignInPage.jsx'
+import SignUpPage from './assets/UserManagementPages/SignUpPage.jsx'
+import { StatsProvider } from './assets/SaveContexts/StatContext.jsx';
+import { UserIdProvider } from './assets/UserContext.jsx';
+import SavesListPage from './SavesListPage.jsx';
+import SaveDisplayPage from './SaveDisplayPage.jsx';
+
+createRoot(document.getElementById('root')).render(
+    <BrowserRouter>
+      
+      <CreatorProvider>
+      <ExtraFeatProvider>
+
+      <UserIdProvider>
+
+      <EquipmentProvider>
+      <RemainingGoldProvider>
+
+      <RaceIdProvider>
+      <SubraceIdProvider>
+      <SubraceFeatureIdProvider>
+
+      <ClassIdProvider>
+      <SubclassIdProvider>
+      <ChosenClassFeatureIdProvider>
+      <BasicClassFeatureIdProvider>
+      <FinalCharacterLevelProvider>
+      <CasterProvider>
+      <HalfcasterProvider>
+      <SpellCastingAMProvider>
+
+      <BgNameProvider>
+      <BgDescProvider>
+      <BgSkillsProvider>
+      <BgToolProvider>
+
+      <FinalSpellsProvider>
+
+      <StatsProvider>
+      <Header />
+              <Routes>
+                <Route path="/" element={<Home />} />  
+                <Route path="/creator-options" element={<CreationOptionsPage />} />
+                <Route path="/character-creator" element={<CreatorPage />} />  
+                <Route path="/finalize" element={<CollectedDataTest/>}/>
+                <Route path="/sign-in" element={<SignInPage/>}/>
+                <Route path="/sign-up" element={<SignUpPage/>}/>
+                <Route path="/saves-list" element={<SavesListPage/>}/>
+                <Route path="/asi-feat" element={<AsiFeatPage/>}/>
+                <Route path="/save-display/:id" element={<SaveDisplayPage/>}/>
+              </Routes>
+      </StatsProvider>
+
+      </FinalSpellsProvider>
+
+      </BgToolProvider>
+      </BgSkillsProvider>
+      </BgDescProvider>      
+      </BgNameProvider>
+
+      </SpellCastingAMProvider>
+      </HalfcasterProvider>
+      </CasterProvider>
+      </FinalCharacterLevelProvider>
+      </BasicClassFeatureIdProvider>
+      </ChosenClassFeatureIdProvider>
+      </SubclassIdProvider>
+      </ClassIdProvider>
+
+      </SubraceFeatureIdProvider>
+      </SubraceIdProvider>
+      </RaceIdProvider>      
+            
+      </RemainingGoldProvider>
+      </EquipmentProvider>
+
+      </UserIdProvider>
+
+      </ExtraFeatProvider>
+      </CreatorProvider>
+    </BrowserRouter>
+
+)
